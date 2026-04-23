@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>French Flashcards — EN and Y</title>
+  <style>
+    :root{
+      --bg:#f7f7fb; --card:#ffffff; --text:#1f2937; --muted:#6b7280;
+      --accent:#2563eb; --accent2:#0ea5e9; --border:#e5e7eb;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+    header{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:28px 18px}
+    header h1{margin:0 0 8px;font-size:28px}
+    header p{margin:0;max-width:900px}
+    main{max-width:1100px;margin:0 auto;padding:18px}
+    .panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.03)}
+    h2{margin-top:0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+    .pill{display:inline-block;padding:5px 10px;border-radius:999px;font-size:12px;background:#eef2ff;color:#3730a3;border:1px solid #c7d2fe;margin:2px 6px 2px 0}
+    .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    select,button{font:inherit;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#fff}
+    button{cursor:pointer;border:none;background:var(--accent);color:#fff;font-weight:700}
+    button.secondary{background:#4b5563}
+    button.ghost{background:#eef2ff;color:#1e3a8a;border:1px solid #c7d2fe}
+    .flashcard{min-height:320px;display:flex;flex-direction:column;justify-content:space-between}
+    .meta{font-size:12px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}
+    .front,.back{background:#fafafa;border:1px dashed var(--border);border-radius:12px;padding:16px;margin-top:10px}
+    .front{font-size:24px;font-weight:700}
+    .back{display:none}
+    .example{margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+    .small{font-size:14px;color:var(--muted)}
+    .progress{margin-top:12px;font-size:14px;color:var(--muted)}
+    ul{margin-top:8px}
+    .table-wrap{overflow-x:auto}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{border:1px solid var(--border);padding:10px;text-align:left;vertical-align:top}
+    th{background:#f3f4f6}
+    .note{border-left:4px solid var(--accent2);background:#f0f9ff;padding:10px 12px;border-radius:8px}
+    .quiz-box{background:#fafafa;border:1px solid var(--border);border-radius:12px;padding:14px}
+    footer{max-width:1100px;margin:0 auto;padding:0 18px 24px;color:var(--muted)}
+    code{background:#f3f4f6;padding:2px 5px;border-radius:5px}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>French Flashcards — EN and Y</h1>
+    <p>A study site for a high A1 / low A2 learner. Learn what <strong>en</strong> and <strong>y</strong> replace, where they go in the sentence, and how to use them with examples and flashcards.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Quick lesson</h2>
+      <div class="grid">
+        <div>
+          <h3>EN</h3>
+          <p><strong>En</strong> often replaces <strong>de + thing</strong> or a quantity expression.</p>
+          <div class="note">
+            <strong>Main idea:</strong> think “from it / of it / some / any” depending on the sentence.
+          </div>
+          <ul>
+            <li><strong>Je parle de ce livre.</strong> → <strong>J’en parle.</strong></li>
+            <li><strong>Tu veux du pain ?</strong> → <strong>Oui, j’en veux.</strong></li>
+            <li><strong>Elle a trois frères.</strong> → <strong>Elle en a trois.</strong></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Y</h3>
+          <p><strong>Y</strong> often replaces <strong>à + thing</strong> or a place.</p>
+          <div class="note">
+            <strong>Main idea:</strong> think “there / to it / in it / on it” depending on the sentence.
+          </div>
+          <ul>
+            <li><strong>Je pense à mon travail.</strong> → <strong>J’y pense.</strong></li>
+            <li><strong>Tu vas à la banque ?</strong> → <strong>Oui, j’y vais.</strong></li>
+            <li><strong>Elle est dans la cuisine.</strong> → <strong>Elle y est.</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>EN vs Y in one table</h2>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Pronoun</th><th>Usually replaces</th><th>Main meanings</th><th>Example</th></tr>
+          <tr>
+            <td><strong>en</strong></td>
+            <td><code>de + noun</code>, partitive, quantity</td>
+            <td>of it, from it, some, any</td>
+            <td><strong>Tu as du café ?</strong> → <strong>Oui, j’en ai.</strong></td>
+          </tr>
+          <tr>
+            <td><strong>y</strong></td>
+            <td><code>à + noun</code>, place words like <code>à</code>, <code>dans</code>, <code>chez</code>, <code>sur</code>, <code>en</code></td>
+            <td>there, to it, in it, on it</td>
+            <td><strong>Tu vas au parc ?</strong> → <strong>Oui, j’y vais.</strong></td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Grammar details you should know</h2>
+      <div class="grid">
+        <div>
+          <h3>1) EN with quantities</h3>
+          <p>Keep the number after <strong>en</strong>.</p>
+          <ul>
+            <li><strong>J’ai deux chats.</strong> → <strong>J’en ai deux.</strong></li>
+            <li><strong>Nous voulons beaucoup de pommes.</strong> → <strong>Nous en voulons beaucoup.</strong></li>
+            <li><strong>Il boit du lait.</strong> → <strong>Il en boit.</strong></li>
+          </ul>
+        </div>
+        <div>
+          <h3>2) Y with places</h3>
+          <p><strong>Y</strong> is very common with <strong>aller</strong>, <strong>être</strong>, <strong>habiter</strong>, <strong>rester</strong>.</p>
+          <ul>
+            <li><strong>Je vais à l’école.</strong> → <strong>J’y vais.</strong></li>
+            <li><strong>Nous sommes chez Paul.</strong> → <strong>Nous y sommes.</strong></li>
+            <li><strong>Elle reste dans sa chambre.</strong> → <strong>Elle y reste.</strong></li>
+          </ul>
+        </div>
+        <div>
+          <h3>3) EN with verbs using de</h3>
+          <ul>
+            <li>parler de → <strong>J’en parle.</strong></li>
+            <li>avoir besoin de → <strong>J’en ai besoin.</strong></li>
+            <li>se souvenir de → <strong>Je m’en souviens.</strong></li>
+          </ul>
+        </div>
+        <div>
+          <h3>4) Y with verbs using à</h3>
+          <ul>
+            <li>penser à → <strong>J’y pense.</strong></li>
+            <li>s’intéresser à → <strong>Je m’y intéresse.</strong></li>
+            <li>répondre à (a thing) → <strong>J’y réponds.</strong></li>
+          </ul>
+          <p class="small">For people, French often uses stressed pronouns instead: <strong>Je pense à Marie → Je pense à elle</strong>, not usually <strong>j’y pense</strong> for a person.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Where do EN and Y go?</h2>
+      <div class="grid">
+        <div>
+          <h3>Normal present tense</h3>
+          <ul>
+            <li><strong>J’en veux.</strong></li>
+            <li><strong>Tu y vas.</strong></li>
+            <li><strong>Nous en avons.</strong></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Negative</h3>
+          <ul>
+            <li><strong>Je n’en veux pas.</strong></li>
+            <li><strong>Tu n’y vas pas.</strong></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Passé composé</h3>
+          <ul>
+            <li><strong>J’en ai acheté.</strong></li>
+            <li><strong>Elle y est allée.</strong></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Imperative</h3>
+          <ul>
+            <li><strong>Vas-y !</strong></li>
+            <li><strong>N’y va pas !</strong></li>
+            <li><strong>Prends-en !</strong></li>
+            <li><strong>N’en prends pas !</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Common mistakes</h2>
+      <ul>
+        <li><strong>Quantity stays:</strong> <em>J’ai trois frères → J’en ai trois</em>, not just <em>J’en ai</em> if the number matters.</li>
+        <li><strong>EN is not for people after de in most basic learning:</strong> <em>Je parle de mon ami</em> can become <em>Je parle de lui</em> more naturally when it is a person.</li>
+        <li><strong>Y is often not used for people:</strong> <em>Je pense à Paul → Je pense à lui</em>, not usually <em>J’y pense</em> for a person.</li>
+        <li><strong>After imperative, EN and Y come after the verb with a hyphen:</strong> <em>Vas-y ! Prends-en !</em></li>
+      </ul>
+    </section>
+
+    <section class="panel flashcard">
+      <div>
+        <h2>Flashcards</h2>
+        <div class="controls">
+          <label>Set:
+            <select id="setFilter">
+              <option value="all">All cards</option>
+              <option value="en">EN only</option>
+              <option value="y">Y only</option>
+              <option value="mixed">Mixed comparison</option>
+              <option value="placement">Placement / word order</option>
+            </select>
+          </label>
+          <button id="shuffleBtn" class="ghost">Shuffle</button>
+          <button id="flipBtn">Flip card</button>
+          <button id="prevBtn" class="secondary">Previous</button>
+          <button id="nextBtn">Next</button>
+        </div>
+
+        <div class="meta" id="meta"></div>
+        <div class="front" id="front"></div>
+        <div class="back" id="back"></div>
+        <div class="progress" id="progress"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Mini self-check quiz</h2>
+      <div class="quiz-box">
+        <p><strong>Rule:</strong> choose <strong>en</strong> or <strong>y</strong>.</p>
+        <ol id="quizList"></ol>
+        <button id="showAnswersBtn" class="ghost">Show answers</button>
+        <div id="answersBox" style="display:none; margin-top:12px;"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Tip: Study 5–10 cards at a time. Say the French sentence out loud before flipping the card.
+  </footer>
+
+<script>
+const cards = [
+  {set:"en", title:"EN — basic idea", front:"What does <strong>en</strong> usually replace?", back:"<strong>En</strong> usually replaces <strong>de + thing</strong>, partitive articles (<em>du, de la, de l’, des</em>), or a quantity expression. Example: <em>Tu veux du pain ? → Oui, j’en veux.</em>"},
+  {set:"y", title:"Y — basic idea", front:"What does <strong>y</strong> usually replace?", back:"<strong>Y</strong> usually replaces <strong>à + thing</strong> or a place. Example: <em>Tu vas au magasin ? → Oui, j’y vais.</em>"},
+  {set:"en", title:"With de", front:"Replace: <em>Je parle de ce film.</em>", back:"<strong>J’en parle.</strong><div class='example'>Meaning: I’m talking about it.</div>"},
+  {set:"y", title:"With à", front:"Replace: <em>Je pense à mon examen.</em>", back:"<strong>J’y pense.</strong><div class='example'>Meaning: I’m thinking about it.</div>"},
+  {set:"en", title:"Partitive", front:"Replace: <em>Tu as du café ?</em>", back:"<strong>Oui, j’en ai.</strong><div class='example'>Meaning: Yes, I have some.</div>"},
+  {set:"en", title:"Quantity", front:"Replace: <em>Elle a trois sœurs.</em>", back:"<strong>Elle en a trois.</strong><div class='example'>Keep the number after <strong>en</strong>.</div>"},
+  {set:"en", title:"Quantity words", front:"Replace: <em>Nous avons beaucoup de travail.</em>", back:"<strong>Nous en avons beaucoup.</strong>"},
+  {set:"y", title:"Place with aller", front:"Replace: <em>Nous allons à la bibliothèque.</em>", back:"<strong>Nous y allons.</strong>"},
+  {set:"y", title:"Place with être", front:"Replace: <em>Elle est dans sa chambre.</em>", back:"<strong>Elle y est.</strong>"},
+  {set:"y", title:"Place with rester", front:"Replace: <em>Je reste chez moi.</em>", back:"<strong>J’y reste.</strong>"},
+  {set:"en", title:"Avoir besoin de", front:"Replace: <em>J’ai besoin de ce stylo.</em>", back:"<strong>J’en ai besoin.</strong>"},
+  {set:"en", title:"Se souvenir de", front:"Replace: <em>Tu te souviens de cette chanson ?</em>", back:"<strong>Tu t’en souviens ?</strong>"},
+  {set:"y", title:"S’intéresser à", front:"Replace: <em>Il s’intéresse à la politique.</em>", back:"<strong>Il s’y intéresse.</strong>"},
+  {set:"en", title:"Negative with en", front:"Make negative: <em>Je veux du sucre.</em>", back:"<strong>Je n’en veux pas.</strong>"},
+  {set:"y", title:"Negative with y", front:"Make negative: <em>Tu vas au marché.</em>", back:"<strong>Tu n’y vas pas.</strong>"},
+  {set:"placement", title:"Passé composé with en", front:"Replace: <em>J’ai acheté des pommes.</em>", back:"<strong>J’en ai acheté.</strong><div class='example'>Pronoun before the helping verb.</div>"},
+  {set:"placement", title:"Passé composé with y", front:"Replace: <em>Elle est allée à Paris.</em>", back:"<strong>Elle y est allée.</strong>"},
+  {set:"placement", title:"Imperative with y", front:"Say: Go there!", back:"<strong>Vas-y !</strong>"},
+  {set:"placement", title:"Negative imperative with y", front:"Say: Don’t go there!", back:"<strong>N’y va pas !</strong>"},
+  {set:"placement", title:"Imperative with en", front:"Say: Take some!", back:"<strong>Prends-en !</strong>"},
+  {set:"placement", title:"Negative imperative with en", front:"Say: Don’t take any!", back:"<strong>N’en prends pas !</strong>"},
+  {set:"mixed", title:"EN or Y?", front:"<em>Je vais à la banque.</em> Which pronoun?", back:"<strong>Y</strong> → <strong>J’y vais.</strong><div class='example'>Reason: place / destination.</div>"},
+  {set:"mixed", title:"EN or Y?", front:"<em>Je veux du fromage.</em> Which pronoun?", back:"<strong>EN</strong> → <strong>J’en veux.</strong><div class='example'>Reason: partitive / some.</div>"},
+  {set:"mixed", title:"EN or Y?", front:"<em>Elle pense à son projet.</em> Which pronoun?", back:"<strong>Y</strong> → <strong>Elle y pense.</strong><div class='example'>Reason: penser à + thing.</div>"},
+  {set:"mixed", title:"EN or Y?", front:"<em>Nous parlons de nos vacances.</em> Which pronoun?", back:"<strong>EN</strong> → <strong>Nous en parlons.</strong><div class='example'>Reason: parler de + thing.</div>"},
+  {set:"mixed", title:"EN or Y?", front:"<em>Tu as beaucoup d’amis ?</em> Which pronoun?", back:"<strong>EN</strong> → <strong>Oui, j’en ai beaucoup.</strong><div class='example'>Reason: quantity.</div>"},
+  {set:"mixed", title:"EN or Y?", front:"<em>Il répond à la question.</em> Which pronoun?", back:"<strong>Y</strong> → <strong>Il y répond.</strong><div class='example'>Reason: répondre à + thing.</div>"},
+  {set:"en", title:"From there / from it", front:"Replace: <em>Je reviens de la boulangerie.</em>", back:"<strong>J’en reviens.</strong><div class='example'>In some cases, <strong>en</strong> can mean ‘from there’ with <em>de</em>.</div>"},
+  {set:"y", title:"Living there", front:"Replace: <em>Nous habitons en France.</em>", back:"<strong>Nous y habitons.</strong>"},
+  {set:"mixed", title:"Person or thing?", front:"Can you say <em>J’y pense</em> for a person?", back:"Usually for a beginner level, use <strong>à lui / à elle</strong> for a person. Example: <em>Je pense à Marie → Je pense à elle.</em>"},
+  {set:"mixed", title:"Person or thing?", front:"Can you say <em>J’en parle</em> for a person?", back:"For basic learning, with a person it is often more natural to say <strong>Je parle de lui / d’elle</strong>. <strong>En</strong> is safer for things and ideas."},
+  {set:"en", title:"With food", front:"Replace: <em>Vous mangez des légumes ?</em>", back:"<strong>Oui, nous en mangeons.</strong>"},
+  {set:"y", title:"At home", front:"Replace: <em>Tu es à la maison ?</em>", back:"<strong>Oui, j’y suis.</strong>"},
+  {set:"placement", title:"Order in a negative sentence", front:"Where do pronouns go in: <em>I’m not going there</em>?", back:"<strong>Je n’y vais pas.</strong><div class='example'>The pronoun goes between <em>ne</em> and the verb.</div>"},
+  {set:"placement", title:"Order with quantity", front:"Where does the number stay? <em>I have two</em>", back:"<strong>J’en ai deux.</strong><div class='example'>Keep the quantity after the verb.</div>"},
+  {set:"mixed", title:"EN or Y?", front:"<em>J’ai besoin de ce document.</em>", back:"<strong>EN</strong> → <strong>J’en ai besoin.</strong>"},
+  {set:"mixed", title:"EN or Y?", front:"<em>Tu restes dans la voiture ?</em>", back:"<strong>Y</strong> → <strong>Tu y restes ?</strong>"},
+  {set:"mixed", title:"EN or Y?", front:"<em>Ils boivent de l’eau.</em>", back:"<strong>EN</strong> → <strong>Ils en boivent.</strong>"},
+  {set:"mixed", title:"EN or Y?", front:"<em>Elle réfléchit à la réponse.</em>", back:"<strong>Y</strong> → <strong>Elle y réfléchit.</strong>"},
+  {set:"en", title:"Question answer", front:"Answer: <em>Tu veux des biscuits ?</em>", back:"<strong>Oui, j’en veux.</strong> / <strong>Non, je n’en veux pas.</strong>"},
+  {set:"y", title:"Question answer", front:"Answer: <em>Tu vas au cinéma ?</em>", back:"<strong>Oui, j’y vais.</strong> / <strong>Non, je n’y vais pas.</strong>"},
+  {set:"placement", title:"Pronoun before auxiliary", front:"Complete: <em>Nous ___ avons parlé.</em>", back:"<strong>en</strong> → <strong>Nous en avons parlé.</strong>"},
+  {set:"placement", title:"Pronoun before auxiliary", front:"Complete: <em>Elle ___ est allée.</em>", back:"<strong>y</strong> → <strong>Elle y est allée.</strong>"},
+  {set:"mixed", title:"Choose the best one", front:"<em>Je pense à mon frère.</em> Basic learner choice?", back:"Usually <strong>Je pense à lui.</strong> because it is a person. Use <strong>y</strong> more for things, ideas, and places."}
+];
+
+const quiz = [
+  {q:"Je vais au bureau. → Je ___ vais.", a:"y"},
+  {q:"Tu veux du thé ? → Oui, j’___ veux.", a:"en"},
+  {q:"Nous parlons de ce problème. → Nous ___ parlons.", a:"en"},
+  {q:"Elle pense à son avenir. → Elle ___ pense.", a:"y"},
+  {q:"J’ai trois stylos. → J’___ ai trois.", a:"en"},
+  {q:"Ils sont dans la salle. → Ils ___ sont.", a:"y"},
+  {q:"Tu as besoin de ce cahier ? → Oui, j’___ ai besoin.", a:"en"},
+  {q:"On va à la plage. → On ___ va.", a:"y"},
+  {q:"Je bois du lait. → J’___ bois.", a:"en"},
+  {q:"Il répond à la question. → Il ___ répond.", a:"y"}
+];
+
+let filteredCards = [...cards];
+let index = 0;
+let flipped = false;
+
+const setFilter = document.getElementById('setFilter');
+const front = document.getElementById('front');
+const back = document.getElementById('back');
+const meta = document.getElementById('meta');
+const progress = document.getElementById('progress');
+
+function shuffleArray(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+}
+
+function renderCard(){
+  if(filteredCards.length===0){
+    front.innerHTML = "No cards in this set.";
+    back.style.display = "none";
+    meta.innerHTML = "";
+    progress.innerHTML = "";
+    return;
+  }
+  const c = filteredCards[index];
+  front.innerHTML = c.front;
+  back.innerHTML = c.back;
+  back.style.display = flipped ? "block" : "none";
+  meta.innerHTML = `<span class="pill">${c.set.toUpperCase()}</span><span>${c.title}</span>`;
+  progress.textContent = `Card ${index + 1} of ${filteredCards.length}`;
+}
+
+function applyFilter(){
+  const v = setFilter.value;
+  filteredCards = v === "all" ? [...cards] : cards.filter(c => c.set === v);
+  index = 0;
+  flipped = false;
+  renderCard();
+}
+
+document.getElementById('flipBtn').addEventListener('click', () => {
+  flipped = !flipped;
+  renderCard();
+});
+document.getElementById('nextBtn').addEventListener('click', () => {
+  if(filteredCards.length){ index = (index + 1) % filteredCards.length; flipped = false; renderCard(); }
+});
+document.getElementById('prevBtn').addEventListener('click', () => {
+  if(filteredCards.length){ index = (index - 1 + filteredCards.length) % filteredCards.length; flipped = false; renderCard(); }
+});
+document.getElementById('shuffleBtn').addEventListener('click', () => {
+  shuffleArray(filteredCards); index = 0; flipped = false; renderCard();
+});
+setFilter.addEventListener('change', applyFilter);
+
+const quizList = document.getElementById('quizList');
+quiz.forEach(item => {
+  const li = document.createElement('li');
+  li.textContent = item.q;
+  quizList.appendChild(li);
+});
+
+document.getElementById('showAnswersBtn').addEventListener('click', () => {
+  const box = document.getElementById('answersBox');
+  box.style.display = 'block';
+  box.innerHTML = "<h3>Answers</h3><ol>" + quiz.map(item => `<li><strong>${item.a}</strong></li>`).join("") + "</ol>";
+});
+
+applyFilter();
+</script>
+</body>
+</html>
