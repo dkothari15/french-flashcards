@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>French Past Tenses: DR VANDERTRAMPP, Passé Composé & Imparfait</title>
+  <style>
+    :root {
+      --bg: #f7f4ef;
+      --panel: #ffffff;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --brand: #355c7d;
+      --brand2: #725a7a;
+      --accent: #f6c177;
+      --good: #0f766e;
+      --bad: #b91c1c;
+      --line: #e5e7eb;
+      --soft: #f3f4f6;
+      --shadow: 0 10px 25px rgba(31, 41, 55, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #f7f4ef 0%, #eef2ff 100%);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 34px 18px 24px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+    }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.7rem, 4vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle {
+      margin: 0;
+      max-width: 860px;
+      color: rgba(255,255,255,0.9);
+      font-size: 1.05rem;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .searchbox {
+      width: 100%;
+      padding: 13px 14px;
+      border: 0;
+      border-radius: 999px;
+      outline: none;
+      font-size: 1rem;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.35);
+    }
+
+    .progress-pill {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
+      font-weight: 650;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .tab-btn {
+      border: 1px solid rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.12);
+      color: white;
+      padding: 9px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 650;
+      transition: 0.18s ease;
+    }
+    .tab-btn:hover, .tab-btn.active {
+      background: white;
+      color: var(--brand);
+    }
+
+    main { padding: 24px 18px 70px; }
+
+    section.tab {
+      display: none;
+      animation: fade 0.25s ease;
+    }
+    section.tab.active { display: block; }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .span-12 { grid-column: span 12; }
+    .span-8 { grid-column: span 8; }
+    .span-6 { grid-column: span 6; }
+    .span-4 { grid-column: span 4; }
+
+    @media (max-width: 900px) {
+      .span-8, .span-6, .span-4 { grid-column: span 12; }
+      .topbar { grid-template-columns: 1fr; }
+      header { position: relative; }
+    }
+
+    h2, h3 {
+      line-height: 1.2;
+      margin-top: 0;
+      letter-spacing: -0.02em;
+    }
+    h2 { font-size: 1.65rem; }
+    h3 { font-size: 1.2rem; color: var(--brand); }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #3730a3;
+      font-weight: 700;
+      font-size: 0.82rem;
+      margin: 2px 4px 2px 0;
+    }
+
+    .note {
+      background: #fffbeb;
+      border-left: 5px solid var(--accent);
+      padding: 14px 16px;
+      border-radius: 12px;
+      margin: 14px 0;
+    }
+
+    .danger-note {
+      background: #fef2f2;
+      border-left: 5px solid var(--bad);
+      padding: 14px 16px;
+      border-radius: 12px;
+      margin: 14px 0;
+    }
+
+    .good-note {
+      background: #ecfdf5;
+      border-left: 5px solid var(--good);
+      padding: 14px 16px;
+      border-radius: 12px;
+      margin: 14px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 14px;
+      background: white;
+      margin: 10px 0 16px;
+      font-size: 0.96rem;
+    }
+
+    th, td {
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      padding: 10px 11px;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eef2ff;
+      color: #1f2937;
+      font-weight: 800;
+    }
+
+    tr:hover td { background: #fafafa; }
+    .small { color: var(--muted); font-size: 0.92rem; }
+    .big-fr { font-size: 1.2rem; font-weight: 800; color: var(--brand); }
+    .example {
+      background: var(--soft);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin: 9px 0;
+    }
+    .example strong { color: var(--brand); }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      background: white;
+      margin: 10px 0;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 800;
+      color: var(--brand);
+    }
+
+    .verb-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+    }
+
+    .verb-tile {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+      background: #fff;
+      cursor: pointer;
+      transition: 0.16s ease;
+    }
+    .verb-tile:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      border-color: #c7d2fe;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin: 12px 0;
+    }
+
+    select, button, .mini-input {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      font-weight: 650;
+    }
+
+    button {
+      cursor: pointer;
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+      transition: 0.16s ease;
+    }
+    button:hover { filter: brightness(1.05); transform: translateY(-1px); }
+    button.secondary {
+      background: white;
+      color: var(--brand);
+      border-color: #c7d2fe;
+    }
+
+    .flashcard {
+      min-height: 250px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #ffffff 0%, #eef2ff 100%);
+      border: 2px dashed #c7d2fe;
+      cursor: pointer;
+      user-select: none;
+    }
+    .flash-front { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 850; color: var(--brand); }
+    .flash-back { font-size: 1.1rem; max-width: 760px; }
+
+    .quiz-option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin: 8px 0;
+      background: white;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+    .quiz-option.correct { border-color: var(--good); background: #ecfdf5; color: var(--good); }
+    .quiz-option.wrong { border-color: var(--bad); background: #fef2f2; color: var(--bad); }
+
+    .hidden { display: none !important; }
+
+    .checklist li { margin-bottom: 8px; }
+    .kbd {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: #111827;
+      color: white;
+      border-radius: 8px;
+      padding: 2px 7px;
+      font-size: 0.9em;
+    }
+
+    .two-col {
+      columns: 2;
+      column-gap: 28px;
+    }
+    @media (max-width: 700px) { .two-col { columns: 1; } }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 25px;
+    }
+
+    mark {
+      background: #fde68a;
+      border-radius: 4px;
+      padding: 0 2px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>French Past Tenses Study Website</h1>
+      <p class="subtitle">Low A2 guide to <strong>DR VANDERTRAMPP</strong>, <strong>passé composé</strong>, <strong>imparfait</strong>, agreements, exceptions, reflexive verbs, conjugations, flashcards, and quizzes.</p>
+      <div class="topbar">
+        <input id="search" class="searchbox" placeholder="Search: allé, imparfait, sortir, agreement, avoir, être..." />
+        <div class="progress-pill" id="progress">0 cards studied</div>
+      </div>
+      <nav id="tabs"></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="start" class="tab active">
+      <div class="grid">
+        <div class="card span-8 searchable">
+          <h2>Start here: the simple difference</h2>
+          <p><span class="tag">Passé composé</span> = a completed past action.</p>
+          <p><span class="tag">Imparfait</span> = a past habit, description, background, feeling, weather, time, or age.</p>
+
+          <div class="example">
+            <p><strong>Je regardais la télé quand mon ami a appelé.</strong></p>
+            <p>I was watching TV when my friend called.</p>
+            <p><strong>regardais</strong> = imparfait because it was happening / background.</p>
+            <p><strong>a appelé</strong> = passé composé because it was a completed action.</p>
+          </div>
+
+          <div class="good-note">
+            <strong>Best A2 rule:</strong> Use <strong>imparfait</strong> for the background and <strong>passé composé</strong> for the action that happens.
+          </div>
+        </div>
+
+        <div class="card span-4 searchable">
+          <h2>Important words</h2>
+          <table>
+            <tr><th>French</th><th>Meaning</th></tr>
+            <tr><td>le passé composé</td><td>compound past tense</td></tr>
+            <tr><td>l’imparfait</td><td>imperfect past tense</td></tr>
+            <tr><td>un auxiliaire</td><td>helping verb: avoir or être</td></tr>
+            <tr><td>un participe passé</td><td>past participle: mangé, fini, allé</td></tr>
+            <tr><td>un accord</td><td>agreement: e, s, es</td></tr>
+            <tr><td>un verbe pronominal</td><td>reflexive verb: se lever</td></tr>
+            <tr><td>un objet direct</td><td>direct object: what? whom?</td></tr>
+            <tr><td>un objet indirect</td><td>indirect object: usually with à</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card searchable">
+        <h2>Mini map</h2>
+        <ol class="checklist">
+          <li><strong>Most verbs</strong> use <strong>avoir</strong> in passé composé: <em>j’ai mangé</em>.</li>
+          <li><strong>DR VANDERTRAMPP verbs</strong> usually use <strong>être</strong>: <em>je suis allé</em>.</li>
+          <li><strong>Reflexive verbs</strong> use <strong>être</strong>: <em>je me suis levé</em>.</li>
+          <li>With <strong>être</strong>, the past participle agrees with the subject: <em>elle est allée</em>.</li>
+          <li>With <strong>avoir</strong>, there is usually no agreement: <em>elle a mangé</em>.</li>
+          <li>With <strong>avoir</strong>, there is agreement only if the direct object comes before: <em>la pomme qu’elle a mangée</em>.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="pc" class="tab">
+      <div class="card searchable">
+        <h2>Passé composé</h2>
+        <p><strong>Passé composé</strong> is used for completed actions in the past.</p>
+        <div class="example">
+          <p class="big-fr">Subject + avoir / être in present + past participle</p>
+          <p><strong>J’ai mangé.</strong> = I ate / I have eaten.</p>
+          <p><strong>Je suis allé au magasin.</strong> = I went to the store.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card span-6 searchable">
+          <h2>Avoir — to have</h2>
+          <p>You need <strong>avoir</strong> because most verbs use it in passé composé.</p>
+          <table>
+            <tr><th>Subject</th><th>Present</th><th>English</th></tr>
+            <tr><td>j’</td><td>ai</td><td>I have</td></tr>
+            <tr><td>tu</td><td>as</td><td>you have</td></tr>
+            <tr><td>il / elle / on</td><td>a</td><td>he/she/one has</td></tr>
+            <tr><td>nous</td><td>avons</td><td>we have</td></tr>
+            <tr><td>vous</td><td>avez</td><td>you have</td></tr>
+            <tr><td>ils / elles</td><td>ont</td><td>they have</td></tr>
+          </table>
+        </div>
+
+        <div class="card span-6 searchable">
+          <h2>Être — to be</h2>
+          <p>You need <strong>être</strong> for DR VANDERTRAMPP and reflexive verbs.</p>
+          <table>
+            <tr><th>Subject</th><th>Present</th><th>English</th></tr>
+            <tr><td>je</td><td>suis</td><td>I am</td></tr>
+            <tr><td>tu</td><td>es</td><td>you are</td></tr>
+            <tr><td>il / elle / on</td><td>est</td><td>he/she/one is</td></tr>
+            <tr><td>nous</td><td>sommes</td><td>we are</td></tr>
+            <tr><td>vous</td><td>êtes</td><td>you are</td></tr>
+            <tr><td>ils / elles</td><td>sont</td><td>they are</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card searchable">
+        <h2>Regular past participles</h2>
+        <table>
+          <tr><th>Verb type</th><th>Infinitive</th><th>Meaning</th><th>Past participle</th><th>Example</th></tr>
+          <tr><td>-er</td><td>parler</td><td>to speak</td><td>parlé</td><td>j’ai parlé = I spoke</td></tr>
+          <tr><td>-ir</td><td>finir</td><td>to finish</td><td>fini</td><td>j’ai fini = I finished</td></tr>
+          <tr><td>-re</td><td>vendre</td><td>to sell</td><td>vendu</td><td>j’ai vendu = I sold</td></tr>
+        </table>
+      </div>
+
+      <div class="card searchable">
+        <h2>Common irregular past participles to memorize</h2>
+        <div id="irregularPP"></div>
+      </div>
+
+      <div class="card searchable">
+        <h2>Negation in passé composé</h2>
+        <p>Put <span class="kbd">ne...pas</span> around the auxiliary.</p>
+        <div class="example">
+          <p><strong>Je n’ai pas mangé.</strong> = I did not eat.</p>
+          <p><strong>Je ne suis pas allé au travail.</strong> = I did not go to work.</p>
+          <p><strong>Je ne me suis pas levé tôt.</strong> = I did not get up early.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="dr" class="tab">
+      <div class="card searchable">
+        <h2>DR VANDERTRAMPP</h2>
+        <p><strong>DR VANDERTRAMPP</strong> is a memory list for many verbs that use <strong>être</strong> in passé composé.</p>
+        <div class="danger-note">
+          <strong>Important:</strong> DR VANDERTRAMPP does not mean “all movement verbs.” Some movement verbs use <strong>avoir</strong>: <em>j’ai marché</em> = I walked, <em>j’ai couru</em> = I ran.
+        </div>
+        <div id="drTable"></div>
+      </div>
+
+      <div class="card searchable">
+        <h2>Agreement with être</h2>
+        <table>
+          <tr><th>Subject type</th><th>Ending</th><th>Example with aller</th><th>English</th></tr>
+          <tr><td>masculine singular</td><td>no extra ending</td><td>il est allé</td><td>he went</td></tr>
+          <tr><td>feminine singular</td><td>add e</td><td>elle est allée</td><td>she went</td></tr>
+          <tr><td>masculine/mixed plural</td><td>add s</td><td>ils sont allés</td><td>they went</td></tr>
+          <tr><td>feminine plural</td><td>add es</td><td>elles sont allées</td><td>they went</td></tr>
+        </table>
+      </div>
+
+      <div class="card searchable">
+        <h2>DR verbs that can switch to avoir</h2>
+        <p>Some DR verbs use <strong>être</strong> when there is no direct object. They use <strong>avoir</strong> when there is a direct object.</p>
+        <p>A direct object answers <strong>what?</strong> or <strong>whom?</strong></p>
+        <div id="switchVerbs"></div>
+      </div>
+    </section>
+
+    <section id="imp" class="tab">
+      <div class="card searchable">
+        <h2>Imparfait</h2>
+        <p><strong>Imparfait</strong> is used for habits, descriptions, background, feelings, weather, time, age, and actions that were happening.</p>
+        <div class="example">
+          <p class="big-fr">Present nous form − ons + imparfait ending</p>
+          <p><strong>nous parlons</strong> → <strong>parl-</strong> → <strong>je parlais</strong> = I was speaking / I used to speak.</p>
+        </div>
+      </div>
+
+      <div class="card searchable">
+        <h2>Imparfait endings</h2>
+        <table>
+          <tr><th>Subject</th><th>Ending</th><th>Example: parler</th><th>English</th></tr>
+          <tr><td>je</td><td>-ais</td><td>je parlais</td><td>I was speaking / used to speak</td></tr>
+          <tr><td>tu</td><td>-ais</td><td>tu parlais</td><td>you were speaking</td></tr>
+          <tr><td>il / elle / on</td><td>-ait</td><td>il parlait</td><td>he was speaking</td></tr>
+          <tr><td>nous</td><td>-ions</td><td>nous parlions</td><td>we were speaking</td></tr>
+          <tr><td>vous</td><td>-iez</td><td>vous parliez</td><td>you were speaking</td></tr>
+          <tr><td>ils / elles</td><td>-aient</td><td>ils parlaient</td><td>they were speaking</td></tr>
+        </table>
+      </div>
+
+      <div class="grid">
+        <div class="card span-4 searchable">
+          <h2>-ger spelling</h2>
+          <p><strong>manger</strong> = to eat</p>
+          <p>Keep <strong>e</strong> before <strong>a</strong> endings to keep the soft g sound.</p>
+          <table>
+            <tr><th>French</th><th>English</th></tr>
+            <tr><td>je mangeais</td><td>I was eating</td></tr>
+            <tr><td>tu mangeais</td><td>you were eating</td></tr>
+            <tr><td>il mangeait</td><td>he was eating</td></tr>
+            <tr><td>nous mangions</td><td>we were eating</td></tr>
+            <tr><td>vous mangiez</td><td>you were eating</td></tr>
+            <tr><td>ils mangeaient</td><td>they were eating</td></tr>
+          </table>
+        </div>
+
+        <div class="card span-4 searchable">
+          <h2>-cer spelling</h2>
+          <p><strong>commencer</strong> = to begin</p>
+          <p>Use <strong>ç</strong> before <strong>a</strong> endings.</p>
+          <table>
+            <tr><th>French</th><th>English</th></tr>
+            <tr><td>je commençais</td><td>I was beginning</td></tr>
+            <tr><td>tu commençais</td><td>you were beginning</td></tr>
+            <tr><td>il commençait</td><td>he was beginning</td></tr>
+            <tr><td>nous commencions</td><td>we were beginning</td></tr>
+            <tr><td>vous commenciez</td><td>you were beginning</td></tr>
+            <tr><td>ils commençaient</td><td>they were beginning</td></tr>
+          </table>
+        </div>
+
+        <div class="card span-4 searchable">
+          <h2>-ier spelling</h2>
+          <p><strong>étudier</strong> = to study</p>
+          <p>You get <strong>ii</strong> in nous and vous.</p>
+          <table>
+            <tr><th>French</th><th>English</th></tr>
+            <tr><td>j’étudiais</td><td>I was studying</td></tr>
+            <tr><td>tu étudiais</td><td>you were studying</td></tr>
+            <tr><td>il étudiait</td><td>he was studying</td></tr>
+            <tr><td>nous étudiions</td><td>we were studying</td></tr>
+            <tr><td>vous étudiiez</td><td>you were studying</td></tr>
+            <tr><td>ils étudiaient</td><td>they were studying</td></tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="compare" class="tab">
+      <div class="card searchable">
+        <h2>Passé composé vs imparfait</h2>
+        <table>
+          <tr><th>Use</th><th>Passé composé</th><th>Imparfait</th></tr>
+          <tr><td>Main idea</td><td>completed action</td><td>background / habit / description</td></tr>
+          <tr><td>English feeling</td><td>I did, I went, I ate</td><td>I was doing, I used to do</td></tr>
+          <tr><td>Sequence</td><td>Je suis arrivé, j’ai mangé, je suis parti.</td><td>Not usually for main action sequence</td></tr>
+          <tr><td>Weather</td><td>Used if weather is a completed event: Il a plu toute la nuit.</td><td>Il faisait froid.</td></tr>
+          <tr><td>Time</td><td>Rare for clock-time background</td><td>Il était neuf heures.</td></tr>
+          <tr><td>Age</td><td>Rare unless a completed period</td><td>J’avais dix ans.</td></tr>
+          <tr><td>Sudden action</td><td>Le téléphone a sonné.</td><td>Je dormais.</td></tr>
+        </table>
+      </div>
+
+      <div class="grid">
+        <div class="card span-6 searchable">
+          <h2>Often passé composé</h2>
+          <p>These words often show a completed action:</p>
+          <div class="two-col">
+            <p><strong>hier</strong> = yesterday</p>
+            <p><strong>la semaine dernière</strong> = last week</p>
+            <p><strong>l’année dernière</strong> = last year</p>
+            <p><strong>une fois</strong> = one time</p>
+            <p><strong>deux fois</strong> = two times</p>
+            <p><strong>soudain</strong> = suddenly</p>
+            <p><strong>tout à coup</strong> = suddenly</p>
+            <p><strong>puis</strong> = then</p>
+            <p><strong>ensuite</strong> = next / then</p>
+            <p><strong>enfin</strong> = finally</p>
+          </div>
+        </div>
+
+        <div class="card span-6 searchable">
+          <h2>Often imparfait</h2>
+          <p>These words often show habit/background:</p>
+          <div class="two-col">
+            <p><strong>avant</strong> = before</p>
+            <p><strong>souvent</strong> = often</p>
+            <p><strong>toujours</strong> = always</p>
+            <p><strong>d’habitude</strong> = usually</p>
+            <p><strong>chaque jour</strong> = each day</p>
+            <p><strong>tous les jours</strong> = every day</p>
+            <p><strong>quand j’étais petit</strong> = when I was little</p>
+            <p><strong>à l’époque</strong> = at that time</p>
+          </div>
+          <div class="note">
+            <strong>Exception:</strong> <em>Pendant une semaine, j’ai travaillé tous les jours.</em> = For one week, I worked every day. The period is finished and limited, so passé composé works.
+          </div>
+        </div>
+      </div>
+
+      <div class="card searchable">
+        <h2>Meaning changes by tense</h2>
+        <div id="meaningChanges"></div>
+      </div>
+    </section>
+
+    <section id="exceptions" class="tab">
+      <div class="card searchable">
+        <h2>Comprehensive exception checklist</h2>
+        <ol class="checklist">
+          <li><strong>DR VANDERTRAMPP is not all movement verbs.</strong> Use avoir for <em>marcher</em> = to walk and <em>courir</em> = to run: <em>j’ai marché, j’ai couru</em>.</li>
+          <li><strong>Some DR verbs switch to avoir with a direct object:</strong> sortir, monter, descendre, rentrer, retourner, passer, entrer.</li>
+          <li><strong>With être, agree with the subject:</strong> elle est allée, ils sont partis, elles sont venues.</li>
+          <li><strong>With avoir, usually no agreement:</strong> elle a mangé une pomme.</li>
+          <li><strong>With avoir, agree if the direct object comes before:</strong> la pomme qu’elle a mangée.</li>
+          <li><strong>With en, usually no agreement at A2 level:</strong> Des pommes? J’en ai mangé.</li>
+          <li><strong>Reflexive verbs use être:</strong> je me suis levé.</li>
+          <li><strong>Reflexive agreement can disappear when the direct object comes after:</strong> elle s’est lavé les mains.</li>
+          <li><strong>Indirect reflexive verbs usually do not agree:</strong> ils se sont parlé, elles se sont téléphoné.</li>
+          <li><strong>Être is the only common irregular imparfait stem:</strong> j’étais, tu étais, il était, nous étions, vous étiez, ils étaient.</li>
+          <li><strong>-ger verbs in imparfait:</strong> je mangeais, but nous mangions.</li>
+          <li><strong>-cer verbs in imparfait:</strong> je commençais, but nous commencions.</li>
+          <li><strong>-ier verbs in imparfait:</strong> nous étudiions, vous étudiiez.</li>
+          <li><strong>Time, age, weather usually use imparfait:</strong> il était neuf heures, j’avais dix ans, il faisait froid.</li>
+          <li><strong>A fixed completed period may use passé composé:</strong> j’ai été malade pendant deux jours.</li>
+          <li><strong>Savoir changes meaning:</strong> je savais = I knew; j’ai su = I found out.</li>
+          <li><strong>Connaître changes meaning:</strong> je connaissais = I knew; j’ai connu = I met/got to know.</li>
+          <li><strong>Pouvoir changes meaning:</strong> je pouvais = I could; j’ai pu = I managed to.</li>
+          <li><strong>Devoir changes meaning:</strong> je devais = I was supposed to; j’ai dû = I had to and did.</li>
+          <li><strong>Vouloir changes meaning:</strong> je voulais = I wanted; j’ai voulu = I wanted/tried/decided.</li>
+        </ol>
+      </div>
+
+      <div class="card searchable">
+        <h2>Direct vs indirect object quick guide</h2>
+        <div class="example">
+          <p><strong>Direct object</strong> answers “what?” or “whom?”</p>
+          <p><strong>J’ai mangé la pomme.</strong> I ate what? <strong>la pomme</strong>.</p>
+        </div>
+        <div class="example">
+          <p><strong>Indirect object</strong> often uses <strong>à</strong> = to.</p>
+          <p><strong>J’ai parlé à Marie.</strong> I spoke to whom? To Marie.</p>
+          <p><strong>Je lui ai parlé.</strong> I spoke to him/her. No agreement.</p>
+        </div>
+      </div>
+
+      <div class="card searchable">
+        <h2>Reflexive agreement exceptions</h2>
+        <table>
+          <tr><th>Sentence</th><th>Meaning</th><th>Why?</th></tr>
+          <tr><td>Elle s’est lavée.</td><td>She washed herself.</td><td>Agreement because se is direct.</td></tr>
+          <tr><td>Elle s’est lavé les mains.</td><td>She washed her hands.</td><td>No agreement with subject because les mains comes after.</td></tr>
+          <tr><td>Ils se sont parlé.</td><td>They spoke to each other.</td><td>No agreement because parler à quelqu’un is indirect.</td></tr>
+          <tr><td>Elles se sont téléphoné.</td><td>They called each other.</td><td>No agreement because téléphoner à quelqu’un is indirect.</td></tr>
+          <tr><td>Ils se sont écrit.</td><td>They wrote to each other.</td><td>No agreement because écrire à quelqu’un is indirect.</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section id="conj" class="tab">
+      <div class="card searchable">
+        <h2>Interactive conjugation tables</h2>
+        <p>Select a verb to see its meaning, present tense, passé composé, and imparfait.</p>
+        <div class="controls">
+          <select id="verbSelect"></select>
+          <button id="randomVerb">Random verb</button>
+        </div>
+        <div id="verbDisplay"></div>
+      </div>
+
+      <div class="card searchable">
+        <h2>Click a DR VANDERTRAMPP verb</h2>
+        <div id="verbTiles" class="verb-list"></div>
+      </div>
+    </section>
+
+    <section id="flash" class="tab">
+      <div class="card">
+        <h2>Flashcards</h2>
+        <p>Click the card to flip it. Use these for active recall.</p>
+        <div class="controls">
+          <button id="prevCard" class="secondary">Previous</button>
+          <button id="flipCard">Flip</button>
+          <button id="nextCard" class="secondary">Next</button>
+          <button id="shuffleCards" class="secondary">Shuffle</button>
+        </div>
+        <div id="flashcard" class="flashcard"></div>
+        <p class="small" id="flashCount"></p>
+      </div>
+    </section>
+
+    <section id="quiz" class="tab">
+      <div class="card">
+        <h2>Quiz mode</h2>
+        <p>Choose the best answer. The explanation appears after you answer.</p>
+        <div id="quizBox"></div>
+        <div class="controls">
+          <button id="nextQuiz">Next question</button>
+          <button id="resetQuiz" class="secondary">Reset score</button>
+        </div>
+        <p id="quizScore" class="small"></p>
+      </div>
+    </section>
+
+    <section id="practice" class="tab">
+      <div class="card searchable">
+        <h2>Sentence practice generator</h2>
+        <p>Click a button to get a French sentence, English translation, and why the tense is used.</p>
+        <div class="controls">
+          <button id="pcPractice">Passé composé sentence</button>
+          <button id="impPractice">Imparfait sentence</button>
+          <button id="mixPractice">Mixed sentence</button>
+        </div>
+        <div id="practiceBox" class="example"></div>
+      </div>
+
+      <div class="card searchable">
+        <h2>Model A2 paragraph</h2>
+        <p><strong>French:</strong></p>
+        <p>Quand j’étais jeune, j’habitais à Thunder Bay. Il faisait souvent froid, mais j’aimais ma ville. Un jour, je suis allé à Toronto avec ma famille. Nous avons visité la CN Tower et nous avons mangé dans un bon restaurant. C’était une belle journée.</p>
+        <p><strong>English:</strong></p>
+        <p>When I was young, I lived in Thunder Bay. It was often cold, but I liked my city. One day, I went to Toronto with my family. We visited the CN Tower and we ate in a good restaurant. It was a beautiful day.</p>
+        <p><strong>Why?</strong></p>
+        <ul>
+          <li><strong>j’étais, j’habitais, faisait, aimais, c’était</strong> = imparfait for background/description.</li>
+          <li><strong>je suis allé, nous avons visité, nous avons mangé</strong> = passé composé for completed actions.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Single-file offline French study website. Save this file and open it in your browser.
+  </footer>
+
+<script>
+const tabs = [
+  ["start", "Start"],
+  ["pc", "Passé composé"],
+  ["dr", "DR VANDERTRAMPP"],
+  ["imp", "Imparfait"],
+  ["compare", "PC vs Imparfait"],
+  ["exceptions", "Exceptions"],
+  ["conj", "Conjugations"],
+  ["flash", "Flashcards"],
+  ["quiz", "Quiz"],
+  ["practice", "Practice"]
+];
+
+const irregularPP = [
+  ["avoir", "to have", "eu"],
+  ["être", "to be", "été"],
+  ["faire", "to do / to make", "fait"],
+  ["dire", "to say", "dit"],
+  ["écrire", "to write", "écrit"],
+  ["lire", "to read", "lu"],
+  ["voir", "to see", "vu"],
+  ["boire", "to drink", "bu"],
+  ["prendre", "to take", "pris"],
+  ["apprendre", "to learn", "appris"],
+  ["comprendre", "to understand", "compris"],
+  ["mettre", "to put", "mis"],
+  ["permettre", "to allow", "permis"],
+  ["promettre", "to promise", "promis"],
+  ["ouvrir", "to open", "ouvert"],
+  ["offrir", "to offer", "offert"],
+  ["découvrir", "to discover", "découvert"],
+  ["pouvoir", "to be able to", "pu"],
+  ["vouloir", "to want", "voulu"],
+  ["devoir", "to have to / must", "dû"],
+  ["savoir", "to know a fact", "su"],
+  ["connaître", "to know a person/place", "connu"],
+  ["croire", "to believe", "cru"],
+  ["vivre", "to live", "vécu"],
+  ["recevoir", "to receive", "reçu"],
+  ["pleuvoir", "to rain", "plu"],
+  ["falloir", "to be necessary", "fallu"],
+  ["courir", "to run", "couru"]
+];
+
+const drVerbs = [
+  ["D", "devenir", "to become", "devenu"],
+  ["R", "revenir", "to come back", "revenu"],
+  ["M", "mourir", "to die", "mort"],
+  ["R", "retourner", "to return / go back", "retourné"],
+  ["S", "sortir", "to go out", "sorti"],
+  ["V", "venir", "to come", "venu"],
+  ["A", "arriver", "to arrive", "arrivé"],
+  ["N", "naître", "to be born", "né"],
+  ["D", "descendre", "to go down", "descendu"],
+  ["E", "entrer", "to enter", "entré"],
+  ["R", "rentrer", "to return home / re-enter", "rentré"],
+  ["T", "tomber", "to fall", "tombé"],
+  ["R", "rester", "to stay", "resté"],
+  ["A", "aller", "to go", "allé"],
+  ["M", "monter", "to go up", "monté"],
+  ["P", "partir", "to leave", "parti"],
+  ["P", "passer", "to pass by / stop by", "passé"]
+];
+
+const switchVerbs = [
+  {
+    verb: "sortir",
+    meaning: "to go out / to take out",
+    etre: "Je suis sorti. = I went out.",
+    avoir: "J’ai sorti la poubelle. = I took out the garbage."
+  },
+  {
+    verb: "monter",
+    meaning: "to go up / to carry up / to assemble",
+    etre: "Je suis monté. = I went up.",
+    avoir: "J’ai monté les valises. = I carried the suitcases up. / J’ai monté une table. = I assembled a table."
+  },
+  {
+    verb: "descendre",
+    meaning: "to go down / to take down",
+    etre: "Je suis descendu. = I went down.",
+    avoir: "J’ai descendu les valises. = I brought the suitcases down."
+  },
+  {
+    verb: "rentrer",
+    meaning: "to come home / to bring in",
+    etre: "Je suis rentré à la maison. = I came home.",
+    avoir: "J’ai rentré la voiture dans le garage. = I put the car into the garage."
+  },
+  {
+    verb: "retourner",
+    meaning: "to go back / to return or flip something",
+    etre: "Je suis retourné au magasin. = I went back to the store.",
+    avoir: "J’ai retourné le livre. = I returned the book. / J’ai retourné la crêpe. = I flipped the crêpe."
+  },
+  {
+    verb: "passer",
+    meaning: "to pass by / to spend / to take",
+    etre: "Je suis passé chez mon ami. = I stopped by my friend’s place.",
+    avoir: "J’ai passé trois heures ici. = I spent three hours here. / J’ai passé un examen. = I took an exam."
+  },
+  {
+    verb: "entrer",
+    meaning: "to enter / to enter information",
+    etre: "Je suis entré dans la classe. = I entered the classroom.",
+    avoir: "J’ai entré le code. = I entered the code."
+  }
+];
+
+const meaningChanges = [
+  ["savoir", "to know a fact", "Je savais la réponse. = I knew the answer.", "J’ai su la réponse. = I found out / learned the answer."],
+  ["connaître", "to know a person/place", "Je connaissais Marie. = I knew Marie.", "J’ai connu Marie en 2020. = I met / got to know Marie in 2020."],
+  ["pouvoir", "to be able to", "Je pouvais partir. = I could leave.", "J’ai pu partir. = I managed to leave."],
+  ["vouloir", "to want", "Je voulais parler. = I wanted to speak.", "J’ai voulu parler. = I wanted / tried / decided to speak."],
+  ["devoir", "to have to / must", "Je devais étudier. = I had to study / I was supposed to study.", "J’ai dû étudier. = I had to study, and I did."],
+  ["être", "to be", "J’étais malade. = I was sick.", "J’ai été malade pendant deux jours. = I was sick for two days."],
+  ["avoir", "to have", "J’avais faim. = I was hungry.", "J’ai eu faim après le travail. = I became hungry / got hungry after work."]
+];
+
+const verbs = [
+  {
+    inf: "avoir", meaning: "to have", aux: "avoir", pp: "eu",
+    present: ["j’ai", "tu as", "il/elle/on a", "nous avons", "vous avez", "ils/elles ont"],
+    pc: ["j’ai eu", "tu as eu", "il/elle/on a eu", "nous avons eu", "vous avez eu", "ils/elles ont eu"],
+    imp: ["j’avais", "tu avais", "il/elle/on avait", "nous avions", "vous aviez", "ils/elles avaient"]
+  },
+  {
+    inf: "être", meaning: "to be", aux: "avoir as a main verb", pp: "été",
+    present: ["je suis", "tu es", "il/elle/on est", "nous sommes", "vous êtes", "ils/elles sont"],
+    pc: ["j’ai été", "tu as été", "il/elle/on a été", "nous avons été", "vous avez été", "ils/elles ont été"],
+    imp: ["j’étais", "tu étais", "il/elle/on était", "nous étions", "vous étiez", "ils/elles étaient"]
+  },
+  {
+    inf: "parler", meaning: "to speak", aux: "avoir", pp: "parlé",
+    present: ["je parle", "tu parles", "il/elle/on parle", "nous parlons", "vous parlez", "ils/elles parlent"],
+    pc: ["j’ai parlé", "tu as parlé", "il/elle/on a parlé", "nous avons parlé", "vous avez parlé", "ils/elles ont parlé"],
+    imp: ["je parlais", "tu parlais", "il/elle/on parlait", "nous parlions", "vous parliez", "ils/elles parlaient"]
+  },
+  {
+    inf: "finir", meaning: "to finish", aux: "avoir", pp: "fini",
+    present: ["je finis", "tu finis", "il/elle/on finit", "nous finissons", "vous finissez", "ils/elles finissent"],
+    pc: ["j’ai fini", "tu as fini", "il/elle/on a fini", "nous avons fini", "vous avez fini", "ils/elles ont fini"],
+    imp: ["je finissais", "tu finissais", "il/elle/on finissait", "nous finissions", "vous finissiez", "ils/elles finissaient"]
+  },
+  {
+    inf: "vendre", meaning: "to sell", aux: "avoir", pp: "vendu",
+    present: ["je vends", "tu vends", "il/elle/on vend", "nous vendons", "vous vendez", "ils/elles vendent"],
+    pc: ["j’ai vendu", "tu as vendu", "il/elle/on a vendu", "nous avons vendu", "vous avez vendu", "ils/elles ont vendu"],
+    imp: ["je vendais", "tu vendais", "il/elle/on vendait", "nous vendions", "vous vendiez", "ils/elles vendaient"]
+  },
+  {
+    inf: "faire", meaning: "to do / to make", aux: "avoir", pp: "fait",
+    present: ["je fais", "tu fais", "il/elle/on fait", "nous faisons", "vous faites", "ils/elles font"],
+    pc: ["j’ai fait", "tu as fait", "il/elle/on a fait", "nous avons fait", "vous avez fait", "ils/elles ont fait"],
+    imp: ["je faisais", "tu faisais", "il/elle/on faisait", "nous faisions", "vous faisiez", "ils/elles faisaient"]
+  },
+  {
+    inf: "aller", meaning: "to go", aux: "être", pp: "allé",
+    present: ["je vais", "tu vas", "il/elle/on va", "nous allons", "vous allez", "ils/elles vont"],
+    pc: ["je suis allé(e)", "tu es allé(e)", "il est allé / elle est allée", "nous sommes allé(e)s", "vous êtes allé(e)(s)", "ils sont allés / elles sont allées"],
+    imp: ["j’allais", "tu allais", "il/elle/on allait", "nous allions", "vous alliez", "ils/elles allaient"]
+  },
+  {
+    inf: "venir", meaning: "to come", aux: "être", pp: "venu",
+    present: ["je viens", "tu viens", "il/elle/on vient", "nous venons", "vous venez", "ils/elles viennent"],
+    pc: ["je suis venu(e)", "tu es venu(e)", "il est venu / elle est venue", "nous sommes venu(e)s", "vous êtes venu(e)(s)", "ils sont venus / elles sont venues"],
+    imp: ["je venais", "tu venais", "il/elle/on venait", "nous venions", "vous veniez", "ils/elles venaient"]
+  },
+  {
+    inf: "devenir", meaning: "to become", aux: "être", pp: "devenu",
+    present: ["je deviens", "tu deviens", "il/elle/on devient", "nous devenons", "vous devenez", "ils/elles deviennent"],
+    pc: ["je suis devenu(e)", "tu es devenu(e)", "il est devenu / elle est devenue", "nous sommes devenu(e)s", "vous êtes devenu(e)(s)", "ils sont devenus / elles sont devenues"],
+    imp: ["je devenais", "tu devenais", "il/elle/on devenait", "nous devenions", "vous deveniez", "ils/elles devenaient"]
+  },
+  {
+    inf: "revenir", meaning: "to come back", aux: "être", pp: "revenu",
+    present: ["je reviens", "tu reviens", "il/elle/on revient", "nous revenons", "vous revenez", "ils/elles reviennent"],
+    pc: ["je suis revenu(e)", "tu es revenu(e)", "il est revenu / elle est revenue", "nous sommes revenu(e)s", "vous êtes revenu(e)(s)", "ils sont revenus / elles sont revenues"],
+    imp: ["je revenais", "tu revenais", "il/elle/on revenait", "nous revenions", "vous reveniez", "ils/elles revenaient"]
+  },
+  {
+    inf: "mourir", meaning: "to die", aux: "être", pp: "mort",
+    present: ["je meurs", "tu meurs", "il/elle/on meurt", "nous mourons", "vous mourez", "ils/elles meurent"],
+    pc: ["je suis mort(e)", "tu es mort(e)", "il est mort / elle est morte", "nous sommes mort(e)s", "vous êtes mort(e)(s)", "ils sont morts / elles sont mortes"],
+    imp: ["je mourais", "tu mourais", "il/elle/on mourait", "nous mourions", "vous mouriez", "ils/elles mouraient"]
+  },
+  {
+    inf: "retourner", meaning: "to return / go back", aux: "être normally, avoir with direct object", pp: "retourné",
+    present: ["je retourne", "tu retournes", "il/elle/on retourne", "nous retournons", "vous retournez", "ils/elles retournent"],
+    pc: ["je suis retourné(e)", "tu es retourné(e)", "il est retourné / elle est retournée", "nous sommes retourné(e)s", "vous êtes retourné(e)(s)", "ils sont retournés / elles sont retournées"],
+    imp: ["je retournais", "tu retournais", "il/elle/on retournait", "nous retournions", "vous retourniez", "ils/elles retournaient"]
+  },
+  {
+    inf: "sortir", meaning: "to go out / to take out", aux: "être normally, avoir with direct object", pp: "sorti",
+    present: ["je sors", "tu sors", "il/elle/on sort", "nous sortons", "vous sortez", "ils/elles sortent"],
+    pc: ["je suis sorti(e)", "tu es sorti(e)", "il est sorti / elle est sortie", "nous sommes sorti(e)s", "vous êtes sorti(e)(s)", "ils sont sortis / elles sont sorties"],
+    imp: ["je sortais", "tu sortais", "il/elle/on sortait", "nous sortions", "vous sortiez", "ils/elles sortaient"]
+  },
+  {
+    inf: "arriver", meaning: "to arrive", aux: "être", pp: "arrivé",
+    present: ["j’arrive", "tu arrives", "il/elle/on arrive", "nous arrivons", "vous arrivez", "ils/elles arrivent"],
+    pc: ["je suis arrivé(e)", "tu es arrivé(e)", "il est arrivé / elle est arrivée", "nous sommes arrivé(e)s", "vous êtes arrivé(e)(s)", "ils sont arrivés / elles sont arrivées"],
+    imp: ["j’arrivais", "tu arrivais", "il/elle/on arrivait", "nous arrivions", "vous arriviez", "ils/elles arrivaient"]
+  },
+  {
+    inf: "naître", meaning: "to be born", aux: "être", pp: "né",
+    present: ["je nais", "tu nais", "il/elle/on naît", "nous naissons", "vous naissez", "ils/elles naissent"],
+    pc: ["je suis né(e)", "tu es né(e)", "il est né / elle est née", "nous sommes né(e)s", "vous êtes né(e)(s)", "ils sont nés / elles sont nées"],
+    imp: ["je naissais", "tu naissais", "il/elle/on naissait", "nous naissions", "vous naissiez", "ils/elles naissaient"]
+  },
+  {
+    inf: "descendre", meaning: "to go down / to take down", aux: "être normally, avoir with direct object", pp: "descendu",
+    present: ["je descends", "tu descends", "il/elle/on descend", "nous descendons", "vous descendez", "ils/elles descendent"],
+    pc: ["je suis descendu(e)", "tu es descendu(e)", "il est descendu / elle est descendue", "nous sommes descendu(e)s", "vous êtes descendu(e)(s)", "ils sont descendus / elles sont descendues"],
+    imp: ["je descendais", "tu descendais", "il/elle/on descendait", "nous descendions", "vous descendiez", "ils/elles descendaient"]
+  },
+  {
+    inf: "entrer", meaning: "to enter", aux: "être normally, avoir with direct object", pp: "entré",
+    present: ["j’entre", "tu entres", "il/elle/on entre", "nous entrons", "vous entrez", "ils/elles entrent"],
+    pc: ["je suis entré(e)", "tu es entré(e)", "il est entré / elle est entrée", "nous sommes entré(e)s", "vous êtes entré(e)(s)", "ils sont entrés / elles sont entrées"],
+    imp: ["j’entrais", "tu entrais", "il/elle/on entrait", "nous entrions", "vous entriez", "ils/elles entraient"]
+  },
+  {
+    inf: "rentrer", meaning: "to return home / to re-enter", aux: "être normally, avoir with direct object", pp: "rentré",
+    present: ["je rentre", "tu rentres", "il/elle/on rentre", "nous rentrons", "vous rentrez", "ils/elles rentrent"],
+    pc: ["je suis rentré(e)", "tu es rentré(e)", "il est rentré / elle est rentrée", "nous sommes rentré(e)s", "vous êtes rentré(e)(s)", "ils sont rentrés / elles sont rentrées"],
+    imp: ["je rentrais", "tu rentrais", "il/elle/on rentrait", "nous rentrions", "vous rentriez", "ils/elles rentraient"]
+  },
+  {
+    inf: "tomber", meaning: "to fall", aux: "être", pp: "tombé",
+    present: ["je tombe", "tu tombes", "il/elle/on tombe", "nous tombons", "vous tombez", "ils/elles tombent"],
+    pc: ["je suis tombé(e)", "tu es tombé(e)", "il est tombé / elle est tombée", "nous sommes tombé(e)s", "vous êtes tombé(e)(s)", "ils sont tombés / elles sont tombées"],
+    imp: ["je tombais", "tu tombais", "il/elle/on tombait", "nous tombions", "vous tombiez", "ils/elles tombaient"]
+  },
+  {
+    inf: "rester", meaning: "to stay", aux: "être", pp: "resté",
+    present: ["je reste", "tu restes", "il/elle/on reste", "nous restons", "vous restez", "ils/elles restent"],
+    pc: ["je suis resté(e)", "tu es resté(e)", "il est resté / elle est restée", "nous sommes resté(e)s", "vous êtes resté(e)(s)", "ils sont restés / elles sont restées"],
+    imp: ["je restais", "tu restais", "il/elle/on restait", "nous restions", "vous restiez", "ils/elles restaient"]
+  },
+  {
+    inf: "monter", meaning: "to go up / to carry up / to assemble", aux: "être normally, avoir with direct object", pp: "monté",
+    present: ["je monte", "tu montes", "il/elle/on monte", "nous montons", "vous montez", "ils/elles montent"],
+    pc: ["je suis monté(e)", "tu es monté(e)", "il est monté / elle est montée", "nous sommes monté(e)s", "vous êtes monté(e)(s)", "ils sont montés / elles sont montées"],
+    imp: ["je montais", "tu montais", "il/elle/on montait", "nous montions", "vous montiez", "ils/elles montaient"]
+  },
+  {
+    inf: "partir", meaning: "to leave", aux: "être", pp: "parti",
+    present: ["je pars", "tu pars", "il/elle/on part", "nous partons", "vous partez", "ils/elles partent"],
+    pc: ["je suis parti(e)", "tu es parti(e)", "il est parti / elle est partie", "nous sommes parti(e)s", "vous êtes parti(e)(s)", "ils sont partis / elles sont parties"],
+    imp: ["je partais", "tu partais", "il/elle/on partait", "nous partions", "vous partiez", "ils/elles partaient"]
+  },
+  {
+    inf: "passer", meaning: "to pass by / to stop by / to spend / to take", aux: "être normally, avoir with direct object", pp: "passé",
+    present: ["je passe", "tu passes", "il/elle/on passe", "nous passons", "vous passez", "ils/elles passent"],
+    pc: ["je suis passé(e)", "tu es passé(e)", "il est passé / elle est passée", "nous sommes passé(e)s", "vous êtes passé(e)(s)", "ils sont passés / elles sont passées"],
+    imp: ["je passais", "tu passais", "il/elle/on passait", "nous passions", "vous passiez", "ils/elles passaient"]
+  },
+  {
+    inf: "prendre", meaning: "to take", aux: "avoir", pp: "pris",
+    present: ["je prends", "tu prends", "il/elle/on prend", "nous prenons", "vous prenez", "ils/elles prennent"],
+    pc: ["j’ai pris", "tu as pris", "il/elle/on a pris", "nous avons pris", "vous avez pris", "ils/elles ont pris"],
+    imp: ["je prenais", "tu prenais", "il/elle/on prenait", "nous prenions", "vous preniez", "ils/elles prenaient"]
+  },
+  {
+    inf: "voir", meaning: "to see", aux: "avoir", pp: "vu",
+    present: ["je vois", "tu vois", "il/elle/on voit", "nous voyons", "vous voyez", "ils/elles voient"],
+    pc: ["j’ai vu", "tu as vu", "il/elle/on a vu", "nous avons vu", "vous avez vu", "ils/elles ont vu"],
+    imp: ["je voyais", "tu voyais", "il/elle/on voyait", "nous voyions", "vous voyiez", "ils/elles voyaient"]
+  },
+  {
+    inf: "savoir", meaning: "to know a fact", aux: "avoir", pp: "su",
+    present: ["je sais", "tu sais", "il/elle/on sait", "nous savons", "vous savez", "ils/elles savent"],
+    pc: ["j’ai su", "tu as su", "il/elle/on a su", "nous avons su", "vous avez su", "ils/elles ont su"],
+    imp: ["je savais", "tu savais", "il/elle/on savait", "nous savions", "vous saviez", "ils/elles savaient"]
+  },
+  {
+    inf: "connaître", meaning: "to know a person/place", aux: "avoir", pp: "connu",
+    present: ["je connais", "tu connais", "il/elle/on connaît", "nous connaissons", "vous connaissez", "ils/elles connaissent"],
+    pc: ["j’ai connu", "tu as connu", "il/elle/on a connu", "nous avons connu", "vous avez connu", "ils/elles ont connu"],
+    imp: ["je connaissais", "tu connaissais", "il/elle/on connaissait", "nous connaissions", "vous connaissiez", "ils/elles connaissaient"]
+  },
+  {
+    inf: "pouvoir", meaning: "to be able to", aux: "avoir", pp: "pu",
+    present: ["je peux", "tu peux", "il/elle/on peut", "nous pouvons", "vous pouvez", "ils/elles peuvent"],
+    pc: ["j’ai pu", "tu as pu", "il/elle/on a pu", "nous avons pu", "vous avez pu", "ils/elles ont pu"],
+    imp: ["je pouvais", "tu pouvais", "il/elle/on pouvait", "nous pouvions", "vous pouviez", "ils/elles pouvaient"]
+  },
+  {
+    inf: "vouloir", meaning: "to want", aux: "avoir", pp: "voulu",
+    present: ["je veux", "tu veux", "il/elle/on veut", "nous voulons", "vous voulez", "ils/elles veulent"],
+    pc: ["j’ai voulu", "tu as voulu", "il/elle/on a voulu", "nous avons voulu", "vous avez voulu", "ils/elles ont voulu"],
+    imp: ["je voulais", "tu voulais", "il/elle/on voulait", "nous voulions", "vous vouliez", "ils/elles voulaient"]
+  },
+  {
+    inf: "devoir", meaning: "to have to / must", aux: "avoir", pp: "dû",
+    present: ["je dois", "tu dois", "il/elle/on doit", "nous devons", "vous devez", "ils/elles doivent"],
+    pc: ["j’ai dû", "tu as dû", "il/elle/on a dû", "nous avons dû", "vous avez dû", "ils/elles ont dû"],
+    imp: ["je devais", "tu devais", "il/elle/on devait", "nous devions", "vous deviez", "ils/elles devaient"]
+  },
+  {
+    inf: "se lever", meaning: "to get up", aux: "être reflexive", pp: "levé",
+    present: ["je me lève", "tu te lèves", "il/elle/on se lève", "nous nous levons", "vous vous levez", "ils/elles se lèvent"],
+    pc: ["je me suis levé(e)", "tu t’es levé(e)", "il s’est levé / elle s’est levée", "nous nous sommes levé(e)s", "vous vous êtes levé(e)(s)", "ils se sont levés / elles se sont levées"],
+    imp: ["je me levais", "tu te levais", "il/elle/on se levait", "nous nous levions", "vous vous leviez", "ils/elles se levaient"]
+  },
+  {
+    inf: "se laver", meaning: "to wash oneself", aux: "être reflexive", pp: "lavé",
+    present: ["je me lave", "tu te laves", "il/elle/on se lave", "nous nous lavons", "vous vous lavez", "ils/elles se lavent"],
+    pc: ["je me suis lavé(e)", "tu t’es lavé(e)", "il s’est lavé / elle s’est lavée", "nous nous sommes lavé(e)s", "vous vous êtes lavé(e)(s)", "ils se sont lavés / elles se sont lavées"],
+    imp: ["je me lavais", "tu te lavais", "il/elle/on se lavait", "nous nous lavions", "vous vous laviez", "ils/elles se lavaient"]
+  }
+];
+
+const flashcards = [
+  ["What is passé composé?", "A past tense for completed actions. Example: J’ai mangé = I ate."],
+  ["What is imparfait?", "A past tense for habits, descriptions, background, feelings, time, age, and weather. Example: Je mangeais = I was eating / I used to eat."],
+  ["What are the two auxiliaries?", "Avoir = to have; Être = to be."],
+  ["Most verbs use which auxiliary in passé composé?", "Avoir. Example: J’ai parlé = I spoke."],
+  ["DR VANDERTRAMPP verbs use which auxiliary?", "Être, usually. Example: Je suis allé = I went."],
+  ["Do all movement verbs use être?", "No. Marcher = to walk and courir = to run use avoir: j’ai marché, j’ai couru."],
+  ["What does accord mean?", "Agreement: adding e, s, or es to the past participle."],
+  ["Give a feminine example with être.", "Elle est allée = She went."],
+  ["Give a masculine plural example with être.", "Ils sont partis = They left."],
+  ["Give a feminine plural example with être.", "Elles sont venues = They came."],
+  ["What is a direct object?", "It answers what? or whom? Example: J’ai mangé la pomme. I ate what? La pomme."],
+  ["Agreement with avoir usually?", "Usually no agreement: Elle a mangé une pomme."],
+  ["When does avoir have agreement?", "When the direct object comes before: La pomme qu’elle a mangée."],
+  ["What happens with en and agreement?", "At A2 level: usually no agreement. Des pommes? J’en ai mangé."],
+  ["What does sortir mean with être?", "Je suis sorti = I went out."],
+  ["What does sortir mean with avoir?", "J’ai sorti la poubelle = I took out the garbage."],
+  ["What does monter mean with être?", "Je suis monté = I went up."],
+  ["What does monter mean with avoir?", "J’ai monté les valises = I carried the suitcases up. J’ai monté une table = I assembled a table."],
+  ["What does passer mean with être?", "Je suis passé chez mon ami = I stopped by my friend’s place."],
+  ["What does passer mean with avoir?", "J’ai passé un examen = I took an exam. J’ai passé trois heures = I spent three hours."],
+  ["What is the imparfait stem for être?", "ét- : j’étais, tu étais, il était, nous étions, vous étiez, ils étaient."],
+  ["Imparfait endings?", "-ais, -ais, -ait, -ions, -iez, -aient."],
+  ["How do you form imparfait normally?", "Take the nous present form, remove -ons, add imparfait endings."],
+  ["Weather in the past usually uses what?", "Imparfait. Il faisait froid = It was cold."],
+  ["Age in the past usually uses what?", "Imparfait. J’avais dix ans = I was ten."],
+  ["Time in the past usually uses what?", "Imparfait. Il était neuf heures = It was nine o’clock."],
+  ["What is Je savais?", "I knew."],
+  ["What is J’ai su?", "I found out / I learned."],
+  ["What is Je connaissais Marie?", "I knew Marie."],
+  ["What is J’ai connu Marie?", "I met Marie / got to know Marie."],
+  ["What is Je pouvais partir?", "I could leave / I was able to leave."],
+  ["What is J’ai pu partir?", "I managed to leave."],
+  ["What is Je devais étudier?", "I had to study / I was supposed to study."],
+  ["What is J’ai dû étudier?", "I had to study and did."],
+  ["What is a reflexive verb?", "A verb with se: se lever = to get up, se laver = to wash oneself."],
+  ["Which auxiliary do reflexive verbs use?", "Être. Je me suis levé = I got up."],
+  ["Why no agreement in Elle s’est lavé les mains?", "Because les mains is the direct object after the verb."],
+  ["Why no agreement in Ils se sont parlé?", "Because parler à quelqu’un is indirect."],
+  ["What is the -ger imparfait spelling rule?", "Keep e before a endings: je mangeais, tu mangeais, il mangeait, ils mangeaient."],
+  ["What is the -cer imparfait spelling rule?", "Use ç before a endings: je commençais, tu commençais, il commençait, ils commençaient."],
+  ["What happens with -ier verbs in imparfait?", "Nous and vous have ii: nous étudiions, vous étudiiez."],
+  ["Translate: Je dormais quand il a appelé.", "I was sleeping when he called."],
+  ["Why imparfait in Je dormais?", "It was an ongoing/background action."],
+  ["Why passé composé in il a appelé?", "It was a completed sudden action."],
+  ["Translate: Il faisait froid, alors je suis rentré.", "It was cold, so I went home."],
+  ["Why imparfait in Il faisait froid?", "Weather/background."],
+  ["Why passé composé in je suis rentré?", "Completed action."],
+  ["DR verb: devenir", "to become; devenu; être: je suis devenu(e)."],
+  ["DR verb: revenir", "to come back; revenu; être: je suis revenu(e)."],
+  ["DR verb: mourir", "to die; mort; être: il est mort / elle est morte."],
+  ["DR verb: naître", "to be born; né; être: je suis né(e)."],
+  ["DR verb: tomber", "to fall; tombé; être: je suis tombé(e)."],
+  ["DR verb: rester", "to stay; resté; être: je suis resté(e)."],
+  ["DR verb: partir", "to leave; parti; être: je suis parti(e)."]
+];
+
+const quiz = [
+  {
+    q: "Choose the correct sentence: She went to Toronto.",
+    options: ["Elle a allé à Toronto.", "Elle est allée à Toronto.", "Elle est allé à Toronto.", "Elle a allée à Toronto."],
+    a: 1,
+    why: "Aller uses être, and elle is feminine, so allée."
+  },
+  {
+    q: "Which tense is best? Quand j’étais petit, je ___ au soccer.",
+    options: ["jouais", "ai joué", "suis joué", "avais joué"],
+    a: 0,
+    why: "A past habit uses imparfait: je jouais = I used to play."
+  },
+  {
+    q: "Choose the correct sentence: I ate an apple.",
+    options: ["J’ai mangée une pomme.", "Je suis mangé une pomme.", "J’ai mangé une pomme.", "Je suis mangée une pomme."],
+    a: 2,
+    why: "Manger uses avoir. With avoir, no agreement when the object comes after."
+  },
+  {
+    q: "Choose the correct sentence: The apple that she ate was good.",
+    options: ["La pomme qu’elle a mangé était bonne.", "La pomme qu’elle a mangée était bonne.", "La pomme qu’elle est mangée était bonne.", "La pomme qu’elle a mangés était bonne."],
+    a: 1,
+    why: "With avoir, the past participle agrees when the direct object comes before: pomme is feminine singular, so mangée."
+  },
+  {
+    q: "Which sentence means: I took out the garbage?",
+    options: ["Je suis sorti la poubelle.", "J’ai sorti la poubelle.", "Je suis sortie la poubelle.", "J’ai sortie la poubelle."],
+    a: 1,
+    why: "Sortir uses avoir when it has a direct object: la poubelle."
+  },
+  {
+    q: "Which tense is best? Il ___ froid hier soir.",
+    options: ["a fait", "faisait", "est fait", "a été fait"],
+    a: 1,
+    why: "Weather/background usually uses imparfait: il faisait froid."
+  },
+  {
+    q: "Choose the correct sentence: They came. They = elles.",
+    options: ["Elles sont venu.", "Elles ont venues.", "Elles sont venues.", "Elles ont venu."],
+    a: 2,
+    why: "Venir uses être, and elles is feminine plural, so venues."
+  },
+  {
+    q: "What is the meaning of j’ai su?",
+    options: ["I knew for a long time.", "I found out / learned.", "I was able to.", "I used to know a person."],
+    a: 1,
+    why: "Savoir changes meaning: je savais = I knew; j’ai su = I found out."
+  },
+  {
+    q: "Choose the correct imparfait of étudier with nous.",
+    options: ["nous étudions", "nous étudiions", "nous étudiaions", "nous étudiionss"],
+    a: 1,
+    why: "-ier verbs have ii in nous/vous imparfait: nous étudiions."
+  },
+  {
+    q: "Choose the correct sentence: They spoke to each other.",
+    options: ["Ils se sont parlés.", "Ils se sont parlé.", "Ils ont se parlé.", "Ils sont parlé."],
+    a: 1,
+    why: "Parler à quelqu’un is indirect, so no agreement: ils se sont parlé."
+  }
+];
+
+const practice = {
+  pc: [
+    ["Hier, j’ai mangé une pizza.", "Yesterday, I ate a pizza.", "Passé composé because it is a completed action."],
+    ["La semaine dernière, nous sommes allés au cinéma.", "Last week, we went to the cinema.", "Passé composé because it is a completed past trip; aller uses être."],
+    ["Elle a fini ses devoirs.", "She finished her homework.", "Passé composé because the action is completed."],
+    ["Ils sont arrivés à huit heures.", "They arrived at eight o’clock.", "Passé composé; arriver uses être, so arrivés agrees with ils."],
+    ["J’ai vu un bon film.", "I saw a good movie.", "Passé composé because it is a completed event."]
+  ],
+  imp: [
+    ["Quand j’étais petit, je jouais dehors.", "When I was little, I used to play outside.", "Imparfait because it is a past habit."],
+    ["Il faisait très froid.", "It was very cold.", "Imparfait because it describes weather/background."],
+    ["J’avais dix ans.", "I was ten years old.", "Imparfait because it describes age in the past."],
+    ["La maison était grande et calme.", "The house was big and quiet.", "Imparfait because it describes something."],
+    ["Nous étudiions le français tous les jours.", "We used to study French every day.", "Imparfait because it is a habit; étudiions has ii."]
+  ],
+  mix: [
+    ["Je dormais quand mon ami a appelé.", "I was sleeping when my friend called.", "Imparfait for ongoing action; passé composé for sudden completed action."],
+    ["Il faisait beau, alors nous sommes sortis.", "The weather was nice, so we went out.", "Imparfait for weather; passé composé for completed action."],
+    ["J’avais faim, donc j’ai préparé un sandwich.", "I was hungry, so I prepared a sandwich.", "Imparfait for state/feeling; passé composé for action."],
+    ["Elle lisait quand le téléphone a sonné.", "She was reading when the phone rang.", "Imparfait for background; passé composé for sudden action."],
+    ["Nous étions fatigués, mais nous avons fini le travail.", "We were tired, but we finished the work.", "Imparfait for feeling/state; passé composé for completed action."]
+  ]
+};
+
+function buildTabs() {
+  const nav = document.getElementById("tabs");
+  nav.innerHTML = tabs.map(([id, label], i) => `<button class="tab-btn ${i===0?'active':''}" data-tab="${id}">${label}</button>`).join("");
+  nav.addEventListener("click", (e) => {
+    if (!e.target.matches(".tab-btn")) return;
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll("section.tab").forEach(s => s.classList.remove("active"));
+    e.target.classList.add("active");
+    document.getElementById(e.target.dataset.tab).classList.add("active");
+    window.scrollTo({top: 0, behavior: "smooth"});
+  });
+}
+
+function makeTable(headers, rows) {
+  return `<table><tr>${headers.map(h => `<th>${h}</th>`).join("")}</tr>${rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join("")}</tr>`).join("")}</table>`;
+}
+
+function renderStaticTables() {
+  document.getElementById("irregularPP").innerHTML = makeTable(["Infinitive", "Meaning", "Past participle"], irregularPP);
+  document.getElementById("drTable").innerHTML = makeTable(["Letter", "Verb", "Meaning", "Past participle"], drVerbs);
+  document.getElementById("switchVerbs").innerHTML = switchVerbs.map(v => `
+    <details>
+      <summary>${v.verb} — ${v.meaning}</summary>
+      <p><strong>Être:</strong> ${v.etre}</p>
+      <p><strong>Avoir:</strong> ${v.avoir}</p>
+    </details>
+  `).join("");
+  document.getElementById("meaningChanges").innerHTML = makeTable(["Verb", "Meaning", "Imparfait", "Passé composé"], meaningChanges);
+}
+
+function renderVerbSelect() {
+  const select = document.getElementById("verbSelect");
+  select.innerHTML = verbs.map((v, i) => `<option value="${i}">${v.inf} — ${v.meaning}</option>`).join("");
+  select.addEventListener("change", () => renderVerb(+select.value));
+  document.getElementById("randomVerb").addEventListener("click", () => {
+    const index = Math.floor(Math.random() * verbs.length);
+    select.value = index;
+    renderVerb(index);
+  });
+  renderVerb(0);
+
+  const drNames = drVerbs.map(v => v[1]);
+  document.getElementById("verbTiles").innerHTML = drNames.map(name => {
+    const v = verbs.find(x => x.inf === name);
+    return `<div class="verb-tile" data-verb="${name}">
+      <strong>${name}</strong><br>
+      <span class="small">${v ? v.meaning : ""}</span>
+    </div>`;
+  }).join("");
+
+  document.getElementById("verbTiles").addEventListener("click", (e) => {
+    const tile = e.target.closest(".verb-tile");
+    if (!tile) return;
+    const idx = verbs.findIndex(v => v.inf === tile.dataset.verb);
+    if (idx >= 0) {
+      select.value = idx;
+      renderVerb(idx);
+      document.getElementById("verbDisplay").scrollIntoView({behavior: "smooth", block: "start"});
+    }
+  });
+}
+
+function renderVerb(index) {
+  const v = verbs[index];
+  const subjects = ["je / j’", "tu", "il / elle / on", "nous", "vous", "ils / elles"];
+  const rows = subjects.map((s, i) => [s, v.present[i], v.pc[i], v.imp[i]]);
+  document.getElementById("verbDisplay").innerHTML = `
+    <h3>${v.inf} — ${v.meaning}</h3>
+    <p><span class="tag">Auxiliary: ${v.aux}</span> <span class="tag">Past participle: ${v.pp}</span></p>
+    ${makeTable(["Subject", "Present", "Passé composé", "Imparfait"], rows)}
+  `;
+}
+
+let cardIndex = 0;
+let flipped = false;
+let studied = Number(localStorage.getItem("studiedCards") || 0);
+
+function updateProgress() {
+  document.getElementById("progress").textContent = `${studied} cards studied`;
+  document.getElementById("flashCount").textContent = `Card ${cardIndex + 1} of ${flashcards.length}`;
+}
+
+function renderFlashcard() {
+  const card = document.getElementById("flashcard");
+  const [front, back] = flashcards[cardIndex];
+  card.innerHTML = flipped ? `<div class="flash-back">${back}</div>` : `<div class="flash-front">${front}</div>`;
+  updateProgress();
+}
+
+function flipCard() {
+  flipped = !flipped;
+  if (flipped) {
+    studied++;
+    localStorage.setItem("studiedCards", String(studied));
+  }
+  renderFlashcard();
+}
+
+function setupFlashcards() {
+  document.getElementById("flashcard").addEventListener("click", flipCard);
+  document.getElementById("flipCard").addEventListener("click", flipCard);
+  document.getElementById("nextCard").addEventListener("click", () => {
+    cardIndex = (cardIndex + 1) % flashcards.length;
+    flipped = false;
+    renderFlashcard();
+  });
+  document.getElementById("prevCard").addEventListener("click", () => {
+    cardIndex = (cardIndex - 1 + flashcards.length) % flashcards.length;
+    flipped = false;
+    renderFlashcard();
+  });
+  document.getElementById("shuffleCards").addEventListener("click", () => {
+    for (let i = flashcards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [flashcards[i], flashcards[j]] = [flashcards[j], flashcards[i]];
+    }
+    cardIndex = 0;
+    flipped = false;
+    renderFlashcard();
+  });
+  renderFlashcard();
+}
+
+let quizIndex = 0;
+let quizCorrect = 0;
+let quizAnswered = 0;
+
+function renderQuiz() {
+  const item = quiz[quizIndex];
+  document.getElementById("quizBox").innerHTML = `
+    <h3>${item.q}</h3>
+    ${item.options.map((op, i) => `<button class="quiz-option" data-i="${i}">${op}</button>`).join("")}
+    <div id="quizWhy" class="note hidden"></div>
+  `;
+  document.getElementById("quizScore").textContent = `Score: ${quizCorrect}/${quizAnswered}`;
+}
+
+function setupQuiz() {
+  document.getElementById("quizBox").addEventListener("click", (e) => {
+    if (!e.target.matches(".quiz-option")) return;
+    const item = quiz[quizIndex];
+    const selected = +e.target.dataset.i;
+    document.querySelectorAll(".quiz-option").forEach((b, i) => {
+      b.disabled = true;
+      if (i === item.a) b.classList.add("correct");
+      if (i === selected && i !== item.a) b.classList.add("wrong");
+    });
+    if (selected === item.a) quizCorrect++;
+    quizAnswered++;
+    const why = document.getElementById("quizWhy");
+    why.textContent = item.why;
+    why.classList.remove("hidden");
+    document.getElementById("quizScore").textContent = `Score: ${quizCorrect}/${quizAnswered}`;
+  });
+  document.getElementById("nextQuiz").addEventListener("click", () => {
+    quizIndex = (quizIndex + 1) % quiz.length;
+    renderQuiz();
+  });
+  document.getElementById("resetQuiz").addEventListener("click", () => {
+    quizCorrect = 0;
+    quizAnswered = 0;
+    quizIndex = 0;
+    renderQuiz();
+  });
+  renderQuiz();
+}
+
+function setupPractice() {
+  const box = document.getElementById("practiceBox");
+  function show(type) {
+    const arr = practice[type];
+    const item = arr[Math.floor(Math.random() * arr.length)];
+    box.innerHTML = `<p><strong>French:</strong> ${item[0]}</p><p><strong>English:</strong> ${item[1]}</p><p><strong>Why:</strong> ${item[2]}</p>`;
+  }
+  document.getElementById("pcPractice").addEventListener("click", () => show("pc"));
+  document.getElementById("impPractice").addEventListener("click", () => show("imp"));
+  document.getElementById("mixPractice").addEventListener("click", () => show("mix"));
+  show("mix");
+}
+
+function setupSearch() {
+  const search = document.getElementById("search");
+  search.addEventListener("input", () => {
+    const q = search.value.trim().toLowerCase();
+    const cards = document.querySelectorAll(".searchable");
+    if (!q) {
+      cards.forEach(c => c.classList.remove("hidden"));
+      return;
+    }
+    cards.forEach(c => {
+      const text = c.textContent.toLowerCase();
+      c.classList.toggle("hidden", !text.includes(q));
+    });
+  });
+}
+
+buildTabs();
+renderStaticTables();
+renderVerbSelect();
+setupFlashcards();
+setupQuiz();
+setupPractice();
+setupSearch();
+updateProgress();
+</script>
+</body>
+</html>
