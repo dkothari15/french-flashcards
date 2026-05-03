@@ -169,6 +169,27 @@
       grid-template-columns: 1fr;
     }
   }
+
+    .file-list-panel {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+#fileList {
+  padding-right: 6px;
+}
+
+.file-item {
+  margin-bottom: 8px;
+}
+
+.file-explorer-controls {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+  padding-bottom: 10px;
+}
 </style>
 </head>
 <body>
@@ -201,6 +222,19 @@
       <option value="other">Other</option>
     </select>
 
+    <select id="topicFilter">
+  <option value="all">All topics</option>
+  <option value="verbs">Verbs</option>
+  <option value="tenses">Tenses</option>
+  <option value="pronouns">Pronouns</option>
+  <option value="negation">Negation</option>
+  <option value="prepositions">Prepositions</option>
+  <option value="adjectives">Adjectives / Adverbs</option>
+  <option value="questions">Questions</option>
+  <option value="vocabulary">Vocabulary</option>
+  <option value="expressions">Expressions</option>
+</select>
+
     <button id="openFolderButton" type="button">Open Local Folder</button>
     <input id="folderInput" type="file" webkitdirectory directory multiple />
   </div>
@@ -221,11 +255,7 @@
     </div>
   </div>
 
-  <div id="filePreview">
-    <div class="preview-empty">
-      Choose a file to preview it here.
-    </div>
-  </div>
+
 </section>
   <script>
 (function () {
@@ -330,9 +360,107 @@
     });
   }
 
+  function getTopic(path) {
+  const name = path.toLowerCase();
+
+  if (
+    name.includes("verb") ||
+    name.includes("ir ending") ||
+    name.includes("re ending") ||
+    name.includes("er ending") ||
+    name.includes("mettre") ||
+    name.includes("attendre") ||
+    name.includes("faire")
+  ) {
+    return "verbs";
+  }
+
+  if (
+    name.includes("passé") ||
+    name.includes("passe") ||
+    name.includes("imparfait") ||
+    name.includes("futur") ||
+    name.includes("conditional") ||
+    name.includes("subjunctive") ||
+    name.includes("plus-que") ||
+    name.includes("tense") ||
+    name.includes("participle")
+  ) {
+    return "tenses";
+  }
+
+  if (
+    name.includes("pronoun") ||
+    name.includes("pronoms") ||
+    name.includes("object pronoun") ||
+    name.includes("y and en") ||
+    name.includes("toniques") ||
+    name.includes("relative")
+  ) {
+    return "pronouns";
+  }
+
+  if (
+    name.includes("negation") ||
+    name.includes("negations")
+  ) {
+    return "negation";
+  }
+
+  if (
+    name.includes("preposition") ||
+    name.includes("prepositions") ||
+    name.includes("pays") ||
+    name.includes("villes") ||
+    name.includes("countries")
+  ) {
+    return "prepositions";
+  }
+
+  if (
+    name.includes("adjective") ||
+    name.includes("adjectives") ||
+    name.includes("adverb") ||
+    name.includes("adverbs") ||
+    name.includes("comparative") ||
+    name.includes("superlative")
+  ) {
+    return "adjectives";
+  }
+
+  if (
+    name.includes("interrogative") ||
+    name.includes("question") ||
+    name.includes("quel")
+  ) {
+    return "questions";
+  }
+
+  if (
+    name.includes("vocab") ||
+    name.includes("family") ||
+    name.includes("numbers") ||
+    name.includes("time") ||
+    name.includes("public-places")
+  ) {
+    return "vocabulary";
+  }
+
+  if (
+    name.includes("expression") ||
+    name.includes("connectors") ||
+    name.includes("emotions")
+  ) {
+    return "expressions";
+  }
+
+  return "all";
+}
+  
   function renderFiles() {
     const search = document.getElementById("fileSearch").value.toLowerCase().trim();
     const filter = document.getElementById("fileTypeFilter").value;
+    const topicFilter = document.getElementById("topicFilter").value;
     const fileList = document.getElementById("fileList");
     const currentFolderTitle = document.getElementById("currentFolderTitle");
 
@@ -343,8 +471,9 @@
       const matchesFolder = parent === fileState.currentFolder;
       const matchesSearch = !search || file.path.toLowerCase().includes(search);
       const matchesType = filter === "all" || getType(file.path) === filter;
-
-      return matchesFolder && matchesSearch && matchesType;
+      const matchesTopic = topicFilter === "all" || getTopic(file.path) === topicFilter;
+      
+      return matchesFolder && matchesSearch && matchesType && matchesTopic;
     });
 
     if (visibleFiles.length === 0) {
@@ -376,64 +505,14 @@
     return encodeURI(file.path).replace(/#/g, "%23");
   }
 
-  async function openFile(path) {
-    const file = fileState.files.find(f => f.path === path);
-    if (!file) return;
+function openFile(path) {
+  const file = fileState.files.find(f => f.path === path);
+  if (!file) return;
 
-    const preview = document.getElementById("filePreview");
-    const type = getType(file.path);
-    const url = getFileUrl(file);
-    const fileName = file.path.split("/").pop();
+  const url = getFileUrl(file);
 
-    const topBar = `
-      <div style="padding:12px; background:white; border-bottom:1px solid #e5e7eb;">
-        <strong>${escapeHtml(fileName)}</strong><br>
-        <a href="${url}" target="_blank" rel="noopener">Open in new tab</a>
-        &nbsp; | &nbsp;
-        <a href="${url}" download>Download</a>
-      </div>
-    `;
-
-    if (type === "pdf" || type === "html") {
-      preview.innerHTML = topBar + `<iframe src="${url}"></iframe>`;
-      return;
-    }
-
-    if (type === "image") {
-      preview.innerHTML = topBar + `<img src="${url}" alt="${escapeHtml(fileName)}">`;
-      return;
-    }
-
-    if (type === "text") {
-      try {
-        let text;
-
-        if (fileState.source === "local" && file.file) {
-          text = await file.file.text();
-        } else {
-          const response = await fetch(url);
-          text = await response.text();
-        }
-
-        preview.innerHTML = topBar + `<pre>${escapeHtml(text)}</pre>`;
-      } catch (error) {
-        preview.innerHTML = topBar + `
-          <div class="preview-empty">
-            This text file could not be previewed. Try opening it in a new tab.
-          </div>
-        `;
-      }
-
-      return;
-    }
-
-    preview.innerHTML = topBar + `
-      <div class="preview-empty">
-        This file type usually cannot be previewed directly in the browser.
-        Use Open in new tab or Download.
-      </div>
-    `;
-  }
+  window.open(url, "_blank", "noopener,noreferrer");
+}
 
   async function loadManifest() {
     const status = document.getElementById("fileExplorerStatus");
@@ -521,6 +600,7 @@
 
   document.getElementById("fileSearch").addEventListener("input", renderFiles);
   document.getElementById("fileTypeFilter").addEventListener("change", renderFiles);
+  document.getElementById("topicFilter").addEventListener("change", renderFiles);
 
   loadManifest();
 })();
