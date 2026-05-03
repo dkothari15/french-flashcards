@@ -7,6 +7,169 @@
     body { font-family: sans-serif; text-align: center; padding: 40px; }
     a { display: block; margin: 20px; padding: 20px; background: #2d6cdf; color: white; text-decoration: none; border-radius: 10px; }
   </style>
+
+  <style>
+  .file-explorer-box {
+    margin: 30px auto;
+    max-width: 1100px;
+    padding: 20px;
+    border-radius: 18px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+    .file-explorer-box a {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: #2563eb;
+  text-decoration: underline;
+  border-radius: 0;
+}
+
+  .file-explorer-box h2 {
+    margin-top: 0;
+    color: #1f2937;
+  }
+
+  .file-explorer-note {
+    background: #fff7ed;
+    border-left: 5px solid #f97316;
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    color: #374151;
+  }
+
+  .file-explorer-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .file-explorer-controls input,
+  .file-explorer-controls select,
+  .file-explorer-controls button {
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    font-size: 15px;
+  }
+
+  .file-explorer-controls button {
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  .file-explorer-controls button:hover {
+    background: #1d4ed8;
+  }
+
+  #folderInput {
+    display: none;
+  }
+
+  .file-explorer-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 15px;
+  }
+
+  .file-tree,
+  .file-list-panel {
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    background: #f9fafb;
+    padding: 12px;
+    min-height: 300px;
+  }
+
+  .file-tree {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  .file-tree button,
+  .file-item {
+    width: 100%;
+    text-align: left;
+    background: white;
+    color: #111827;
+    border: 1px solid #e5e7eb;
+    padding: 9px 10px;
+    margin-bottom: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .file-tree button:hover,
+  .file-item:hover {
+    background: #eff6ff;
+    border-color: #93c5fd;
+  }
+
+  .file-item-title {
+    font-weight: 800;
+    word-break: break-word;
+  }
+
+  .file-item-path {
+    color: #6b7280;
+    font-size: 13px;
+    word-break: break-word;
+  }
+
+  #filePreview {
+    margin-top: 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    background: #f9fafb;
+    overflow: hidden;
+  }
+
+  #filePreview iframe {
+    width: 100%;
+    height: 650px;
+    border: none;
+    background: white;
+  }
+
+  #filePreview pre {
+    margin: 0;
+    padding: 15px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    background: #111827;
+    color: white;
+    overflow-x: auto;
+  }
+
+  #filePreview img {
+    display: block;
+    max-width: 100%;
+    max-height: 650px;
+    margin: 20px auto;
+    border-radius: 12px;
+  }
+
+  .preview-empty {
+    padding: 30px;
+    text-align: center;
+    color: #6b7280;
+  }
+
+  @media (max-width: 800px) {
+    .file-explorer-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
 </head>
 <body>
   <h1>Learn French!</h1>
@@ -16,5 +179,351 @@
   <a href="french_high_a2_mega_flashcards.html">High A2 Deck</a>
   <a href="french_en_y_flashcards.html">Pronouns "EN" et "Y"</a>
   <a href="french_past_tenses_dr_vandertrampp_study_site.html">Basics of Tenses</a>
+
+  <section class="file-explorer-box" id="fileExplorer">
+  <h2>My French Learning Files</h2>
+
+  <div class="file-explorer-note">
+    <strong>Note:</strong> On GitHub Pages, this file explorer needs a <code>manifest.json</code> file to list your documents.
+    For private/local use on your Chromebook, click <strong>Open Local Folder</strong>.
+  </div>
+
+  <div class="file-explorer-controls">
+    <input id="fileSearch" type="text" placeholder="Search files..." />
+
+    <select id="fileTypeFilter">
+      <option value="all">All files</option>
+      <option value="pdf">PDF</option>
+      <option value="image">Images</option>
+      <option value="html">HTML</option>
+      <option value="text">Text / Notes / Code</option>
+      <option value="office">Word / Excel / PowerPoint</option>
+      <option value="other">Other</option>
+    </select>
+
+    <button id="openFolderButton" type="button">Open Local Folder</button>
+    <input id="folderInput" type="file" webkitdirectory directory multiple />
+  </div>
+
+  <div id="fileExplorerStatus">
+    Loading <code>manifest.json</code>...
+  </div>
+
+  <div class="file-explorer-layout">
+    <div class="file-tree">
+      <h3>Folders</h3>
+      <div id="folderTree"></div>
+    </div>
+
+    <div class="file-list-panel">
+      <h3 id="currentFolderTitle">Files</h3>
+      <div id="fileList"></div>
+    </div>
+  </div>
+
+  <div id="filePreview">
+    <div class="preview-empty">
+      Choose a file to preview it here.
+    </div>
+  </div>
+</section>
+  <script>
+(function () {
+  const fileState = {
+    files: [],
+    source: "none",
+    currentFolder: "",
+    selectedFile: ""
+  };
+
+  const imageExts = ["png", "jpg", "jpeg", "gif", "webp", "svg", "bmp"];
+  const textExts = ["txt", "md", "csv", "json", "js", "css", "html", "htm", "xml", "yml", "yaml", "py", "java", "cpp", "c", "sql", "log"];
+  const officeExts = ["doc", "docx", "xls", "xlsx", "ppt", "pptx"];
+
+  function getExt(path) {
+    const name = path.split("/").pop();
+    const dot = name.lastIndexOf(".");
+    return dot === -1 ? "" : name.slice(dot + 1).toLowerCase();
+  }
+
+  function getType(path) {
+    const ext = getExt(path);
+
+    if (ext === "pdf") return "pdf";
+    if (imageExts.includes(ext)) return "image";
+    if (ext === "html" || ext === "htm") return "html";
+    if (textExts.includes(ext)) return "text";
+    if (officeExts.includes(ext)) return "office";
+
+    return "other";
+  }
+
+  function getIcon(path) {
+    const type = getType(path);
+
+    if (type === "pdf") return "📕";
+    if (type === "image") return "🖼️";
+    if (type === "html") return "🌐";
+    if (type === "text") return "📄";
+    if (type === "office") return "📎";
+
+    return "📦";
+  }
+
+  function cleanPath(path) {
+    return path.replace(/^\.?\//, "").replace(/\\/g, "/");
+  }
+
+  function escapeHtml(text) {
+    return String(text || "").replace(/[&<>"']/g, function (char) {
+      return {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      }[char];
+    });
+  }
+
+  function getParentFolder(path) {
+    const parts = path.split("/");
+    parts.pop();
+    return parts.join("/");
+  }
+
+  function getFolders() {
+    const folders = new Set([""]);
+
+    fileState.files.forEach(file => {
+      const parts = file.path.split("/");
+      parts.pop();
+
+      let current = "";
+      parts.forEach(part => {
+        current = current ? current + "/" + part : part;
+        folders.add(current);
+      });
+    });
+
+    return Array.from(folders).sort();
+  }
+
+  function renderFolders() {
+    const folderTree = document.getElementById("folderTree");
+    const folders = getFolders();
+
+    folderTree.innerHTML = folders.map(folder => {
+      const label = folder === "" ? "📁 Root" : "📁 " + folder;
+      return `
+        <button type="button" data-folder="${escapeHtml(folder)}">
+          ${escapeHtml(label)}
+        </button>
+      `;
+    }).join("");
+
+    folderTree.querySelectorAll("button").forEach(button => {
+      button.addEventListener("click", () => {
+        fileState.currentFolder = button.dataset.folder;
+        renderFiles();
+      });
+    });
+  }
+
+  function renderFiles() {
+    const search = document.getElementById("fileSearch").value.toLowerCase().trim();
+    const filter = document.getElementById("fileTypeFilter").value;
+    const fileList = document.getElementById("fileList");
+    const currentFolderTitle = document.getElementById("currentFolderTitle");
+
+    currentFolderTitle.textContent = fileState.currentFolder || "Root";
+
+    const visibleFiles = fileState.files.filter(file => {
+      const parent = getParentFolder(file.path);
+      const matchesFolder = parent === fileState.currentFolder;
+      const matchesSearch = !search || file.path.toLowerCase().includes(search);
+      const matchesType = filter === "all" || getType(file.path) === filter;
+
+      return matchesFolder && matchesSearch && matchesType;
+    });
+
+    if (visibleFiles.length === 0) {
+      fileList.innerHTML = "<p>No files found in this folder.</p>";
+      return;
+    }
+
+    fileList.innerHTML = visibleFiles.map(file => {
+      return `
+        <div class="file-item" data-path="${escapeHtml(file.path)}">
+          <div class="file-item-title">${getIcon(file.path)} ${escapeHtml(file.path.split("/").pop())}</div>
+          <div class="file-item-path">${escapeHtml(file.path)}</div>
+        </div>
+      `;
+    }).join("");
+
+    fileList.querySelectorAll(".file-item").forEach(item => {
+      item.addEventListener("click", () => {
+        openFile(item.dataset.path);
+      });
+    });
+  }
+
+  function getFileUrl(file) {
+    if (fileState.source === "local") {
+      return file.url;
+    }
+
+    return encodeURI(file.path).replace(/#/g, "%23");
+  }
+
+  async function openFile(path) {
+    const file = fileState.files.find(f => f.path === path);
+    if (!file) return;
+
+    const preview = document.getElementById("filePreview");
+    const type = getType(file.path);
+    const url = getFileUrl(file);
+    const fileName = file.path.split("/").pop();
+
+    const topBar = `
+      <div style="padding:12px; background:white; border-bottom:1px solid #e5e7eb;">
+        <strong>${escapeHtml(fileName)}</strong><br>
+        <a href="${url}" target="_blank" rel="noopener">Open in new tab</a>
+        &nbsp; | &nbsp;
+        <a href="${url}" download>Download</a>
+      </div>
+    `;
+
+    if (type === "pdf" || type === "html") {
+      preview.innerHTML = topBar + `<iframe src="${url}"></iframe>`;
+      return;
+    }
+
+    if (type === "image") {
+      preview.innerHTML = topBar + `<img src="${url}" alt="${escapeHtml(fileName)}">`;
+      return;
+    }
+
+    if (type === "text") {
+      try {
+        let text;
+
+        if (fileState.source === "local" && file.file) {
+          text = await file.file.text();
+        } else {
+          const response = await fetch(url);
+          text = await response.text();
+        }
+
+        preview.innerHTML = topBar + `<pre>${escapeHtml(text)}</pre>`;
+      } catch (error) {
+        preview.innerHTML = topBar + `
+          <div class="preview-empty">
+            This text file could not be previewed. Try opening it in a new tab.
+          </div>
+        `;
+      }
+
+      return;
+    }
+
+    preview.innerHTML = topBar + `
+      <div class="preview-empty">
+        This file type usually cannot be previewed directly in the browser.
+        Use Open in new tab or Download.
+      </div>
+    `;
+  }
+
+  async function loadManifest() {
+    const status = document.getElementById("fileExplorerStatus");
+
+    try {
+      const response = await fetch("manifest.json", { cache: "no-store" });
+
+      if (!response.ok) {
+        throw new Error("No manifest found");
+      }
+
+      const data = await response.json();
+      const files = Array.isArray(data) ? data : data.files;
+
+      fileState.files = files.map(item => {
+        if (typeof item === "string") {
+          return { path: cleanPath(item) };
+        }
+
+        return {
+          path: cleanPath(item.path),
+          size: item.size || null,
+          modified: item.modified || null
+        };
+      });
+
+      fileState.source = "manifest";
+
+      status.innerHTML = `
+        <p style="color:#047857;">
+          Loaded <strong>${fileState.files.length}</strong> files from <code>manifest.json</code>.
+        </p>
+      `;
+
+      renderFolders();
+      renderFiles();
+
+    } catch (error) {
+      status.innerHTML = `
+        <p style="color:#b45309;">
+          No <code>manifest.json</code> found. 
+          Use <strong>Open Local Folder</strong> on your Chromebook, or create a manifest for GitHub Pages.
+        </p>
+      `;
+    }
+  }
+
+  function loadLocalFolder(fileList) {
+    fileState.files.forEach(file => {
+      if (file.url) {
+        URL.revokeObjectURL(file.url);
+      }
+    });
+
+    fileState.files = Array.from(fileList).map(file => {
+      return {
+        path: cleanPath(file.webkitRelativePath || file.name),
+        size: file.size,
+        modified: file.lastModified,
+        file: file,
+        url: URL.createObjectURL(file)
+      };
+    });
+
+    fileState.source = "local";
+    fileState.currentFolder = "";
+
+    document.getElementById("fileExplorerStatus").innerHTML = `
+      <p style="color:#047857;">
+        Local folder loaded with <strong>${fileState.files.length}</strong> files.
+      </p>
+    `;
+
+    renderFolders();
+    renderFiles();
+  }
+
+  document.getElementById("openFolderButton").addEventListener("click", () => {
+    document.getElementById("folderInput").click();
+  });
+
+  document.getElementById("folderInput").addEventListener("change", event => {
+    loadLocalFolder(event.target.files);
+  });
+
+  document.getElementById("fileSearch").addEventListener("input", renderFiles);
+  document.getElementById("fileTypeFilter").addEventListener("change", renderFiles);
+
+  loadManifest();
+})();
+</script>
 </body>
 </html>
