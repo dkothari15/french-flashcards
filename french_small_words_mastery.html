@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>French Small Words Mastery — Articles, Prepositions, Contractions, y/en</title>
+  <style>
+    :root{
+      --bg:#f7f6f2; --panel:#ffffff; --ink:#1f2933; --muted:#5b6773; --line:#dedbd2;
+      --accent:#2f6f6b; --accent2:#7a4e9e; --good:#227a47; --bad:#b33a3a; --warn:#b7791f;
+      --shadow:0 12px 30px rgba(31,41,51,.10); --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,#fbfaf7 0%, var(--bg) 100%);color:var(--ink);line-height:1.55}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    nav{max-width:1180px;margin:auto;display:flex;align-items:center;gap:.7rem;padding:.7rem 1rem;overflow:auto}
+    nav .brand{font-weight:800;white-space:nowrap;color:var(--accent);margin-right:.4rem}
+    nav a{white-space:nowrap;text-decoration:none;color:var(--ink);font-size:.92rem;padding:.45rem .7rem;border-radius:999px}
+    nav a:hover{background:#edf5f4;color:var(--accent)}
+    main{max-width:1180px;margin:0 auto;padding:1.2rem}
+    .hero{display:grid;grid-template-columns:1.3fr .7fr;gap:1.1rem;align-items:stretch;margin:1rem 0 1.4rem}
+    .card,.heroBox{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.2rem}
+    .heroBox h1{font-size:clamp(2rem,5vw,4.1rem);line-height:1;margin:.2rem 0 .8rem;letter-spacing:-.04em}
+    .tag{display:inline-flex;align-items:center;gap:.35rem;background:#edf5f4;color:var(--accent);border:1px solid #cde4e1;border-radius:999px;padding:.3rem .65rem;font-weight:700;font-size:.85rem}
+    .muted{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+    .span4{grid-column:span 4}.span6{grid-column:span 6}.span8{grid-column:span 8}.span12{grid-column:span 12}
+    h2{font-size:2rem;letter-spacing:-.03em;margin:2rem 0 .8rem}
+    h3{font-size:1.25rem;margin:.3rem 0 .7rem}
+    h4{margin:1rem 0 .35rem;color:#243b53}
+    .pillrow{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0}
+    .pill{border:1px solid var(--line);background:#fafafa;border-radius:999px;padding:.25rem .55rem;font-size:.83rem;color:#394b59}
+    table{width:100%;border-collapse:separate;border-spacing:0;margin:.8rem 0;overflow:hidden;border-radius:12px;border:1px solid var(--line)}
+    th,td{padding:.7rem;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+    th{background:#f0eee7;color:#243b53;font-size:.9rem}
+    tr:last-child td{border-bottom:none}
+    .fr{font-weight:800;color:#1f4f4d}.en{color:#52606d;font-size:.94rem}.note{background:#fff8e6;border-left:4px solid var(--warn);padding:.8rem;border-radius:12px;margin:.8rem 0}.danger{background:#fff1f1;border-left:4px solid var(--bad)}.success{background:#eefbf3;border-left:4px solid var(--good)}
+    .lesson{border:1px solid var(--line);border-radius:16px;padding:1rem;background:#fff;margin:.75rem 0}
+    .lesson summary{cursor:pointer;font-weight:800;color:#243b53;font-size:1.05rem}
+    .lesson[open]{box-shadow:0 8px 22px rgba(31,41,51,.07)}
+    button,.btn{border:none;background:var(--accent);color:#fff;padding:.7rem .95rem;border-radius:12px;font-weight:800;cursor:pointer;box-shadow:0 6px 15px rgba(47,111,107,.18)}
+    button.secondary{background:#eef2f7;color:#243b53;box-shadow:none;border:1px solid var(--line)}
+    button.warn{background:var(--accent2)}
+    button:disabled{opacity:.55;cursor:not-allowed}
+    select,input,textarea{width:100%;padding:.75rem;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:1rem;color:var(--ink)}
+    textarea{min-height:96px}
+    .tool{display:grid;grid-template-columns:260px 1fr;gap:1rem;align-items:start}
+    .side{position:sticky;top:70px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:1rem;box-shadow:var(--shadow)}
+    .side button{display:block;width:100%;margin:.35rem 0;text-align:left;background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+    .side button.active{background:#edf5f4;color:var(--accent);border-color:#bddbd7}
+    .qbox{border:1px solid var(--line);border-radius:18px;padding:1rem;background:#fff;box-shadow:var(--shadow)}
+    .question{font-size:1.18rem;font-weight:800;margin:.5rem 0}.blank{display:inline-block;min-width:70px;border-bottom:3px solid var(--accent);text-align:center;color:var(--accent)}
+    .choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;margin:.8rem 0}.choices button{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none;text-align:left}.choices button:hover{border-color:var(--accent);background:#f3fbfa}.choices button.correct{background:#eefbf3;border-color:var(--good);color:var(--good)}.choices button.wrong{background:#fff1f1;border-color:var(--bad);color:var(--bad)}
+    .feedback{margin:.8rem 0;padding:.85rem;border-radius:12px;border:1px solid var(--line);background:#fafafa}.feedback.good{border-color:#a7d8b8;background:#eefbf3}.feedback.bad{border-color:#e6b1b1;background:#fff1f1}
+    .scorebar{height:10px;background:#eef2f7;border-radius:999px;overflow:hidden;margin:.5rem 0}.scorebar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:.25s}
+    .flashcard{min-height:220px;display:flex;align-items:center;justify-content:center;text-align:center;border:2px dashed #cdd7e1;border-radius:18px;padding:1.3rem;background:#fbfcfd;cursor:pointer;user-select:none}
+    .flashcard .big{font-size:2.2rem;font-weight:900;color:var(--accent)}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#eef2f7;border:1px solid #d9e2ec;border-radius:6px;padding:.12rem .35rem;font-size:.88rem}
+    .tabs{display:flex;gap:.45rem;flex-wrap:wrap;margin:.6rem 0}.tab{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none}.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .hidden{display:none!important}.mini{font-size:.9rem}.center{text-align:center}.right{text-align:right}.cols2{columns:2;column-gap:1.2rem}.list-tight li{margin:.3rem 0}.hr{height:1px;background:var(--line);margin:1rem 0}.badge{display:inline-block;background:#f0eee7;border-radius:8px;padding:.15rem .45rem;font-weight:800;font-size:.82rem}
+    footer{margin:2rem auto;padding:1.5rem;color:var(--muted);font-size:.92rem;border-top:1px solid var(--line)}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.grid{display:block}.span4,.span6,.span8,.span12{grid-column:auto;margin-bottom:1rem}.tool{grid-template-columns:1fr}.side{position:static}.choices{grid-template-columns:1fr}.cols2{columns:1}nav{padding:.55rem}.heroBox h1{font-size:2.4rem}}
+    @media print{header,.side,button,.tabs,#practice,#exam,#flashcards{display:none!important}.card,.heroBox{box-shadow:none}.hero{display:block}body{background:#fff}main{max-width:100%;padding:.5rem}}
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <span class="brand">French Small Words</span>
+    <a href="#map">Map</a><a href="#lessons">Lessons</a><a href="#reference">Reference</a><a href="#practice">Practice</a><a href="#exam">Exam Mode</a><a href="#flashcards">Flashcards</a><a href="#mistakes">Mistakes</a><a href="#plan">Study Plan</a>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <div class="heroBox">
+      <span class="tag">A1 → B2 grammar trainer for DELF / TCF / TEF-style accuracy</span>
+      <h1>Master French small words.</h1>
+      <p class="muted">Practice <strong>le, la, les, un, une, des, du, de la, au, aux, à, de, en, y, en</strong> and the other tiny words that decide whether your French sounds natural or wrong.</p>
+      <div class="pillrow">
+        <span class="pill">Articles</span><span class="pill">Prepositions</span><span class="pill">Contractions</span><span class="pill">Quantities</span><span class="pill">Places</span><span class="pill">Negation</span><span class="pill">Pronouns y/en</span><span class="pill">Exam drills</span>
+      </div>
+      <p class="mini muted">This site is a study aid aligned with CEFR-style progression and common DELF/TCF/TEF grammar expectations. It is not an official exam product and does not copy proprietary textbook material.</p>
+    </div>
+    <div class="card">
+      <h3>Your current progress</h3>
+      <p class="muted mini">Saved locally in this browser.</p>
+      <div>Accuracy: <strong id="overallAcc">0%</strong></div>
+      <div class="scorebar"><span id="overallBar"></span></div>
+      <div class="grid" style="grid-template-columns:repeat(2,1fr);gap:.6rem;margin-top:.8rem">
+        <div class="note success"><strong id="totalCorrect">0</strong><br><span class="mini">correct</span></div>
+        <div class="note danger"><strong id="totalWrong">0</strong><br><span class="mini">wrong</span></div>
+      </div>
+      <button class="secondary" onclick="resetProgress()">Reset progress</button>
+    </div>
+  </section>
+
+  <section id="map" class="card">
+    <h2>1. The complete map</h2>
+    <p>French small words are not one category. The words you asked about belong to several grammar families.</p>
+    <table>
+      <tr><th>Family</th><th>Words</th><th>Main function</th><th>Example</th></tr>
+      <tr><td><strong>Definite articles</strong></td><td>le, la, l’, les</td><td>the; known/specific/general noun</td><td><span class="fr">le français</span> = French / the French language</td></tr>
+      <tr><td><strong>Indefinite articles</strong></td><td>un, une, des</td><td>a/an/some; non-specific countable noun</td><td><span class="fr">une question</span> = a question</td></tr>
+      <tr><td><strong>Partitive articles</strong></td><td>du, de la, de l’, des</td><td>some/any; amount not counted</td><td><span class="fr">du café</span> = coffee / some coffee</td></tr>
+      <tr><td><strong>Contractions with à</strong></td><td>au, aux</td><td>à + le / à + les</td><td><span class="fr">au parc</span> = to/at the park</td></tr>
+      <tr><td><strong>Contractions with de</strong></td><td>du, des</td><td>de + le / de + les</td><td><span class="fr">du parc</span> = from/of the park</td></tr>
+      <tr><td><strong>Simple prepositions</strong></td><td>à, de, en, dans, chez, avec, sans, pour, par, sur...</td><td>relationship: place, time, cause, direction, means</td><td><span class="fr">chez moi</span> = at my place</td></tr>
+      <tr><td><strong>Quantity expressions</strong></td><td>beaucoup de, trop de, assez de, un peu de...</td><td>amount + de/d’</td><td><span class="fr">beaucoup d’amis</span> = many friends</td></tr>
+      <tr><td><strong>Possessive determiners</strong></td><td>mon, ma, mes, ton, ta, tes, son...</td><td>my/your/his/her/our/their</td><td><span class="fr">mes livres</span> = my books</td></tr>
+      <tr><td><strong>Demonstrative determiners</strong></td><td>ce, cet, cette, ces</td><td>this/that/these/those</td><td><span class="fr">cet homme</span> = this/that man</td></tr>
+      <tr><td><strong>Pronouns</strong></td><td>y, en</td><td>replace à/de phrases or quantities</td><td><span class="fr">J’y vais. J’en veux.</span></td></tr>
+    </table>
+    <div class="note"><strong>Most important idea:</strong> <span class="fr">au, aux, du, des</span> are not random. They are forced contractions: <span class="fr">à + le = au</span>, <span class="fr">à + les = aux</span>, <span class="fr">de + le = du</span>, <span class="fr">de + les = des</span>. But <span class="fr">du, de la, de l’, des</span> can also be partitive articles meaning “some.” Context decides.</div>
+  </section>
+
+  <section id="lessons">
+    <h2>2. Lessons from A1 to B2</h2>
+    <div class="tool">
+      <aside class="side" id="lessonMenu"></aside>
+      <div id="lessonContent"></div>
+    </div>
+  </section>
+
+  <section id="reference" class="card">
+    <h2>3. Complete reference tables</h2>
+    <div class="tabs" id="refTabs"></div>
+    <div id="refContent"></div>
+  </section>
+
+  <section id="practice" class="card">
+    <h2>4. Interactive practice</h2>
+    <p class="muted">Choose a category, answer, then read the explanation. Use this daily until the choices become automatic.</p>
+    <div class="grid">
+      <div class="span4">
+        <label>Practice category</label>
+        <select id="categorySelect"></select>
+      </div>
+      <div class="span4">
+        <label>Question type</label>
+        <select id="typeSelect">
+          <option value="choice">Multiple choice</option>
+          <option value="type">Type the answer</option>
+          <option value="mixed">Mixed</option>
+        </select>
+      </div>
+      <div class="span4">
+        <label>Level</label>
+        <select id="levelSelect">
+          <option value="all">All levels</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option>
+        </select>
+      </div>
+    </div>
+    <div class="qbox" style="margin-top:1rem">
+      <div class="pillrow"><span class="pill" id="qLevel">Level</span><span class="pill" id="qCat">Category</span></div>
+      <div class="question" id="practiceQuestion"></div>
+      <div id="practiceInput"></div>
+      <div id="practiceFeedback" class="feedback hidden"></div>
+      <div class="pillrow"><button onclick="newPracticeQuestion()">New question</button><button class="secondary" onclick="showAnswer()">Show answer</button></div>
+    </div>
+  </section>
+
+  <section id="exam" class="card">
+    <h2>5. DELF / TCF / TEF-style exam mode</h2>
+    <p class="muted">This simulates grammar-selection tasks: fast, mixed, and precise. It is original practice content, not copied from official exams.</p>
+    <div class="grid">
+      <div class="span4"><label>Exam length</label><select id="examLength"><option value="10">10 questions</option><option value="20" selected>20 questions</option><option value="35">35 questions</option></select></div>
+      <div class="span4"><label>Difficulty</label><select id="examDifficulty"><option value="all">A1-B2 mixed</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option></select></div>
+      <div class="span4"><label>Focus</label><select id="examFocus"><option value="all">All categories</option></select></div>
+    </div>
+    <div class="pillrow"><button onclick="startExam()">Start exam</button><button class="secondary" onclick="finishExam()">Finish now</button></div>
+    <div id="examArea" class="hidden qbox"></div>
+    <div id="examResult" class="hidden"></div>
+  </section>
+
+  <section id="flashcards" class="card">
+    <h2>6. Flashcards</h2>
+    <p class="muted">Click the card to flip. Use the buttons to move through the deck.</p>
+    <div class="grid">
+      <div class="span4"><label>Deck</label><select id="deckSelect"></select></div>
+      <div class="span8 right"><button onclick="prevCard()" class="secondary">Previous</button> <button onclick="flipCard()" class="warn">Flip</button> <button onclick="nextCard()">Next</button></div>
+    </div>
+    <div class="flashcard" onclick="flipCard()" id="flashcard"></div>
+  </section>
+
+  <section id="mistakes" class="card">
+    <h2>7. Mistake clinic</h2>
+    <div class="grid">
+      <div class="span6">
+        <h3>Classic mistakes</h3>
+        <ul class="list-tight">
+          <li><span class="fr">à le</span> → always <span class="fr">au</span> when <span class="fr">le</span> is an article.</li>
+          <li><span class="fr">de les</span> → always <span class="fr">des</span> when <span class="fr">les</span> is an article.</li>
+          <li>Negative food/quantity: <span class="fr">Je ne veux pas de café</span>, not usually <span class="fr">pas du café</span>.</li>
+          <li>Quantities use <span class="fr">de/d’</span>: <span class="fr">beaucoup de travail</span>, <span class="fr">trop d’eau</span>.</li>
+          <li>Countries: <span class="fr">en France</span>, <span class="fr">au Canada</span>, <span class="fr">aux États-Unis</span>.</li>
+          <li>People’s homes/professional places: <span class="fr">chez moi</span>, <span class="fr">chez le médecin</span>.</li>
+          <li>Do not contract before object pronouns: <span class="fr">Je commence à le faire</span>, not <span class="fr">au faire</span>.</li>
+          <li><span class="fr">y</span> usually replaces an <span class="fr">à</span> place/thing, not a person.</li>
+          <li><span class="fr">en</span> replaces <span class="fr">de</span> phrases or quantities: <span class="fr">J’en ai deux</span>.</li>
+        </ul>
+      </div>
+      <div class="span6">
+        <h3>Error correction trainer</h3>
+        <p class="muted mini">Fix the sentence. Then compare with the answer.</p>
+        <div id="errorBox" class="qbox"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="plan" class="card">
+    <h2>8. Study plan</h2>
+    <table>
+      <tr><th>Level</th><th>What to master</th><th>Practice goal</th></tr>
+      <tr><td><strong>A1</strong></td><td>le/la/l’/les, un/une/des, à/au/à la/à l’/aux, de/du/de la/de l’/des, basic places</td><td>Fill basic blanks with 85% accuracy.</td></tr>
+      <tr><td><strong>A2</strong></td><td>partitives, negatives, quantities + de, countries/cities, transport, time expressions</td><td>Explain why the answer changes to <span class="fr">de</span> after negation/quantity.</td></tr>
+      <tr><td><strong>B1</strong></td><td>verb + à/de patterns, y/en, noun complements, à vs de meaning changes</td><td>Use <span class="fr">y</span> and <span class="fr">en</span> naturally in short answers.</td></tr>
+      <tr><td><strong>B2</strong></td><td>nuance: contrastive negatives, fixed expressions, abstract nouns, formal <span class="fr">de</span> before plural adjective</td><td>Correct errors and explain exceptions.</td></tr>
+    </table>
+    <div class="note success"><strong>Daily routine:</strong> 10 minutes reference review, 15 minutes category practice, 10 minutes exam mode, 5 minutes rewriting wrong answers in your own examples.</div>
+  </section>
+
+  <footer>
+    <p><strong>Accuracy note:</strong> This website follows standard French grammar categories used in CEFR-aligned courses and exam preparation: articles, prepositions, contracted articles, partitives, pronouns, quantities, negation, and place/time expressions. Some rules have regional, stylistic, or idiomatic exceptions; the explanations here give the standard forms expected in formal study and exams.</p>
+  </footer>
+</main>
+
+<script>
+const lessons = [
+  {id:'core', level:'A1', title:'The core system: article + noun', html:`
+    <details class="lesson" open><summary>What is a “small word” in this course?</summary>
+      <p>In French, nouns normally need a small word before them. English can say “I like coffee,” but French often needs an article: <span class="fr">J’aime le café</span>. The small word tells you whether the noun is specific, general, counted, uncounted, masculine, feminine, singular, or plural.</p>
+      <table><tr><th>Need</th><th>French family</th><th>Examples</th></tr><tr><td>the</td><td>definite article</td><td>le, la, l’, les</td></tr><tr><td>a/an/some</td><td>indefinite article</td><td>un, une, des</td></tr><tr><td>some amount</td><td>partitive article</td><td>du, de la, de l’, des</td></tr><tr><td>to/at/in the</td><td>à + article</td><td>au, à la, à l’, aux</td></tr><tr><td>from/of/about the</td><td>de + article</td><td>du, de la, de l’, des</td></tr></table>
+    </details>
+    <details class="lesson"><summary>Gender and number decide the form</summary>
+      <table><tr><th>Noun type</th><th>the</th><th>a/some</th><th>some amount</th><th>to/at the</th><th>from/of the</th></tr><tr><td>masculine singular</td><td>le</td><td>un</td><td>du</td><td>au</td><td>du</td></tr><tr><td>feminine singular</td><td>la</td><td>une</td><td>de la</td><td>à la</td><td>de la</td></tr><tr><td>vowel / silent h</td><td>l’</td><td>un/une</td><td>de l’</td><td>à l’</td><td>de l’</td></tr><tr><td>plural</td><td>les</td><td>des</td><td>des</td><td>aux</td><td>des</td></tr></table>
+      <div class="note">The word <span class="fr">du</span> appears in two jobs: <strong>some</strong> with masculine food/amounts, and <strong>de + le</strong> meaning from/of/about the. The sentence context tells you which one it is.</div>
+    </details>`},
+  {id:'articles', level:'A1', title:'Definite and indefinite articles', html:`
+    <details class="lesson" open><summary>Definite articles: le, la, l’, les</summary>
+      <p>Use definite articles for “the,” for general categories, likes/dislikes, languages as nouns, and body parts with reflexive structures.</p>
+      <table><tr><th>Form</th><th>Use</th><th>Example</th></tr><tr><td>le</td><td>masculine singular</td><td><span class="fr">le livre</span> — the book</td></tr><tr><td>la</td><td>feminine singular</td><td><span class="fr">la table</span> — the table</td></tr><tr><td>l’</td><td>before vowel/silent h</td><td><span class="fr">l’école</span> — the school</td></tr><tr><td>les</td><td>plural</td><td><span class="fr">les enfants</span> — the children</td></tr></table>
+      <p><span class="fr">J’aime le café.</span> = I like coffee in general. French uses <span class="fr">le</span> where English often uses no article.</p>
+    </details>
+    <details class="lesson"><summary>Indefinite articles: un, une, des</summary>
+      <p>Use these for a non-specific countable noun: one item or some plural items.</p>
+      <p><span class="fr">J’ai un stylo, une question et des amis.</span></p>
+      <div class="note">After a negative, <span class="fr">un, une, des</span> usually become <span class="fr">de/d’</span>: <span class="fr">Je n’ai pas de stylo</span>, <span class="fr">Je n’ai pas d’amis</span>.</div>
+    </details>`},
+  {id:'partitives', level:'A2', title:'Partitives: du, de la, de l’, des', html:`
+    <details class="lesson" open><summary>Use partitives for “some” or an unspecified amount</summary>
+      <p>Partitives are common with food, drink, weather, sports, music, and abstract quantities.</p>
+      <table><tr><th>Form</th><th>Use</th><th>Example</th></tr><tr><td>du</td><td>masculine singular</td><td><span class="fr">du pain</span>, <span class="fr">du café</span></td></tr><tr><td>de la</td><td>feminine singular</td><td><span class="fr">de la soupe</span>, <span class="fr">de la patience</span></td></tr><tr><td>de l’</td><td>vowel/silent h</td><td><span class="fr">de l’eau</span>, <span class="fr">de l’énergie</span></td></tr><tr><td>des</td><td>plural countable/unspecified</td><td><span class="fr">des légumes</span>, <span class="fr">des pâtes</span></td></tr></table>
+    </details>
+    <details class="lesson"><summary>Negation changes partitives to de/d’</summary>
+      <p><span class="fr">Je veux du café.</span> → <span class="fr">Je ne veux pas de café.</span></p>
+      <p><span class="fr">Il boit de l’eau.</span> → <span class="fr">Il ne boit pas d’eau.</span></p>
+      <div class="note danger"><strong>Exception with être:</strong> After <span class="fr">être</span>, the article normally stays: <span class="fr">Ce n’est pas du café, c’est du thé.</span></div>
+    </details>
+    <details class="lesson"><summary>Contrast can keep du/de la/des</summary>
+      <p>If you are not saying “none,” but contrasting one kind with another, the partitive can stay.</p>
+      <p><span class="fr">Je ne veux pas du café froid; je veux du café chaud.</span> = I do not want the cold coffee; I want hot coffee.</p>
+    </details>`},
+  {id:'a', level:'A1', title:'À family: à, au, à la, à l’, aux', html:`
+    <details class="lesson" open><summary>À means to / at / in</summary>
+      <p>Use <span class="fr">à</span> for destination, location, time, and many verb expressions.</p>
+      <table><tr><th>Form</th><th>Structure</th><th>Example</th></tr><tr><td>à</td><td>basic form / cities</td><td><span class="fr">à Toronto</span></td></tr><tr><td>au</td><td>à + le</td><td><span class="fr">au parc</span></td></tr><tr><td>à la</td><td>à + la</td><td><span class="fr">à la banque</span></td></tr><tr><td>à l’</td><td>à + l’</td><td><span class="fr">à l’école</span></td></tr><tr><td>aux</td><td>à + les</td><td><span class="fr">aux toilettes</span></td></tr></table>
+    </details>
+    <details class="lesson"><summary>Contraction warning</summary>
+      <p>You must contract <span class="fr">à + le</span> and <span class="fr">à + les</span> when <span class="fr">le/les</span> are articles.</p>
+      <p><span class="fr">Je vais au cinéma.</span> Not <span class="fr">à le cinéma</span>.</p>
+      <p><span class="fr">Elle parle aux enfants.</span> Not <span class="fr">à les enfants</span>.</p>
+      <div class="note">Do not contract before object pronouns: <span class="fr">Je commence à le comprendre</span>, not <span class="fr">au comprendre</span>.</div>
+    </details>`},
+  {id:'de', level:'A1', title:'De family: de, du, de la, de l’, des', html:`
+    <details class="lesson" open><summary>De means from / of / about</summary>
+      <table><tr><th>Form</th><th>Structure</th><th>Example</th></tr><tr><td>de</td><td>basic form / no article / city</td><td><span class="fr">de Toronto</span></td></tr><tr><td>du</td><td>de + le</td><td><span class="fr">du Canada</span>, <span class="fr">du professeur</span></td></tr><tr><td>de la</td><td>de + la</td><td><span class="fr">de la banque</span></td></tr><tr><td>de l’</td><td>de + l’</td><td><span class="fr">de l’école</span></td></tr><tr><td>des</td><td>de + les</td><td><span class="fr">des étudiants</span></td></tr></table>
+      <p>Examples: <span class="fr">Je viens du Canada</span>; <span class="fr">Je parle de la famille</span>; <span class="fr">le livre de Marie</span>.</p>
+    </details>
+    <details class="lesson"><summary>De after nouns: cup of coffee vs coffee cup</summary>
+      <p><span class="fr">une tasse de café</span> = a cup of coffee; the cup contains coffee.</p>
+      <p><span class="fr">une tasse à café</span> = a coffee cup; the cup is for coffee.</p>
+      <p>This <span class="fr">de</span> vs <span class="fr">à</span> difference is common in exams because both translations can look similar in English.</p>
+    </details>`},
+  {id:'quantities', level:'A2', title:'Quantities + de/d’', html:`
+    <details class="lesson" open><summary>After quantity words, use de/d’</summary>
+      <table><tr><th>Expression</th><th>Example</th></tr><tr><td>beaucoup de</td><td><span class="fr">beaucoup de travail</span></td></tr><tr><td>trop de</td><td><span class="fr">trop de sucre</span></td></tr><tr><td>assez de</td><td><span class="fr">assez d’argent</span></td></tr><tr><td>peu de</td><td><span class="fr">peu de temps</span></td></tr><tr><td>un peu de</td><td><span class="fr">un peu d’eau</span></td></tr><tr><td>combien de</td><td><span class="fr">combien de personnes</span></td></tr><tr><td>une bouteille de</td><td><span class="fr">une bouteille d’eau</span></td></tr><tr><td>un kilo de</td><td><span class="fr">un kilo de pommes</span></td></tr></table>
+      <div class="note">Do not say <span class="fr">beaucoup des amis</span> when you mean “many friends.” Say <span class="fr">beaucoup d’amis</span>. But <span class="fr">beaucoup des amis de Paul</span> can mean “many of Paul’s friends,” because it is <span class="fr">de + les amis de Paul</span>.</div>
+    </details>`},
+  {id:'places', level:'A2', title:'Places, countries, cities, transport', html:`
+    <details class="lesson" open><summary>Going to / being in countries and cities</summary>
+      <table><tr><th>Place type</th><th>To / in</th><th>From</th><th>Examples</th></tr><tr><td>city</td><td>à</td><td>de/d’</td><td><span class="fr">à Paris</span>, <span class="fr">de Toronto</span></td></tr><tr><td>feminine country</td><td>en</td><td>de/d’</td><td><span class="fr">en France</span>, <span class="fr">de France</span></td></tr><tr><td>masculine country</td><td>au</td><td>du</td><td><span class="fr">au Canada</span>, <span class="fr">du Canada</span></td></tr><tr><td>plural country</td><td>aux</td><td>des</td><td><span class="fr">aux États-Unis</span>, <span class="fr">des États-Unis</span></td></tr><tr><td>province/region</td><td>varies</td><td>varies</td><td><span class="fr">en Ontario</span>, <span class="fr">au Québec</span></td></tr></table>
+    </details>
+    <details class="lesson"><summary>Chez, à, au, en for everyday places</summary>
+      <p><span class="fr">chez moi</span> = at my place/home. <span class="fr">chez le médecin</span> = at the doctor’s office. Use <span class="fr">chez</span> for a person’s place or professional office identified by person.</p>
+      <p><span class="fr">à l’école</span>, <span class="fr">au travail</span>, <span class="fr">au bureau</span>, <span class="fr">à la maison</span>.</p>
+      <p>Transport: <span class="fr">en voiture</span>, <span class="fr">en bus</span>, <span class="fr">en train</span>, but <span class="fr">à pied</span>, <span class="fr">à vélo</span>.</p>
+    </details>`},
+  {id:'time', level:'A2', title:'Time expressions', html:`
+    <details class="lesson" open><summary>Small words for time</summary>
+      <table><tr><th>Meaning</th><th>French</th><th>Example</th></tr><tr><td>at a clock time</td><td>à</td><td><span class="fr">à huit heures</span></td></tr><tr><td>in a month/year/season</td><td>en</td><td><span class="fr">en mai</span>, <span class="fr">en 2026</span>, <span class="fr">en été</span></td></tr><tr><td>in spring</td><td>au</td><td><span class="fr">au printemps</span></td></tr><tr><td>during</td><td>pendant</td><td><span class="fr">pendant deux jours</span></td></tr><tr><td>since/for from past to now</td><td>depuis</td><td><span class="fr">depuis lundi</span></td></tr><tr><td>in future amount of time</td><td>dans</td><td><span class="fr">dans deux jours</span></td></tr><tr><td>from...to...</td><td>de... à... / du... au...</td><td><span class="fr">de 9 h à 17 h</span>, <span class="fr">du lundi au vendredi</span></td></tr></table>
+    </details>`},
+  {id:'possessive', level:'A1', title:'Possessives and demonstratives', html:`
+    <details class="lesson" open><summary>Possessives: my, your, his/her...</summary>
+      <table><tr><th>Owner</th><th>Masculine</th><th>Feminine</th><th>Plural</th></tr><tr><td>my</td><td>mon</td><td>ma</td><td>mes</td></tr><tr><td>your informal</td><td>ton</td><td>ta</td><td>tes</td></tr><tr><td>his/her/its</td><td>son</td><td>sa</td><td>ses</td></tr><tr><td>our</td><td>notre</td><td>notre</td><td>nos</td></tr><tr><td>your formal/plural</td><td>votre</td><td>votre</td><td>vos</td></tr><tr><td>their</td><td>leur</td><td>leur</td><td>leurs</td></tr></table>
+      <p>French chooses the form according to the noun after it: <span class="fr">son père</span> can mean his father or her father.</p>
+    </details>
+    <details class="lesson"><summary>Demonstratives: this/that/these/those</summary>
+      <table><tr><th>Form</th><th>Use</th><th>Example</th></tr><tr><td>ce</td><td>masculine before consonant</td><td><span class="fr">ce livre</span></td></tr><tr><td>cet</td><td>masculine before vowel/silent h</td><td><span class="fr">cet appartement</span></td></tr><tr><td>cette</td><td>feminine</td><td><span class="fr">cette maison</span></td></tr><tr><td>ces</td><td>plural</td><td><span class="fr">ces amis</span></td></tr></table>
+    </details>`},
+  {id:'yen', level:'B1', title:'Pronouns y and en', html:`
+    <details class="lesson" open><summary>Y replaces à + place/thing</summary>
+      <p><span class="fr">Tu vas à l’école ? Oui, j’y vais.</span></p>
+      <p><span class="fr">Tu penses à ton examen ? Oui, j’y pense.</span></p>
+      <div class="note">For people, use stressed pronouns more often: <span class="fr">Je pense à lui</span>, not usually <span class="fr">J’y pense</span>.</div>
+    </details>
+    <details class="lesson"><summary>En replaces de + noun or a quantity</summary>
+      <p><span class="fr">Tu veux du café ? Oui, j’en veux.</span></p>
+      <p><span class="fr">Tu as deux frères ? Oui, j’en ai deux.</span></p>
+      <p><span class="fr">Tu viens du Canada ? Oui, j’en viens.</span> This is grammatically possible, but for people and places, French often repeats the place for clarity in simple conversation.</p>
+    </details>`},
+  {id:'advanced', level:'B2', title:'Advanced accuracy: exceptions and nuance', html:`
+    <details class="lesson" open><summary>When de does not become du/des</summary>
+      <p>No contraction occurs when <span class="fr">le</span> or <span class="fr">les</span> are object pronouns, not articles.</p>
+      <p><span class="fr">Je viens de le voir.</span> = I just saw him/it. Not <span class="fr">Je viens du voir</span>.</p>
+      <p><span class="fr">Elle essaie de les aider.</span> = She is trying to help them. Not <span class="fr">des aider</span>.</p>
+    </details>
+    <details class="lesson"><summary>De before plural adjective</summary>
+      <p>In careful/formal French, <span class="fr">des</span> often becomes <span class="fr">de</span> before an adjective + plural noun.</p>
+      <p><span class="fr">J’ai vu de beaux appartements.</span> = I saw beautiful apartments.</p>
+      <p>But if the adjective+noun is treated like a fixed compound, <span class="fr">des</span> can remain: <span class="fr">des petits pois</span>.</p>
+    </details>
+    <details class="lesson"><summary>De vs des after beaucoup: general vs specific group</summary>
+      <p><span class="fr">beaucoup d’amis</span> = many friends.</p>
+      <p><span class="fr">beaucoup des amis de mon frère</span> = many of my brother’s friends.</p>
+      <p>The second one contains <span class="fr">de + les amis de mon frère</span>, so it becomes <span class="fr">des</span>.</p>
+    </details>`}
+];
+
+const references = {
+  'Article matrix': `<table><tr><th>Meaning</th><th>Masculine</th><th>Feminine</th><th>Vowel/silent h</th><th>Plural</th></tr><tr><td>the</td><td>le</td><td>la</td><td>l’</td><td>les</td></tr><tr><td>a/an/some countable</td><td>un</td><td>une</td><td>un/une</td><td>des</td></tr><tr><td>some amount</td><td>du</td><td>de la</td><td>de l’</td><td>des</td></tr><tr><td>to/at/in the</td><td>au</td><td>à la</td><td>à l’</td><td>aux</td></tr><tr><td>from/of/about the</td><td>du</td><td>de la</td><td>de l’</td><td>des</td></tr></table>`,
+  'Prepositions': `<table><tr><th>French</th><th>Common meanings</th><th>Example</th></tr><tr><td>à</td><td>to, at, in</td><td>à l’école</td></tr><tr><td>de</td><td>from, of, about</td><td>de France</td></tr><tr><td>en</td><td>in, to, by, made of</td><td>en France, en voiture</td></tr><tr><td>dans</td><td>in/inside; in future time</td><td>dans la boîte, dans deux jours</td></tr><tr><td>chez</td><td>at/to someone’s place</td><td>chez moi, chez le médecin</td></tr><tr><td>avec</td><td>with</td><td>avec mes amis</td></tr><tr><td>sans</td><td>without</td><td>sans sucre</td></tr><tr><td>pour</td><td>for</td><td>pour toi</td></tr><tr><td>par</td><td>by, through, per</td><td>par email, par jour</td></tr><tr><td>sur</td><td>on, about</td><td>sur la table, un livre sur Paris</td></tr><tr><td>sous</td><td>under</td><td>sous la table</td></tr><tr><td>devant</td><td>in front of</td><td>devant la maison</td></tr><tr><td>derrière</td><td>behind</td><td>derrière l’école</td></tr><tr><td>entre</td><td>between</td><td>entre deux villes</td></tr><tr><td>vers</td><td>toward / around time</td><td>vers huit heures</td></tr><tr><td>depuis</td><td>since/for</td><td>depuis 2024</td></tr><tr><td>pendant</td><td>during/for</td><td>pendant une heure</td></tr><tr><td>avant</td><td>before</td><td>avant le cours</td></tr><tr><td>après</td><td>after</td><td>après le travail</td></tr><tr><td>malgré</td><td>despite</td><td>malgré la pluie</td></tr><tr><td>selon</td><td>according to</td><td>selon le professeur</td></tr></table>`,
+  'Countries/places': `<table><tr><th>Place</th><th>To/in</th><th>From</th><th>Examples</th></tr><tr><td>city</td><td>à</td><td>de/d’</td><td>à Toronto, de Paris</td></tr><tr><td>feminine country</td><td>en</td><td>de/d’</td><td>en France, de France</td></tr><tr><td>masculine country</td><td>au</td><td>du</td><td>au Canada, du Canada</td></tr><tr><td>plural country</td><td>aux</td><td>des</td><td>aux États-Unis, des États-Unis</td></tr><tr><td>island/country without article</td><td>à/de often possible</td><td>de</td><td>à Cuba, de Cuba</td></tr><tr><td>person’s place</td><td>chez</td><td>de chez</td><td>chez Marie, de chez le médecin</td></tr></table>`,
+  'Quantities': `<table><tr><th>Expression</th><th>Use</th><th>Example</th></tr><tr><td>beaucoup de</td><td>a lot of</td><td>beaucoup de temps</td></tr><tr><td>trop de</td><td>too much/many</td><td>trop de travail</td></tr><tr><td>assez de</td><td>enough</td><td>assez d’argent</td></tr><tr><td>peu de</td><td>little/few</td><td>peu de personnes</td></tr><tr><td>un peu de</td><td>a little</td><td>un peu de lait</td></tr><tr><td>plus de</td><td>more</td><td>plus de temps</td></tr><tr><td>moins de</td><td>less/fewer</td><td>moins de sucre</td></tr><tr><td>combien de</td><td>how much/many</td><td>combien d’élèves</td></tr><tr><td>un verre de</td><td>a glass of</td><td>un verre d’eau</td></tr><tr><td>une tasse de</td><td>a cup of</td><td>une tasse de thé</td></tr><tr><td>une tranche de</td><td>a slice of</td><td>une tranche de pain</td></tr><tr><td>un kilo de</td><td>a kilo of</td><td>un kilo de pommes</td></tr></table>`,
+  'Pronouns y/en': `<table><tr><th>Pronoun</th><th>Replaces</th><th>Example</th></tr><tr><td>y</td><td>à + place</td><td>Je vais à l’école → J’y vais.</td></tr><tr><td>y</td><td>à + thing/idea</td><td>Je pense à mon examen → J’y pense.</td></tr><tr><td>en</td><td>de + noun</td><td>Je parle de mon travail → J’en parle.</td></tr><tr><td>en</td><td>quantity</td><td>J’ai trois livres → J’en ai trois.</td></tr><tr><td>en</td><td>partitive</td><td>Je veux du café → J’en veux.</td></tr></table>`,
+  'Possessive/demonstrative': `<table><tr><th>Type</th><th>Masculine</th><th>Feminine</th><th>Plural</th></tr><tr><td>my</td><td>mon</td><td>ma</td><td>mes</td></tr><tr><td>your informal</td><td>ton</td><td>ta</td><td>tes</td></tr><tr><td>his/her</td><td>son</td><td>sa</td><td>ses</td></tr><tr><td>our</td><td>notre</td><td>notre</td><td>nos</td></tr><tr><td>your formal/plural</td><td>votre</td><td>votre</td><td>vos</td></tr><tr><td>their</td><td>leur</td><td>leur</td><td>leurs</td></tr><tr><td>this/that</td><td>ce/cet</td><td>cette</td><td>ces</td></tr></table>`
+};
+
+const categories = [
+  ['articles','Articles'], ['partitives','Partitives'], ['a','À / au / aux'], ['de','De / du / des'], ['quantities','Quantities + de'], ['places','Places & countries'], ['time','Time'], ['possessive','Possessives/demonstratives'], ['yen','y / en'], ['mixed','Mixed review']
+];
+
+const questions = [
+  {cat:'articles', level:'A1', q:'J’ai ___ livre intéressant.', ans:'un', choices:['un','une','des','le'], why:'Livre is masculine singular and non-specific, so use un.'},
+  {cat:'articles', level:'A1', q:'Elle a ___ voiture rouge.', ans:'une', choices:['un','une','la','du'], why:'Voiture is feminine singular and non-specific, so use une.'},
+  {cat:'articles', level:'A1', q:'___ école est grande.', ans:"L’", choices:['Le','La',"L’",'Les'], why:'École starts with a vowel sound, so le/la becomes l’.'},
+  {cat:'articles', level:'A1', q:'J’aime ___ chocolat.', ans:'le', choices:['le','du','un','de'], why:'For likes/dislikes in general, French normally uses the definite article: aimer le chocolat.'},
+  {cat:'articles', level:'A1', q:'Il parle ___ français.', ans:'—', choices:['le','du','de','—'], why:'With parler + language, no article is used: parler français.'},
+  {cat:'articles', level:'A2', q:'___ français est une belle langue.', ans:'Le', choices:['Le','Du','De','Un'], why:'When the language is a noun/subject, use the definite article: le français.'},
+  {cat:'articles', level:'A1', q:'Nous avons ___ questions.', ans:'des', choices:['des','les','du','de la'], why:'Plural non-specific countable noun: des questions.'},
+  {cat:'partitives', level:'A2', q:'Je bois ___ café le matin.', ans:'du', choices:['du','de la','de l’','des'], why:'Café is masculine singular and refers to an unspecified amount.'},
+  {cat:'partitives', level:'A2', q:'Elle mange ___ soupe.', ans:'de la', choices:['du','de la','de l’','des'], why:'Soupe is feminine singular and refers to an unspecified amount.'},
+  {cat:'partitives', level:'A2', q:'Tu veux ___ eau ?', ans:"de l’", choices:['du','de la',"de l’",'des'], why:'Eau starts with a vowel sound, so use de l’.'},
+  {cat:'partitives', level:'A2', q:'Je prends ___ légumes.', ans:'des', choices:['du','de la','de l’','des'], why:'Légumes is plural; use des for some vegetables.'},
+  {cat:'partitives', level:'A2', q:'Je ne bois pas ___ café.', ans:'de', choices:['du','de','de la','le'], why:'After a negative, partitives usually become de/d’.'},
+  {cat:'partitives', level:'B1', q:'Ce n’est pas ___ café, c’est ___ thé.', ans:'du / du', choices:['de / de','du / du','le / le','de la / du'], why:'After être, the article normally stays: ce n’est pas du café.'},
+  {cat:'partitives', level:'B1', q:'Je ne veux pas ___ café froid; je veux ___ café chaud.', ans:'du / du', choices:['de / de','du / du','le / du','de la / du'], why:'This is contrastive: not the cold coffee, but hot coffee. The article can stay.'},
+  {cat:'a', level:'A1', q:'Je vais ___ parc.', ans:'au', choices:['à','au','à la','aux'], why:'Parc is masculine singular: à + le = au.'},
+  {cat:'a', level:'A1', q:'Nous allons ___ banque.', ans:'à la', choices:['au','à la','à l’','aux'], why:'Banque is feminine singular: à la.'},
+  {cat:'a', level:'A1', q:'Il va ___ école.', ans:"à l’", choices:['au','à la',"à l’",'aux'], why:'École begins with a vowel sound: à l’.'},
+  {cat:'a', level:'A1', q:'Elle parle ___ enfants.', ans:'aux', choices:['à','au','à la','aux'], why:'Enfants is plural with les: à + les = aux.'},
+  {cat:'a', level:'A2', q:'Le cours commence ___ huit heures.', ans:'à', choices:['à','en','dans','au'], why:'Use à for clock time.'},
+  {cat:'a', level:'B2', q:'Je commence ___ le comprendre.', ans:'à', choices:['à','au','aux','de'], why:'No contraction before object pronoun le. It is à le comprendre, not au comprendre.'},
+  {cat:'de', level:'A1', q:'Je viens ___ Canada.', ans:'du', choices:['de','du','de la','des'], why:'Canada is masculine with le: de + le = du.'},
+  {cat:'de', level:'A1', q:'Elle vient ___ France.', ans:'de', choices:['de','du','de la','des'], why:'Feminine country with no article after venir de: de France.'},
+  {cat:'de', level:'A1', q:'Nous parlons ___ professeur.', ans:'du', choices:['de','du','de la','des'], why:'Professeur is masculine singular: de + le = du.'},
+  {cat:'de', level:'A1', q:'Il parle ___ politique.', ans:'de la', choices:['du','de la','de l’','des'], why:'Politique is feminine singular: de la.'},
+  {cat:'de', level:'A2', q:'Je parle ___ amis de Paul.', ans:'des', choices:['de','du','de la','des'], why:'Plural definite group: de + les amis = des amis.'},
+  {cat:'de', level:'B2', q:'Je viens ___ voir.', ans:'de le', choices:['du','de le','des','de la'], why:'Here le is an object pronoun, not an article. Do not contract: de le voir.'},
+  {cat:'quantities', level:'A2', q:'J’ai beaucoup ___ travail.', ans:'de', choices:['du','de','des','le'], why:'After beaucoup, use de/d’.'},
+  {cat:'quantities', level:'A2', q:'Elle boit trop ___ eau.', ans:"d’", choices:['de','du',"d’",'de la'], why:'Before a vowel sound, de becomes d’.'},
+  {cat:'quantities', level:'A2', q:'Combien ___ personnes viennent ?', ans:'de', choices:['de','des','du','les'], why:'Combien de + noun.'},
+  {cat:'quantities', level:'A2', q:'Je voudrais une bouteille ___ eau.', ans:"d’", choices:['de','du',"d’",'des'], why:'A container/measure uses de; before eau, de becomes d’.'},
+  {cat:'quantities', level:'B1', q:'Beaucoup ___ amis de ma sœur sont étudiants.', ans:'des', choices:['de','d’','des','du'], why:'This means many of my sister’s friends: beaucoup de + les amis de ma sœur = beaucoup des amis de ma sœur.'},
+  {cat:'places', level:'A1', q:'J’habite ___ Toronto.', ans:'à', choices:['à','en','au','aux'], why:'Use à with cities.'},
+  {cat:'places', level:'A1', q:'Je vais ___ Canada.', ans:'au', choices:['à','en','au','aux'], why:'Canada is masculine: au Canada.'},
+  {cat:'places', level:'A1', q:'Elle va ___ France.', ans:'en', choices:['à','en','au','aux'], why:'France is feminine: en France.'},
+  {cat:'places', level:'A2', q:'Ils vont ___ États-Unis.', ans:'aux', choices:['à','en','au','aux'], why:'Plural country: aux États-Unis.'},
+  {cat:'places', level:'A2', q:'Je viens ___ États-Unis.', ans:'des', choices:['de','du','de la','des'], why:'From a plural country: des États-Unis.'},
+  {cat:'places', level:'A2', q:'Je vais ___ médecin.', ans:'chez le', choices:['au','chez le','à la','en'], why:'For a person/professional office, use chez: chez le médecin.'},
+  {cat:'places', level:'A2', q:'Je vais ___ pied.', ans:'à', choices:['à','en','au','dans'], why:'Fixed transport expression: à pied.'},
+  {cat:'places', level:'A2', q:'Je vais au travail ___ bus.', ans:'en', choices:['à','en','au','dans'], why:'Transport by vehicle usually uses en: en bus.'},
+  {cat:'time', level:'A2', q:'Je commence ___ 9 h.', ans:'à', choices:['à','en','dans','depuis'], why:'Use à for a clock time.'},
+  {cat:'time', level:'A2', q:'Je suis arrivé ___ 2024.', ans:'en', choices:['à','en','dans','depuis'], why:'Use en with a year.'},
+  {cat:'time', level:'A2', q:'Je pars ___ deux jours.', ans:'dans', choices:['pendant','depuis','dans','à'], why:'Future time from now: dans deux jours.'},
+  {cat:'time', level:'A2', q:'J’étudie le français ___ deux ans.', ans:'depuis', choices:['pendant','depuis','dans','à'], why:'Ongoing action from past to present: depuis.'},
+  {cat:'time', level:'A2', q:'Le bureau est ouvert ___ lundi ___ vendredi.', ans:'du / au', choices:['de / à','du / au','de la / à la','des / aux'], why:'For days with articles: du lundi au vendredi.'},
+  {cat:'possessive', level:'A1', q:'C’est ___ maison.', ans:'ma', choices:['mon','ma','mes','m’'], why:'Maison is feminine singular: ma maison.'},
+  {cat:'possessive', level:'A1', q:'C’est ___ appartement.', ans:'mon', choices:['mon','ma','mes','m’'], why:'Use mon before a vowel even for a feminine noun: mon appartement.'},
+  {cat:'possessive', level:'A1', q:'Ce sont ___ livres.', ans:'mes', choices:['mon','ma','mes','m’'], why:'Plural noun: mes.'},
+  {cat:'possessive', level:'A2', q:'___ homme est gentil.', ans:'Cet', choices:['Ce','Cet','Cette','Ces'], why:'Homme is masculine but begins with silent h/vowel sound: cet homme.'},
+  {cat:'possessive', level:'A2', q:'J’aime ___ ville.', ans:'cette', choices:['ce','cet','cette','ces'], why:'Ville is feminine singular: cette.'},
+  {cat:'possessive', level:'A2', q:'___ enfants sont calmes.', ans:'Ces', choices:['Ce','Cet','Cette','Ces'], why:'Plural: ces enfants.'},
+  {cat:'yen', level:'B1', q:'Tu vas à l’école ? Oui, j’___ vais.', ans:'y', choices:['y','en','le','la'], why:'Y replaces à + place: à l’école.'},
+  {cat:'yen', level:'B1', q:'Tu veux du café ? Oui, j’___ veux.', ans:'en', choices:['y','en','le','la'], why:'En replaces a partitive/quantity: du café.'},
+  {cat:'yen', level:'B1', q:'Tu as trois stylos ? Oui, j’___ ai trois.', ans:'en', choices:['y','en','les','leur'], why:'En replaces the noun after a number/quantity.'},
+  {cat:'yen', level:'B1', q:'Tu penses à ton examen ? Oui, j’___ pense.', ans:'y', choices:['y','en','le','lui'], why:'Y replaces à + thing/idea.'},
+  {cat:'yen', level:'B1', q:'Tu parles de ton travail ? Oui, j’___ parle.', ans:'en', choices:['y','en','le','lui'], why:'En replaces de + noun/idea.'},
+  {cat:'mixed', level:'A2', q:'Je n’ai pas ___ argent.', ans:"d’", choices:['de',"d’",'du','l’'], why:'Negative indefinite/partitive becomes de/d’; before argent, use d’.'},
+  {cat:'mixed', level:'B1', q:'C’est le livre ___ Marie.', ans:'de', choices:['à','de','du','des'], why:'Possession with a noun uses de: le livre de Marie.'},
+  {cat:'mixed', level:'B1', q:'C’est une machine ___ café.', ans:'à', choices:['à','de','du','pour'], why:'Machine à café = machine for making coffee; function/purpose often uses à.'},
+  {cat:'mixed', level:'B1', q:'Je prends une tasse ___ café.', ans:'de', choices:['à','de','du','pour'], why:'Tasse de café = a cup containing coffee.'},
+  {cat:'mixed', level:'B2', q:'J’ai acheté ___ beaux livres.', ans:'de', choices:['des','de','les','du'], why:'In careful French, des often becomes de before adjective + plural noun.'},
+  {cat:'mixed', level:'B2', q:'Il essaie ___ les aider.', ans:'de', choices:['des','de','du','à'], why:'Les is an object pronoun, so no contraction: de les aider.'}
+];
+
+const errorItems = [
+  {bad:'Je vais à le parc.', good:'Je vais au parc.', why:'à + le contracts to au when le is an article.'},
+  {bad:'Je parle de les enfants.', good:'Je parle des enfants.', why:'de + les contracts to des when les is an article.'},
+  {bad:'Je ne veux pas du café.', good:'Je ne veux pas de café.', why:'In a normal negative, partitives become de/d’.'},
+  {bad:'J’ai beaucoup des amis.', good:'J’ai beaucoup d’amis.', why:'After beaucoup, use de/d’ unless you mean “many of the...”'},
+  {bad:'Je vais en Canada.', good:'Je vais au Canada.', why:'Canada is masculine: au Canada.'},
+  {bad:'Je vais au France.', good:'Je vais en France.', why:'France is feminine: en France.'},
+  {bad:'Je vais au médecin.', good:'Je vais chez le médecin.', why:'Use chez for a professional person’s office.'},
+  {bad:'Je commence au comprendre.', good:'Je commence à le comprendre.', why:'Do not contract à + le when le is an object pronoun.'},
+  {bad:'Je viens du voir.', good:'Je viens de le voir.', why:'Do not contract de + le when le is an object pronoun.'},
+  {bad:'Je bois de l’eau? Non, je ne bois pas de l’eau.', good:'Je bois de l’eau ? Non, je ne bois pas d’eau.', why:'After negation, use de/d’; before eau, d’eau.'}
+];
+
+const flashcards = [
+  {deck:'Core', front:'à + le', back:'au — Je vais au parc.'},
+  {deck:'Core', front:'à + les', back:'aux — Je parle aux enfants.'},
+  {deck:'Core', front:'de + le', back:'du — Je viens du Canada.'},
+  {deck:'Core', front:'de + les', back:'des — Je parle des étudiants.'},
+  {deck:'Core', front:'masculine “some”', back:'du — du pain, du café'},
+  {deck:'Core', front:'feminine “some”', back:'de la — de la soupe'},
+  {deck:'Core', front:'vowel “some”', back:'de l’ — de l’eau'},
+  {deck:'Core', front:'plural “some”', back:'des — des légumes'},
+  {deck:'Negation', front:'Je mange du pain → negative', back:'Je ne mange pas de pain.'},
+  {deck:'Negation', front:'Je bois de l’eau → negative', back:'Je ne bois pas d’eau.'},
+  {deck:'Negation', front:'Ce n’est pas ___ café.', back:'du — article stays after être.'},
+  {deck:'Quantities', front:'beaucoup + friends', back:'beaucoup d’amis'},
+  {deck:'Quantities', front:'too much water', back:'trop d’eau'},
+  {deck:'Quantities', front:'a bottle of water', back:'une bouteille d’eau'},
+  {deck:'Places', front:'to Canada', back:'au Canada'},
+  {deck:'Places', front:'from Canada', back:'du Canada'},
+  {deck:'Places', front:'to France', back:'en France'},
+  {deck:'Places', front:'from France', back:'de France'},
+  {deck:'Places', front:'to the United States', back:'aux États-Unis'},
+  {deck:'Places', front:'from the United States', back:'des États-Unis'},
+  {deck:'Places', front:'at my place', back:'chez moi'},
+  {deck:'Transport', front:'by car', back:'en voiture'},
+  {deck:'Transport', front:'by bike', back:'à vélo'},
+  {deck:'Time', front:'at 8:00', back:'à huit heures'},
+  {deck:'Time', front:'in 2026', back:'en 2026'},
+  {deck:'Time', front:'in two days', back:'dans deux jours'},
+  {deck:'y/en', front:'à l’école → pronoun', back:'y — J’y vais.'},
+  {deck:'y/en', front:'du café → pronoun', back:'en — J’en veux.'},
+  {deck:'y/en', front:'trois livres → pronoun', back:'en — J’en ai trois.'},
+  {deck:'Possessives', front:'my house', back:'ma maison'},
+  {deck:'Possessives', front:'my apartment', back:'mon appartement'},
+  {deck:'Demonstratives', front:'this man', back:'cet homme'},
+  {deck:'Demonstratives', front:'these friends', back:'ces amis'}
+];
+
+let state = JSON.parse(localStorage.getItem('smallWordsProgress')||'{"correct":0,"wrong":0}');
+let currentQ=null, currentMode='choice', exam=[], examIndex=0, examAnswers=[], cardIndex=0, flipped=false;
+function save(){localStorage.setItem('smallWordsProgress',JSON.stringify(state));updateProgress()}
+function updateProgress(){let total=state.correct+state.wrong;let acc=total?Math.round(state.correct/total*100):0;document.getElementById('overallAcc').textContent=acc+'%';document.getElementById('overallBar').style.width=acc+'%';document.getElementById('totalCorrect').textContent=state.correct;document.getElementById('totalWrong').textContent=state.wrong}
+function resetProgress(){state={correct:0,wrong:0};save()}
+function initLessons(){let menu=document.getElementById('lessonMenu');let content=document.getElementById('lessonContent');menu.innerHTML='<h3>Lesson path</h3>'+lessons.map((l,i)=>`<button onclick="showLesson('${l.id}')" id="btn-${l.id}" class="${i===0?'active':''}"><span class="badge">${l.level}</span> ${l.title}</button>`).join('');content.innerHTML='';showLesson(lessons[0].id)}
+function showLesson(id){document.querySelectorAll('.side button').forEach(b=>b.classList.remove('active'));document.getElementById('btn-'+id).classList.add('active');let l=lessons.find(x=>x.id===id);document.getElementById('lessonContent').innerHTML=`<div class="card"><span class="tag">${l.level}</span><h2 style="margin-top:.5rem">${l.title}</h2>${l.html}</div>`}
+function initRefs(){let tabs=document.getElementById('refTabs');tabs.innerHTML=Object.keys(references).map((k,i)=>`<button class="tab ${i===0?'active':''}" onclick="showRef('${k}',this)">${k}</button>`).join('');showRef(Object.keys(references)[0])}
+function showRef(k,btn){if(btn){document.querySelectorAll('#refTabs .tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active')}document.getElementById('refContent').innerHTML=references[k]}
+function initPractice(){let c=document.getElementById('categorySelect');c.innerHTML=categories.map(x=>`<option value="${x[0]}">${x[1]}</option>`).join('');let e=document.getElementById('examFocus');e.innerHTML='<option value="all">All categories</option>'+categories.filter(x=>x[0]!='mixed').map(x=>`<option value="${x[0]}">${x[1]}</option>`).join('');newPracticeQuestion()}
+function pool(){let cat=document.getElementById('categorySelect').value;let lev=document.getElementById('levelSelect').value;return questions.filter(q=>(cat==='mixed'||q.cat===cat||q.cat==='mixed')&&(lev==='all'||q.level===lev))}
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function newPracticeQuestion(){let p=pool(); if(!p.length) p=questions; currentQ=p[Math.floor(Math.random()*p.length)]; currentMode=document.getElementById('typeSelect').value; if(currentMode==='mixed') currentMode=Math.random()<.5?'choice':'type'; document.getElementById('qLevel').textContent=currentQ.level;document.getElementById('qCat').textContent=categories.find(x=>x[0]===currentQ.cat)?.[1]||currentQ.cat;document.getElementById('practiceQuestion').innerHTML=currentQ.q.replace('___','<span class="blank">___</span>');document.getElementById('practiceFeedback').className='feedback hidden';let inp=document.getElementById('practiceInput'); if(currentMode==='choice'){inp.innerHTML='<div class="choices">'+shuffle(currentQ.choices).map(ch=>`<button onclick="checkChoice(this,'${escapeAttr(ch)}')">${ch}</button>`).join('')+'</div>'}else{inp.innerHTML=`<input id="typedAns" placeholder="Type the missing word(s), accents optional for checking." onkeydown="if(event.key==='Enter')checkTyped()"><div class="pillrow"><button onclick="checkTyped()">Check</button></div>`}}
+function escapeAttr(s){return String(s).replace(/'/g,"&#39;")}
+function norm(s){return String(s).trim().toLowerCase().replace(/[’']/g,"'").normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ')}
+function isCorrect(ans, target){return norm(ans)===norm(target) || (target==='—' && ['','-', '—','no article','nothing'].includes(norm(ans)))}
+function checkChoice(btn, ans){let ok=isCorrect(ans,currentQ.ans);document.querySelectorAll('.choices button').forEach(b=>b.disabled=true);btn.classList.add(ok?'correct':'wrong');document.querySelectorAll('.choices button').forEach(b=>{if(isCorrect(b.textContent,currentQ.ans))b.classList.add('correct')});feedback(ok); ok?state.correct++:state.wrong++; save()}
+function checkTyped(){let v=document.getElementById('typedAns').value;let ok=isCorrect(v,currentQ.ans);feedback(ok); ok?state.correct++:state.wrong++; save()}
+function feedback(ok){let f=document.getElementById('practiceFeedback');f.className='feedback '+(ok?'good':'bad');f.innerHTML=`<strong>${ok?'Correct.':'Not quite.'}</strong><br>Answer: <span class="fr">${currentQ.ans}</span><br><span class="muted">${currentQ.why}</span>`}
+function showAnswer(){let f=document.getElementById('practiceFeedback');f.className='feedback';f.innerHTML=`Answer: <span class="fr">${currentQ.ans}</span><br><span class="muted">${currentQ.why}</span>`}
+function startExam(){let len=+document.getElementById('examLength').value;let diff=document.getElementById('examDifficulty').value;let focus=document.getElementById('examFocus').value;let p=questions.filter(q=>(diff==='all'||q.level===diff)&&(focus==='all'||q.cat===focus)); if(p.length<len) p=questions.filter(q=>focus==='all'||q.cat===focus); exam=shuffle(p).slice(0,len); examIndex=0;examAnswers=[];document.getElementById('examResult').className='hidden';document.getElementById('examArea').className='qbox';renderExam()}
+function renderExam(){let q=exam[examIndex]; if(!q){finishExam();return}document.getElementById('examArea').innerHTML=`<div class="pillrow"><span class="pill">Question ${examIndex+1}/${exam.length}</span><span class="pill">${q.level}</span><span class="pill">${q.cat}</span></div><div class="question">${q.q.replace('___','<span class="blank">___</span>')}</div><div class="choices">${shuffle(q.choices).map(ch=>`<button onclick="answerExam('${escapeAttr(ch)}')">${ch}</button>`).join('')}</div>`}
+function answerExam(ans){let q=exam[examIndex];examAnswers.push({q,ans,ok:isCorrect(ans,q.ans)});examIndex++;renderExam()}
+function finishExam(){if(!exam.length)return;let done=examAnswers.length;let correct=examAnswers.filter(a=>a.ok).length;let pct=done?Math.round(correct/done*100):0;state.correct+=correct;state.wrong+=done-correct;save();document.getElementById('examArea').className='hidden';let rows=examAnswers.map((a,i)=>`<tr><td>${i+1}</td><td>${a.q.q}</td><td>${a.ans}</td><td><span class="fr">${a.q.ans}</span></td><td>${a.ok?'✅':'❌'} ${a.q.why}</td></tr>`).join('');document.getElementById('examResult').className='card';document.getElementById('examResult').innerHTML=`<h3>Result: ${correct}/${done} (${pct}%)</h3><div class="scorebar"><span style="width:${pct}%"></span></div><table><tr><th>#</th><th>Question</th><th>Your answer</th><th>Correct</th><th>Explanation</th></tr>${rows}</table>`;exam=[]}
+function initFlashcards(){let decks=[...new Set(flashcards.map(c=>c.deck))];document.getElementById('deckSelect').innerHTML=decks.map(d=>`<option>${d}</option>`).join('');document.getElementById('deckSelect').onchange=()=>{cardIndex=0;flipped=false;renderCard()};renderCard()}
+function deckCards(){let d=document.getElementById('deckSelect').value;return flashcards.filter(c=>c.deck===d)}
+function renderCard(){let cards=deckCards();let c=cards[cardIndex%cards.length];document.getElementById('flashcard').innerHTML=`<div><div class="mini muted">${c.deck} · ${cardIndex+1}/${cards.length}</div><div class="big">${flipped?c.back:c.front}</div><p class="muted">Click to flip</p></div>`}
+function flipCard(){flipped=!flipped;renderCard()}
+function nextCard(){let cards=deckCards();cardIndex=(cardIndex+1)%cards.length;flipped=false;renderCard()}
+function prevCard(){let cards=deckCards();cardIndex=(cardIndex-1+cards.length)%cards.length;flipped=false;renderCard()}
+function renderError(){let item=errorItems[Math.floor(Math.random()*errorItems.length)];document.getElementById('errorBox').innerHTML=`<p class="question"><span class="fr">${item.bad}</span></p><textarea id="errorAnswer" placeholder="Write the corrected sentence here."></textarea><div class="pillrow"><button onclick="document.getElementById('errFb').className='feedback';document.getElementById('errFb').innerHTML='Correct form: <span class=fr>${item.good.replace(/'/g,"&#39;")}</span><br><span class=muted>${item.why.replace(/'/g,"&#39;")}</span>'">Show correction</button><button class="secondary" onclick="renderError()">New error</button></div><div id="errFb" class="feedback hidden"></div>`}
+function boot(){updateProgress();initLessons();initRefs();initPractice();initFlashcards();renderError();}
+boot();
+</script>
+</body>
+</html>
