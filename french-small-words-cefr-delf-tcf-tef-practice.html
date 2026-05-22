@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>French Small Words Mastery — CEFR / DELF / TCF / TEF Practice</title>
+<style>
+:root {
+  --bg: #f7f7fb;
+  --panel: #ffffff;
+  --ink: #1f2937;
+  --muted: #64748b;
+  --brand: #4f46e5;
+  --brand2: #0f766e;
+  --soft: #eef2ff;
+  --line: #e5e7eb;
+  --good: #047857;
+  --bad: #b91c1c;
+  --warn: #b45309;
+  --shadow: 0 12px 30px rgba(15,23,42,.10);
+  --radius: 18px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+}
+body.dark {
+  --bg: #0f172a;
+  --panel: #111827;
+  --ink: #e5e7eb;
+  --muted: #a7b3c4;
+  --brand: #818cf8;
+  --brand2: #5eead4;
+  --soft: #1e293b;
+  --line: #334155;
+  --shadow: 0 12px 30px rgba(0,0,0,.30);
+}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(247,247,251,.90);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+body.dark header { background: rgba(15,23,42,.9); }
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: space-between;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+.logo .mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+  box-shadow: var(--shadow);
+}
+.nav-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+button, .btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 13px;
+  cursor: pointer;
+  font-weight: 700;
+  background: var(--soft);
+  color: var(--ink);
+  transition: transform .12s ease, opacity .12s ease, background .12s ease;
+}
+button:hover, .btn:hover { transform: translateY(-1px); }
+button.primary {
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+  color: white;
+}
+button.ghost {
+  background: transparent;
+  border: 1px solid var(--line);
+}
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 18px 80px;
+}
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 20px;
+  align-items: stretch;
+  margin-top: 18px;
+}
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 4.3rem);
+  line-height: .98;
+  margin: 0 0 16px;
+  letter-spacing: -.055em;
+}
+.hero p.big {
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin: 0 0 20px;
+}
+.pillrow { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--soft);
+  font-size: .9rem;
+  font-weight: 700;
+}
+.grid {
+  display: grid;
+  gap: 18px;
+}
+.grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.section {
+  margin-top: 26px;
+}
+.section h2 {
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  margin: 0 0 8px;
+  letter-spacing: -.035em;
+}
+.section > p.lead {
+  color: var(--muted);
+  margin-top: 0;
+  max-width: 850px;
+}
+.toc {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.toc a {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  font-weight: 750;
+}
+.toc a small { display:block; color: var(--muted); font-weight: 600; margin-top: 2px; }
+.searchbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+input, select, textarea {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  border-radius: 12px;
+  padding: 11px 12px;
+  font: inherit;
+}
+input[type="search"] { flex: 1; min-width: 240px; }
+.tablewrap { overflow-x:auto; border: 1px solid var(--line); border-radius: 16px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+}
+th, td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+th {
+  background: var(--soft);
+  position: sticky;
+  top: 61px;
+  z-index: 4;
+}
+tr:last-child td { border-bottom: 0; }
+.tag {
+  font-size: .78rem;
+  font-weight: 800;
+  color: var(--brand2);
+  background: var(--soft);
+  padding: 4px 8px;
+  border-radius: 999px;
+  display:inline-block;
+}
+.rulecard {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  background: var(--panel);
+}
+.rulecard h3 { margin: 0 0 6px; }
+.rule {
+  border-left: 4px solid var(--brand);
+  padding-left: 12px;
+  margin: 10px 0;
+}
+.example {
+  background: var(--soft);
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin: 8px 0;
+}
+.warning {
+  color: var(--warn);
+  font-weight: 700;
+}
+.kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 2px 6px;
+}
+.flashcard {
+  min-height: 290px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+.flashcard .front {
+  font-size: clamp(2.6rem, 9vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -.05em;
+}
+.flashcard .back {
+  display:none;
+  font-size: 1.05rem;
+  max-width: 650px;
+}
+.flashcard.flipped .front { display:none; }
+.flashcard.flipped .back { display:block; }
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 12px 0;
+}
+.quizbox .qtext {
+  font-size: 1.35rem;
+  font-weight: 850;
+  margin-bottom: 14px;
+}
+.option {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+.option.correct { outline: 3px solid rgba(4,120,87,.35); }
+.option.incorrect { outline: 3px solid rgba(185,28,28,.35); }
+.feedback {
+  min-height: 52px;
+  margin-top: 12px;
+  font-weight: 700;
+}
+.good { color: var(--good); }
+.bad { color: var(--bad); }
+.progress {
+  height: 12px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress > div {
+  height: 100%;
+  background: linear-gradient(90deg, var(--brand), var(--brand2));
+  width: 0%;
+}
+.mini {
+  font-size: .9rem;
+  color: var(--muted);
+}
+.practice-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  background: var(--panel);
+}
+details {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+  padding: 12px 14px;
+  margin: 10px 0;
+}
+summary {
+  cursor: pointer;
+  font-weight: 850;
+}
+.footer {
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  margin-top: 40px;
+}
+.checklist label {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.checklist input { margin-top: 4px; }
+.smallword {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--brand);
+}
+.notice {
+  border-left: 5px solid var(--brand2);
+  background: var(--soft);
+  padding: 14px;
+  border-radius: 14px;
+}
+@media (max-width: 850px) {
+  .hero, .grid.cols-2, .grid.cols-3 { grid-template-columns: 1fr; }
+  .toc { grid-template-columns: 1fr 1fr; }
+  .navbar { align-items: flex-start; flex-direction: column; }
+  th { top: 108px; }
+}
+@media (max-width: 520px) {
+  .toc { grid-template-columns: 1fr; }
+  .card { padding: 16px; }
+  main { padding-inline: 12px; }
+}
+@media print {
+  header, .nav-actions, .controls, button, .searchbar { display:none!important; }
+  body { background:white; color:black; }
+  .card, .rulecard, .practice-card { box-shadow:none; border:1px solid #ccc; break-inside:avoid; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="navbar">
+    <div class="logo"><div class="mark">FR</div><div>Small Words Mastery<br><span class="mini">CEFR • DELF • TCF • TEF style practice</span></div></div>
+    <div class="nav-actions">
+      <button class="ghost" onclick="toggleDark()">Dark mode</button>
+      <button class="ghost" onclick="window.print()">Print / Save PDF</button>
+      <a class="btn" href="#quiz">Start quiz</a>
+      <a class="btn primary" href="#exam">Exam mode</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="card">
+      <h1>Master tiny French words that change everything.</h1>
+      <p class="big">A complete interactive practice site for <strong>de, du, de la, à, au, aux, en, y, sur, dans, chez, vers, environ, à propos de</strong> and many more. Built for your High A1 → Low A2 path, with A2/B1 extensions for DELF, TCF, and TEF-style accuracy.</p>
+      <div class="pillrow">
+        <span class="pill">✅ A1 foundations</span>
+        <span class="pill">✅ A2 speaking patterns</span>
+        <span class="pill">✅ B1 exam connectors</span>
+        <span class="pill">✅ English explanations</span>
+        <span class="pill">✅ Offline single HTML file</span>
+      </div>
+      <div class="notice"><strong>Important:</strong> English “about” is not one French word. It can be <span class="kbd">à propos de</span>, <span class="kbd">sur</span>, <span class="kbd">environ</span>, <span class="kbd">vers</span>, <span class="kbd">quant à</span>, <span class="kbd">par rapport à</span>, or others depending on meaning.</div>
+    </div>
+    <div class="card">
+      <h2>Your progress</h2>
+      <p class="mini">Progress saves in your browser on this device.</p>
+      <div class="progress"><div id="progressBar"></div></div>
+      <p><strong id="progressText">0%</strong> completed</p>
+      <div class="checklist" id="checklist"></div>
+      <button class="ghost" onclick="resetProgress()">Reset progress</button>
+    </div>
+  </section>
+
+  <section class="section" id="toc">
+    <h2>Study map</h2>
+    <p class="lead">Use this like a mini-course. Start with articles and contractions, then move to place/time, then topic/approximation, then pronouns <span class="kbd">en</span> and <span class="kbd">y</span>.</p>
+    <div class="toc">
+      <a href="#core">1. Core grammar<small>du/de la/des, au/aux</small></a>
+      <a href="#terms">2. Complete word bank<small>Search and filter all terms</small></a>
+      <a href="#about">3. English “about” map<small>topic vs number vs relation</small></a>
+      <a href="#flashcards">4. Flashcards<small>Tap to flip</small></a>
+      <a href="#quiz">5. Quiz trainer<small>MCQ with explanations</small></a>
+      <a href="#transform">6. Sentence transformer<small>en/y/contractions</small></a>
+      <a href="#writing">7. Speaking + writing<small>DELF/TCF/TEF style</small></a>
+      <a href="#exam">8. Exam mode<small>Timed mixed test</small></a>
+    </div>
+  </section>
+
+  <section class="section" id="core">
+    <h2>1. Core grammar lessons</h2>
+    <p class="lead">These are the main French patterns that control the small words. Read the rule, example, and trap. Then mark the lesson complete.</p>
+    <div class="grid cols-2" id="lessonGrid"></div>
+  </section>
+
+  <section class="section" id="terms">
+    <h2>2. Complete searchable word bank</h2>
+    <p class="lead">Search by French word, meaning, level, function, or example. Use this as your quick reference when writing or speaking.</p>
+    <div class="searchbar">
+      <input id="termSearch" type="search" placeholder="Search: about, du, quantity, topic, place, A2..." oninput="renderTerms()">
+      <select id="levelFilter" onchange="renderTerms()">
+        <option value="">All levels</option>
+        <option>A1</option>
+        <option>A2</option>
+        <option>B1</option>
+        <option>B2</option>
+      </select>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>French</th><th>Function</th><th>Meaning</th><th>Example + translation</th><th>Trap</th></tr></thead>
+        <tbody id="termsBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <h2>3. The complete “about” decision map</h2>
+    <p class="lead">When English says “about,” choose the French based on the actual meaning.</p>
+    <div class="grid cols-3">
+      <div class="practice-card"><div class="smallword">à propos de</div><p><strong>Meaning:</strong> about/regarding a topic.</p><p><em>J’ai une question à propos du cours.</em><br>I have a question about the course.</p></div>
+      <div class="practice-card"><div class="smallword">sur</div><p><strong>Meaning:</strong> about/on a topic, especially text, video, article.</p><p><em>Un article sur le bénévolat.</em><br>An article about volunteering.</p></div>
+      <div class="practice-card"><div class="smallword">environ</div><p><strong>Meaning:</strong> about/approximately for numbers.</p><p><em>Ça coûte environ 30 dollars.</em><br>It costs about 30 dollars.</p></div>
+      <div class="practice-card"><div class="smallword">vers</div><p><strong>Meaning:</strong> around a time, toward a place.</p><p><em>J’arrive vers 7 h.</em><br>I arrive around 7.</p></div>
+      <div class="practice-card"><div class="smallword">quant à</div><p><strong>Meaning:</strong> as for, when contrasting.</p><p><em>Quant à moi, je préfère le matin.</em><br>As for me, I prefer the morning.</p></div>
+      <div class="practice-card"><div class="smallword">par rapport à</div><p><strong>Meaning:</strong> compared with / in relation to.</p><p><em>Par rapport à Toronto, c’est calme.</em><br>Compared with Toronto, it is calm.</p></div>
+    </div>
+    <details open><summary>Fast rule for English speakers</summary>
+      <p><strong>Topic?</strong> Use <span class="kbd">à propos de</span>, <span class="kbd">sur</span>, <span class="kbd">au sujet de</span>, or <span class="kbd">concernant</span>.</p>
+      <p><strong>Approximate number?</strong> Use <span class="kbd">environ</span>, <span class="kbd">à peu près</span>, or <span class="kbd">approximativement</span>.</p>
+      <p><strong>Approximate time?</strong> Use <span class="kbd">vers</span> or <span class="kbd">aux alentours de</span>.</p>
+      <p><strong>Comparison/relation?</strong> Use <span class="kbd">par rapport à</span>.</p>
+      <p><strong>Contrast: “as for...”?</strong> Use <span class="kbd">quant à</span>.</p>
+    </details>
+  </section>
+
+  <section class="section" id="flashcards">
+    <h2>4. Flashcards</h2>
+    <p class="lead">Tap the card to flip. Use “known” when you can explain the word and make your own sentence.</p>
+    <div class="card flashcard" id="flashcard" onclick="flipCard()">
+      <div class="front" id="cardFront">de</div>
+      <div class="back" id="cardBack"></div>
+    </div>
+    <div class="controls">
+      <button onclick="prevCard()">Previous</button>
+      <button onclick="nextCard()">Next</button>
+      <button class="primary" onclick="markKnown()">Mark known</button>
+      <select id="flashLevel" onchange="resetFlashcards()">
+        <option value="">All levels</option>
+        <option value="A1">A1 only</option>
+        <option value="A2">A2 included</option>
+        <option value="B1">B1 included</option>
+      </select>
+      <span class="mini" id="flashStatus"></span>
+    </div>
+  </section>
+
+  <section class="section" id="quiz">
+    <h2>5. Quiz trainer</h2>
+    <p class="lead">Choose an answer. You get instant feedback and a grammar explanation.</p>
+    <div class="card quizbox">
+      <div class="controls">
+        <select id="quizTag" onchange="newQuestion()">
+          <option value="">Mixed topics</option>
+          <option value="contractions">Contractions</option>
+          <option value="partitive">Partitives</option>
+          <option value="quantity">Quantity</option>
+          <option value="negative">Negatives</option>
+          <option value="place">Place</option>
+          <option value="time">Time</option>
+          <option value="approx">Approximation</option>
+          <option value="about">About/regarding</option>
+          <option value="pronouns">en / y pronouns</option>
+          <option value="verbs">Verb patterns</option>
+          <option value="connectors">Connectors</option>
+        </select>
+        <button onclick="newQuestion()">New question</button>
+        <button class="ghost" onclick="showAnswer()">Show answer</button>
+      </div>
+      <div class="qtext" id="qtext"></div>
+      <div id="options"></div>
+      <div class="feedback" id="feedback"></div>
+      <p class="mini" id="quizStats"></p>
+    </div>
+  </section>
+
+  <section class="section" id="transform">
+    <h2>6. Sentence transformer</h2>
+    <p class="lead">This trains the hardest skill: changing a sentence using <span class="kbd">en</span>, <span class="kbd">y</span>, contractions, negation, and time logic.</p>
+    <div class="card">
+      <p class="mini" id="transformCounter"></p>
+      <h3 id="transformFrom"></h3>
+      <p id="transformTask"></p>
+      <input id="transformInput" style="width:100%" placeholder="Type your corrected sentence here">
+      <div class="controls">
+        <button class="primary" onclick="checkTransform()">Check</button>
+        <button onclick="nextTransform()">Next</button>
+        <button class="ghost" onclick="revealTransform()">Reveal</button>
+      </div>
+      <div id="transformFeedback" class="feedback"></div>
+    </div>
+  </section>
+
+  <section class="section" id="writing">
+    <h2>7. DELF / TCF / TEF-style speaking and writing prompts</h2>
+    <p class="lead">These prompts force you to use the small words in realistic answers: email, appointment, city comparison, volunteering, housing, and opinion.</p>
+    <div class="grid cols-2" id="writingGrid"></div>
+  </section>
+
+  <section class="section" id="exam">
+    <h2>8. Exam mode: 20-question mixed test</h2>
+    <p class="lead">This is modeled like a grammar/reading micro-test: short, precise, and trap-heavy. You can use it before a DELF/TCF/TEF study session.</p>
+    <div class="card">
+      <div class="controls">
+        <button class="primary" onclick="startExam()">Start / restart exam</button>
+        <button class="ghost" onclick="gradeExam()">Grade exam</button>
+        <span class="pill" id="timer">00:00</span>
+      </div>
+      <div id="examBox"></div>
+      <div id="examResult" class="feedback"></div>
+    </div>
+  </section>
+
+  <section class="section" id="cheatsheet">
+    <h2>One-page cheat sheet</h2>
+    <div class="grid cols-2">
+      <div class="practice-card">
+        <h3>Contractions</h3>
+        <p><span class="kbd">de + le = du</span> • <span class="kbd">de + les = des</span> • <span class="kbd">à + le = au</span> • <span class="kbd">à + les = aux</span></p>
+        <p>No contraction with <span class="kbd">la</span> or <span class="kbd">l’</span>.</p>
+      </div>
+      <div class="practice-card">
+        <h3>Quantity</h3>
+        <p><span class="kbd">du/de la/de l’/des</span> = some.</p>
+        <p><span class="kbd">beaucoup/trop/assez/peu + de</span>.</p>
+        <p>Negative usually: <span class="kbd">pas de</span>.</p>
+      </div>
+      <div class="practice-card">
+        <h3>Time</h3>
+        <p><span class="kbd">à 8 h</span> = at 8.</p>
+        <p><span class="kbd">en 10 minutes</span> = needs 10 minutes.</p>
+        <p><span class="kbd">dans 10 minutes</span> = starts 10 minutes from now.</p>
+        <p><span class="kbd">depuis</span> = since/for and still true. <span class="kbd">il y a</span> = ago.</p>
+      </div>
+      <div class="practice-card">
+        <h3>About</h3>
+        <p>Topic: <span class="kbd">à propos de</span>, <span class="kbd">sur</span>, <span class="kbd">au sujet de</span>.</p>
+        <p>Number: <span class="kbd">environ</span>, <span class="kbd">à peu près</span>.</p>
+        <p>Time: <span class="kbd">vers</span>. Comparison: <span class="kbd">par rapport à</span>.</p>
+      </div>
+      <div class="practice-card">
+        <h3>en</h3>
+        <p>Replaces <span class="kbd">de + thing/place/quantity</span>: <em>J’en parle. J’en veux.</em></p>
+      </div>
+      <div class="practice-card">
+        <h3>y</h3>
+        <p>Replaces <span class="kbd">à + thing/place</span>: <em>J’y vais. J’y pense.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <p><strong>How to use:</strong> Rename this file to <span class="kbd">index.html</span> for GitHub Pages, or open it directly on a computer browser. On iPhone, GitHub Pages is easier than local files.</p>
+    <p>Designed as a learning aid, not an official exam product. Cross-check unusual edge cases with a teacher or grammar reference.</p>
+  </div>
+</main>
+
+<script>
+const categories = [{"id": "article_contractions", "title": "Articles + contractions: de, du, de la, des / à, au, aux", "level": "A1-A2", "summary": "The core small-word system: definite articles, indefinite articles, partitives, and mandatory contractions.", "rules": [{"rule": "de + le → du", "example": "Je parle du professeur. = I am talking about the teacher.", "trap": "Do not say de le."}, {"rule": "de + les → des", "example": "Je parle des enfants. = I am talking about the children.", "trap": "Do not say de les."}, {"rule": "à + le → au", "example": "Je vais au bureau. = I am going to the office.", "trap": "Do not say à le."}, {"rule": "à + les → aux", "example": "Je parle aux clients. = I am speaking to the clients.", "trap": "Do not say à les."}, {"rule": "de + la / de + l’ stay separate", "example": "Je parle de la réunion / de l’école.", "trap": "No contraction with la or l’."}, {"rule": "à + la / à + l’ stay separate", "example": "Je vais à la clinique / à l’université.", "trap": "No contraction with la or l’."}]}, {"id": "partitive_quantity", "title": "Partitive + quantity: du, de la, de l’, des, de", "level": "A1-A2", "summary": "How to say some, any, a lot of, not any, and exact quantities.", "rules": [{"rule": "Use du/de la/de l’/des for an unspecified amount.", "example": "Je mange du riz. Je bois de l’eau. = I eat some rice. I drink water.", "trap": "English often has no word for 'some', but French needs it."}, {"rule": "After beaucoup, trop, assez, peu, plus, moins: use de/d’.", "example": "J’ai beaucoup de travail. = I have a lot of work.", "trap": "Not beaucoup du travail, unless it means a lot of the specific work."}, {"rule": "After a negative: usually de/d’.", "example": "Je n’ai pas de voiture. = I do not have a car.", "trap": "Not pas une voiture in the basic neutral meaning."}, {"rule": "With être, the article usually stays.", "example": "Ce n’est pas un problème. = It is not a problem.", "trap": "Être describes identity; do not automatically change to de."}, {"rule": "Exact amount + de/d’.", "example": "un kilo de pommes, deux litres d’eau.", "trap": "Not un kilo des pommes unless it means a kilo of the specific apples."}]}, {"id": "prepositions_place", "title": "Place + movement: à, en, dans, chez, sur, sous, entre, parmi", "level": "A1-B1", "summary": "Small words for location, direction, inside, home/workplace, surface, between, and among.", "rules": [{"rule": "à = at/to a point, city, place, activity.", "example": "Je suis à Thunder Bay. Je vais au travail.", "trap": "Use en/au/aux for countries, not always à."}, {"rule": "en = in/to feminine countries, transport style, material, time needed.", "example": "Je vais en France. Je viens en voiture. C’est en bois.", "trap": "Not dans France."}, {"rule": "dans = inside, within, in a container, in future time.", "example": "Le livre est dans le sac. Je pars dans dix minutes.", "trap": "For duration needed, use en: Je finis en dix minutes."}, {"rule": "chez = at/to someone’s home, office, or business/professional place.", "example": "Je vais chez le médecin. Je suis chez Paul.", "trap": "Chez is not only 'house'; it can mean a professional’s place."}, {"rule": "sur = on a surface, on a topic, on the internet.", "example": "Le dossier est sur la table. Un article sur le bénévolat.", "trap": "Sur for topic is common, but à propos de is also useful."}, {"rule": "entre = between two or more clearly separated things.", "example": "La pharmacie est entre la banque et l’école.", "trap": "Parmi means among a group, not usually between two."}, {"rule": "parmi = among/in a group.", "example": "Parmi les étudiants, il y a beaucoup de débutants.", "trap": "Do not use parmi for simple location between two objects."}]}, {"id": "time", "title": "Time: à, en, dans, pendant, depuis, il y a, pour, vers", "level": "A1-B1", "summary": "Time expressions that often confuse English speakers.", "rules": [{"rule": "à + clock time.", "example": "Le cours commence à 18 h.", "trap": "Not en 18 h."}, {"rule": "en + time needed to complete something.", "example": "Je fais l’exercice en dix minutes.", "trap": "Not dans dix minutes unless it starts ten minutes from now."}, {"rule": "dans + future starting point.", "example": "Le test commence dans dix minutes.", "trap": "Dans = from now; en = duration to complete."}, {"rule": "pendant + full duration.", "example": "J’ai étudié pendant deux heures.", "trap": "Pendant does not mean 'since'."}, {"rule": "depuis + started in the past and continues now.", "example": "J’apprends le français depuis un an.", "trap": "Use present tense in French where English often says 'have been learning'."}, {"rule": "il y a + ago.", "example": "Je suis arrivé il y a deux ans.", "trap": "Not depuis if the action is finished arrival."}, {"rule": "vers + approximate time/direction.", "example": "J’arrive vers 7 h. = I arrive around 7.", "trap": "Vers is very common for time approximation."}]}, {"id": "about_regarding", "title": "About / regarding / around: à propos de, sur, concernant, environ, vers...", "level": "A1-B2", "summary": "Different French words for English 'about': topic, approximation, relation, contrast, location.", "rules": [{"rule": "à propos de = about/regarding a topic.", "example": "J’ai une question à propos du cours.", "trap": "Good neutral spoken/written form."}, {"rule": "sur = about/on a topic, especially article/book/video/exam question.", "example": "Un texte sur le recyclage.", "trap": "Do not use sur for all meanings of English 'about'."}, {"rule": "au sujet de = about/regarding, formal-neutral.", "example": "Je vous écris au sujet de mon rendez-vous.", "trap": "Useful in emails."}, {"rule": "concernant = concerning/regarding.", "example": "Concernant le paiement, avez-vous une option en ligne ?", "trap": "Often placed at sentence beginning."}, {"rule": "quant à = as for, introducing contrast.", "example": "Quant à moi, je préfère le matin.", "trap": "Not the same as just 'about'."}, {"rule": "par rapport à = compared with / in relation to.", "example": "Par rapport à Toronto, Thunder Bay est plus calme.", "trap": "Very common, but overused by learners."}, {"rule": "en ce qui concerne = as far as ... is concerned.", "example": "En ce qui concerne les horaires, je suis disponible.", "trap": "More formal; useful in oral exams."}, {"rule": "environ / à peu près / approximativement = approximately.", "example": "Ça coûte environ 30 dollars.", "trap": "Use for numbers, amounts, distance, time."}, {"rule": "vers / aux alentours de = around a time/place.", "example": "Je pars vers 8 h. La clinique est aux alentours du centre-ville.", "trap": "Vers can be time or direction."}, {"rule": "autour de = around physically / around a theme.", "example": "Les gens sont autour de la table. Une discussion autour de la santé.", "trap": "For exact topic, sur/à propos de is often simpler."}, {"rule": "au milieu de = in the middle of.", "example": "La table est au milieu de la salle.", "trap": "Physical or figurative middle."}, {"rule": "vis-à-vis de = toward/with respect to, or opposite physically.", "example": "Son attitude vis-à-vis du travail est sérieuse.", "trap": "More formal; do not overuse at A2."}]}, {"id": "countries", "title": "Cities, countries, provinces: à, en, au, aux, de, du, des", "level": "A1-A2", "summary": "How to say in/to/from a city, country, province, island, or region.", "rules": [{"rule": "Cities usually use à for in/to, de for from.", "example": "J’habite à Thunder Bay. Je viens de Toronto.", "trap": "Articles in city names can change this: Le Caire → au Caire."}, {"rule": "Feminine countries usually use en / de.", "example": "Je vais en France. Je viens de France.", "trap": "Most countries ending in -e are feminine, with exceptions like le Mexique."}, {"rule": "Masculine countries use au / du.", "example": "Je vais au Canada. Je viens du Canada.", "trap": "Canada is masculine: le Canada."}, {"rule": "Plural countries use aux / des.", "example": "Je vais aux États-Unis. Je viens des États-Unis.", "trap": "Plural country names contract."}, {"rule": "Provinces/regions vary; many use en or dans le/la.", "example": "en Ontario, au Québec, dans le Nord de l’Ontario.", "trap": "Learn common regional forms as chunks."}]}, {"id": "pronouns", "title": "Pronouns that replace small-word phrases: en and y", "level": "A2-B1", "summary": "How de-phrases become en and à/place phrases become y.", "rules": [{"rule": "en replaces de + thing/place/quantity.", "example": "Tu veux du café ? Oui, j’en veux.", "trap": "En often means some/of it/of them/from there."}, {"rule": "y replaces à + thing/place.", "example": "Tu vas à l’école ? Oui, j’y vais.", "trap": "Y often means there/to it."}, {"rule": "For people, use à lui/à elle/à eux, not usually y.", "example": "Je pense à ma mère → Je pense à elle.", "trap": "Je pense y is normally for a thing/place, not a person."}, {"rule": "For de + people, use de lui/d’elle/d’eux, not always en in careful French.", "example": "Je parle de mon frère → Je parle de lui.", "trap": "J’en parle can mean I talk about it; with people, de lui is clearer."}, {"rule": "Pronouns usually go before the conjugated verb.", "example": "J’y vais. Je n’en veux pas.", "trap": "With infinitive: Je vais y aller; Je veux en acheter."}]}, {"id": "verbs_patterns", "title": "Verb patterns: parler de, penser à, avoir besoin de, réussir à...", "level": "A2-B1", "summary": "Many French verbs require a specific small word. Learn them as patterns, not word-for-word translations.", "rules": [{"rule": "parler de = to talk about.", "example": "Je parle de mon travail. → J’en parle.", "trap": "Not parler à when you mean topic; parler à = speak to a person."}, {"rule": "penser à = to think about.", "example": "Je pense à mon examen. → J’y pense.", "trap": "Penser de = to have an opinion of: Qu’est-ce que tu penses de ce film ?"}, {"rule": "avoir besoin de = to need.", "example": "J’ai besoin d’aide. → J’en ai besoin.", "trap": "Never besoin à."}, {"rule": "avoir envie de = to feel like/want.", "example": "J’ai envie de dormir. J’ai envie d’un café.", "trap": "Different from vouloir, but similar meaning."}, {"rule": "essayer de = to try to.", "example": "J’essaie de parler français.", "trap": "Use de before an infinitive."}, {"rule": "commencer à/de = to begin to.", "example": "Je commence à comprendre. / Il commence de pleuvoir.", "trap": "À is more common in everyday French."}, {"rule": "continuer à/de = to continue to.", "example": "Je continue à étudier.", "trap": "Both exist; à is very common."}, {"rule": "réussir à = to manage/succeed in doing.", "example": "J’ai réussi à finir l’exercice.", "trap": "Réussir un examen = pass an exam; réussir à faire = manage to do."}, {"rule": "demander à quelqu’un de faire = ask someone to do.", "example": "Je demande à Paul de m’aider.", "trap": "Two small words: à person + de infinitive."}, {"rule": "aider quelqu’un à faire = help someone to do.", "example": "J’aide mon ami à réviser.", "trap": "No à before the direct object person."}]}, {"id": "connectors", "title": "Exam connectors: because, although, however, therefore, as for", "level": "A2-B1", "summary": "Small linking words that improve DELF/TCF/TEF speaking and writing.", "rules": [{"rule": "parce que / car = because.", "example": "Je fais du bénévolat parce que c’est utile.", "trap": "Car is a little more written/formal."}, {"rule": "donc / alors = so/therefore.", "example": "Je travaille demain, donc je ne peux pas sortir.", "trap": "Alors also means then."}, {"rule": "mais / cependant / pourtant = but/however/yet.", "example": "C’est difficile, pourtant c’est important.", "trap": "Cependant is more formal than mais."}, {"rule": "même si = even if/although.", "example": "Même si je suis débutant, je parle un peu.", "trap": "Very useful for A2 spoken nuance."}, {"rule": "d’abord, ensuite, enfin = first, next, finally.", "example": "D’abord je lis, ensuite j’écris, enfin je vérifie.", "trap": "Good for procedure-style answers."}, {"rule": "en plus / de plus = also/furthermore.", "example": "En plus, c’est bon pour la santé.", "trap": "De plus is more formal."}]}];
+const terms = [["de", "preposition/article base", "A1", "of/from/about; base for partitive", "Je viens de Thunder Bay.", "I come from Thunder Bay.", "Changes to du/des with le/les."], ["du", "contraction/partitive", "A1", "of the/from the; some", "Je parle du cours. Je mange du pain.", "I talk about the course. I eat some bread.", "du = de + le OR some masculine singular."], ["de la", "article/preposition", "A1", "of the/from the; some feminine", "Je parle de la réunion. Je bois de la soupe.", "I talk about the meeting. I drink some soup.", "No contraction with la."], ["de l’", "article/preposition", "A1", "of/from/some before vowel", "J’ai besoin de l’aide.", "I need the help.", "For unspecified help: J’ai besoin d’aide."], ["des", "contraction/indefinite/partitive", "A1", "of/from the; some; plural article", "Je parle des clients. J’ai des questions.", "I talk about the clients. I have questions.", "des can have several jobs."], ["à", "preposition", "A1", "at/to/in; used with cities, time, indirect objects", "Je vais à Toronto à 8 h.", "I am going to Toronto at 8.", "Contracts with le/les."], ["au", "contraction", "A1", "to/at the; to/in masculine country", "Je vais au bureau. J’habite au Canada.", "I go to the office. I live in Canada.", "au = à + le."], ["à la", "preposition + article", "A1", "to/at the feminine", "Je vais à la bibliothèque.", "I go to the library.", "No contraction."], ["à l’", "preposition + article", "A1", "to/at the before vowel", "Je vais à l’université.", "I go to the university.", "No contraction."], ["aux", "contraction", "A1", "to/at the plural", "Je parle aux étudiants.", "I speak to the students.", "aux = à + les."], ["un/une/des", "indefinite articles", "A1", "a/an/some plural", "J’ai une question et des stylos.", "I have a question and some pens.", "In negative: pas de question, pas de stylos."], ["le/la/l’/les", "definite articles", "A1", "the; general category", "J’aime le français.", "I like French.", "French uses articles more often than English."], ["en", "preposition/pronoun", "A1-A2", "in/by/to; of it/some/from there", "Je vais en Ontario. J’en veux.", "I am going to Ontario. I want some.", "As pronoun, it replaces de phrases."], ["y", "pronoun", "A2", "there/to it", "J’y vais demain.", "I am going there tomorrow.", "Replaces à/place phrases, usually not people."], ["dans", "preposition", "A1", "in/inside; in future time", "Le livre est dans mon sac.", "The book is in my bag.", "For countries, use en/au/aux."], ["sur", "preposition", "A1", "on; about a topic", "Un texte sur la santé.", "A text about health.", "For contact/surface/topic."], ["sous", "preposition", "A1", "under", "Le chat est sous la table.", "The cat is under the table.", "Physical location."], ["chez", "preposition", "A1", "at/to someone’s place, doctor, business", "Je vais chez le médecin.", "I am going to the doctor’s.", "Very French; not just 'house'."], ["pour", "preposition", "A1", "for; in order to; intended duration", "C’est pour toi. Je pars pour deux jours.", "It is for you. I leave for two days.", "For purpose or intended duration."], ["par", "preposition", "A2", "by/through/per", "Je passe par le parc. Deux fois par semaine.", "I go through the park. Twice per week.", "Used in passive: écrit par."], ["avec", "preposition", "A1", "with", "Je travaille avec mon ami.", "I work with my friend.", "Opposite: sans."], ["sans", "preposition", "A1", "without", "Je bois du thé sans sucre.", "I drink tea without sugar.", "Before infinitive: sans parler."], ["entre", "preposition", "A1", "between", "Entre 7 h et 9 h.", "Between 7 and 9.", "Clear separated points."], ["parmi", "preposition", "B1", "among", "Parmi les options, je choisis celle-ci.", "Among the options, I choose this one.", "Group membership."], ["vers", "preposition", "A1-A2", "toward; around/about time", "J’arrive vers 18 h.", "I arrive around 6 p.m.", "Approximation or direction."], ["depuis", "time preposition", "A2", "since/for, continuing now", "J’étudie depuis deux heures.", "I have been studying for two hours.", "Usually present tense for ongoing action."], ["pendant", "time preposition", "A2", "during/for a duration", "J’ai travaillé pendant trois heures.", "I worked for three hours.", "Completed or full duration."], ["il y a", "time expression", "A1", "ago; there is/are", "Je suis arrivé il y a deux ans.", "I arrived two years ago.", "Time ago with past action."], ["environ", "approximation", "A1", "about/approximately", "Ça coûte environ 30 dollars.", "It costs about 30 dollars.", "Use for numbers/amounts."], ["à peu près", "approximation", "A1", "more or less/about", "Il y a à peu près 15 personnes.", "There are about 15 people.", "Informal-neutral."], ["approximativement", "approximation", "B1", "approximately", "La distance est approximativement de 5 km.", "The distance is approximately 5 km.", "More formal."], ["aux alentours de", "approximation/place/time", "A2", "around/near/about", "Je pars aux alentours de midi.", "I leave around noon.", "Common for time and place."], ["autour de", "place/topic", "A2", "around", "Nous parlons autour du thème de la santé.", "We are speaking around the theme of health.", "Physical or thematic."], ["à propos de", "topic", "A1-A2", "about/regarding", "J’ai une question à propos du paiement.", "I have a question about the payment.", "Good all-purpose topic phrase."], ["au sujet de", "topic", "A2", "about/regarding", "Je vous écris au sujet de mon dossier.", "I am writing to you about my file.", "Good for formal email."], ["concernant", "topic", "A2-B1", "concerning/regarding", "Concernant le rendez-vous, je suis libre demain.", "Regarding the appointment, I am free tomorrow.", "Often starts a sentence."], ["quant à", "contrast/topic", "B1", "as for", "Quant à moi, je préfère étudier le soir.", "As for me, I prefer studying in the evening.", "Introduces contrast."], ["par rapport à", "relation/comparison", "A2-B1", "in relation to/compared with", "Par rapport à Toronto, Thunder Bay est calme.", "Compared with Toronto, Thunder Bay is calm.", "Do not use for every 'about'."], ["en ce qui concerne", "formal topic", "B1", "as far as ... is concerned", "En ce qui concerne mes horaires, je suis flexible.", "As far as my schedule is concerned, I am flexible.", "Good formal connector."], ["vis-à-vis de", "relation/attitude", "B1-B2", "toward/with respect to", "Il est sérieux vis-à-vis de son travail.", "He is serious toward/with respect to his work.", "Formal; also physically opposite."], ["au milieu de", "place", "A2", "in the middle of", "La chaise est au milieu de la salle.", "The chair is in the middle of the room.", "Place or figurative situation."], ["près de", "place/approx", "A1", "near/almost", "J’habite près de l’école.", "I live near the school.", "Près de can also mean nearly before numbers."], ["loin de", "place", "A1", "far from", "Le bureau est loin de chez moi.", "The office is far from my place.", "Opposite of près de."], ["grâce à", "cause positive", "A2", "thanks to", "Grâce à mon professeur, je comprends mieux.", "Thanks to my teacher, I understand better.", "Positive cause."], ["à cause de", "cause negative/neutral", "A2", "because of", "Je suis en retard à cause du bus.", "I am late because of the bus.", "Often negative."], ["avant de", "time before infinitive", "A2", "before doing", "Je révise avant de dormir.", "I review before sleeping.", "Before noun: avant le cours."], ["après", "time after", "A1", "after", "Après le travail, je rentre.", "After work, I go home.", "Before infinitive: après avoir fait."], ["malgré", "contrast", "A2-B1", "despite", "Malgré la pluie, je sors.", "Despite the rain, I go out.", "Use noun phrase after it."], ["selon", "source/opinion", "A2", "according to", "Selon moi, c’est important.", "According to me/in my opinion, it is important.", "Selon + source/person."], ["d’après", "source", "A2", "according to/from", "D’après l’article, c’est utile.", "According to the article, it is useful.", "Often for source evidence."], ["afin de", "purpose formal", "B1", "in order to", "J’étudie afin de réussir.", "I study in order to succeed.", "More formal than pour."], ["au lieu de", "contrast choice", "A2", "instead of", "Je prends le bus au lieu de marcher.", "I take the bus instead of walking.", "Before infinitive or noun."], ["au fond de", "place", "A2", "at the back/bottom of", "Le bureau est au fond du couloir.", "The office is at the end of the hallway.", "Physical location."], ["à côté de", "place", "A1", "next to", "La banque est à côté de la pharmacie.", "The bank is next to the pharmacy.", "Very common directions phrase."], ["en face de", "place", "A1", "opposite/across from", "Le café est en face de l’école.", "The café is across from the school.", "Physical facing."], ["jusqu’à", "limit", "A2", "until/up to", "Je travaille jusqu’à 17 h.", "I work until 5 p.m.", "Contracts: jusqu’au, jusqu’aux."], ["dès", "starting point", "B1", "as early as/from", "Je suis disponible dès lundi.", "I am available from Monday.", "More precise than depuis in scheduling."], ["lors de", "formal time", "B1", "during/at the time of", "Lors de la réunion, j’ai posé une question.", "During the meeting, I asked a question.", "Formal alternative to pendant."], ["faute de", "lack/cause", "B2", "for lack of", "Faute de temps, je ne peux pas finir.", "For lack of time, I cannot finish.", "Advanced but useful in reading."], ["à force de", "repeated cause", "B1-B2", "by dint of/through repeated action", "À force de pratiquer, je progresse.", "By practicing repeatedly, I improve.", "Cause through repetition."]];
+const exercises = [{"prompt": "Je vais ___ Canada.", "choices": ["à", "au", "en", "dans"], "answer": "au", "explain": "Canada is masculine: le Canada → au Canada.", "level": "A1", "tag": "countries"}, {"prompt": "J’habite ___ Thunder Bay.", "choices": ["à", "au", "en", "dans"], "answer": "à", "explain": "Cities usually use à.", "level": "A1", "tag": "countries"}, {"prompt": "Je viens ___ Canada.", "choices": ["de", "du", "des", "de la"], "answer": "du", "explain": "de + le Canada → du Canada.", "level": "A1", "tag": "countries"}, {"prompt": "Elle va ___ université.", "choices": ["au", "à l’", "à la", "aux"], "answer": "à l’", "explain": "Université begins with a vowel: à l’université.", "level": "A1", "tag": "contractions"}, {"prompt": "Je parle ___ professeur.", "choices": ["de le", "du", "de la", "des"], "answer": "du", "explain": "de + le professeur → du professeur.", "level": "A1", "tag": "contractions"}, {"prompt": "Nous parlons ___ enfants.", "choices": ["de les", "des", "du", "aux"], "answer": "des", "explain": "de + les enfants → des enfants.", "level": "A1", "tag": "contractions"}, {"prompt": "Je donne le document ___ clients.", "choices": ["à les", "aux", "des", "du"], "answer": "aux", "explain": "à + les clients → aux clients.", "level": "A1", "tag": "contractions"}, {"prompt": "Je mange ___ riz.", "choices": ["du", "de", "de la", "des"], "answer": "du", "explain": "Unspecified masculine food: du riz.", "level": "A1", "tag": "partitive"}, {"prompt": "Je bois ___ eau.", "choices": ["de l’", "du", "de la", "des"], "answer": "de l’", "explain": "Before vowel: de l’eau.", "level": "A1", "tag": "partitive"}, {"prompt": "Je n’ai pas ___ voiture.", "choices": ["une", "de", "de la", "la"], "answer": "de", "explain": "In a normal negative sentence, un/une/des/du/de la often become de.", "level": "A1", "tag": "negative"}, {"prompt": "Ce n’est pas ___ problème.", "choices": ["de", "un", "du", "des"], "answer": "un", "explain": "After être for identity, the article usually stays: Ce n’est pas un problème.", "level": "A2", "tag": "negative"}, {"prompt": "J’ai beaucoup ___ travail.", "choices": ["du", "de", "des", "de la"], "answer": "de", "explain": "After beaucoup, use de/d’.", "level": "A1", "tag": "quantity"}, {"prompt": "Elle a trop ___ choses à faire.", "choices": ["des", "de", "les", "du"], "answer": "de", "explain": "After trop, use de/d’.", "level": "A1", "tag": "quantity"}, {"prompt": "Je voudrais un kilo ___ pommes.", "choices": ["des", "de", "du", "aux"], "answer": "de", "explain": "Exact quantity + de.", "level": "A1", "tag": "quantity"}, {"prompt": "Le livre est ___ le sac.", "choices": ["en", "dans", "à", "sur"], "answer": "dans", "explain": "Inside a container: dans le sac.", "level": "A1", "tag": "place"}, {"prompt": "Le dossier est ___ la table.", "choices": ["dans", "sur", "chez", "en"], "answer": "sur", "explain": "On a surface: sur la table.", "level": "A1", "tag": "place"}, {"prompt": "Je vais ___ le médecin.", "choices": ["à", "chez", "en", "dans"], "answer": "chez", "explain": "For a doctor/professional’s place: chez le médecin.", "level": "A1", "tag": "place"}, {"prompt": "La pharmacie est ___ la banque et l’école.", "choices": ["parmi", "entre", "dans", "autour"], "answer": "entre", "explain": "Between two places: entre.", "level": "A1", "tag": "place"}, {"prompt": "___ les étudiants, il y a des débutants.", "choices": ["Entre", "Parmi", "Dans de", "Sur"], "answer": "Parmi", "explain": "Among a group: parmi.", "level": "B1", "tag": "place"}, {"prompt": "Le cours commence ___ 18 h.", "choices": ["en", "dans", "à", "depuis"], "answer": "à", "explain": "Clock time uses à.", "level": "A1", "tag": "time"}, {"prompt": "Je finis l’exercice ___ dix minutes.", "choices": ["en", "dans", "depuis", "il y a"], "answer": "en", "explain": "Time needed to complete something: en dix minutes.", "level": "A2", "tag": "time"}, {"prompt": "Le test commence ___ dix minutes.", "choices": ["en", "dans", "pendant", "depuis"], "answer": "dans", "explain": "Starting ten minutes from now: dans dix minutes.", "level": "A2", "tag": "time"}, {"prompt": "J’apprends le français ___ un an.", "choices": ["il y a", "depuis", "dans", "en"], "answer": "depuis", "explain": "Started in the past and continues now: depuis.", "level": "A2", "tag": "time"}, {"prompt": "Je suis arrivé au Canada ___ deux ans.", "choices": ["depuis", "pendant", "il y a", "dans"], "answer": "il y a", "explain": "A completed past action + ago: il y a.", "level": "A2", "tag": "time"}, {"prompt": "J’ai étudié ___ deux heures hier.", "choices": ["depuis", "pendant", "dans", "à"], "answer": "pendant", "explain": "Completed duration in the past: pendant.", "level": "A2", "tag": "time"}, {"prompt": "J’arrive ___ 7 h.", "choices": ["environ", "vers", "autour", "au sujet de"], "answer": "vers", "explain": "Approximate time: vers 7 h.", "level": "A1", "tag": "approx"}, {"prompt": "Ça coûte ___ 30 dollars.", "choices": ["à propos de", "environ", "sur", "quant à"], "answer": "environ", "explain": "Approximate number/amount: environ.", "level": "A1", "tag": "approx"}, {"prompt": "J’ai une question ___ paiement.", "choices": ["environ le", "à propos du", "vers le", "parmi le"], "answer": "à propos du", "explain": "Topic/regarding + de + le → du.", "level": "A2", "tag": "about"}, {"prompt": "Je vous écris ___ mon rendez-vous.", "choices": ["au sujet de", "environ", "vers", "au milieu de"], "answer": "au sujet de", "explain": "Formal email phrase: au sujet de.", "level": "A2", "tag": "about"}, {"prompt": "___ moi, je préfère étudier le soir.", "choices": ["Environ", "Quant à", "Autour de", "Selon de"], "answer": "Quant à", "explain": "As for me: Quant à moi.", "level": "B1", "tag": "about"}, {"prompt": "___ Toronto, Thunder Bay est plus calme.", "choices": ["Par rapport à", "Au milieu de", "Aux alentours de", "À force de"], "answer": "Par rapport à", "explain": "Compared with/in relation to: par rapport à.", "level": "A2", "tag": "about"}, {"prompt": "Tu vas à l’école ? Oui, j’___ vais.", "choices": ["en", "y", "au", "à"], "answer": "y", "explain": "Y replaces à + place: à l’école → y.", "level": "A2", "tag": "pronouns"}, {"prompt": "Tu veux du café ? Oui, j’___ veux.", "choices": ["y", "en", "au", "de"], "answer": "en", "explain": "En replaces du café: some/of it.", "level": "A2", "tag": "pronouns"}, {"prompt": "Tu penses à ton examen ? Oui, j’___ pense.", "choices": ["en", "y", "à lui", "de lui"], "answer": "y", "explain": "Penser à + thing → y penser.", "level": "A2", "tag": "pronouns"}, {"prompt": "Tu penses à ta mère ? Oui, je pense ___.", "choices": ["y", "en", "à elle", "d’elle"], "answer": "à elle", "explain": "For people after à, use à lui/à elle/à eux, not usually y.", "level": "A2", "tag": "pronouns"}, {"prompt": "Tu parles de ce problème ? Oui, j’___ parle.", "choices": ["y", "en", "à lui", "du"], "answer": "en", "explain": "Parler de + thing → en parler.", "level": "A2", "tag": "pronouns"}, {"prompt": "J’ai besoin ___ aide.", "choices": ["à", "d’", "de la", "du"], "answer": "d’", "explain": "Avoir besoin de + vowel → d’aide, when help is general.", "level": "A2", "tag": "verbs"}, {"prompt": "Je réussis ___ comprendre.", "choices": ["de", "à", "sur", "par"], "answer": "à", "explain": "Réussir à faire quelque chose.", "level": "A2", "tag": "verbs"}, {"prompt": "J’essaie ___ parler français.", "choices": ["à", "de", "du", "sur"], "answer": "de", "explain": "Essayer de + infinitive.", "level": "A2", "tag": "verbs"}, {"prompt": "Je demande ___ Paul ___ m’aider.", "choices": ["à / de", "de / à", "à / à", "de / de"], "answer": "à / de", "explain": "Demander à quelqu’un de faire quelque chose.", "level": "B1", "tag": "verbs"}, {"prompt": "J’aide mon ami ___ réviser.", "choices": ["de", "à", "sur", "pour"], "answer": "à", "explain": "Aider quelqu’un à faire quelque chose.", "level": "A2", "tag": "verbs"}, {"prompt": "Je fais du bénévolat ___ c’est utile.", "choices": ["parce que", "malgré", "environ", "quant à"], "answer": "parce que", "explain": "Because: parce que.", "level": "A1", "tag": "connectors"}, {"prompt": "C’est difficile, ___ c’est important.", "choices": ["pourtant", "environ", "chez", "depuis"], "answer": "pourtant", "explain": "Yet/however: pourtant.", "level": "A2", "tag": "connectors"}, {"prompt": "___ je suis débutant, je peux parler un peu.", "choices": ["Même si", "À propos de", "Il y a", "Chez"], "answer": "Même si", "explain": "Even if/although: même si.", "level": "A2", "tag": "connectors"}, {"prompt": "___ l’article, le recyclage est important.", "choices": ["Selon", "Depuis", "Dans", "Jusqu’à"], "answer": "Selon", "explain": "According to: selon.", "level": "A2", "tag": "source"}, {"prompt": "Je suis disponible ___ lundi.", "choices": ["dès", "parmi", "sur", "chez"], "answer": "dès", "explain": "From/as early as Monday: dès lundi.", "level": "B1", "tag": "time"}, {"prompt": "Je travaille ___ 17 h.", "choices": ["jusqu’à", "parmi", "autour", "malgré"], "answer": "jusqu’à", "explain": "Until/up to a time: jusqu’à 17 h.", "level": "A2", "tag": "time"}, {"prompt": "___ la pluie, je vais au travail.", "choices": ["Malgré", "Grâce à", "À cause", "Environ"], "answer": "Malgré", "explain": "Despite + noun: malgré la pluie.", "level": "A2", "tag": "connectors"}, {"prompt": "___ mon professeur, je progresse.", "choices": ["Grâce à", "À cause de", "Faute de", "Malgré de"], "answer": "Grâce à", "explain": "Positive cause: grâce à.", "level": "A2", "tag": "cause"}, {"prompt": "Je suis en retard ___ la neige.", "choices": ["grâce à", "à cause de", "selon", "quant à"], "answer": "à cause de", "explain": "Negative/neutral cause: à cause de.", "level": "A2", "tag": "cause"}, {"prompt": "Je révise ___ dormir.", "choices": ["avant de", "après de", "dans de", "sur de"], "answer": "avant de", "explain": "Before doing: avant de + infinitive.", "level": "A2", "tag": "time"}, {"prompt": "Je prends le bus ___ marcher.", "choices": ["au lieu de", "grâce à", "près de", "parmi"], "answer": "au lieu de", "explain": "Instead of doing: au lieu de + infinitive.", "level": "A2", "tag": "contrast"}, {"prompt": "Le bureau est ___ la pharmacie.", "choices": ["à côté de", "environ", "depuis", "selon"], "answer": "à côté de", "explain": "Next to: à côté de.", "level": "A1", "tag": "place"}, {"prompt": "Le café est ___ l’école.", "choices": ["en face de", "environ de", "quant à", "depuis"], "answer": "en face de", "explain": "Across from/opposite: en face de.", "level": "A1", "tag": "place"}];
+const transforms = [{"from": "Je vais à l’école demain.", "task": "Replace the place with y.", "answer": "J’y vais demain.", "hint": "à l’école → y"}, {"from": "Je veux du café.", "task": "Replace the quantity with en.", "answer": "J’en veux.", "hint": "du café → en"}, {"from": "Je parle de mon travail.", "task": "Replace de mon travail with en.", "answer": "J’en parle.", "hint": "parler de + thing → en parler"}, {"from": "Je pense à mon examen.", "task": "Replace à mon examen with y.", "answer": "J’y pense.", "hint": "penser à + thing → y penser"}, {"from": "Je pense à ma sœur.", "task": "Replace à ma sœur.", "answer": "Je pense à elle.", "hint": "For a person: à elle, not y"}, {"from": "Je n’ai pas une voiture.", "task": "Correct the neutral negative sentence.", "answer": "Je n’ai pas de voiture.", "hint": "Negative un/une/des often become de"}, {"from": "Je vais à le bureau.", "task": "Correct the contraction.", "answer": "Je vais au bureau.", "hint": "à + le → au"}, {"from": "Je parle de les documents.", "task": "Correct the contraction.", "answer": "Je parle des documents.", "hint": "de + les → des"}, {"from": "J’ai beaucoup du travail.", "task": "Correct the quantity expression.", "answer": "J’ai beaucoup de travail.", "hint": "beaucoup de"}, {"from": "Le test commence en dix minutes.", "task": "Change it to mean: the test starts ten minutes from now.", "answer": "Le test commence dans dix minutes.", "hint": "future starting point → dans"}, {"from": "Je finis le test dans trente minutes.", "task": "Change it to mean: I need thirty minutes to finish.", "answer": "Je finis le test en trente minutes.", "hint": "time needed → en"}, {"from": "Je suis arrivé depuis deux ans.", "task": "Correct it to mean: I arrived two years ago.", "answer": "Je suis arrivé il y a deux ans.", "hint": "completed past action + ago → il y a"}];
+const writingPrompts = [{"level": "A1", "prompt": "Write 4 sentences about your city using à, dans, près de, and chez.", "model": "J’habite à Thunder Bay. Ma maison est dans un quartier calme. Elle est près d’un magasin. Je vais chez mon ami le samedi."}, {"level": "A1-A2", "prompt": "Ask a landlord 5 questions using à propos de, environ, près de, chez, and dans.", "model": "J’ai une question à propos du loyer. Le prix est environ combien par mois ? La maison est près de l’arrêt de bus ? Est-ce que je peux inviter un ami chez moi ? Qu’est-ce qu’il y a dans la chambre ?"}, {"level": "A2", "prompt": "Write a short email about an appointment using au sujet de, à, vers, dans, and merci de.", "model": "Bonjour, je vous écris au sujet de mon rendez-vous. Je peux venir à la clinique vers 14 h. Je serai disponible dans deux jours. Merci de me confirmer l’heure."}, {"level": "A2-B1", "prompt": "Compare Thunder Bay and Toronto using par rapport à, alors que, plus de, moins de, and quant à.", "model": "Par rapport à Toronto, Thunder Bay est plus calme. Il y a moins de circulation, alors que Toronto a plus de services. Quant à moi, je préfère une ville calme pour étudier."}, {"level": "B1", "prompt": "Give an opinion about volunteering using concernant, selon moi, grâce à, même si, and en ce qui concerne.", "model": "Concernant le bénévolat, selon moi, c’est très important. Grâce à cette expérience, on peut aider les autres. Même si c’est parfois difficile, c’est utile. En ce qui concerne mon avenir, cela peut aussi m’aider professionnellement."}];
+
+let progress = JSON.parse(localStorage.getItem('frSmallWordsProgress') || '{"lessons":{},"known":{},"quizCorrect":0,"quizTotal":0}');
+let currentCardIndex = 0;
+let currentQuestion = null;
+let currentTransform = 0;
+let examQuestions = [];
+let timerInterval = null;
+let examStart = null;
+
+function saveProgress(){
+  localStorage.setItem('frSmallWordsProgress', JSON.stringify(progress));
+  renderProgress();
+}
+function toggleDark(){
+  document.body.classList.toggle('dark');
+  localStorage.setItem('frSmallWordsDark', document.body.classList.contains('dark') ? '1' : '0');
+}
+if(localStorage.getItem('frSmallWordsDark') === '1') document.body.classList.add('dark');
+
+function renderProgress(){
+  const lessonTotal = categories.length;
+  const lessonDone = Object.values(progress.lessons || {}).filter(Boolean).length;
+  const knownTotal = terms.length;
+  const knownDone = Object.values(progress.known || {}).filter(Boolean).length;
+  const quizPart = Math.min(progress.quizCorrect || 0, 50);
+  const totalUnits = lessonTotal + knownTotal + 50;
+  const doneUnits = lessonDone + knownDone + quizPart;
+  const pct = Math.round((doneUnits / totalUnits) * 100);
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressText').textContent = pct + '%';
+  const checklist = document.getElementById('checklist');
+  checklist.innerHTML = '';
+  categories.forEach(cat => {
+    const id = cat.id;
+    const label = document.createElement('label');
+    label.innerHTML = `<input type="checkbox" ${progress.lessons[id] ? 'checked' : ''} onchange="progress.lessons['${id}']=this.checked;saveProgress()"> <span><strong>${cat.title}</strong><br><span class="mini">${cat.level}</span></span>`;
+    checklist.appendChild(label);
+  });
+}
+
+function renderLessons(){
+  const grid = document.getElementById('lessonGrid');
+  grid.innerHTML = '';
+  categories.forEach(cat => {
+    const div = document.createElement('div');
+    div.className = 'rulecard';
+    div.innerHTML = `<h3>${cat.title}</h3><span class="tag">${cat.level}</span><p>${cat.summary}</p>` +
+      cat.rules.map(r => `<div class="rule"><strong>${r.rule}</strong><div class="example">${r.example}</div><div class="warning">Trap: ${r.trap}</div></div>`).join('') +
+      `<button class="primary" onclick="progress.lessons['${cat.id}']=true;saveProgress()">Mark lesson complete</button>`;
+    grid.appendChild(div);
+  });
+}
+
+function renderTerms(){
+  const q = document.getElementById('termSearch').value.toLowerCase().trim();
+  const lvl = document.getElementById('levelFilter').value;
+  const body = document.getElementById('termsBody');
+  body.innerHTML = '';
+  const rows = terms.filter(t => {
+    const text = t.join(' ').toLowerCase();
+    const levelOk = !lvl || t[2].includes(lvl);
+    return levelOk && (!q || text.includes(q));
+  });
+  rows.forEach(t => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td><strong>${t[0]}</strong><br><span class="tag">${t[2]}</span></td><td>${t[1]}</td><td>${t[3]}</td><td><em>${t[4]}</em><br>${t[5]}</td><td>${t[6]}</td>`;
+    body.appendChild(tr);
+  });
+}
+
+function getFlashTerms(){
+  const f = document.getElementById('flashLevel')?.value || '';
+  if(!f) return terms;
+  if(f === 'A1') return terms.filter(t => t[2].includes('A1'));
+  if(f === 'A2') return terms.filter(t => t[2].includes('A1') || t[2].includes('A2'));
+  if(f === 'B1') return terms.filter(t => !t[2].includes('B2'));
+  return terms;
+}
+function renderFlashcard(){
+  const list = getFlashTerms();
+  if(currentCardIndex >= list.length) currentCardIndex = 0;
+  const t = list[currentCardIndex];
+  document.getElementById('flashcard').classList.remove('flipped');
+  document.getElementById('cardFront').textContent = t[0];
+  document.getElementById('cardBack').innerHTML = `<h3>${t[0]} <span class="tag">${t[2]}</span></h3><p><strong>${t[1]}</strong> — ${t[3]}</p><p><em>${t[4]}</em><br>${t[5]}</p><p class="warning">Trap: ${t[6]}</p>`;
+  document.getElementById('flashStatus').textContent = `${currentCardIndex+1} / ${list.length}`;
+}
+function flipCard(){ document.getElementById('flashcard').classList.toggle('flipped'); }
+function nextCard(){ currentCardIndex++; renderFlashcard(); }
+function prevCard(){ currentCardIndex = Math.max(0, currentCardIndex - 1); renderFlashcard(); }
+function resetFlashcards(){ currentCardIndex = 0; renderFlashcard(); }
+function markKnown(){
+  const t = getFlashTerms()[currentCardIndex];
+  progress.known[t[0]] = true;
+  saveProgress();
+  nextCard();
+}
+
+function pickQuestion(){
+  const tag = document.getElementById('quizTag').value;
+  const pool = tag ? exercises.filter(e => e.tag === tag) : exercises;
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+function newQuestion(){
+  currentQuestion = pickQuestion();
+  document.getElementById('qtext').textContent = currentQuestion.prompt;
+  document.getElementById('feedback').textContent = '';
+  const opt = document.getElementById('options');
+  opt.innerHTML = '';
+  currentQuestion.choices.forEach(c => {
+    const b = document.createElement('button');
+    b.className = 'option';
+    b.textContent = c;
+    b.onclick = () => answerQuestion(c, b);
+    opt.appendChild(b);
+  });
+  updateQuizStats();
+}
+function answerQuestion(choice, btn){
+  const buttons = document.querySelectorAll('.option');
+  buttons.forEach(b => b.disabled = true);
+  progress.quizTotal++;
+  if(choice === currentQuestion.answer){
+    progress.quizCorrect++;
+    btn.classList.add('correct');
+    document.getElementById('feedback').innerHTML = `<span class="good">Correct.</span> ${currentQuestion.explain}`;
+  } else {
+    btn.classList.add('incorrect');
+    buttons.forEach(b => { if(b.textContent === currentQuestion.answer) b.classList.add('correct'); });
+    document.getElementById('feedback').innerHTML = `<span class="bad">Not quite.</span> Correct answer: <strong>${currentQuestion.answer}</strong>. ${currentQuestion.explain}`;
+  }
+  saveProgress();
+  updateQuizStats();
+}
+function showAnswer(){
+  if(!currentQuestion) return;
+  document.getElementById('feedback').innerHTML = `Answer: <strong>${currentQuestion.answer}</strong>. ${currentQuestion.explain}`;
+}
+function updateQuizStats(){
+  document.getElementById('quizStats').textContent = `Quiz score saved: ${progress.quizCorrect || 0} correct out of ${progress.quizTotal || 0} attempts.`;
+}
+
+function renderTransform(){
+  const t = transforms[currentTransform];
+  document.getElementById('transformCounter').textContent = `${currentTransform+1} / ${transforms.length}`;
+  document.getElementById('transformFrom').textContent = t.from;
+  document.getElementById('transformTask').textContent = t.task + ' Hint: ' + t.hint;
+  document.getElementById('transformInput').value = '';
+  document.getElementById('transformFeedback').textContent = '';
+}
+function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’']/g,"'").replace(/[.,!?]/g,'').replace(/\s+/g,' ').trim(); }
+function checkTransform(){
+  const user = document.getElementById('transformInput').value;
+  const ans = transforms[currentTransform].answer;
+  const ok = norm(user) === norm(ans);
+  document.getElementById('transformFeedback').innerHTML = ok ? `<span class="good">Correct.</span>` : `<span class="bad">Check it again.</span> Expected: <strong>${ans}</strong>`;
+}
+function revealTransform(){
+  document.getElementById('transformFeedback').innerHTML = `Answer: <strong>${transforms[currentTransform].answer}</strong>`;
+}
+function nextTransform(){
+  currentTransform = (currentTransform + 1) % transforms.length;
+  renderTransform();
+}
+
+function renderWriting(){
+  const grid = document.getElementById('writingGrid');
+  grid.innerHTML = '';
+  writingPrompts.forEach((p, idx) => {
+    const div = document.createElement('div');
+    div.className = 'practice-card';
+    div.innerHTML = `<span class="tag">${p.level}</span><h3>Prompt ${idx+1}</h3><p>${p.prompt}</p><textarea rows="5" style="width:100%" placeholder="Write your answer here..."></textarea><details><summary>Model answer</summary><p>${p.model}</p></details>`;
+    grid.appendChild(div);
+  });
+}
+
+function startExam(){
+  examQuestions = [...exercises].sort(() => Math.random() - .5).slice(0, 20);
+  const box = document.getElementById('examBox');
+  box.innerHTML = '';
+  examQuestions.forEach((q, idx) => {
+    const div = document.createElement('div');
+    div.className = 'practice-card';
+    div.style.margin = '10px 0';
+    div.innerHTML = `<p><strong>${idx+1}. ${q.prompt}</strong> <span class="tag">${q.level}</span></p>` +
+      q.choices.map(c => `<label style="display:block;margin:6px 0;"><input type="radio" name="exam${idx}" value="${c.replace(/"/g,'&quot;')}"> ${c}</label>`).join('');
+    box.appendChild(div);
+  });
+  document.getElementById('examResult').textContent = '';
+  examStart = Date.now();
+  if(timerInterval) clearInterval(timerInterval);
+  timerInterval = setInterval(updateTimer, 1000);
+  updateTimer();
+}
+function updateTimer(){
+  if(!examStart) return;
+  const sec = Math.floor((Date.now()-examStart)/1000);
+  const m = String(Math.floor(sec/60)).padStart(2,'0');
+  const s = String(sec%60).padStart(2,'0');
+  document.getElementById('timer').textContent = `${m}:${s}`;
+}
+function gradeExam(){
+  if(!examQuestions.length) return;
+  let score = 0;
+  const review = [];
+  examQuestions.forEach((q, idx) => {
+    const checked = document.querySelector(`input[name="exam${idx}"]:checked`);
+    const val = checked ? checked.value : '';
+    if(val === q.answer) score++;
+    else review.push(`<li><strong>${idx+1}.</strong> Correct: <span class="kbd">${q.answer}</span>. ${q.explain}</li>`);
+  });
+  if(timerInterval) clearInterval(timerInterval);
+  const pct = Math.round(score / examQuestions.length * 100);
+  document.getElementById('examResult').innerHTML = `<p><strong>Score: ${score} / ${examQuestions.length} (${pct}%).</strong></p>` + (review.length ? `<details open><summary>Review mistakes</summary><ol>${review.join('')}</ol></details>` : `<p class="good">Excellent. No mistakes.</p>`);
+}
+
+function resetProgress(){
+  if(confirm('Reset saved progress for this site?')) {
+    progress = {"lessons":{},"known":{},"quizCorrect":0,"quizTotal":0};
+    saveProgress();
+    renderFlashcard();
+    updateQuizStats();
+  }
+}
+
+renderLessons();
+renderTerms();
+renderProgress();
+renderFlashcard();
+newQuestion();
+renderTransform();
+renderWriting();
+</script>
+</body>
+</html>
