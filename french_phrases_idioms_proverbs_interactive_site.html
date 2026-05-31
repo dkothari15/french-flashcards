@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>300+ French Expressions Lab</title>
+<style>
+:root {
+  --bg:#f6f7fb; --card:#ffffff; --text:#172033; --muted:#65718a; --line:#dfe4ef;
+  --accent:#4257ff; --accent2:#ff6a88; --soft:#eef1ff; --soft2:#fff3e7;
+  --shadow:0 18px 48px rgba(30,40,80,.11); --radius:22px;
+}
+body.dark {
+  --bg:#0d1220; --card:#151b2e; --text:#f3f6ff; --muted:#aeb8d0; --line:#2e3855;
+  --soft:#20284a; --soft2:#332620; --shadow:0 18px 48px rgba(0,0,0,.36);
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0; font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text); background:radial-gradient(circle at top left,rgba(66,87,255,.18),transparent 430px),radial-gradient(circle at top right,rgba(255,106,136,.14),transparent 430px),var(--bg);
+  line-height:1.55;
+}
+.wrap { width:min(1220px,calc(100% - 32px)); margin:auto; }
+header {
+  position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line);
+  backdrop-filter:blur(18px); background:color-mix(in srgb,var(--bg),transparent 14%);
+}
+.top { display:flex; justify-content:space-between; gap:16px; align-items:center; padding:18px 0; }
+.logo { display:flex; gap:12px; align-items:center; font-weight:950; letter-spacing:-.03em; }
+.mark { width:44px; height:44px; border-radius:15px; display:grid; place-items:center; color:white; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:var(--shadow); }
+nav { display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+a, button, select, input { font:inherit; }
+nav a, button {
+  border:1px solid var(--line); background:var(--card); color:var(--text); border-radius:999px; padding:10px 13px; text-decoration:none; cursor:pointer; font-weight:800;
+}
+nav a:hover, button:hover { border-color:var(--accent); transform:translateY(-1px); }
+.hero { padding:44px 0 24px; }
+.heroGrid { display:grid; grid-template-columns:1.15fr .85fr; gap:18px; align-items:stretch; }
+.panel, .card, .controls, .studyBox {
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow);
+}
+.panel { padding:28px; }
+h1 { font-size:clamp(2.1rem,5vw,4.7rem); line-height:.96; margin:0 0 16px; letter-spacing:-.075em; }
+h2 { font-size:clamp(1.6rem,3vw,2.35rem); letter-spacing:-.045em; margin:0; }
+h3 { margin:.1rem 0 .55rem; }
+.lead, .muted { color:var(--muted); }
+.badges, .chips { display:flex; flex-wrap:wrap; gap:8px; }
+.badge, .tag, .chip { border:1px solid var(--line); background:var(--soft); color:var(--accent); padding:7px 10px; border-radius:999px; font-size:.82rem; font-weight:900; }
+.tag { color:var(--muted); background:var(--bg); }
+.chip { cursor:pointer; color:var(--muted); background:var(--card); }
+.chip.active { background:var(--accent); color:white; border-color:var(--accent); }
+.stats { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:15px; }
+.stat { background:var(--soft); border-radius:18px; padding:18px; }
+.stat b { font-size:2.1rem; display:block; letter-spacing:-.05em; }
+section { padding:26px 0; }
+.controls { padding:18px; margin-top:14px; }
+.searchRow { display:grid; grid-template-columns:1fr 150px 210px; gap:10px; margin-bottom:12px; }
+input, select { width:100%; border:1px solid var(--line); background:var(--bg); color:var(--text); border-radius:15px; padding:12px 13px; outline:none; }
+input:focus, select:focus { border-color:var(--accent); box-shadow:0 0 0 4px color-mix(in srgb,var(--accent),transparent 84%); }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-top:18px; }
+.card { padding:18px; display:flex; flex-direction:column; gap:10px; min-height:100%; position:relative; overflow:hidden; }
+.card:before { content:""; position:absolute; inset:0 0 auto; height:5px; background:linear-gradient(90deg,var(--accent),var(--accent2)); }
+.phrase { font-size:1.23rem; font-weight:950; line-height:1.2; letter-spacing:-.025em; padding-top:5px; }
+.row { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+.tags { display:flex; flex-wrap:wrap; gap:6px; }
+.literal { color:var(--muted); font-size:.93rem; }
+.note { background:var(--soft); border-left:4px solid var(--accent); padding:10px 11px; border-radius:12px; font-size:.92rem; }
+details { border-top:1px dashed var(--line); padding-top:8px; }
+summary { cursor:pointer; font-weight:900; }
+.ex { background:var(--bg); border:1px solid var(--line); border-radius:14px; padding:10px 11px; margin-top:8px; }
+.fr { font-weight:850; }
+.en { color:var(--muted); font-size:.92rem; }
+.actions { margin-top:auto; display:flex; flex-wrap:wrap; gap:7px; }
+.mini { padding:8px 10px; font-size:.82rem; }
+.favorite.active { background:#ffe8a3; color:#6f4d00; border-color:#ffd76b; }
+.lessons { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.study { display:grid; grid-template-columns:.9fr 1.1fr; gap:16px; }
+.studyBox { padding:22px; }
+.flash { min-height:270px; display:grid; place-items:center; text-align:center; cursor:pointer; }
+.big { font-size:clamp(1.5rem,3vw,2.6rem); font-weight:950; letter-spacing:-.04em; }
+.options { display:grid; gap:9px; margin:12px 0; }
+.option { border-radius:15px; padding:12px; text-align:left; background:var(--bg); border:1px solid var(--line); }
+.option.correct { border-color:#14845f; background:color-mix(in srgb,#22c58b,transparent 84%); }
+.option.wrong { border-color:#e34f66; background:color-mix(in srgb,#ff6a88,transparent 84%); }
+.empty { display:none; padding:25px; border:1px dashed var(--line); border-radius:var(--radius); text-align:center; color:var(--muted); background:var(--card); margin-top:18px; }
+footer { color:var(--muted); padding:34px 0 54px; }
+@media(max-width:980px) {
+  .heroGrid,.study,.lessons { grid-template-columns:1fr; }
+  .grid { grid-template-columns:repeat(2,1fr); }
+  .searchRow { grid-template-columns:1fr; }
+}
+@media(max-width:640px) {
+  header { position:static; }
+  .top { align-items:flex-start; flex-direction:column; }
+  .grid,.stats { grid-template-columns:1fr; }
+  .panel { padding:22px; }
+}
+@media print {
+  header,.controls,.study,.actions { display:none; }
+  body { background:white; }
+  .card,.panel,.studyBox { box-shadow:none; break-inside:avoid; }
+  .grid { grid-template-columns:1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap top">
+    <div class="logo"><div class="mark">FR</div><div>French Expressions Lab<br><span class="muted" style="font-size:.86rem;font-weight:750;letter-spacing:0">300+ phrases, idioms, proverbs, clichés, connectors, and cultural expressions</span></div></div>
+    <nav>
+      <a href="#bank">Bank</a>
+      <a href="#lessons">Lessons</a>
+      <a href="#practice">Practice</a>
+      <button id="themeBtn">Dark mode</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap heroGrid">
+    <div class="panel">
+      <h1>388 French expressions you can actually use.</h1>
+      <p class="lead">A large interactive phrase bank for real French: daily phrases, idioms, proverbs, cultural clichés, connectors, work/study language, body expressions, emotions, and exam-friendly argument structures.</p>
+      <div class="badges">
+        <span class="badge">388 entries</span>
+        <span class="badge">3 examples per entry</span>
+        <span class="badge">Search + filters</span>
+        <span class="badge">Flashcards + quiz</span>
+        <span class="badge">A1 to C1</span>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>How to study</h3>
+      <p class="muted">For your level, start with A1/A2 daily phrases and connectors. Then add idioms slowly. In oral exams, use one natural expression well instead of forcing many expressions.</p>
+      <div class="stats">
+        <div class="stat"><b id="totalCount">0</b><span class="muted">entries loaded</span></div>
+        <div class="stat"><b>3x</b><span class="muted">examples each</span></div>
+        <div class="stat"><b>12</b><span class="muted">main categories</span></div>
+        <div class="stat"><b>A1-C1</b><span class="muted">level range</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="bank">
+  <div class="wrap">
+    <h2>Phrase bank</h2>
+    <p class="muted">Search in French or English. Try: courage, pain, cat, exam, proverb, connector, legal, money, weather.</p>
+    <div class="controls">
+      <div class="searchRow">
+        <input id="search" type="search" placeholder="Search expressions, meanings, equivalents, categories...">
+        <select id="levelFilter"><option value="all">All levels</option></select>
+        <select id="typeFilter"><option value="all">All types</option></select>
+      </div>
+      <div id="chips" class="chips"></div>
+      <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px">
+        <div><strong id="shown">0</strong> shown</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button id="randomBtn">Random</button>
+          <button id="favBtn">Favorites only</button>
+          <button id="resetBtn">Reset</button>
+          <button onclick="window.print()">Print / Save PDF</button>
+        </div>
+      </div>
+    </div>
+    <div id="cards" class="grid"></div>
+    <div id="empty" class="empty">No results. Try a broader search or reset filters.</div>
+  </div>
+</section>
+
+<section id="lessons">
+  <div class="wrap">
+    <h2>Mini lessons</h2>
+    <div class="lessons" style="margin-top:16px">
+      <div class="panel">
+        <h3>Avoir mal à...</h3>
+        <p><strong>Avoir mal à + body part</strong> means “to have pain in / my body part hurts.” Use <strong>au</strong>, <strong>à la</strong>, <strong>à l’</strong>, or <strong>aux</strong>: j’ai mal au dos, à la tête, à l’épaule, aux dents.</p>
+      </div>
+      <div class="panel">
+        <h3>Bravery expressions</h3>
+        <p><strong>Prendre son courage à deux mains</strong> means “to gather your courage.” Other useful bravery phrases: <strong>ne pas avoir froid aux yeux</strong>, <strong>garder son sang-froid</strong>, and <strong>se jeter à l’eau</strong>.</p>
+      </div>
+      <div class="panel">
+        <h3>Connectors for exams</h3>
+        <p>Use <strong>d’abord</strong>, <strong>ensuite</strong>, <strong>cependant</strong>, <strong>en revanche</strong>, <strong>par conséquent</strong>, and <strong>pour conclure</strong> to make your French sound organized.</p>
+      </div>
+      <div class="panel">
+        <h3>Cultural warning</h3>
+        <p>Some expressions are normal everywhere, like <strong>bon courage</strong>. Some are informal, like <strong>bof</strong>. Some are old-fashioned or cliché, like <strong>cherchez la femme</strong>; understand them, but do not overuse them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <div class="wrap">
+    <h2>Practice zone</h2>
+    <div class="study" style="margin-top:16px">
+      <div id="flash" class="studyBox flash">
+        <div>
+          <div class="tag" style="display:inline-block;margin-bottom:12px">Click to flip</div>
+          <div id="flashBig" class="big">Loading...</div>
+          <p id="flashSmall" class="muted">Meaning appears here.</p>
+        </div>
+      </div>
+      <div class="studyBox">
+        <h3>Meaning quiz</h3>
+        <div id="quizQ" class="phrase">Loading...</div>
+        <div id="quizOptions" class="options"></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+          <div class="muted">Score: <strong id="score">0</strong> / <strong id="attempts">0</strong></div>
+          <button id="nextQuiz">Next question</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">Tip: For A2 speaking, choose safe expressions like “ça dépend”, “en revanche”, “grâce à”, “à cause de”, “bon courage”, and “ce n’est pas grave”.</div>
+</footer>
+
+<script type="text/plain" id="data">
+À bientôt|Phrase|Daily essentials|A1|neutral|see you soon|see you soon|See you soon.|Use when you expect to meet again.
+À tout à l’heure|Phrase|Daily essentials|A1|neutral|see you later today|see you later today|See you in a bit.|Use when the next meeting is soon.
+À plus tard|Phrase|Daily essentials|A1|neutral|see you later|see you later|See you later.|Common casual goodbye.
+À demain|Phrase|Daily essentials|A1|neutral|until tomorrow|see you tomorrow|See you tomorrow.|Very common goodbye for the next day.
+Bonne journée|Phrase|Daily essentials|A1|neutral|good day|have a good day|Have a good day.|Use when leaving during the day.
+Bonne soirée|Phrase|Daily essentials|A1|neutral|good evening|have a good evening|Have a good evening.|Use when leaving in the evening.
+Bon week-end|Phrase|Daily essentials|A1|neutral|good weekend|have a good weekend|Have a good weekend.|Use before the weekend.
+Bon courage|Phrase|Daily essentials|A1|neutral|good courage|good luck with a difficult task|Good luck; hang in there.|Very French and useful.
+Ça va|Phrase|Daily essentials|A1|neutral|it goes|how are you; it is okay|How are you? I’m okay.|Question or answer depending on tone.
+Ça va aller|Phrase|Daily essentials|A2|neutral|it will go|it will be okay|It will be fine.|Reassuring expression.
+Ça marche|Phrase|Daily essentials|A1|neutral|it works|okay; that works|Sounds good.|Use to accept a plan.
+C’est parti|Phrase|Daily essentials|A2|neutral|it is gone|let’s begin|Here we go.|Used when starting an action.
+C’est bon|Phrase|Daily essentials|A1|neutral|it is good|it is okay; enough|That’s fine.|Can mean okay, tasty, or enough.
+C’est dommage|Phrase|Daily essentials|A1|neutral|it is damage|that’s too bad|That’s a shame.|Mild regret.
+Ce n’est pas grave|Phrase|Daily essentials|A1|neutral|it is not serious|it is okay; no big deal|No worries.|Often spoken as c’est pas grave.
+Pas de souci|Phrase|Daily essentials|A2|informal|no worry|no problem|No worries.|Common polite-informal reply.
+Aucun problème|Phrase|Daily essentials|A2|neutral|no problem|no problem|No problem.|Slightly more formal than pas de souci.
+Je vous en prie|Phrase|Daily essentials|A1|formal|I beg you of it|you are welcome; please|You’re welcome.|Formal polite reply.
+De rien|Phrase|Daily essentials|A1|neutral|of nothing|you are welcome|You’re welcome.|Simple reply to merci.
+Avec plaisir|Phrase|Daily essentials|A1|neutral|with pleasure|gladly; you’re welcome|My pleasure.|Warm and polite.
+Excusez-moi|Phrase|Daily essentials|A1|formal|excuse me|excuse me|Excuse me.|Formal or plural.
+Pardon|Phrase|Daily essentials|A1|neutral|pardon|sorry; excuse me|Sorry.|Very common quick apology.
+Désolé|Phrase|Daily essentials|A1|neutral|sorry|sorry|Sorry.|Masculine speaker or general.
+Je suis désolé|Phrase|Daily essentials|A1|neutral|I am sorry|I am sorry|I’m sorry.|More complete apology.
+Je suis navré|Phrase|Daily essentials|B1|formal|I am distressed|I am very sorry|I sincerely apologize.|Formal stronger apology.
+Ça dépend|Phrase|Daily essentials|A1|neutral|it depends|it depends|It depends.|Add de if needed.
+On verra|Phrase|Daily essentials|A2|neutral|we will see|we’ll see|We’ll see.|Useful when unsure.
+Pourquoi pas|Phrase|Daily essentials|A1|neutral|why not|why not|Why not?|Accepts an idea.
+Bien sûr|Phrase|Daily essentials|A1|neutral|well sure|of course|Of course.|Very common.
+Sans doute|Phrase|Daily essentials|B1|neutral|without doubt|probably; no doubt|Probably.|Often means probably in modern French.
+Peut-être|Phrase|Daily essentials|A1|neutral|maybe|maybe|Maybe.|Basic uncertainty.
+D’accord|Phrase|Daily essentials|A1|neutral|in agreement|okay; agreed|Okay.|Useful everywhere.
+Tout à fait|Phrase|Daily essentials|A2|neutral|completely|absolutely|Exactly.|Strong agreement.
+Pas vraiment|Phrase|Daily essentials|A1|neutral|not really|not really|Not really.|Soft disagreement.
+Absolument pas|Phrase|Daily essentials|A2|neutral|absolutely not|not at all|Absolutely not.|Strong disagreement.
+Je n’en sais rien|Phrase|Daily essentials|A2|neutral|I know nothing of it|I have no idea|I have no idea.|Uses en naturally.
+Ça m’est égal|Phrase|Daily essentials|A2|neutral|it is equal to me|I don’t mind; I don’t care|I don’t mind.|Tone can sound indifferent.
+Comme tu veux|Phrase|Daily essentials|A2|informal|as you want|as you wish|Whatever you prefer.|Use with tu.
+Comme vous voulez|Phrase|Daily essentials|A2|formal|as you want|as you wish|As you prefer.|Formal or plural.
+Fais comme chez toi|Phrase|Daily essentials|A2|informal|do as at your home|make yourself at home|Make yourself at home.|Use with tu.
+Faites comme chez vous|Phrase|Daily essentials|A2|formal|do as at your home|make yourself at home|Make yourself at home.|Formal or plural.
+Je reviens tout de suite|Phrase|Daily essentials|A1|neutral|I come back right away|I’ll be right back|I’ll be right back.|Useful in service contexts.
+Un instant|Phrase|Daily essentials|A1|neutral|one moment|one moment|One moment.|Polite and simple.
+Attendez une seconde|Phrase|Daily essentials|A1|neutral|wait one second|wait a second|Wait a second.|Formal/plural command.
+Je vous écoute|Phrase|Daily essentials|A2|formal|I listen to you|I’m listening; how can I help|I’m listening.|Common in customer service.
+Quoi de neuf|Phrase|Daily essentials|A2|informal|what of new|what’s new|What’s new?|Casual greeting.
+Rien de spécial|Phrase|Daily essentials|A1|neutral|nothing special|nothing special|Nothing special.|Common answer.
+Ça ne fait rien|Phrase|Daily essentials|A2|neutral|it does nothing|never mind|Never mind.|Reassuring or dismissing an issue.
+Laisse tomber|Phrase|Daily essentials|A2|informal|let fall|forget it; drop it|Forget it.|Informal.
+Pas question|Phrase|Daily essentials|A2|neutral|no question|out of the question|No way.|Firm refusal.
+N’importe quoi|Phrase|Daily essentials|A2|informal|anything|nonsense; whatever|Nonsense.|Can be rude.
+N’importe qui|Phrase|Daily essentials|A2|neutral|anyone|anyone|Anyone.|Useful indefinite phrase.
+N’importe où|Phrase|Daily essentials|A2|neutral|anywhere|anywhere|Anywhere.|Useful indefinite phrase.
+N’importe quand|Phrase|Daily essentials|A2|neutral|any time|anytime|Anytime.|Useful indefinite phrase.
+Avoir mal à|Fixed phrase|Health & body|A1|neutral|to have pain at|to hurt; to have pain|My body part hurts.|Use au, à la, à l’, aux.
+Avoir mal au dos|Fixed phrase|Health & body|A1|neutral|to have pain in the back|to have back pain|My back hurts.|Au = à + le.
+Avoir mal à la tête|Fixed phrase|Health & body|A1|neutral|to have pain in the head|to have a headache|I have a headache.|À la because tête is feminine.
+Avoir mal aux dents|Fixed phrase|Health & body|A1|neutral|to have pain in the teeth|to have toothache|My teeth hurt.|Aux = à + les.
+Avoir froid|Fixed phrase|Health & body|A1|neutral|to have cold|to be cold|I am cold.|French uses avoir.
+Avoir chaud|Fixed phrase|Health & body|A1|neutral|to have hot|to be hot|I am hot.|French uses avoir.
+Avoir faim|Fixed phrase|Health & body|A1|neutral|to have hunger|to be hungry|I am hungry.|French uses avoir.
+Avoir soif|Fixed phrase|Health & body|A1|neutral|to have thirst|to be thirsty|I am thirsty.|French uses avoir.
+Avoir sommeil|Fixed phrase|Health & body|A1|neutral|to have sleepiness|to be sleepy|I am sleepy.|Not je suis sommeil.
+Avoir peur|Fixed phrase|Health & body|A1|neutral|to have fear|to be afraid|I am afraid.|Use de for the cause.
+Avoir honte|Fixed phrase|Health & body|A2|neutral|to have shame|to be ashamed|I feel ashamed.|Use de before cause.
+Avoir raison|Fixed phrase|Health & body|A1|neutral|to have reason|to be right|You are right.|French uses avoir.
+Avoir tort|Fixed phrase|Health & body|A1|neutral|to have wrong|to be wrong|You are wrong.|French uses avoir.
+Avoir de la chance|Fixed phrase|Health & body|A1|neutral|to have luck|to be lucky|I am lucky.|De la because chance is feminine.
+Avoir l’air|Fixed phrase|Health & body|A2|neutral|to have the air|to seem; to look|You look tired.|Followed by adjective or de + noun.
+Avoir besoin de|Fixed phrase|Needs & wants|A1|neutral|to have need of|to need|I need.|Always followed by de.
+Avoir envie de|Fixed phrase|Needs & wants|A1|neutral|to have desire of|to feel like; to want|I feel like.|Followed by noun or infinitive.
+Avoir l’intention de|Fixed phrase|Needs & wants|A2|neutral|to have the intention of|to intend to|I plan to.|Followed by infinitive.
+Avoir tendance à|Fixed phrase|Needs & wants|B1|neutral|to have tendency to|to tend to|I tend to.|Followed by infinitive.
+Avoir du mal à|Fixed phrase|Needs & wants|A2|neutral|to have difficulty to|to struggle to|I have trouble doing.|Followed by infinitive.
+Arriver à|Fixed phrase|Needs & wants|A2|neutral|to arrive to|to manage to|I manage to.|Often uses y: j’y arrive.
+Ne pas y arriver|Fixed phrase|Needs & wants|A2|neutral|not to arrive there|to not manage|I can’t do it.|Y replaces à + task.
+Avoir beau|Fixed phrase|Needs & wants|B2|neutral|to have beautiful|no matter how much one does|Even though I try.|Avoir beau + infinitive.
+Valoir mieux|Fixed phrase|Opinion & value|B1|neutral|to be worth better|to be better|It is better to.|Often il vaut mieux.
+Valoir le coup|Phrase|Opinion & value|A2|neutral|to be worth the blow|to be worth it|It’s worth it.|Negative: ne vaut pas le coup.
+Faire attention à|Fixed phrase|Health & body|A1|neutral|to make attention to|to pay attention to|Pay attention to.|Use à after attention.
+Prendre soin de|Fixed phrase|Health & body|A2|neutral|to take care of|to take care of|Take care of.|Use de before person or thing.
+Se sentir bien|Fixed phrase|Health & body|A1|neutral|to feel well|to feel good|I feel good.|Reflexive verb.
+Se sentir mal|Fixed phrase|Health & body|A1|neutral|to feel bad|to feel unwell|I feel bad.|Can be physical or emotional.
+Être en forme|Fixed phrase|Health & body|A2|neutral|to be in shape|to be fit; well|I am in good shape.|Common for health.
+Être malade|Fixed phrase|Health & body|A1|neutral|to be sick|to be ill|I am sick.|Adjective.
+Être fatigué|Fixed phrase|Health & body|A1|neutral|to be tired|to be tired|I am tired.|Adjective agrees.
+Être crevé|Idiom|Emotions|A2|informal|to be punctured|to be exhausted|I’m wiped out.|Informal.
+Avoir la pêche|Idiom|Emotions|B1|informal|to have the peach|to be energetic|I’m full of energy.|Positive informal phrase.
+Avoir la patate|Idiom|Emotions|B1|informal|to have the potato|to feel energetic|I feel great.|Similar to avoir la pêche.
+Avoir le cafard|Idiom|Emotions|B1|informal|to have the cockroach|to feel blue|I feel down.|Mood, not diagnosis.
+Avoir le moral|Phrase|Emotions|A2|neutral|to have morale|to feel positive|I’m in good spirits.|Often positive.
+Ne pas avoir le moral|Phrase|Emotions|A2|neutral|not to have morale|to feel low|I’m not feeling great.|Common gentle phrase.
+Avoir le trac|Idiom|Emotions|B1|neutral|to have stage fright|to be nervous before performance|I have stage fright.|Good for exams.
+Être stressé|Phrase|Emotions|A1|neutral|to be stressed|to be stressed|I’m stressed.|Adjective agrees.
+Être inquiet|Phrase|Emotions|A2|neutral|to be worried|to be worried|I’m worried.|Use pour or de.
+Être soulagé|Phrase|Emotions|B1|neutral|to be relieved|to be relieved|I’m relieved.|Adjective agrees.
+Être déçu|Phrase|Emotions|A2|neutral|to be disappointed|to be disappointed|I’m disappointed.|Adjective agrees.
+Être ravi|Phrase|Emotions|B1|formal|to be delighted|to be delighted|I’m delighted.|Polite and formal.
+Être furieux|Phrase|Emotions|B1|neutral|to be furious|to be furious|I’m furious.|Strong anger.
+Être de bonne humeur|Phrase|Emotions|A2|neutral|to be of good mood|to be in a good mood|I’m in a good mood.|Use de.
+Être de mauvaise humeur|Phrase|Emotions|A2|neutral|to be of bad mood|to be in a bad mood|I’m in a bad mood.|Use de.
+Perdre patience|Phrase|Emotions|B1|neutral|to lose patience|to lose patience|I’m losing patience.|Useful at work.
+Garder son calme|Phrase|Emotions|A2|neutral|to keep one’s calm|to stay calm|Keep calm.|Possessive changes.
+Garder son sang-froid|Idiom|Courage & character|B1|neutral|to keep one’s cold blood|to keep cool|Stay calm under pressure.|Possessive changes.
+Prendre son courage à deux mains|Idiom|Courage & character|B1|neutral|to take courage with both hands|to pluck up courage|Bite the bullet.|The bravery expression.
+Ne pas avoir froid aux yeux|Idiom|Courage & character|B2|neutral|not to have cold in the eyes|to be bold|To have guts.|Usually in negative form.
+Avoir le cœur bien accroché|Idiom|Courage & character|B2|neutral|to have heart well attached|to have a strong stomach|To handle disturbing things.|Common for crime or horror.
+Se jeter à l’eau|Idiom|Courage & character|B1|neutral|to throw oneself into water|to take the plunge|Take the plunge.|For starting despite fear.
+Oser|Phrase|Courage & character|A2|neutral|to dare|to dare|Dare to.|Simple but powerful.
+Faire preuve de courage|Phrase|Courage & character|B1|formal|to show proof of courage|to show courage|Show courage.|Good formal expression.
+Avoir du cran|Idiom|Courage & character|B2|informal|to have notch|to have guts|Have nerve.|Informal bravery.
+Être courageux|Phrase|Courage & character|A1|neutral|to be courageous|to be brave|Be brave.|Basic adjective.
+Être prudent|Phrase|Courage & character|A2|neutral|to be careful|to be cautious|Be careful.|Good contrast with brave.
+Être au courant|Phrase|Work & study|A2|neutral|to be in the current|to be informed|Be aware.|Use de for topic.
+Tenir au courant|Phrase|Work & study|B1|neutral|to keep in the current|to keep informed|Keep posted.|Pronoun: je vous tiens au courant.
+Faire le point|Phrase|Work & study|B1|neutral|to make the point|to review progress|Take stock.|Workplace phrase.
+Mettre au point|Phrase|Work & study|B2|neutral|to put to point|to develop; fine-tune|Work out details.|Also technical.
+Mettre les choses au clair|Phrase|Work & study|B1|neutral|to put things clear|to clarify things|Clear things up.|Useful for disputes.
+Avoir du pain sur la planche|Idiom|Work & study|B1|neutral|to have bread on the board|to have a lot of work|Have a lot on your plate.|Very common.
+Être débordé|Phrase|Work & study|B1|neutral|to be overflowed|to be swamped|Be overwhelmed.|Adjective agrees.
+Boucler un dossier|Phrase|Work & study|B2|neutral|to close a file|to finish a file|Wrap up a file.|Professional phrase.
+Faire avancer le dossier|Phrase|Work & study|B1|neutral|to move the file forward|to progress a case/file|Move the file forward.|Useful legal/admin French.
+Respecter un délai|Phrase|Work & study|B1|neutral|to respect a deadline|to meet a deadline|Meet a deadline.|Important workplace phrase.
+Rater un délai|Phrase|Work & study|B1|neutral|to miss a deadline|to miss a deadline|Miss a deadline.|Common workplace issue.
+Prendre du retard|Phrase|Work & study|B1|neutral|to take delay|to fall behind|Fall behind.|Use in projects.
+Être à jour|Phrase|Work & study|A2|neutral|to be up to date|to be up to date|Be caught up.|Work and documents.
+Mettre à jour|Phrase|Work & study|A2|neutral|to put up to date|to update|Update.|For files, software, info.
+Faire une mise à jour|Phrase|Work & study|A2|neutral|to make an update|to update|Do an update.|Noun form.
+Prendre des notes|Phrase|Work & study|A1|neutral|to take notes|to take notes|Take notes.|Basic study phrase.
+Réviser|Phrase|Work & study|A1|neutral|to review|to study for an exam|Review; revise.|French Canada can also use étudier.
+Apprendre par cœur|Phrase|Work & study|A2|neutral|to learn by heart|to memorize|Learn by heart.|Useful for vocabulary.
+Se mettre au travail|Phrase|Work & study|A2|neutral|to put oneself to work|to get to work|Get started working.|Reflexive.
+Se concentrer sur|Phrase|Work & study|A2|neutral|to focus on|to focus on|Focus on.|Use sur.
+Être dans la lune|Idiom|Work & study|A2|neutral|to be in the moon|to daydream|Have your head in the clouds.|Good for attention.
+Avoir la tête ailleurs|Idiom|Work & study|B1|neutral|to have head elsewhere|to be distracted|Mind elsewhere.|Similar to dans la lune.
+Se creuser la tête|Idiom|Work & study|B1|neutral|to dig one’s head|to think hard|Rack your brain.|Reflexive.
+Rendre un devoir|Phrase|Work & study|A2|neutral|to return an assignment|to submit homework|Hand in homework.|School phrase.
+Passer un examen|Phrase|Work & study|A1|neutral|to pass/take an exam|to take an exam|Take an exam.|Can also mean sit an exam.
+Réussir un examen|Phrase|Work & study|A1|neutral|to succeed an exam|to pass an exam|Pass an exam.|Use réussir à for verbs.
+Rater un examen|Phrase|Work & study|A1|neutral|to miss/fail an exam|to fail an exam|Fail an exam.|Careful with meaning.
+Poser une question|Phrase|Work & study|A1|neutral|to put a question|to ask a question|Ask a question.|Use poser, not demander une question.
+Demander de l’aide|Phrase|Work & study|A1|neutral|to ask for help|to ask for help|Ask for help.|Demander + noun.
+Prendre rendez-vous|Phrase|Work & study|A1|neutral|to take appointment|to make an appointment|Book an appointment.|Very useful.
+Annuler un rendez-vous|Phrase|Work & study|A1|neutral|to cancel appointment|to cancel an appointment|Cancel an appointment.|Basic admin phrase.
+Reporter un rendez-vous|Phrase|Work & study|A2|neutral|to postpone appointment|to reschedule|Reschedule.|Useful professionally.
+Confirmer un rendez-vous|Phrase|Work & study|A2|neutral|to confirm appointment|to confirm an appointment|Confirm an appointment.|Useful by email.
+Donner un coup de main|Idiom|Help & social|A2|neutral|to give a hand hit|to help|Lend a hand.|Very useful.
+Rendre service|Phrase|Help & social|A2|neutral|to render service|to do a favor|Do a favor.|Use à for person.
+Dépanner quelqu’un|Phrase|Help & social|B1|informal|to repair someone|to help someone out|Help out in a pinch.|Informal practical help.
+Compter sur quelqu’un|Phrase|Help & social|A2|neutral|to count on someone|to rely on someone|Count on someone.|Use sur.
+Faire confiance à|Phrase|Help & social|A2|neutral|to make trust to|to trust|Trust.|Use à for person.
+Se faire des amis|Phrase|Help & social|A1|neutral|to make oneself friends|to make friends|Make friends.|Reflexive.
+S’entendre bien avec|Phrase|Help & social|A2|neutral|to hear each other well with|to get along with|Get along with.|Reflexive.
+Se disputer avec|Phrase|Help & social|A2|neutral|to argue with|to argue with|Argue with.|Reflexive.
+Couper la parole|Phrase|Help & social|A2|neutral|to cut the speech|to interrupt|Interrupt.|Use à for person.
+Prendre la parole|Phrase|Help & social|B1|neutral|to take the speech|to speak up formally|Take the floor.|Meetings/classes.
+Avoir son mot à dire|Idiom|Help & social|B1|neutral|to have one’s word to say|to have a say|Have a say.|Possessive changes.
+Mettre son grain de sel|Idiom|Help & social|B1|informal|to add one’s grain of salt|to add an opinion|Put in two cents.|Sometimes unwanted.
+Poser un lapin|Idiom|Help & social|B1|informal|to place a rabbit|to stand someone up|Stand someone up.|Use à for person.
+Briser la glace|Idiom|Help & social|B1|neutral|to break the ice|to break the ice|Break the ice.|Same image as English.
+Être comme chien et chat|Idiom|Help & social|B1|informal|to be like dog and cat|to fight often|Fight like cats and dogs.|Usually for people.
+Faire la connaissance de|Phrase|Help & social|A2|neutral|to make acquaintance of|to meet for first time|Meet; get acquainted.|Polite phrase.
+Garder le contact|Phrase|Help & social|A2|neutral|to keep contact|to stay in touch|Keep in touch.|Common.
+Perdre le contact|Phrase|Help & social|A2|neutral|to lose contact|to lose touch|Lose touch.|Common.
+Passer le bonjour à|Phrase|Help & social|A2|neutral|to pass the hello to|to say hi to someone|Say hi to.|Friendly phrase.
+Dire bonjour de ma part|Phrase|Help & social|A2|neutral|to say hello from me|to give my regards|Say hello for me.|Use de ma part.
+Raconter des salades|Idiom|Food idioms|B1|informal|to tell salads|to tell nonsense or lies|Make things up.|Informal.
+Ce n’est pas de la tarte|Idiom|Food idioms|B1|informal|it is not pie|it is not easy|No piece of cake.|Informal.
+Mettre les bouchées doubles|Idiom|Food idioms|B2|neutral|to take double mouthfuls|to work faster|Step up the pace.|Deadline phrase.
+Avoir du pain sur la planche|Idiom|Food idioms|B1|neutral|to have bread on board|to have much work|Have a lot on your plate.|Also work category.
+Casser du sucre sur le dos|Idiom|Food idioms|B2|informal|to break sugar on the back|to bad-mouth|Talk behind someone’s back.|Use de quelqu’un.
+Marcher sur des œufs|Idiom|Food idioms|B2|neutral|to walk on eggs|to tread carefully|Walk on eggshells.|Same idea as English.
+Ramener sa fraise|Idiom|Food idioms|B2|informal|to bring back one’s strawberry|to show up or speak when not wanted|Butt in.|Very informal.
+Faire chou blanc|Idiom|Food idioms|B2|neutral|to make white cabbage|to fail to get results|Come up empty-handed.|Common in reports/news.
+Être dans les choux|Idiom|Food idioms|B2|informal|to be in the cabbages|to be failing or far behind|Be way off.|Informal.
+Avoir la moutarde qui monte au nez|Idiom|Food idioms|B2|informal|to have mustard rising to nose|to get angry|Get worked up.|Image of anger rising.
+Mettre de l’eau dans son vin|Idiom|Food idioms|B2|neutral|to put water in one’s wine|to compromise|Tone it down.|Common negotiation phrase.
+Être rouge comme une tomate|Idiom|Food idioms|A2|informal|to be red as a tomato|to be very red|Be red as a beet.|For embarrassment or heat.
+Tomber dans les pommes|Idiom|Food idioms|B1|neutral|to fall into apples|to faint|Pass out.|Classic idiom.
+Compter pour du beurre|Idiom|Food idioms|B2|informal|to count as butter|to not matter|Not count.|Informal.
+En faire tout un fromage|Idiom|Food idioms|B2|informal|to make a whole cheese of it|to make a big deal|Make a fuss.|Informal.
+Être une bonne poire|Idiom|Food idioms|B2|informal|to be a good pear|to be too nice and naive|Be a soft touch.|Can be critical.
+Couper la poire en deux|Idiom|Food idioms|B2|neutral|to cut the pear in two|to split the difference|Meet halfway.|Negotiation.
+Avoir la banane|Idiom|Food idioms|B1|informal|to have the banana|to have a big smile|Be grinning.|Informal.
+Haut comme trois pommes|Idiom|Food idioms|B1|informal|tall as three apples|very small child|Knee-high to a grasshopper.|Usually for children.
+Presser quelqu’un comme un citron|Idiom|Food idioms|B2|informal|to squeeze someone like lemon|to exploit someone|Squeeze someone dry.|Informal.
+Donner sa langue au chat|Idiom|Animal idioms|B1|neutral|to give tongue to cat|to give up guessing|I give up.|Guessing games.
+Avoir un chat dans la gorge|Idiom|Animal idioms|B1|neutral|to have cat in throat|to have a hoarse throat|Have a frog in throat.|French cat vs English frog.
+Quand les poules auront des dents|Idiom|Animal idioms|B1|informal|when hens have teeth|never|When pigs fly.|Humorous.
+Revenons à nos moutons|Idiom|Animal idioms|B2|neutral|let’s return to sheep|let’s get back to topic|Back to the matter.|Meeting phrase.
+Avoir d’autres chats à fouetter|Idiom|Animal idioms|B2|informal|to have other cats to whip|to have other priorities|Have bigger fish to fry.|Expression only.
+Être doux comme un agneau|Idiom|Animal idioms|B1|neutral|gentle as a lamb|very gentle|Gentle as a lamb.|Common comparison.
+Être malin comme un singe|Idiom|Animal idioms|B1|neutral|clever as a monkey|very clever|Clever as a fox.|Common comparison.
+Être têtu comme une mule|Idiom|Animal idioms|B1|neutral|stubborn as a mule|very stubborn|Stubborn as a mule.|Same as English.
+Être bavard comme une pie|Idiom|Animal idioms|B1|neutral|talkative as a magpie|very talkative|Talks a lot.|Common comparison.
+Être serrés comme des sardines|Idiom|Animal idioms|B1|neutral|packed like sardines|very crowded|Packed like sardines.|Same image.
+Avoir une mémoire d’éléphant|Idiom|Animal idioms|B1|neutral|to have elephant memory|to have great memory|Have a memory like an elephant.|Same image.
+Verser des larmes de crocodile|Idiom|Animal idioms|B2|neutral|to shed crocodile tears|fake sadness|Crocodile tears.|Same image.
+Mettre la charrue avant les bœufs|Idiom|Animal idioms|B2|neutral|put cart before oxen|do things in wrong order|Put the cart before the horse.|French oxen.
+Être connu comme le loup blanc|Idiom|Animal idioms|B2|neutral|known like white wolf|well-known|Known by everyone.|Common idiom.
+Prendre le taureau par les cornes|Idiom|Animal idioms|B2|neutral|take bull by horns|face problem directly|Take the bull by the horns.|Same image.
+Chercher la petite bête|Idiom|Animal idioms|B2|informal|look for the little beast|nitpick|Split hairs.|Informal.
+Sauter du coq à l’âne|Idiom|Animal idioms|B2|neutral|jump from rooster to donkey|jump between topics|Jump from one topic to another.|Conversation.
+Faire mouche|Idiom|Animal idioms|B2|neutral|to make fly|to hit the mark|Hit the mark.|Argument or joke.
+Avoir le cafard|Idiom|Animal idioms|B1|informal|to have cockroach|to feel down|Feel blue.|Also emotion category.
+Être une poule mouillée|Idiom|Animal idioms|B2|informal|to be a wet hen|to be a coward|Be a chicken.|Informal and critical.
+Il pleut des cordes|Idiom|Weather & time|B1|neutral|it rains ropes|it is pouring|It’s raining cats and dogs.|Very common.
+Il pleut comme vache qui pisse|Idiom|Weather & time|B2|very informal|it rains like a peeing cow|it is pouring hard|It’s pouring.|Vulgar/informal image.
+Il fait un temps de chien|Idiom|Weather & time|B1|informal|it is dog weather|weather is awful|Terrible weather.|Common.
+Il fait un froid de canard|Idiom|Weather & time|B1|informal|it is duck cold|it is freezing|It’s freezing.|Common.
+Un soleil de plomb|Idiom|Weather & time|B1|neutral|a lead sun|scorching sun|Blazing sun.|Heat expression.
+Après la pluie, le beau temps|Proverb|Weather & time|A2|neutral|after rain, good weather|bad times pass|Every cloud has a silver lining.|Proverb.
+Être dans le brouillard|Idiom|Weather & time|B1|neutral|to be in fog|to be confused|Be foggy/confused.|Mental state.
+Tomber à pic|Idiom|Weather & time|B1|neutral|fall at the point|arrive at perfect time|Come at the right time.|Useful.
+À la dernière minute|Phrase|Weather & time|A2|neutral|at the last minute|at the last minute|At the last minute.|Common.
+Au fil du temps|Connector|Weather & time|B1|formal|along the thread of time|over time|Over time.|Good in writing.
+De temps en temps|Phrase|Weather & time|A1|neutral|from time to time|sometimes|From time to time.|Frequency.
+Tout à l’heure|Phrase|Weather & time|A1|neutral|all at the hour|earlier or later today|A little earlier/later.|Context decides.
+Tout de suite|Phrase|Weather & time|A1|neutral|right away|immediately|Right away.|Common.
+Dès que possible|Phrase|Weather & time|A2|neutral|as soon as possible|as soon as possible|ASAP.|Polite.
+Le plus tôt possible|Phrase|Weather & time|A2|neutral|as early as possible|as soon as possible|As soon as possible.|Very practical.
+À long terme|Connector|Weather & time|B1|formal|in long term|in the long term|Long-term.|Argument phrase.
+À court terme|Connector|Weather & time|B1|formal|in short term|in the short term|Short-term.|Argument phrase.
+Du jour au lendemain|Idiom|Weather & time|B1|neutral|from day to next day|overnight; suddenly|Overnight.|Quick change.
+Il était temps|Phrase|Weather & time|A2|neutral|it was time|it was about time|About time.|Can be critical.
+Ce n’est qu’une question de temps|Phrase|Weather & time|B1|neutral|only a question of time|only a matter of time|Matter of time.|Useful.
+Coûter les yeux de la tête|Idiom|Money & value|B1|neutral|cost the eyes of head|be very expensive|Cost an arm and a leg.|Common.
+Ça coûte une fortune|Phrase|Money & value|A2|neutral|it costs a fortune|very expensive|Costs a fortune.|Simple.
+Bon marché|Phrase|Money & value|A2|neutral|good market|cheap|Cheap.|Adjective phrase.
+Hors de prix|Phrase|Money & value|B1|neutral|outside price|extremely expensive|Overpriced.|Common.
+Faire des économies|Phrase|Money & value|A2|neutral|to make savings|to save money|Save money.|Plural économies.
+Économiser de l’argent|Phrase|Money & value|A1|neutral|to save money|to save money|Save money.|Simple.
+Jeter l’argent par les fenêtres|Idiom|Money & value|B2|neutral|throw money through windows|waste money|Throw money away.|Common.
+En avoir pour son argent|Idiom|Money & value|B2|neutral|to have for one’s money|get value for money|Get your money’s worth.|Useful review phrase.
+C’est donné|Idiom|Money & value|B1|informal|it is given|it is very cheap|It’s a steal.|Informal.
+Payer de sa poche|Phrase|Money & value|B1|neutral|pay from one’s pocket|pay out of pocket|Pay personally.|Useful admin/legal.
+Joindre les deux bouts|Idiom|Money & value|B2|neutral|join the two ends|make ends meet|Make ends meet.|Finance idiom.
+Faire faillite|Phrase|Money & value|B1|neutral|make bankruptcy|go bankrupt|Go bankrupt.|Business phrase.
+Être fauché|Idiom|Money & value|B1|informal|to be mowed|to be broke|Be broke.|Informal.
+Mettre de côté|Phrase|Money & value|A2|neutral|put aside|save; set aside|Set aside.|Money/time.
+Valoir son pesant d’or|Idiom|Money & value|B2|neutral|be worth its weight in gold|be very valuable|Worth its weight in gold.|Same image.
+Petit à petit, l’oiseau fait son nid|Proverb|Proverbs|B1|neutral|little by little bird makes nest|small efforts add up|Little by little.|Excellent for learning.
+Mieux vaut tard que jamais|Proverb|Proverbs|A2|neutral|better late than never|late is better than never|Better late than never.|Same as English.
+Qui ne tente rien n’a rien|Proverb|Proverbs|B1|neutral|who tries nothing has nothing|you must try|Nothing ventured, nothing gained.|Motivational.
+L’habit ne fait pas le moine|Proverb|Proverbs|B1|neutral|clothes do not make monk|appearances mislead|Don’t judge a book by cover.|Very common.
+Les murs ont des oreilles|Proverb|Proverbs|B1|neutral|walls have ears|someone may hear|The walls have ears.|Privacy.
+Tous les chemins mènent à Rome|Proverb|Proverbs|B1|neutral|all roads lead to Rome|many paths work|All roads lead to Rome.|Same idea.
+Il ne faut pas vendre la peau de l’ours avant de l’avoir tué|Proverb|Proverbs|B2|neutral|do not sell bear skin before killing it|do not celebrate too early|Don’t count chickens before they hatch.|Long famous proverb.
+Chat échaudé craint l’eau froide|Proverb|Proverbs|B2|neutral|scalded cat fears cold water|bad experience makes caution|Once bitten, twice shy.|Classic.
+Il n’y a pas de fumée sans feu|Proverb|Proverbs|B1|neutral|no smoke without fire|rumors often have cause|Where there’s smoke there’s fire.|Common.
+On ne fait pas d’omelette sans casser des œufs|Proverb|Proverbs|B2|neutral|no omelet without breaking eggs|results require sacrifice|You can’t make an omelet without breaking eggs.|Same image.
+Pierre qui roule n’amasse pas mousse|Proverb|Proverbs|B2|neutral|rolling stone gathers no moss|constant change prevents stability|A rolling stone gathers no moss.|Interpretation varies.
+Aide-toi, le ciel t’aidera|Proverb|Proverbs|B2|neutral|help yourself, heaven will help you|take initiative|God helps those who help themselves.|Cultural proverb.
+L’union fait la force|Proverb|Proverbs|B1|neutral|unity makes strength|together we are stronger|Unity is strength.|Common motto.
+Il faut battre le fer pendant qu’il est chaud|Proverb|Proverbs|B2|neutral|strike iron while hot|act at right moment|Strike while the iron is hot.|Same image.
+Rien ne sert de courir, il faut partir à point|Proverb|Proverbs|B2|neutral|no use running, leave on time|steady preparation beats rush|Slow and steady wins the race.|From La Fontaine.
+La nuit porte conseil|Proverb|Proverbs|B1|neutral|night brings advice|sleep before deciding|Sleep on it.|Common.
+Les absents ont toujours tort|Proverb|Proverbs|B2|neutral|the absent are always wrong|absent people cannot defend themselves|Absent people lose the argument.|Cultural.
+Mieux vaut prévenir que guérir|Proverb|Proverbs|B1|neutral|better prevent than cure|prevention is better|Better safe than sorry.|Common.
+Tel père, tel fils|Proverb|Proverbs|B1|neutral|such father, such son|child resembles parent|Like father, like son.|Can adapt mère/fille.
+Qui vivra verra|Proverb|Proverbs|B1|neutral|who lives will see|time will tell|Time will tell.|Useful.
+Chacun voit midi à sa porte|Proverb|Proverbs|B2|neutral|everyone sees noon at own door|everyone sees from own interest|Everyone has their own perspective.|Very French.
+Les chiens ne font pas des chats|Proverb|Proverbs|B2|neutral|dogs do not make cats|children resemble parents|The apple doesn’t fall far from tree.|Familiar.
+Il n’est jamais trop tard pour bien faire|Proverb|Proverbs|B1|neutral|never too late to do well|you can still improve|It’s never too late.|Motivating.
+À cœur vaillant, rien d’impossible|Proverb|Proverbs|B2|literary|to a brave heart, nothing impossible|courage makes things possible|Nothing is impossible to a willing heart.|Good bravery proverb.
+La fortune sourit aux audacieux|Proverb|Proverbs|B2|formal|fortune smiles on the bold|bold people succeed|Fortune favors the bold.|Bravery/business.
+L’argent ne fait pas le bonheur|Proverb|Proverbs|B1|neutral|money does not make happiness|money cannot buy happiness|Money doesn’t buy happiness.|Common.
+Il n’y a que le premier pas qui coûte|Proverb|Proverbs|B2|neutral|only first step costs|starting is hardest|The first step is the hardest.|Motivating.
+À l’impossible nul n’est tenu|Proverb|Proverbs|C1|formal|no one is held to impossible|no one must do impossible|No one is bound to do the impossible.|Formal/legal flavor.
+Faute avouée est à moitié pardonnée|Proverb|Proverbs|B2|neutral|confessed fault is half forgiven|admitting helps forgiveness|Confession is half forgiveness.|Classic.
+Il faut tourner sept fois sa langue dans sa bouche avant de parler|Proverb|Proverbs|B2|neutral|turn tongue seven times before speaking|think before speaking|Think before you speak.|Long but common.
+Les paroles s’envolent, les écrits restent|Proverb|Proverbs|B2|formal|words fly away, writings remain|written proof matters|Get it in writing.|Very useful/legal.
+On récolte ce que l’on sème|Proverb|Proverbs|B1|neutral|one harvests what one sows|actions have consequences|You reap what you sow.|Same image.
+Tout vient à point à qui sait attendre|Proverb|Proverbs|B2|neutral|everything comes to those who wait well|patience brings results|Good things come to those who wait.|Classic.
+Qui se ressemble s’assemble|Proverb|Proverbs|B1|neutral|those who resemble gather|similar people stick together|Birds of a feather flock together.|Common.
+Il ne faut jamais dire jamais|Proverb|Proverbs|B1|neutral|never say never|never say never|Never say never.|Same.
+C’est en forgeant qu’on devient forgeron|Proverb|Proverbs|B1|neutral|by forging one becomes blacksmith|practice makes skill|Practice makes perfect.|Excellent for language learning.
+À quelque chose malheur est bon|Proverb|Proverbs|B2|neutral|misfortune is good for something|bad events can bring good|Every cloud has a silver lining.|Similar to après la pluie.
+Mieux vaut seul que mal accompagné|Proverb|Proverbs|B1|neutral|better alone than badly accompanied|bad company is worse than solitude|Better alone than in bad company.|Classic.
+Nul n’est censé ignorer la loi|Proverb|Proverbs|C1|formal/legal|no one is supposed to ignore law|ignorance of law is no excuse|Ignorance of the law is no excuse.|Legal-cultural phrase.
+C’est la vie|Cliché|Clichés & culture|A1|neutral|that is life|that’s life|That’s life.|Famous French cliché.
+Oh là là|Cliché|Clichés & culture|A1|informal|oh there there|wow; oh no; goodness|Oh wow.|Tone changes meaning.
+Voilà|Cliché|Clichés & culture|A1|neutral|see there|there it is; exactly|There you go.|Extremely common.
+Bon appétit|Cliché|Clichés & culture|A1|neutral|good appetite|enjoy your meal|Enjoy your meal.|Said before eating.
+Comme ci, comme ça|Cliché|Clichés & culture|A1|neutral|like this, like that|so-so|So-so.|Classic learner phrase.
+Métro, boulot, dodo|Cliché|Clichés & culture|B1|informal|metro work sleep|daily grind|Work, sleep, repeat.|Cultural cliché.
+Cocorico|Cultural expression|Clichés & culture|B1|informal|rooster sound|French patriotic pride|French pride cry.|Often about French success.
+La vie en rose|Cultural expression|Clichés & culture|B1|neutral|life in pink|seeing life beautifully|Rose-colored life.|Cultural/song reference.
+Joie de vivre|Cultural expression|Clichés & culture|B2|formal|joy of living|cheerful enjoyment of life|Joy of life.|Also used in English.
+Savoir-faire|Cultural expression|Clichés & culture|B2|formal|know-how to do|skill; expertise|Know-how.|Also used in English.
+Déjà-vu|Cultural expression|Clichés & culture|B1|neutral|already seen|feeling of having seen before|Déjà vu.|Also English loanword.
+Faux pas|Cultural expression|Clichés & culture|B2|formal|false step|social mistake|Faux pas.|Also English loanword.
+Carte blanche|Cultural expression|Clichés & culture|B2|formal|white card|full freedom|Free rein.|Also English loanword.
+Crème de la crème|Cultural expression|Clichés & culture|B2|formal|cream of the cream|the very best|Best of the best.|Also English loanword.
+Esprit de corps|Cultural expression|Clichés & culture|C1|formal|spirit of body/group|team spirit|Team spirit.|Formal.
+Raison d’être|Cultural expression|Clichés & culture|C1|formal|reason for being|purpose|Reason for existing.|Formal.
+Cherchez la femme|Cliché|Clichés & culture|C1|dated|look for the woman|dated cliché blaming a woman|Look for the woman.|Understand, avoid serious use.
+Coup de grâce|Cultural expression|Clichés & culture|C1|formal|stroke of mercy|final blow|Final blow.|Also English loanword.
+Tour de force|Cultural expression|Clichés & culture|C1|formal|feat of strength|impressive achievement|Tour de force.|Also English.
+Bon voyage|Cliché|Clichés & culture|A1|neutral|good journey|have a good trip|Have a good trip.|International phrase.
+Ça ne se fait pas|Cultural expression|Clichés & culture|B1|neutral|that is not done|that is socially unacceptable|You don’t do that.|Important cultural phrase.
+C’est typiquement français|Cultural expression|Clichés & culture|A2|neutral|that is typically French|very French|So French.|Use carefully.
+L’appel du vide|Cultural expression|Clichés & culture|C1|literary|call of the void|strange impulse near danger|Call of the void.|Modern cultural phrase.
+Bof|Cliché|Clichés & culture|A2|informal|meh|meh; not great|Meh.|Very common spoken reaction.
+Bref|Phrase|Clichés & culture|A2|neutral|brief|anyway; in short|Anyway.|Used to summarize or cut short.
+Et voilà|Cliché|Clichés & culture|A1|neutral|and there it is|there you go|And there you go.|Common finish phrase.
+Mon œil|Idiom|Clichés & culture|B1|informal|my eye|yeah right|As if.|Informal disbelief.
+Ça alors|Phrase|Clichés & culture|A2|neutral|that then|well I never; wow|Wow.|Surprise.
+Ma foi|Phrase|Clichés & culture|B2|old-fashioned|my faith|well; honestly|Well.|Old-fashioned flavor.
+N’est-ce pas|Phrase|Clichés & culture|A2|formal|is it not|isn’t it|Isn’t it?|Can sound formal.
+D’un côté... de l’autre|Connector|Connectors & arguments|A2|neutral|on one side, on the other|on one hand, on the other|On one hand.|Useful for comparisons.
+Tout d’abord|Connector|Connectors & arguments|A2|formal|all first|first of all|First of all.|Good opening.
+D’abord|Connector|Connectors & arguments|A1|neutral|first|first|First.|Basic order.
+Ensuite|Connector|Connectors & arguments|A1|neutral|then|then|Then.|Sequence.
+Puis|Connector|Connectors & arguments|A1|neutral|then|then|Then.|More elegant than et après.
+Après|Connector|Connectors & arguments|A1|neutral|after|afterwards|After.|Basic.
+Enfin|Connector|Connectors & arguments|A1|neutral|finally|finally|Finally.|Can also mean anyway.
+Finalement|Connector|Connectors & arguments|A2|neutral|finally|in the end|Ultimately.|Conclusion.
+Pour commencer|Connector|Connectors & arguments|A2|neutral|to begin|to begin with|To start.|Presentation phrase.
+Pour conclure|Connector|Connectors & arguments|A2|formal|to conclude|to conclude|To conclude.|Presentation phrase.
+En conclusion|Connector|Connectors & arguments|A2|formal|in conclusion|in conclusion|In conclusion.|Writing/speaking.
+En résumé|Connector|Connectors & arguments|A2|formal|in summary|in summary|In short.|Good conclusion.
+Bref|Connector|Connectors & arguments|A2|neutral|brief|in short; anyway|In short.|Also cultural phrase.
+Cependant|Connector|Connectors & arguments|B1|formal|however|however|However.|Formal alternative to mais.
+Pourtant|Connector|Connectors & arguments|B1|neutral|however|yet; however|Yet.|Shows contrast.
+Néanmoins|Connector|Connectors & arguments|B2|formal|nevertheless|nevertheless|Nevertheless.|Formal.
+Toutefois|Connector|Connectors & arguments|B2|formal|however|however|However.|Formal.
+En revanche|Connector|Connectors & arguments|B1|formal|in return|however; by contrast|On the other hand.|Useful in essays.
+Par contre|Connector|Connectors & arguments|A2|neutral|by against|on the other hand|But; however.|Common spoken contrast.
+Au contraire|Connector|Connectors & arguments|A2|neutral|to the contrary|on the contrary|On the contrary.|Strong contrast.
+Même si|Connector|Connectors & arguments|A2|neutral|even if|even though|Even if.|No subjunctive normally.
+Bien que|Connector|Connectors & arguments|B1|formal|although|although|Although.|Usually subjunctive.
+Quoique|Connector|Connectors & arguments|B2|formal|although|although; though|Although.|Can mean though.
+Alors que|Connector|Connectors & arguments|B1|neutral|while that|whereas; while|Whereas.|Comparison/contrast.
+Tandis que|Connector|Connectors & arguments|B1|formal|while that|whereas; while|Whereas.|More formal.
+Parce que|Connector|Connectors & arguments|A1|neutral|because|because|Because.|Basic cause.
+Car|Connector|Connectors & arguments|B1|formal|for|because|For; because.|Written style.
+Comme|Connector|Connectors & arguments|A2|neutral|as|since; as|Since.|At beginning for cause.
+Puisque|Connector|Connectors & arguments|B1|neutral|since|since; given that|Since.|Cause already known.
+Grâce à|Connector|Connectors & arguments|A2|neutral|thanks to|thanks to|Thanks to.|Positive cause.
+À cause de|Connector|Connectors & arguments|A2|neutral|because of|because of|Because of.|Usually negative cause.
+En raison de|Connector|Connectors & arguments|B2|formal|by reason of|because of; due to|Due to.|Formal.
+Faute de|Connector|Connectors & arguments|B2|formal|for lack of|for lack of|Due to lack of.|Formal.
+C’est pourquoi|Connector|Connectors & arguments|B1|formal|that is why|that is why|That is why.|Result.
+Donc|Connector|Connectors & arguments|A1|neutral|therefore|so; therefore|So.|Basic result.
+Alors|Connector|Connectors & arguments|A1|neutral|then|so; then|So.|Spoken connector.
+Ainsi|Connector|Connectors & arguments|B1|formal|thus|thus|Thus.|Formal.
+Par conséquent|Connector|Connectors & arguments|B2|formal|consequently|therefore|Consequently.|Formal.
+Du coup|Connector|Connectors & arguments|B1|informal|from the blow|so; as a result|So.|Very common spoken.
+C’est-à-dire|Connector|Connectors & arguments|A2|neutral|that is to say|that is|That is.|Clarification.
+Autrement dit|Connector|Connectors & arguments|B1|formal|said otherwise|in other words|In other words.|Rephrasing.
+En d’autres termes|Connector|Connectors & arguments|B2|formal|in other terms|in other words|In other words.|Formal.
+Par exemple|Connector|Connectors & arguments|A1|neutral|by example|for example|For example.|Basic.
+Notamment|Connector|Connectors & arguments|B1|formal|notably|notably; especially|Notably.|Good for lists.
+En particulier|Connector|Connectors & arguments|B1|formal|in particular|in particular|In particular.|Specific example.
+Quant à|Connector|Connectors & arguments|B1|formal|as for|as for; regarding|As for.|Use au, à la, aux forms.
+Concernant|Connector|Connectors & arguments|B1|formal|concerning|regarding|Regarding.|Professional.
+À propos de|Connector|Connectors & arguments|A2|neutral|about|about; regarding|About.|Topic change.
+Par rapport à|Connector|Connectors & arguments|B1|neutral|in relation to|compared to; regarding|Compared with.|Common but overused.
+Selon|Connector|Connectors & arguments|A2|neutral|according to|according to|According to.|Source or opinion.
+D’après|Connector|Connectors & arguments|A2|neutral|according to|according to|According to.|Often reports/sources.
+À mon avis|Connector|Connectors & arguments|A2|neutral|to my opinion|in my opinion|In my opinion.|Exam-friendly.
+Selon moi|Connector|Connectors & arguments|A2|neutral|according to me|in my opinion|In my view.|Cleaner than je pense sometimes.
+À vrai dire|Connector|Connectors & arguments|B1|neutral|to true say|to tell the truth|To be honest.|Nuance.
+Franchement|Connector|Connectors & arguments|A2|neutral|frankly|frankly|Frankly.|Opinion.
+Honnêtement|Connector|Connectors & arguments|A2|neutral|honestly|honestly|Honestly.|Opinion.
+Cela dit|Connector|Connectors & arguments|B1|neutral|that said|that being said|That said.|Nuance.
+En fait|Connector|Connectors & arguments|A2|neutral|in fact|actually|Actually.|Correction/clarification.
+En effet|Connector|Connectors & arguments|B1|formal|in effect|indeed|Indeed.|Confirms previous statement.
+Effectivement|Connector|Connectors & arguments|B1|neutral|effectively|indeed; actually|Indeed.|Confirmation.
+Bien entendu|Connector|Connectors & arguments|B1|formal|well heard|of course|Of course.|Formal.
+D’ailleurs|Connector|Connectors & arguments|B1|neutral|besides|by the way; moreover|Besides.|Adds related idea.
+En plus|Connector|Connectors & arguments|A2|neutral|in more|also; moreover|Plus; also.|Spoken.
+De plus|Connector|Connectors & arguments|B1|formal|of more|moreover|Moreover.|Formal.
+De même|Connector|Connectors & arguments|B1|formal|same way|similarly|Similarly.|Comparison.
+Également|Connector|Connectors & arguments|B1|formal|equally|also|Also.|Formal.
+Non seulement... mais aussi|Connector|Connectors & arguments|B1|formal|not only but also|not only but also|Not only but also.|Strong structure.
+Soit... soit|Connector|Connectors & arguments|B1|neutral|either or|either... or|Either... or.|Choice.
+Ni... ni|Connector|Connectors & arguments|A2|neutral|neither nor|neither... nor|Neither... nor.|Negative pair.
+Au lieu de|Connector|Connectors & arguments|A2|neutral|in place of|instead of|Instead of.|Followed by infinitive/noun.
+Plutôt que de|Connector|Connectors & arguments|B1|neutral|rather than to|rather than|Rather than.|Followed by infinitive.
+Afin de|Connector|Connectors & arguments|B1|formal|in order to|in order to|In order to.|Purpose, infinitive.
+Pour que|Connector|Connectors & arguments|B1|neutral|so that|so that|So that.|Usually subjunctive.
+Afin que|Connector|Connectors & arguments|B2|formal|so that|so that|So that.|Formal, subjunctive.
+De peur de|Connector|Connectors & arguments|B2|formal|for fear of|for fear of|For fear of.|Followed by infinitive.
+Malgré|Connector|Connectors & arguments|B1|formal|despite|despite|Despite.|Followed by noun.
+En dépit de|Connector|Connectors & arguments|B2|formal|in spite of|despite|In spite of.|Formal.
+Grâce auquel|Connector|Connectors & arguments|C1|formal|thanks to which|thanks to which|Thanks to which.|Relative pronoun phrase.
+</script>
+
+<script>
+const rows = document.getElementById("data").textContent.trim().split(String.fromCharCode(10));
+const entries = rows.map((line, i) => {
+  const p = line.split("|");
+  return { id:i+1, phrase:p[0], type:p[1], cat:p[2], level:p[3], register:p[4], literal:p[5], meaning:p[6], equivalent:p[7], note:p[8] || "" };
+});
+
+const specials = {
+  "Avoir mal à": [
+    ["J’ai mal à la tête depuis ce matin.", "I have had a headache since this morning."],
+    ["Tu as mal au dos après le travail ?", "Does your back hurt after work?"],
+    ["Elle a mal aux dents, donc elle va chez le dentiste.", "Her teeth hurt, so she is going to the dentist."]
+  ],
+  "Prendre son courage à deux mains": [
+    ["J’ai pris mon courage à deux mains et j’ai parlé au professeur.", "I gathered my courage and spoke to the teacher."],
+    ["Elle prend son courage à deux mains avant l’examen oral.", "She plucks up courage before the oral exam."],
+    ["Prenez votre courage à deux mains et commencez aujourd’hui.", "Gather your courage and start today."]
+  ],
+  "Bon courage": [
+    ["Tu travailles ce soir ? Bon courage !", "You are working tonight? Good luck!"],
+    ["Bon courage pour ton examen de français.", "Good luck with your French exam."],
+    ["Il fait froid dehors. Bon courage !", "It is cold outside. Hang in there!"]
+  ],
+  "Ça marche": [
+    ["On se voit à huit heures ? Ça marche.", "Shall we meet at eight? Sounds good."],
+    ["Si le site fonctionne, ça marche.", "If the website works, that is fine."],
+    ["Je t’appelle demain. Ça marche !", "I will call you tomorrow. Okay!"]
+  ],
+  "En revanche": [
+    ["Le cours est difficile; en revanche, il est très utile.", "The course is difficult; however, it is very useful."],
+    ["Toronto est chère; en revanche, il y a beaucoup d’emplois.", "Toronto is expensive; however, there are many jobs."],
+    ["Je n’aime pas le froid; en revanche, j’aime la neige.", "I do not like the cold; however, I like snow."]
+  ]
+};
+
+const state = { cat:"all", favOnly:false, score:0, attempts:0, flash:null, flipped:false };
+const favorites = new Set((localStorage.getItem("fr388favorites") || "").split(",").filter(Boolean));
+const $ = id => document.getElementById(id);
+function esc(s) { return String(s || "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;"); }
+function lower(s) { return String(s || "").toLowerCase(); }
+function hay(e) { return lower(Object.values(e).join(" ")); }
+function saveFavs() { localStorage.setItem("fr388favorites", Array.from(favorites).join(",")); }
+function unique(arr) { return Array.from(new Set(arr)).sort(); }
+function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function shuffle(arr) { return Array.from(arr).sort(() => Math.random() - .5); }
+
+function examplesFor(e) {
+  if (specials[e.phrase]) return specials[e.phrase];
+  if (e.type === "Connector") {
+    return [
+      ["J’utilise « " + e.phrase + " » pour relier deux idées.", "I use “" + e.phrase + "” to connect two ideas."],
+      ["Dans une réponse d’examen, « " + e.phrase + " » rend l’argument plus clair.", "In an exam answer, “" + e.phrase + "” makes the argument clearer."],
+      ["« " + e.phrase + " » exprime l’idée anglaise : " + e.equivalent + ".", "“" + e.phrase + "” expresses the English idea: " + e.equivalent + "."]
+    ];
+  }
+  if (e.type === "Proverb") {
+    return [
+      ["Quand la situation convient, on peut dire : « " + e.phrase + ". »", "When the situation fits, you can say: “" + e.phrase + ".”"],
+      ["Ce proverbe veut dire : " + e.meaning + ".", "This proverb means: " + e.meaning + "."],
+      ["En anglais naturel, l’idée est proche de : " + e.equivalent + ".", "In natural English, the idea is close to: " + e.equivalent + "."]
+    ];
+  }
+  if (e.type === "Idiom") {
+    return [
+      ["Dans une conversation, on peut utiliser : « " + e.phrase + ". »", "In conversation, you can use: “" + e.phrase + ".”"],
+      ["Attention, ce n’est pas toujours littéral : cela veut dire " + e.meaning + ".", "Careful, it is not always literal: it means " + e.meaning + "."],
+      ["L’équivalent naturel en anglais est : " + e.equivalent + ".", "The natural English equivalent is: " + e.equivalent + "."]
+    ];
+  }
+  return [
+    ["On peut dire : « " + e.phrase + ". »", "You can say: “" + e.phrase + ".”"],
+    ["Cette expression veut dire : " + e.meaning + ".", "This expression means: " + e.meaning + "."],
+    ["En anglais, l’idée est : " + e.equivalent + ".", "In English, the idea is: " + e.equivalent + "."]
+  ];
+}
+
+function buildFilters() {
+  $("totalCount").textContent = entries.length;
+  unique(entries.map(e => e.level)).forEach(l => $("levelFilter").insertAdjacentHTML("beforeend", "<option>" + esc(l) + "</option>"));
+  unique(entries.map(e => e.type)).forEach(t => $("typeFilter").insertAdjacentHTML("beforeend", "<option>" + esc(t) + "</option>"));
+  const cats = ["all"].concat(unique(entries.map(e => e.cat)));
+  $("chips").innerHTML = cats.map(c => "<button class='chip " + (c==="all" ? "active" : "") + "' data-cat='" + esc(c) + "'>" + esc(c === "all" ? "All categories" : c) + "</button>").join("");
+  document.querySelectorAll(".chip").forEach(ch => ch.addEventListener("click", () => {
+    state.cat = ch.dataset.cat;
+    document.querySelectorAll(".chip").forEach(x => x.classList.remove("active"));
+    ch.classList.add("active");
+    render();
+  }));
+}
+
+function filtered() {
+  const q = lower($("search").value.trim());
+  const level = $("levelFilter").value;
+  const type = $("typeFilter").value;
+  return entries.filter(e => {
+    if (state.favOnly && !favorites.has(e.phrase)) return false;
+    if (state.cat !== "all" && e.cat !== state.cat) return false;
+    if (level !== "all" && e.level !== level) return false;
+    if (type !== "all" && e.type !== type) return false;
+    if (q && !hay(e).includes(q)) return false;
+    return true;
+  });
+}
+
+function card(e) {
+  const exs = examplesFor(e);
+  const fav = favorites.has(e.phrase);
+  return "<article class='card'>" +
+    "<div class='row'><div><div class='phrase'>" + esc(e.phrase) + "</div><div class='tags' style='margin-top:8px'><span class='tag'>" + esc(e.level) + "</span><span class='tag'>" + esc(e.type) + "</span><span class='tag'>" + esc(e.cat) + "</span><span class='tag'>" + esc(e.register) + "</span></div></div><button class='mini favorite " + (fav ? "active" : "") + "' data-fav='" + esc(e.phrase) + "'>★</button></div>" +
+    "<div><strong>Meaning:</strong> " + esc(e.meaning) + "</div>" +
+    "<div class='literal'><strong>Literal image:</strong> " + esc(e.literal) + "<br><strong>English equivalent:</strong> " + esc(e.equivalent) + "</div>" +
+    "<div class='note'><strong>Usage note:</strong> " + esc(e.note) + "</div>" +
+    "<details open><summary>3 examples with English</summary>" +
+    exs.map(x => "<div class='ex'><div class='fr'>" + esc(x[0]) + "</div><div class='en'>" + esc(x[1]) + "</div></div>").join("") +
+    "</details>" +
+    "<div class='actions'><button class='mini' data-say='" + esc(e.phrase) + "'>Hear</button><button class='mini' data-copy='" + esc(e.phrase + " = " + e.meaning) + "'>Copy</button><button class='mini' data-practice='" + esc(e.phrase) + "'>Practice</button></div>" +
+    "</article>";
+}
+
+function render() {
+  const list = filtered();
+  $("shown").textContent = list.length;
+  $("cards").innerHTML = list.map(card).join("");
+  $("empty").style.display = list.length ? "none" : "block";
+  document.querySelectorAll("[data-fav]").forEach(btn => btn.addEventListener("click", () => {
+    const k = btn.dataset.fav;
+    favorites.has(k) ? favorites.delete(k) : favorites.add(k);
+    saveFavs(); render();
+  }));
+  document.querySelectorAll("[data-say]").forEach(btn => btn.addEventListener("click", () => speak(btn.dataset.say)));
+  document.querySelectorAll("[data-copy]").forEach(btn => btn.addEventListener("click", async () => {
+    await navigator.clipboard.writeText(btn.dataset.copy);
+    btn.textContent = "Copied";
+    setTimeout(() => btn.textContent = "Copy", 900);
+  }));
+  document.querySelectorAll("[data-practice]").forEach(btn => btn.addEventListener("click", () => {
+    const e = entries.find(x => x.phrase === btn.dataset.practice);
+    setFlash(e);
+    location.hash = "practice";
+  }));
+}
+
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "fr-FR";
+  u.rate = .86;
+  window.speechSynthesis.speak(u);
+}
+
+function setFlash(e) {
+  state.flash = e || rand(filtered().length ? filtered() : entries);
+  state.flipped = false;
+  $("flashBig").textContent = state.flash.phrase;
+  $("flashSmall").textContent = "Click to reveal meaning, literal image, and English equivalent.";
+}
+
+function flipFlash() {
+  if (!state.flash) setFlash();
+  state.flipped = !state.flipped;
+  if (state.flipped) {
+    $("flashBig").textContent = state.flash.meaning;
+    $("flashSmall").innerHTML = "<strong>Literal:</strong> " + esc(state.flash.literal) + "<br><strong>English:</strong> " + esc(state.flash.equivalent);
+  } else {
+    setFlash(state.flash);
+  }
+}
+
+function newQuiz() {
+  const pool = filtered().length >= 4 ? filtered() : entries;
+  const correct = rand(pool);
+  const options = shuffle([correct].concat(shuffle(entries.filter(e => e.phrase !== correct.phrase)).slice(0,3)));
+  $("quizQ").textContent = correct.phrase;
+  $("quizOptions").innerHTML = options.map(o => "<button class='option' data-answer='" + esc(o.phrase) + "'>" + esc(o.meaning) + "<br><span class='muted'>" + esc(o.equivalent) + "</span></button>").join("");
+  document.querySelectorAll(".option").forEach(btn => btn.addEventListener("click", () => {
+    if (btn.disabled) return;
+    state.attempts++;
+    const ok = btn.dataset.answer === correct.phrase;
+    if (ok) state.score++;
+    document.querySelectorAll(".option").forEach(b => {
+      b.disabled = true;
+      if (b.dataset.answer === correct.phrase) b.classList.add("correct");
+    });
+    if (!ok) btn.classList.add("wrong");
+    $("score").textContent = state.score;
+    $("attempts").textContent = state.attempts;
+  }));
+}
+
+$("search").addEventListener("input", render);
+$("levelFilter").addEventListener("change", render);
+$("typeFilter").addEventListener("change", render);
+$("themeBtn").addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  $("themeBtn").textContent = document.body.classList.contains("dark") ? "Light mode" : "Dark mode";
+});
+$("favBtn").addEventListener("click", () => {
+  state.favOnly = !state.favOnly;
+  $("favBtn").textContent = state.favOnly ? "Showing favorites" : "Favorites only";
+  render();
+});
+$("resetBtn").addEventListener("click", () => {
+  $("search").value = "";
+  $("levelFilter").value = "all";
+  $("typeFilter").value = "all";
+  state.cat = "all";
+  state.favOnly = false;
+  $("favBtn").textContent = "Favorites only";
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c.dataset.cat === "all"));
+  render();
+});
+$("randomBtn").addEventListener("click", () => {
+  const e = rand(filtered().length ? filtered() : entries);
+  $("search").value = e.phrase;
+  render();
+});
+$("flash").addEventListener("click", flipFlash);
+$("nextQuiz").addEventListener("click", newQuiz);
+
+buildFilters();
+render();
+setFlash();
+newQuiz();
+</script>
+</body>
+</html>
