@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convaincre et donner son opinion en français — A2 à C2</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --paper: #ffffff;
+      --ink: #0f172a;
+      --muted: #475569;
+      --line: #dbe3ef;
+      --soft: #eef4ff;
+      --accent: #1d4ed8;
+      --accent2: #7c3aed;
+      --success: #15803d;
+      --warn: #b45309;
+      --bad: #b91c1c;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(29, 78, 216, 0.13), transparent 30rem),
+        radial-gradient(circle at 95% 20%, rgba(124, 58, 237, 0.10), transparent 30rem),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .site-header {
+      padding: 3rem 1rem 2rem;
+      text-align: center;
+      color: white;
+      background:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 64, 175, 0.94)),
+        url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.12'%3E%3Cpath d='M0 30h120M0 60h120M0 90h120M30 0v120M60 0v120M90 0v120'/%3E%3C/g%3E%3C/svg%3E");
+      border-bottom: 1px solid rgba(255,255,255,.14);
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .38rem .8rem;
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 999px;
+      background: rgba(255,255,255,.09);
+      backdrop-filter: blur(8px);
+      font-size: .88rem;
+      color: #dbeafe;
+    }
+
+    h1 {
+      margin: 1rem 0 .55rem;
+      font-size: clamp(2.1rem, 5vw, 4.7rem);
+      line-height: 1.03;
+      letter-spacing: -0.06em;
+    }
+
+    .subtitle {
+      max-width: 840px;
+      margin: 0 auto;
+      font-size: clamp(1rem, 2vw, 1.22rem);
+      color: #dbeafe;
+    }
+
+    .header-actions {
+      margin-top: 1.8rem;
+      display: flex;
+      justify-content: center;
+      gap: .8rem;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      border: 0;
+      border-radius: 999px;
+      padding: .85rem 1.05rem;
+      font-weight: 750;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,.12);
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(0,0,0,.16);
+    }
+
+    .button.primary { background: white; color: #1e3a8a; }
+    .button.secondary { background: rgba(255,255,255,.12); color: white; border: 1px solid rgba(255,255,255,.24); }
+    .button.small { padding: .58rem .78rem; font-size: .88rem; box-shadow: none; border: 1px solid var(--line); background: white; color: var(--ink); }
+    .button.small.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+    .layout {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 1.2rem auto 5rem;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      max-height: calc(100vh - 2rem);
+      overflow: auto;
+    }
+
+    .sidebar h2 {
+      font-size: .85rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: .2rem 0 .7rem;
+    }
+
+    .navlink {
+      display: block;
+      padding: .62rem .7rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #334155;
+      font-weight: 650;
+      font-size: .92rem;
+    }
+
+    .navlink:hover { background: var(--soft); color: var(--accent); }
+
+    main { min-width: 0; }
+
+    section {
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(1rem, 2vw, 1.5rem);
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(1.45rem, 3vw, 2.15rem);
+      letter-spacing: -.035em;
+      line-height: 1.13;
+    }
+
+    .section-title p {
+      margin: .35rem 0 0;
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: .23rem .55rem;
+      border-radius: 999px;
+      background: #e0e7ff;
+      color: #3730a3;
+      font-size: .78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: 16px;
+      padding: 1rem;
+    }
+
+    .card h3 {
+      margin: 0 0 .6rem;
+      font-size: 1.12rem;
+    }
+
+    .card p { margin: .45rem 0; }
+
+    .muted { color: var(--muted); }
+    .fr { font-weight: 760; color: #111827; }
+    .en { color: #475569; }
+    .note { background: #fffbeb; border-color: #fde68a; }
+    .success { background: #f0fdf4; border-color: #bbf7d0; }
+    .danger { background: #fef2f2; border-color: #fecaca; }
+    .blue { background: #eff6ff; border-color: #bfdbfe; }
+
+    .formula {
+      font-size: 1.05rem;
+      background: #0f172a;
+      color: white;
+      padding: 1rem;
+      border-radius: 16px;
+      overflow-x: auto;
+    }
+
+    .formula code {
+      color: #bfdbfe;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1fr 180px 180px;
+      gap: .7rem;
+      margin: 1rem 0;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 13px;
+      padding: .78rem .85rem;
+      font: inherit;
+      color: var(--ink);
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #93c5fd;
+      box-shadow: 0 0 0 4px rgba(147,197,253,.25);
+    }
+
+    .phrase-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .75rem;
+    }
+
+    .phrase-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: .9rem;
+      background: white;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+
+    .phrase-card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(15,23,42,.08);
+    }
+
+    .meta {
+      display: flex;
+      gap: .35rem;
+      flex-wrap: wrap;
+      margin-bottom: .55rem;
+    }
+
+    .chip {
+      font-size: .72rem;
+      border-radius: 999px;
+      padding: .16rem .48rem;
+      background: #f1f5f9;
+      color: #475569;
+      font-weight: 800;
+    }
+
+    .chip.c2 { background: #f3e8ff; color: #6d28d9; }
+    .chip.b2 { background: #dbeafe; color: #1d4ed8; }
+    .chip.a2 { background: #dcfce7; color: #166534; }
+    .chip.warn { background: #ffedd5; color: #9a3412; }
+
+    .phrase-main {
+      font-size: 1rem;
+      font-weight: 850;
+      margin-bottom: .28rem;
+    }
+
+    .copy {
+      float: right;
+      border: none;
+      background: #f1f5f9;
+      border-radius: 10px;
+      padding: .32rem .48rem;
+      cursor: pointer;
+      color: #334155;
+      font-weight: 800;
+    }
+
+    .copy:hover { background: #e2e8f0; }
+
+    .tabs {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .table-wrap {
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      min-width: 680px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: .72rem .85rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      background: #f8fafc;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted);
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    .practice-box {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1rem;
+      background: #f8fafc;
+    }
+
+    .result {
+      margin-top: .8rem;
+      border-radius: 13px;
+      padding: .75rem;
+      display: none;
+    }
+
+    .result.show { display: block; }
+
+    .sentence-builder {
+      display: grid;
+      gap: .7rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .output {
+      white-space: pre-wrap;
+      min-height: 120px;
+      background: #0f172a;
+      color: #e5e7eb;
+      padding: 1rem;
+      border-radius: 16px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      margin-top: 1rem;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: white;
+      padding: .85rem 1rem;
+      margin: .65rem 0;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 850;
+    }
+
+    .warning-line {
+      border-left: 4px solid var(--warn);
+      padding: .65rem .85rem;
+      background: #fffbeb;
+      border-radius: 10px;
+      margin: .8rem 0;
+    }
+
+    .footer {
+      width: min(1180px, calc(100% - 2rem));
+      margin: -3rem auto 3rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 930px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: relative; top: 0; max-height: none; }
+      .toolbar { grid-template-columns: 1fr; }
+      .grid.two, .grid.three, .phrase-grid, .sentence-builder { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      .sidebar, .header-actions, .toolbar, .copy, .tabs, .button, .practice-box.interactive-only { display: none !important; }
+      .layout { display: block; width: 100%; }
+      body { background: white; }
+      section { box-shadow: none; break-inside: avoid; }
+      .site-header { color: black; background: white; border-bottom: 2px solid #ddd; }
+      .subtitle, .pill { color: black; border-color: #ddd; background: white; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="pill">🎯 Français examen oral/écrit • Opinion • Convaincre • Argumentation</div>
+      <h1>Convaincre et donner son opinion en français</h1>
+      <p class="subtitle">
+        Un site interactif pour passer de phrases simples comme <strong>tu peux</strong> et <strong>tu pourrais</strong>
+        à des formulations avancées comme <strong>il serait judicieux de</strong>, <strong>force est de constater que</strong>
+        et <strong>encore faut-il</strong>.
+      </p>
+      <div class="header-actions">
+        <a class="button primary" href="#phrase-bank">Explorer les phrases</a>
+        <a class="button secondary" href="#exam-builder">Créer un discours</a>
+        <a class="button secondary" href="#quiz">Faire le quiz</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>Navigation</h2>
+      <a class="navlink" href="#method">1. Méthode d’examen</a>
+      <a class="navlink" href="#tu-vous">2. Tu / Vous / Conditionnel</a>
+      <a class="navlink" href="#phrase-bank">3. Banque de phrases</a>
+      <a class="navlink" href="#connectors">4. Connecteurs</a>
+      <a class="navlink" href="#advanced">5. Phrases C1/C2</a>
+      <a class="navlink" href="#templates">6. Modèles prêts</a>
+      <a class="navlink" href="#exam-builder">7. Générateur de discours</a>
+      <a class="navlink" href="#quiz">8. Quiz</a>
+      <a class="navlink" href="#mistakes">9. Erreurs fréquentes</a>
+      <a class="navlink" href="#memory">10. À mémoriser</a>
+    </aside>
+
+    <main>
+      <section id="method">
+        <div class="section-title">
+          <div>
+            <h2>1. La méthode simple pour réussir</h2>
+            <p>Pour une tâche d’opinion ou de persuasion, ne donne pas seulement ton avis. Organise ton argumentation.</p>
+          </div>
+          <span class="tag">EXAMEN</span>
+        </div>
+
+        <div class="grid two">
+          <div class="card blue">
+            <h3>Structure sûre pour A2/B1</h3>
+            <p class="fr">Introduction → Opinion → 2 raisons → Exemple → Petit contre-argument → Conclusion</p>
+            <p class="en">Introduction → Opinion → 2 reasons → Example → Small opposite point → Conclusion</p>
+          </div>
+          <div class="card success">
+            <h3>Structure plus forte pour B2/C1/C2</h3>
+            <p class="fr">Accroche → Thèse nuancée → Arguments hiérarchisés → Concession → Réfutation → Ouverture</p>
+            <p class="en">Hook → Nuanced thesis → Organized arguments → Concession → Refutation → Opening idea</p>
+          </div>
+        </div>
+
+        <div class="formula">
+          <strong>Formule magique :</strong><br>
+          <code>À mon avis + raison 1 + raison 2 + exemple + certes... mais... + c’est pourquoi...</code>
+        </div>
+
+        <details open>
+          <summary>Exemple très simple : convaincre un ami de faire des achats en ligne</summary>
+          <p class="fr">À mon avis, tu devrais essayer les achats en ligne. D’abord, c’est pratique, car tu peux acheter à la maison. Ensuite, tu peux comparer les prix facilement. Par exemple, tu peux acheter des vêtements ou des livres sans sortir. Certes, il faut faire attention aux sites frauduleux, mais si tu choisis un site fiable, c’est simple et rapide. C’est pourquoi je t’encourage à essayer.</p>
+          <p class="en">In my opinion, you should try online shopping. First, it is practical because you can buy at home. Next, you can compare prices easily. For example, you can buy clothes or books without going out. Admittedly, you must be careful with fraudulent websites, but if you choose a reliable site, it is simple and fast. That is why I encourage you to try.</p>
+        </details>
+      </section>
+
+      <section id="tu-vous">
+        <div class="section-title">
+          <div>
+            <h2>2. Tu, vous, pouvoir, devoir, conditionnel</h2>
+            <p>Ces phrases sont très utiles pour convaincre quelqu’un avec politesse.</p>
+          </div>
+          <span class="tag">BASE FORTE</span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Forme</th>
+                <th>Usage</th>
+                <th>Exemple français</th>
+                <th>English</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tu peux...</strong></td>
+                <td>Informel, direct</td>
+                <td>Tu peux comparer les prix.</td>
+                <td>You can compare prices.</td>
+              </tr>
+              <tr>
+                <td><strong>Tu pourrais...</strong></td>
+                <td>Informel, plus poli, suggestion</td>
+                <td>Tu pourrais commencer par un petit achat.</td>
+                <td>You could start with a small purchase.</td>
+              </tr>
+              <tr>
+                <td><strong>Vous pouvez...</strong></td>
+                <td>Formel/pluriel, direct</td>
+                <td>Vous pouvez lire les avis des clients.</td>
+                <td>You can read customer reviews.</td>
+              </tr>
+              <tr>
+                <td><strong>Vous pourriez...</strong></td>
+                <td>Formel/pluriel, plus poli</td>
+                <td>Vous pourriez essayer une fois pour voir.</td>
+                <td>You could try once to see.</td>
+              </tr>
+              <tr>
+                <td><strong>Tu devrais / Vous devriez...</strong></td>
+                <td>Conseil fort</td>
+                <td>Tu devrais vérifier la date de livraison.</td>
+                <td>You should check the delivery date.</td>
+              </tr>
+              <tr>
+                <td><strong>Il faudrait...</strong></td>
+                <td>Conseil impersonnel, très utile en examen</td>
+                <td>Il faudrait choisir des sites fiables.</td>
+                <td>One should choose reliable websites.</td>
+              </tr>
+              <tr>
+                <td><strong>Il serait préférable de...</strong></td>
+                <td>Plus avancé, poli, argumentatif</td>
+                <td>Il serait préférable de comparer plusieurs options.</td>
+                <td>It would be preferable to compare several options.</td>
+              </tr>
+              <tr>
+                <td><strong>Il serait judicieux de...</strong></td>
+                <td>Très bon niveau, “it would be wise”</td>
+                <td>Il serait judicieux de commencer progressivement.</td>
+                <td>It would be wise to start gradually.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="warning-line">
+          <strong>Correction importante :</strong> on écrit <strong>vous pourriez</strong>, pas <strong>vous pourraiz</strong>.
+        </div>
+      </section>
+
+      <section id="phrase-bank">
+        <div class="section-title">
+          <div>
+            <h2>3. Banque interactive de phrases</h2>
+            <p>Recherche une expression, choisis un niveau ou une fonction, puis copie la phrase qui t’aide.</p>
+          </div>
+          <span class="tag">INTERACTIF</span>
+        </div>
+
+        <div class="toolbar">
+          <input id="searchInput" type="search" placeholder="Rechercher : opinion, conseil, exemple, certes, C2..." />
+          <select id="levelFilter">
+            <option value="all">Tous les niveaux</option>
+            <option value="A2">A2</option>
+            <option value="B1">B1</option>
+            <option value="B2">B2</option>
+            <option value="C1">C1</option>
+            <option value="C2">C2</option>
+          </select>
+          <select id="functionFilter">
+            <option value="all">Toutes les fonctions</option>
+            <option value="opinion">Opinion</option>
+            <option value="conseil">Conseil</option>
+            <option value="argument">Argument</option>
+            <option value="exemple">Exemple</option>
+            <option value="contraste">Contraste</option>
+            <option value="conclusion">Conclusion</option>
+            <option value="nuance">Nuance</option>
+          </select>
+        </div>
+
+        <div id="phraseCount" class="muted"></div>
+        <div id="phraseGrid" class="phrase-grid"></div>
+      </section>
+
+      <section id="connectors">
+        <div class="section-title">
+          <div>
+            <h2>4. Connecteurs pour organiser ton discours</h2>
+            <p>Les connecteurs rendent ton français plus clair et plus naturel.</p>
+          </div>
+          <span class="tag">LOGIQUE</span>
+        </div>
+
+        <div class="tabs">
+          <button class="button small active" data-tab="add">Ajouter</button>
+          <button class="button small" data-tab="cause">Cause</button>
+          <button class="button small" data-tab="contrast">Contraste</button>
+          <button class="button small" data-tab="result">Conséquence</button>
+          <button class="button small" data-tab="conclude">Conclusion</button>
+        </div>
+
+        <div id="tab-add" class="tab-content active">
+          <div class="grid three">
+            <div class="card"><h3>De plus</h3><p class="fr">De plus, c’est moins cher.</p><p class="en">Moreover, it is cheaper.</p></div>
+            <div class="card"><h3>Par ailleurs</h3><p class="fr">Par ailleurs, la livraison est rapide.</p><p class="en">Furthermore, delivery is fast.</p></div>
+            <div class="card"><h3>En outre</h3><p class="fr">En outre, cela permet de gagner du temps.</p><p class="en">Moreover, it allows you to save time.</p></div>
+          </div>
+        </div>
+
+        <div id="tab-cause" class="tab-content">
+          <div class="grid three">
+            <div class="card"><h3>Car</h3><p class="fr">Tu devrais essayer, car c’est pratique.</p><p class="en">You should try because it is practical.</p></div>
+            <div class="card"><h3>Étant donné que</h3><p class="fr">Étant donné que tu es occupé, c’est utile.</p><p class="en">Given that you are busy, it is useful.</p></div>
+            <div class="card"><h3>Dans la mesure où</h3><p class="fr">Dans la mesure où tu compares les prix, tu peux économiser.</p><p class="en">Insofar as you compare prices, you can save money.</p></div>
+          </div>
+        </div>
+
+        <div id="tab-contrast" class="tab-content">
+          <div class="grid three">
+            <div class="card"><h3>Cependant</h3><p class="fr">Cependant, il faut rester prudent.</p><p class="en">However, one must remain careful.</p></div>
+            <div class="card"><h3>Certes... mais...</h3><p class="fr">Certes, il y a des risques, mais on peut les éviter.</p><p class="en">Admittedly, there are risks, but we can avoid them.</p></div>
+            <div class="card"><h3>Néanmoins</h3><p class="fr">Néanmoins, les avantages sont importants.</p><p class="en">Nevertheless, the advantages are important.</p></div>
+          </div>
+        </div>
+
+        <div id="tab-result" class="tab-content">
+          <div class="grid three">
+            <div class="card"><h3>Donc</h3><p class="fr">Donc, c’est une bonne solution.</p><p class="en">So, it is a good solution.</p></div>
+            <div class="card"><h3>C’est pourquoi</h3><p class="fr">C’est pourquoi je te conseille d’essayer.</p><p class="en">That is why I advise you to try.</p></div>
+            <div class="card"><h3>Par conséquent</h3><p class="fr">Par conséquent, cette option mérite d’être considérée.</p><p class="en">Consequently, this option deserves to be considered.</p></div>
+          </div>
+        </div>
+
+        <div id="tab-conclude" class="tab-content">
+          <div class="grid three">
+            <div class="card"><h3>Pour conclure</h3><p class="fr">Pour conclure, je pense que c’est utile.</p><p class="en">To conclude, I think it is useful.</p></div>
+            <div class="card"><h3>En définitive</h3><p class="fr">En définitive, il serait judicieux d’essayer.</p><p class="en">Ultimately, it would be wise to try.</p></div>
+            <div class="card"><h3>Tout bien considéré</h3><p class="fr">Tout bien considéré, les avantages sont nombreux.</p><p class="en">All things considered, the advantages are numerous.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="advanced">
+        <div class="section-title">
+          <div>
+            <h2>5. Phrases C1/C2 pour impressionner</h2>
+            <p>Utilise ces phrases avec modération. Une ou deux phrases avancées suffisent souvent.</p>
+          </div>
+          <span class="tag">C1/C2</span>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>Force est de constater que...</h3>
+            <p class="fr">Force est de constater que les achats en ligne occupent une place importante dans notre vie quotidienne.</p>
+            <p class="en">One must acknowledge that online shopping occupies an important place in our daily life.</p>
+          </div>
+          <div class="card">
+            <h3>Il convient de souligner que...</h3>
+            <p class="fr">Il convient de souligner que cette solution est pratique, mais qu’elle demande de la prudence.</p>
+            <p class="en">It should be emphasized that this solution is practical, but that it requires caution.</p>
+          </div>
+          <div class="card">
+            <h3>Encore faut-il...</h3>
+            <p class="fr">Encore faut-il choisir des sites fiables et vérifier les conditions de retour.</p>
+            <p class="en">Still, one must choose reliable websites and check return conditions.</p>
+          </div>
+          <div class="card">
+            <h3>Il ne s’agit pas de..., mais de...</h3>
+            <p class="fr">Il ne s’agit pas de remplacer tous les magasins, mais de gagner du temps quand c’est nécessaire.</p>
+            <p class="en">It is not about replacing all stores, but about saving time when necessary.</p>
+          </div>
+          <div class="card">
+            <h3>Tout porte à croire que...</h3>
+            <p class="fr">Tout porte à croire que les achats en ligne vont continuer à se développer.</p>
+            <p class="en">Everything suggests that online shopping will continue to grow.</p>
+          </div>
+          <div class="card">
+            <h3>À bien y réfléchir...</h3>
+            <p class="fr">À bien y réfléchir, commencer par un petit achat serait une décision raisonnable.</p>
+            <p class="en">Upon reflection, starting with a small purchase would be a reasonable decision.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="templates">
+        <div class="section-title">
+          <div>
+            <h2>6. Modèles prêts pour l’examen</h2>
+            <p>Tu peux adapter ces modèles à presque n’importe quel sujet : achats en ligne, sport, bénévolat, transports, technologie, études.</p>
+          </div>
+          <span class="tag">MODÈLES</span>
+        </div>
+
+        <details open>
+          <summary>Modèle A2/B1 — simple et sûr</summary>
+          <p class="fr">
+            Bonjour, aujourd’hui je vais parler de [sujet]. À mon avis, [opinion]. D’abord, [raison 1]. Ensuite, [raison 2]. Par exemple, [exemple simple]. Certes, [petit problème], mais [solution]. Pour conclure, je pense que [opinion finale].
+          </p>
+          <p class="en">
+            Hello, today I am going to talk about [topic]. In my opinion, [opinion]. First, [reason 1]. Next, [reason 2]. For example, [simple example]. Admittedly, [small problem], but [solution]. To conclude, I think that [final opinion].
+          </p>
+        </details>
+
+        <details>
+          <summary>Modèle B2/C1 — plus naturel</summary>
+          <p class="fr">
+            La question de [sujet] est de plus en plus importante aujourd’hui. Selon moi, il serait préférable de [position]. Tout d’abord, cela permet de [avantage 1]. Par ailleurs, il ne faut pas sous-estimer [avantage 2]. Prenons l’exemple de [exemple]. Certes, on peut objecter que [contre-argument]. Cependant, cet argument me semble limité, car [réponse]. C’est pourquoi je suis convaincu que [conclusion].
+          </p>
+          <p class="en">
+            The question of [topic] is increasingly important today. In my opinion, it would be preferable to [position]. First of all, it allows us to [advantage 1]. Furthermore, we must not underestimate [advantage 2]. Let us take the example of [example]. Admittedly, one may object that [counterargument]. However, this argument seems limited to me because [response]. That is why I am convinced that [conclusion].
+          </p>
+        </details>
+
+        <details>
+          <summary>Modèle C1/C2 — argumentation avancée</summary>
+          <p class="fr">
+            Force est de constater que [sujet] suscite aujourd’hui de nombreux débats. À mon sens, il ne s’agit pas de [position extrême], mais plutôt de [position nuancée]. Il convient d’abord de souligner que [argument principal]. En outre, [argument secondaire] présente un intérêt considérable, notamment lorsque [situation]. Certes, [concession]. Encore faut-il toutefois [condition importante]. En définitive, tout porte à croire que [conclusion nuancée].
+          </p>
+          <p class="en">
+            One must acknowledge that [topic] now gives rise to many debates. In my view, it is not about [extreme position], but rather about [nuanced position]. It should first be emphasized that [main argument]. Moreover, [secondary argument] is of considerable interest, especially when [situation]. Admittedly, [concession]. Still, one must [important condition]. Ultimately, everything suggests that [nuanced conclusion].
+          </p>
+        </details>
+      </section>
+
+      <section id="exam-builder">
+        <div class="section-title">
+          <div>
+            <h2>7. Générateur de mini-discours</h2>
+            <p>Remplis les cases. Le site crée un discours en français que tu peux pratiquer.</p>
+          </div>
+          <span class="tag">PRATIQUE</span>
+        </div>
+
+        <div class="practice-box interactive-only">
+          <div class="sentence-builder">
+            <label>Sujet
+              <input id="topic" value="les achats en ligne" />
+            </label>
+            <label>Personne à convaincre
+              <select id="audience">
+                <option value="tu">un ami / une amie — tu</option>
+                <option value="vous">un professeur / une personne formelle — vous</option>
+              </select>
+            </label>
+            <label>Raison 1
+              <input id="reason1" value="c’est pratique" />
+            </label>
+            <label>Raison 2
+              <input id="reason2" value="on peut comparer les prix facilement" />
+            </label>
+            <label>Exemple
+              <input id="example" value="acheter des vêtements, des livres ou des produits pour la maison" />
+            </label>
+            <label>Petit risque/problème
+              <input id="risk" value="il faut faire attention aux sites frauduleux" />
+            </label>
+          </div>
+          <button class="button primary" style="margin-top: .9rem;" id="generateSpeech">Créer le discours</button>
+          <div id="speechOutput" class="output"></div>
+        </div>
+      </section>
+
+      <section id="quiz">
+        <div class="section-title">
+          <div>
+            <h2>8. Quiz rapide</h2>
+            <p>Choisis la meilleure phrase selon le contexte.</p>
+          </div>
+          <span class="tag">QUIZ</span>
+        </div>
+
+        <div class="practice-box interactive-only">
+          <p><strong>Question 1.</strong> Tu parles à ton ami. Quelle forme est correcte pour dire “you could” ?</p>
+          <select id="q1">
+            <option value="">Choisir...</option>
+            <option value="wrong">Vous pourraiz</option>
+            <option value="right">Tu pourrais</option>
+            <option value="wrong">Tu peut</option>
+          </select>
+
+          <p><strong>Question 2.</strong> Quelle phrase est la plus avancée pour “It would be wise to…” ?</p>
+          <select id="q2">
+            <option value="">Choisir...</option>
+            <option value="wrong">Il faut...</option>
+            <option value="right">Il serait judicieux de...</option>
+            <option value="wrong">Je veux...</option>
+          </select>
+
+          <p><strong>Question 3.</strong> Quelle structure donne une concession ?</p>
+          <select id="q3">
+            <option value="">Choisir...</option>
+            <option value="right">Certes..., mais...</option>
+            <option value="wrong">D’abord..., ensuite...</option>
+            <option value="wrong">Par exemple...</option>
+          </select>
+
+          <button class="button primary" id="checkQuiz" style="margin-top: .9rem;">Vérifier</button>
+          <div id="quizResult" class="result"></div>
+        </div>
+      </section>
+
+      <section id="mistakes">
+        <div class="section-title">
+          <div>
+            <h2>9. Erreurs fréquentes à éviter</h2>
+            <p>Ces erreurs sont très communes dans les examens de français.</p>
+          </div>
+          <span class="tag">CORRECTION</span>
+        </div>
+
+        <div class="grid two">
+          <div class="card danger">
+            <h3>❌ vous pourraiz</h3>
+            <p class="fr">✅ vous pourriez</p>
+            <p class="en">Correct conditional form of pouvoir with vous.</p>
+          </div>
+          <div class="card danger">
+            <h3>❌ à mon opinion</h3>
+            <p class="fr">✅ à mon avis / selon moi / pour moi</p>
+            <p class="en">Use “à mon avis,” not “à mon opinion.”</p>
+          </div>
+          <div class="card danger">
+            <h3>❌ Je suis agree</h3>
+            <p class="fr">✅ Je suis d’accord</p>
+            <p class="en">“I agree” = je suis d’accord.</p>
+          </div>
+          <div class="card danger">
+            <h3>❌ C’est dépend</h3>
+            <p class="fr">✅ Cela dépend / Ça dépend</p>
+            <p class="en">“It depends” = cela dépend.</p>
+          </div>
+          <div class="card danger">
+            <h3>❌ Je conseille toi de...</h3>
+            <p class="fr">✅ Je te conseille de...</p>
+            <p class="en">Use the object pronoun before the verb.</p>
+          </div>
+          <div class="card danger">
+            <h3>❌ plus meilleur</h3>
+            <p class="fr">✅ meilleur / mieux</p>
+            <p class="en">Meilleur already means “better.” Do not say plus meilleur.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="memory">
+        <div class="section-title">
+          <div>
+            <h2>10. Les meilleures phrases à mémoriser</h2>
+            <p>Pour un examen, mémorise ces phrases. Elles sont utiles sur presque tous les sujets.</p>
+          </div>
+          <span class="tag">TOP 20</span>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>Simple mais efficace</h3>
+            <ol>
+              <li>À mon avis, ...</li>
+              <li>Je pense que...</li>
+              <li>Selon moi, ...</li>
+              <li>Il est important de...</li>
+              <li>Tu devrais / Vous devriez...</li>
+              <li>Tu pourrais / Vous pourriez...</li>
+              <li>Je te conseille de / Je vous conseille de...</li>
+              <li>Cela permet de...</li>
+              <li>Par exemple, ...</li>
+              <li>Pour conclure, ...</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>Plus avancé</h3>
+            <ol>
+              <li>Il serait judicieux de...</li>
+              <li>Il serait préférable de...</li>
+              <li>Il convient de souligner que...</li>
+              <li>Force est de constater que...</li>
+              <li>Il ne faut pas sous-estimer...</li>
+              <li>Certes..., mais...</li>
+              <li>Encore faut-il...</li>
+              <li>Tout bien considéré, ...</li>
+              <li>En définitive, ...</li>
+              <li>C’est pourquoi je suis convaincu que...</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <p class="footer">Site d’étude autonome — phrases d’opinion, persuasion, conseil et argumentation pour examens de français.</p>
+
+  <script>
+    const phrases = [
+      {fr:"À mon avis, ...", en:"In my opinion, ...", level:"A2", fn:"opinion", note:"Très utile et simple."},
+      {fr:"Je pense que...", en:"I think that...", level:"A2", fn:"opinion", note:"Attention : je pense que + indicatif."},
+      {fr:"Je crois que...", en:"I believe that...", level:"A2", fn:"opinion", note:"Moins fort que je suis convaincu."},
+      {fr:"Pour moi, ...", en:"For me, ...", level:"A2", fn:"opinion", note:"Naturel à l’oral."},
+      {fr:"Selon moi, ...", en:"According to me / In my view, ...", level:"B1", fn:"opinion", note:"Plus formel que pour moi."},
+      {fr:"Il me semble que...", en:"It seems to me that...", level:"B1", fn:"opinion", note:"Opinion plus nuancée."},
+      {fr:"Je suis convaincu que...", en:"I am convinced that...", level:"B2", fn:"opinion", note:"Fort et persuasif."},
+      {fr:"Je suis persuadé que...", en:"I am persuaded/convinced that...", level:"B2", fn:"opinion", note:"Très fort."},
+      {fr:"À mon sens, ...", en:"In my view, ...", level:"C1", fn:"opinion", note:"Élégant et formel."},
+      {fr:"Force est de constater que...", en:"One must acknowledge that...", level:"C2", fn:"opinion", note:"Très avancé, à utiliser avec prudence."},
+      {fr:"Tout porte à croire que...", en:"Everything suggests that...", level:"C2", fn:"opinion", note:"Pour une conclusion ou une tendance."},
+
+      {fr:"Tu peux...", en:"You can...", level:"A2", fn:"conseil", note:"Informel."},
+      {fr:"Tu pourrais...", en:"You could...", level:"A2", fn:"conseil", note:"Informel et poli."},
+      {fr:"Vous pouvez...", en:"You can...", level:"A2", fn:"conseil", note:"Formel ou pluriel."},
+      {fr:"Vous pourriez...", en:"You could...", level:"A2", fn:"conseil", note:"Formel et poli."},
+      {fr:"Tu devrais...", en:"You should...", level:"A2", fn:"conseil", note:"Conseil direct."},
+      {fr:"Vous devriez...", en:"You should...", level:"A2", fn:"conseil", note:"Conseil formel."},
+      {fr:"Je te conseille de...", en:"I advise you to...", level:"A2", fn:"conseil", note:"Avec un ami."},
+      {fr:"Je vous conseille de...", en:"I advise you to...", level:"A2", fn:"conseil", note:"Avec un professeur/examinateur."},
+      {fr:"Je te recommande vivement de...", en:"I strongly recommend that you...", level:"B2", fn:"conseil", note:"Très persuasif."},
+      {fr:"Je t’encourage à...", en:"I encourage you to...", level:"B1", fn:"conseil", note:"Naturel et positif."},
+      {fr:"Tu aurais intérêt à...", en:"It would be in your interest to...", level:"B2", fn:"conseil", note:"Fort, parfois direct."},
+      {fr:"Il serait préférable de...", en:"It would be preferable to...", level:"B2", fn:"conseil", note:"Poli et avancé."},
+      {fr:"Il serait judicieux de...", en:"It would be wise to...", level:"C1", fn:"conseil", note:"Très bon pour l’examen."},
+      {fr:"Il vaudrait mieux...", en:"It would be better to...", level:"B1", fn:"conseil", note:"Conseil pratique."},
+
+      {fr:"D’abord, ...", en:"First, ...", level:"A2", fn:"argument", note:"Début du premier argument."},
+      {fr:"Tout d’abord, ...", en:"First of all, ...", level:"A2", fn:"argument", note:"Plus complet."},
+      {fr:"Ensuite, ...", en:"Next, ...", level:"A2", fn:"argument", note:"Deuxième argument."},
+      {fr:"De plus, ...", en:"Moreover, ...", level:"B1", fn:"argument", note:"Ajoute un argument."},
+      {fr:"Par ailleurs, ...", en:"Furthermore, ...", level:"B2", fn:"argument", note:"Plus formel."},
+      {fr:"En outre, ...", en:"Moreover, ...", level:"B2", fn:"argument", note:"Très écrit/formel."},
+      {fr:"Il faut aussi mentionner que...", en:"It should also be mentioned that...", level:"B2", fn:"argument", note:"Très utile."},
+      {fr:"Un autre point important est que...", en:"Another important point is that...", level:"B1", fn:"argument", note:"Très clair."},
+      {fr:"L’enjeu principal est de...", en:"The main issue/challenge is to...", level:"C1", fn:"argument", note:"Pour une discussion plus sérieuse."},
+      {fr:"Il ne faut pas sous-estimer...", en:"We must not underestimate...", level:"C1", fn:"argument", note:"Très bon pour renforcer un argument."},
+      {fr:"Cela présente un intérêt considérable.", en:"This is of considerable interest.", level:"C2", fn:"argument", note:"Très formel."},
+
+      {fr:"Par exemple, ...", en:"For example, ...", level:"A2", fn:"exemple", note:"Indispensable."},
+      {fr:"Comme par exemple...", en:"Such as...", level:"A2", fn:"exemple", note:"Très oral."},
+      {fr:"Prenons l’exemple de...", en:"Let us take the example of...", level:"B2", fn:"exemple", note:"Très utile en argumentation."},
+      {fr:"On peut citer...", en:"We can mention...", level:"B2", fn:"exemple", note:"Pour donner un exemple précis."},
+      {fr:"Cela se voit avec...", en:"This can be seen with...", level:"B2", fn:"exemple", note:"Pour expliquer une situation."},
+      {fr:"Un bon exemple serait...", en:"A good example would be...", level:"B1", fn:"exemple", note:"Simple et naturel."},
+      {fr:"À titre d’exemple, ...", en:"By way of example, ...", level:"C1", fn:"exemple", note:"Formel et élégant."},
+
+      {fr:"Mais...", en:"But...", level:"A2", fn:"contraste", note:"Simple."},
+      {fr:"Cependant, ...", en:"However, ...", level:"B1", fn:"contraste", note:"Très utile."},
+      {fr:"Toutefois, ...", en:"However, ...", level:"B2", fn:"contraste", note:"Plus formel."},
+      {fr:"Néanmoins, ...", en:"Nevertheless, ...", level:"B2", fn:"contraste", note:"Bon niveau."},
+      {fr:"En revanche, ...", en:"On the other hand, ...", level:"B1", fn:"contraste", note:"Contraste clair."},
+      {fr:"D’un côté..., de l’autre...", en:"On one hand..., on the other...", level:"B1", fn:"contraste", note:"Structure très pratique."},
+      {fr:"Certes..., mais...", en:"Admittedly..., but...", level:"B2", fn:"contraste", note:"Excellent pour l’examen."},
+      {fr:"Bien que...", en:"Although...", level:"B1", fn:"contraste", note:"Bien que + subjonctif en français standard."},
+      {fr:"Même si...", en:"Even if...", level:"B1", fn:"contraste", note:"Plus facile que bien que."},
+      {fr:"Encore faut-il...", en:"Still, one must...", level:"C2", fn:"contraste", note:"Très avancé."},
+      {fr:"Il ne s’agit pas de..., mais de...", en:"It is not about..., but about...", level:"C1", fn:"contraste", note:"Très persuasif."},
+
+      {fr:"Donc, ...", en:"So, ...", level:"A2", fn:"conclusion", note:"Simple."},
+      {fr:"Pour conclure, ...", en:"To conclude, ...", level:"A2", fn:"conclusion", note:"Très clair."},
+      {fr:"C’est pourquoi...", en:"That is why...", level:"B1", fn:"conclusion", note:"Cause + conclusion."},
+      {fr:"En conclusion, ...", en:"In conclusion, ...", level:"B1", fn:"conclusion", note:"Classique."},
+      {fr:"En définitive, ...", en:"Ultimately, ...", level:"C1", fn:"conclusion", note:"Avancé."},
+      {fr:"Tout bien considéré, ...", en:"All things considered, ...", level:"C1", fn:"conclusion", note:"Très bon pour une conclusion nuancée."},
+      {fr:"En somme, ...", en:"In short / In summary, ...", level:"B2", fn:"conclusion", note:"Court et efficace."},
+
+      {fr:"Dans une certaine mesure, ...", en:"To a certain extent, ...", level:"C1", fn:"nuance", note:"Pour éviter une opinion trop simple."},
+      {fr:"À bien y réfléchir, ...", en:"Upon reflection, ...", level:"C1", fn:"nuance", note:"Très naturel à l’oral avancé."},
+      {fr:"Il convient de souligner que...", en:"It should be emphasized that...", level:"C1", fn:"nuance", note:"Formel."},
+      {fr:"Il va sans dire que...", en:"It goes without saying that...", level:"C1", fn:"nuance", note:"À utiliser quand l’idée est évidente."},
+      {fr:"Dans cette optique, ...", en:"From this perspective, ...", level:"C1", fn:"nuance", note:"Relie une idée à ton point de vue."}
+    ];
+
+    const phraseGrid = document.getElementById("phraseGrid");
+    const phraseCount = document.getElementById("phraseCount");
+    const searchInput = document.getElementById("searchInput");
+    const levelFilter = document.getElementById("levelFilter");
+    const functionFilter = document.getElementById("functionFilter");
+
+    function levelClass(level) {
+      if (level === "C2" || level === "C1") return "c2";
+      if (level === "B2" || level === "B1") return "b2";
+      return "a2";
+    }
+
+    function renderPhrases() {
+      const q = searchInput.value.trim().toLowerCase();
+      const level = levelFilter.value;
+      const fn = functionFilter.value;
+
+      const filtered = phrases.filter(p => {
+        const hay = (p.fr + " " + p.en + " " + p.level + " " + p.fn + " " + p.note).toLowerCase();
+        const okQ = !q || hay.includes(q);
+        const okLevel = level === "all" || p.level === level;
+        const okFn = fn === "all" || p.fn === fn;
+        return okQ && okLevel && okFn;
+      });
+
+      phraseCount.textContent = `${filtered.length} phrase(s) affichée(s) sur ${phrases.length}.`;
+
+      phraseGrid.innerHTML = filtered.map((p, idx) => `
+        <article class="phrase-card">
+          <button class="copy" data-copy="${encodeURIComponent(p.fr)}">Copier</button>
+          <div class="meta">
+            <span class="chip ${levelClass(p.level)}">${p.level}</span>
+            <span class="chip">${p.fn}</span>
+          </div>
+          <div class="phrase-main">${p.fr}</div>
+          <div class="en">${p.en}</div>
+          <p class="muted">${p.note}</p>
+        </article>
+      `).join("");
+
+      document.querySelectorAll(".copy").forEach(btn => {
+        btn.addEventListener("click", async () => {
+          const text = decodeURIComponent(btn.dataset.copy);
+          try {
+            await navigator.clipboard.writeText(text);
+            btn.textContent = "Copié";
+            setTimeout(() => btn.textContent = "Copier", 900);
+          } catch {
+            btn.textContent = "Sélectionne";
+          }
+        });
+      });
+    }
+
+    [searchInput, levelFilter, functionFilter].forEach(el => el.addEventListener("input", renderPhrases));
+    renderPhrases();
+
+    document.querySelectorAll(".button.small[data-tab]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".button.small[data-tab]").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
+      });
+    });
+
+    document.getElementById("generateSpeech").addEventListener("click", () => {
+      const topic = document.getElementById("topic").value || "ce sujet";
+      const audience = document.getElementById("audience").value;
+      const reason1 = document.getElementById("reason1").value || "c’est utile";
+      const reason2 = document.getElementById("reason2").value || "cela permet de gagner du temps";
+      const example = document.getElementById("example").value || "faire un petit essai";
+      const risk = document.getElementById("risk").value || "il faut rester prudent";
+
+      const isVous = audience === "vous";
+      const hello = isVous ? "Bonjour, aujourd’hui je vais vous convaincre d’essayer " : "Salut, aujourd’hui je vais te convaincre d’essayer ";
+      const conseil = isVous ? "vous pourriez" : "tu pourrais";
+      const encourage = isVous ? "je vous encourage" : "je t’encourage";
+      const conseille = isVous ? "je vous conseille" : "je te conseille";
+
+      const speech =
+`${hello}${topic}.
+
+À mon avis, c’est une très bonne idée, car ${reason1}. 
+Tout d’abord, ${topic}, cela permet de simplifier la vie quotidienne. 
+Ensuite, ${reason2}. 
+
+Par exemple, ${conseil} commencer par ${example}. 
+Certes, ${risk}. Cependant, si on fait attention et si on choisit une option fiable, les avantages sont importants. 
+
+À bien y réfléchir, il ne s’agit pas de tout changer immédiatement, mais de commencer progressivement.
+Pour conclure, ${conseille} d’essayer, parce que c’est pratique, simple et utile. C’est pourquoi ${encourage} vraiment à le faire.`;
+
+      document.getElementById("speechOutput").textContent = speech;
+    });
+
+    document.getElementById("generateSpeech").click();
+
+    document.getElementById("checkQuiz").addEventListener("click", () => {
+      const answers = ["q1", "q2", "q3"].map(id => document.getElementById(id).value);
+      const score = answers.filter(a => a === "right").length;
+      const box = document.getElementById("quizResult");
+      box.classList.add("show");
+      if (score === 3) {
+        box.className = "result show success";
+        box.textContent = "Excellent : 3/3. Tu maîtrises les formes principales.";
+      } else if (score === 2) {
+        box.className = "result show note";
+        box.textContent = "Bien : 2/3. Révise surtout la forme conditionnelle et la concession.";
+      } else {
+        box.className = "result show danger";
+        box.textContent = `Score : ${score}/3. Révise : tu pourrais, vous pourriez, il serait judicieux de, certes... mais...`;
+      }
+    });
+  </script>
+</body>
+</html>
