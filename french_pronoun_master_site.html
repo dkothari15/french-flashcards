@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>French Object Pronouns Master Site — COD, COI, EN, Y, LE/LA/LES, LUI/LEUR</title>
+  <style>
+    :root{
+      --bg:#0f172a;
+      --panel:#111827;
+      --panel2:#1e293b;
+      --ink:#f8fafc;
+      --muted:#cbd5e1;
+      --soft:#94a3b8;
+      --line:#334155;
+      --accent:#38bdf8;
+      --accent2:#a78bfa;
+      --good:#34d399;
+      --warn:#f59e0b;
+      --bad:#fb7185;
+      --card:#0b1120;
+      --paper:#f8fafc;
+      --paperInk:#0f172a;
+      --shadow:0 18px 50px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:radial-gradient(circle at top left, rgba(56,189,248,.14), transparent 26rem), radial-gradient(circle at 85% 5%, rgba(167,139,250,.16), transparent 22rem), var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+    }
+    a{color:#7dd3fc;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .layout{display:grid; grid-template-columns: 310px minmax(0,1fr); min-height:100vh;}
+    aside{
+      position:sticky; top:0; height:100vh; overflow:auto; padding:22px;
+      background:rgba(2,6,23,.82); border-right:1px solid var(--line); backdrop-filter:blur(14px);
+    }
+    main{padding:34px; max-width:1500px; width:100%;}
+    .brand{display:flex; gap:12px; align-items:center; margin-bottom:22px}
+    .logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-weight:900;color:#020617; box-shadow:var(--shadow)}
+    .brand h1{font-size:1.05rem;margin:0;line-height:1.15}
+    .brand small{display:block;color:var(--soft);font-weight:500;margin-top:3px}
+    .searchBox{position:relative;margin:16px 0 18px}
+    .searchBox input{width:100%;border:1px solid var(--line);background:#020617;color:var(--ink);border-radius:999px;padding:12px 14px 12px 40px;outline:none}
+    .searchBox span{position:absolute;left:14px;top:9px;color:var(--soft)}
+    .nav a{display:block;padding:9px 12px;border-radius:12px;color:var(--muted);font-size:.95rem;margin:2px 0}
+    .nav a:hover,.nav a.active{background:rgba(56,189,248,.12);color:var(--ink);text-decoration:none}
+    .progressWrap{margin:18px 0 6px;background:#020617;border:1px solid var(--line);height:10px;border-radius:999px;overflow:hidden}
+    .progressBar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .2s}
+    .tiny{font-size:.78rem;color:var(--soft)}
+    .hero{padding:38px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(135deg,rgba(30,41,59,.95),rgba(15,23,42,.78));box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .hero:after{content:"";position:absolute;right:-8rem;top:-8rem;width:22rem;height:22rem;border-radius:50%;background:rgba(56,189,248,.15)}
+    .hero h2{font-size:clamp(2rem,5vw,4.2rem);line-height:1;margin:0 0 16px;max-width:980px;letter-spacing:-.05em}
+    .hero p{max-width:1000px;color:var(--muted);font-size:1.08rem;margin:0 0 18px}
+    .pillrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .pill{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(148,163,184,.35);background:rgba(15,23,42,.65);border-radius:999px;padding:8px 12px;color:var(--muted);font-size:.9rem}
+    .pill b{color:var(--ink)}
+    section{margin:28px 0;padding:28px;border:1px solid var(--line);background:rgba(15,23,42,.74);border-radius:var(--radius);box-shadow:0 10px 30px rgba(0,0,0,.16)}
+    section h2{font-size:1.8rem;line-height:1.15;margin:0 0 14px;letter-spacing:-.02em}
+    section h3{font-size:1.28rem;margin:26px 0 10px;color:#e0f2fe}
+    section h4{font-size:1.02rem;margin:18px 0 8px;color:#ddd6fe}
+    .lead{color:var(--muted);font-size:1.02rem;max-width:1050px}
+    .grid{display:grid;gap:18px}
+    .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .card{border:1px solid var(--line);background:rgba(2,6,23,.55);border-radius:16px;padding:18px;position:relative;overflow:hidden}
+    .card h3,.card h4{margin-top:0}
+    .tag{display:inline-block;border:1px solid rgba(125,211,252,.4);background:rgba(56,189,248,.10);color:#bae6fd;border-radius:999px;padding:4px 9px;font-size:.78rem;font-weight:700;margin-bottom:8px}
+    .tag.purple{border-color:rgba(167,139,250,.45);background:rgba(167,139,250,.10);color:#ddd6fe}
+    .tag.green{border-color:rgba(52,211,153,.45);background:rgba(52,211,153,.10);color:#bbf7d0}
+    .tag.orange{border-color:rgba(245,158,11,.45);background:rgba(245,158,11,.10);color:#fde68a}
+    code,kbd{background:#020617;border:1px solid #334155;border-radius:7px;padding:1px 6px;color:#e0f2fe}
+    pre{white-space:pre-wrap;background:#020617;border:1px solid var(--line);padding:16px;border-radius:14px;overflow:auto;color:#dbeafe}
+    .tableWrap{overflow:auto;border:1px solid var(--line);border-radius:16px;margin:14px 0;background:rgba(2,6,23,.5)}
+    table{width:100%;border-collapse:collapse;min-width:760px}
+    th,td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+    th{background:rgba(30,41,59,.86);color:#e0f2fe;font-size:.88rem;text-transform:uppercase;letter-spacing:.04em}
+    tr:last-child td{border-bottom:0}
+    .fr{font-weight:800;color:#f8fafc}
+    .en{color:var(--soft);font-size:.95rem}
+    .note{border-left:4px solid var(--accent);background:rgba(56,189,248,.08);padding:14px 16px;border-radius:0 12px 12px 0;color:var(--muted);margin:14px 0}
+    .warn{border-left-color:var(--warn);background:rgba(245,158,11,.09)}
+    .danger{border-left-color:var(--bad);background:rgba(251,113,133,.09)}
+    .success{border-left-color:var(--good);background:rgba(52,211,153,.09)}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin:14px 0}
+    label{display:block;font-size:.82rem;color:var(--soft);margin-bottom:5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+    input,select,textarea,button{font:inherit}
+    input,select,textarea{background:#020617;border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:10px 12px;min-height:42px;outline:none}
+    textarea{width:100%;min-height:105px;resize:vertical}
+    select{min-width:220px}
+    button{border:0;border-radius:12px;padding:11px 14px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#020617;font-weight:900;cursor:pointer;box-shadow:0 10px 24px rgba(56,189,248,.12)}
+    button.secondary{background:#020617;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+    button.ghost{background:transparent;color:#bae6fd;border:1px solid rgba(125,211,252,.35);box-shadow:none}
+    button:hover{filter:brightness(1.06)}
+    .output{border:1px solid rgba(125,211,252,.35);background:rgba(56,189,248,.07);padding:16px;border-radius:16px;min-height:70px;margin-top:12px}
+    .bigAnswer{font-size:1.35rem;font-weight:900;color:#fff}
+    .muted{color:var(--soft)}
+    .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+    .tab{background:#020617;border:1px solid var(--line);color:var(--muted);padding:9px 12px;border-radius:999px;cursor:pointer;font-weight:700}
+    .tab.active{background:rgba(56,189,248,.17);color:#fff;border-color:rgba(125,211,252,.6)}
+    .tabPanel{display:none}
+    .tabPanel.active{display:block}
+    .timeline{display:grid;gap:12px;margin-top:14px}
+    .step{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start}
+    .num{width:34px;height:34px;border-radius:12px;background:rgba(56,189,248,.14);border:1px solid rgba(125,211,252,.4);display:grid;place-items:center;font-weight:900;color:#e0f2fe}
+    .miniCards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+    .mini{border:1px solid var(--line);border-radius:14px;padding:14px;background:rgba(2,6,23,.42)}
+    .mini strong{display:block;color:#fff;margin-bottom:5px}
+    .chip{display:inline-block;padding:3px 7px;border-radius:7px;background:rgba(148,163,184,.14);border:1px solid rgba(148,163,184,.25);font-size:.82rem;color:#cbd5e1;margin:2px}
+    .quizQuestion{font-size:1.18rem;font-weight:800;margin-bottom:12px}
+    .choices{display:grid;gap:10px;margin-top:10px}
+    .choice{background:#020617;border:1px solid var(--line);border-radius:12px;padding:12px;text-align:left;color:var(--ink);cursor:pointer}
+    .choice.correct{border-color:rgba(52,211,153,.8);background:rgba(52,211,153,.12)}
+    .choice.wrong{border-color:rgba(251,113,133,.85);background:rgba(251,113,133,.12)}
+    .flashcard{min-height:210px;display:grid;place-items:center;text-align:center;border:1px solid rgba(167,139,250,.55);background:linear-gradient(135deg,rgba(167,139,250,.13),rgba(56,189,248,.08));border-radius:18px;padding:24px;cursor:pointer;user-select:none}
+    .flashcard .front{font-size:1.55rem;font-weight:900}
+    .flashcard .back{display:none}
+    .flashcard.flipped .front{display:none}
+    .flashcard.flipped .back{display:block}
+    .verbList{max-height:520px;overflow:auto;border:1px solid var(--line);border-radius:16px}
+    .verbItem{padding:14px;border-bottom:1px solid var(--line);background:rgba(2,6,23,.32)}
+    .verbItem:last-child{border-bottom:0}
+    .verbItem b{color:#fff}
+    .verbItem small{display:block;color:var(--soft);margin-top:4px}
+    .stickyTools{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:8px;z-index:40}
+    .stickyTools button{border-radius:999px;padding:11px 13px}
+    .printOnly{display:none}
+    .kbdrow{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+    .sourceList li{margin:10px 0;color:var(--muted)}
+    mark{background:rgba(245,158,11,.25);color:#fff;border-radius:5px;padding:0 3px}
+    @media(max-width:1020px){.layout{grid-template-columns:1fr}aside{position:relative;height:auto}.grid.two,.grid.three,.grid.four{grid-template-columns:1fr}main{padding:18px}.hero{padding:24px}table{min-width:680px}.stickyTools{display:none}}
+    @media print{body{background:white;color:#111827}.layout{display:block}aside,.stickyTools,.noPrint{display:none!important}main{padding:0}.hero,section,.card{box-shadow:none;background:white;color:#111827;border-color:#d1d5db}.printOnly{display:block}.muted,.en,.lead{color:#374151}code,kbd,pre{background:#f3f4f6;color:#111827;border-color:#d1d5db}a{color:#1d4ed8}.fr{color:#111827}}
+  </style>
+</head>
+<body>
+<div class="layout">
+  <aside>
+    <div class="brand">
+      <div class="logo">FR</div>
+      <div>
+        <h1>Pronouns Master Site <small>COD • COI • EN • Y • LE/LA/LES • LUI/LEUR</small></h1>
+      </div>
+    </div>
+    <div class="searchBox"><span>⌕</span><input id="siteSearch" placeholder="Search: en, y, imperative, agreement…" /></div>
+    <div class="progressWrap"><div id="progressBar" class="progressBar"></div></div>
+    <div class="tiny" id="progressText">Scroll progress: 0%</div>
+    <nav class="nav" id="nav">
+      <a href="#top">Start</a>
+      <a href="#core">Core logic</a>
+      <a href="#pronoun-map">Pronoun map</a>
+      <a href="#decision-lab">Decision lab</a>
+      <a href="#verbs">Verb construction bank</a>
+      <a href="#placement">Placement by tense</a>
+      <a href="#tenses">Tense transformer</a>
+      <a href="#agreement">Agreement lab</a>
+      <a href="#imperative">Imperative</a>
+      <a href="#double">Double pronouns</a>
+      <a href="#reflexive">Reflexive verbs</a>
+      <a href="#canada">“I learned it in Canada”</a>
+      <a href="#quiz">Quiz engine</a>
+      <a href="#flashcards">Flashcards</a>
+      <a href="#mistakes">Native-level traps</a>
+      <a href="#sources">Sources</a>
+    </nav>
+    <p class="tiny">Tip: use the search box to highlight sections. Click “Print/PDF” in your browser for a study handout.</p>
+  </aside>
+
+  <main id="top">
+    <div class="hero">
+      <h2>French object pronouns, explained like grammar actually works.</h2>
+      <p>This site teaches how to choose between <b>le, la, l’, les, lui, leur, en, y, me, te, nous, vous</b> by analyzing the French verb construction: direct object, <b>à</b> complement, <b>de</b> complement, place, quantity, or entire idea.</p>
+      <div class="pillrow">
+        <span class="pill">Core rule: <b>verb pattern first</b></span>
+        <span class="pill">Includes <b>all major tenses</b></span>
+        <span class="pill">Interactive <b>decision lab</b></span>
+        <span class="pill">Advanced <b>agreement rules</b></span>
+        <span class="pill">Native-level <b>trap list</b></span>
+      </div>
+    </div>
+
+    <section id="core" data-search="core logic cod coi direct indirect object complement verb construction">
+      <h2>1. The master logic: the verb decides the pronoun</h2>
+      <p class="lead">In French, object pronoun choice is not based on English words like “to,” “for,” or “about.” It is based on the syntactic construction required by the French verb.</p>
+      <div class="note success"><b>Master formula:</b> identify the verb → identify its construction → replace the complement with the pronoun required by that construction.</div>
+      <div class="grid three">
+        <div class="card">
+          <span class="tag">COD</span>
+          <h3>Direct object</h3>
+          <p><code>verbe + quelqu’un / quelque chose</code></p>
+          <p><b>Questions:</b> qui ? quoi ?</p>
+          <pre>Je regarde le film.
+→ Je le regarde.</pre>
+        </div>
+        <div class="card">
+          <span class="tag purple">COI</span>
+          <h3>Indirect object</h3>
+          <p><code>verbe + à + personne</code></p>
+          <p><b>Questions:</b> à qui ? à quoi ?</p>
+          <pre>Je parle à Marie.
+→ Je lui parle.</pre>
+        </div>
+        <div class="card">
+          <span class="tag green">EN / Y</span>
+          <h3>Prepositional ideas</h3>
+          <p><code>à + chose</code> → <b>y</b><br><code>de + chose</code> → <b>en</b></p>
+          <pre>Je pense à l'examen.
+→ J’y pense.
+
+Je parle du dossier.
+→ J’en parle.</pre>
+        </div>
+      </div>
+      <div class="tableWrap">
+        <table>
+          <thead><tr><th>French structure</th><th>Pronoun</th><th>Example</th><th>Native-level note</th></tr></thead>
+          <tbody>
+            <tr><td><code>verbe + COD</code></td><td><b>le, la, l’, les</b></td><td><span class="fr">Je la connais.</span><br><span class="en">I know her.</span></td><td>No preposition after the verb.</td></tr>
+            <tr><td><code>verbe + à + personne</code></td><td><b>lui, leur</b></td><td><span class="fr">Je lui parle.</span></td><td>Only when the verb allows a conjoint COI pronoun.</td></tr>
+            <tr><td><code>verbe + à + chose/idée</code></td><td><b>y</b></td><td><span class="fr">J’y pense.</span></td><td>For people, often use <code>à lui / à elle</code>.</td></tr>
+            <tr><td><code>lieu</code></td><td><b>y</b></td><td><span class="fr">J’y vais.</span></td><td>Replaces places introduced by <code>à, dans, chez, sur</code>, etc.</td></tr>
+            <tr><td><code>verbe + de + chose/idée</code></td><td><b>en</b></td><td><span class="fr">J’en parle.</span></td><td>Also used for partitives and quantities.</td></tr>
+            <tr><td><code>du, de la, de l’, des + nom</code></td><td><b>en</b></td><td><span class="fr">J’en veux.</span></td><td>Means some/any/of it, depending on context.</td></tr>
+            <tr><td><code>nombre / quantité + nom</code></td><td><b>en + quantité</b></td><td><span class="fr">J’en ai trois.</span></td><td>The noun disappears; the quantity remains.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="pronoun-map" data-search="pronoun map le la l les lui leur en y me te nous vous direct indirect">
+      <h2>2. Pronoun map</h2>
+      <p class="lead">The same surface forms can have different functions. For example, <b>le</b> may be an article before a noun or a direct object pronoun before a verb.</p>
+      <div class="grid two">
+        <div class="card">
+          <h3>Direct object pronouns — COD</h3>
+          <div class="tableWrap">
+            <table>
+              <thead><tr><th>Pronoun</th><th>Replaces</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr><td>me / m’</td><td>moi</td><td>Il me voit.</td></tr>
+                <tr><td>te / t’</td><td>toi</td><td>Je te comprends.</td></tr>
+                <tr><td>le / l’</td><td>masc. singular / idea</td><td>Je le lis. / Je le sais.</td></tr>
+                <tr><td>la / l’</td><td>fem. singular</td><td>Je la connais.</td></tr>
+                <tr><td>nous</td><td>nous</td><td>Elle nous aide.</td></tr>
+                <tr><td>vous</td><td>vous</td><td>Je vous remercie.</td></tr>
+                <tr><td>les</td><td>plural</td><td>Je les vois.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Indirect object pronouns — COI people</h3>
+          <div class="tableWrap">
+            <table>
+              <thead><tr><th>Pronoun</th><th>Replaces</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr><td>me / m’</td><td>à moi</td><td>Il me parle.</td></tr>
+                <tr><td>te / t’</td><td>à toi</td><td>Je te réponds.</td></tr>
+                <tr><td>lui</td><td>à lui / à elle</td><td>Je lui écris.</td></tr>
+                <tr><td>nous</td><td>à nous</td><td>Elle nous téléphone.</td></tr>
+                <tr><td>vous</td><td>à vous</td><td>Je vous réponds.</td></tr>
+                <tr><td>leur</td><td>à eux / à elles</td><td>Je leur parle.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="note warn"><b>leur</b> as a pronoun is invariable: <span class="fr">Je leur parle</span>, never <s>je leurs parle</s>. <b>Leurs</b> exists only as a possessive form: <span class="fr">leurs enfants</span>.</div>
+        </div>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3>Y</h3>
+          <p><b>Y</b> replaces a place or <code>à + thing/idea</code>.</p>
+          <pre>Je vais au tribunal. → J’y vais.
+Je pense à mon examen. → J’y pense.
+Je participe à la réunion. → J’y participe.</pre>
+          <div class="note">For a person after verbs like <b>penser à</b>, use <b>à lui / à elle</b>: <span class="fr">Je pense à elle</span>, not normally <s>je lui pense</s>.</div>
+        </div>
+        <div class="card">
+          <h3>En</h3>
+          <p><b>En</b> replaces <code>de + thing/idea</code>, partitives, quantities, and sometimes origin.</p>
+          <pre>Je parle du dossier. → J’en parle.
+Je veux du café. → J’en veux.
+J’ai trois stylos. → J’en ai trois.
+Je viens du Canada. → J’en viens.</pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="decision-lab" data-search="interactive decision lab choose pronoun cod coi en y le la les lui leur">
+      <h2>3. Interactive decision lab</h2>
+      <p class="lead">Choose the French construction. The tool gives you the likely pronoun, a model sentence, and the reasoning.</p>
+      <div class="controls">
+        <div><label for="constructionSelect">Construction</label><select id="constructionSelect"></select></div>
+        <div><label for="genderSelect">Gender/number if COD</label><select id="genderSelect"><option value="m">masculine singular</option><option value="f">feminine singular</option><option value="vowel">before vowel / h muet</option><option value="pl">plural</option></select></div>
+        <button onclick="runDecisionLab()">Choose pronoun</button>
+        <button class="secondary" onclick="randomDecision()">Random example</button>
+      </div>
+      <div id="decisionOutput" class="output"></div>
+    </section>
+
+    <section id="verbs" data-search="verb construction bank regarder écouter attendre aider parler écrire répondre penser à parler de avoir besoin de participer à">
+      <h2>4. Verb construction bank</h2>
+      <p class="lead">This bank is the heart of the system. Learn the French pattern, not the English translation.</p>
+      <div class="controls">
+        <div><label for="verbFilter">Filter verbs</label><input id="verbFilter" placeholder="type: écouter, attendre, de, à, direct…" oninput="renderVerbs()" /></div>
+        <div><label for="verbCategory">Category</label><select id="verbCategory" onchange="renderVerbs()"><option value="all">All</option><option value="direct">Direct COD</option><option value="a-person">à + person</option><option value="a-thing">à + thing/idea</option><option value="de-thing">de + thing/idea</option><option value="stressed">stressed pronoun with person</option><option value="tricky">English trap</option></select></div>
+      </div>
+      <div id="verbList" class="verbList"></div>
+    </section>
+
+    <section id="placement" data-search="placement pronoun tenses present imperfect future conditionnel subjonctif passé composé plus que parfait infinitive negation">
+      <h2>5. Placement by tense and verb form</h2>
+      <p class="lead">The placement rule changes depending on whether you have one conjugated verb, a compound tense, an infinitive, or an imperative.</p>
+      <div class="tabs" data-tabs="placementTabs">
+        <button class="tab active" data-panel="simple">Simple tenses</button>
+        <button class="tab" data-panel="compound">Compound tenses</button>
+        <button class="tab" data-panel="infinitive">Infinitive chains</button>
+        <button class="tab" data-panel="negative">Negation</button>
+      </div>
+      <div id="simple" class="tabPanel active">
+        <div class="card"><h3>Simple conjugated verb</h3><p>Put the pronoun directly before the conjugated verb.</p><pre>Présent: Je le vois. / Je lui parle. / J’y vais. / J’en veux.
+Imparfait: Je le voyais. / Je lui parlais. / J’y allais. / J’en voulais.
+Futur simple: Je le verrai. / Je lui parlerai. / J’y irai. / J’en voudrai.
+Conditionnel: Je le verrais. / Je lui parlerais. / J’y irais. / J’en voudrais.
+Subjonctif: Il faut que je le voie. / que je lui parle. / que j’y aille. / que j’en veuille.</pre></div>
+      </div>
+      <div id="compound" class="tabPanel">
+        <div class="card"><h3>Compound tense</h3><p>Put the pronoun before the auxiliary <b>avoir</b> or <b>être</b>.</p><pre>Passé composé: Je l’ai vu. / Je lui ai parlé. / J’y suis allé. / J’en ai voulu.
+Plus-que-parfait: Je l’avais vu. / Je lui avais parlé. / J’y étais allé. / J’en avais voulu.
+Futur antérieur: Je l’aurai vu. / Je lui aurai parlé. / J’y serai allé. / J’en aurai voulu.
+Conditionnel passé: Je l’aurais vu. / Je lui aurais parlé. / J’y serais allé. / J’en aurais voulu.</pre></div>
+      </div>
+      <div id="infinitive" class="tabPanel">
+        <div class="card"><h3>Conjugated verb + infinitive</h3><p>The pronoun normally goes before the infinitive it belongs to.</p><pre>Je vais voir Marie. → Je vais la voir.
+Je peux parler au client. → Je peux lui parler.
+Je dois penser à cette question. → Je dois y penser.
+Je veux acheter du café. → Je veux en acheter.
+J’ai voulu le faire. = I wanted to do it.
+Je l’ai voulu. = I wanted it.</pre></div>
+      </div>
+      <div id="negative" class="tabPanel">
+        <div class="card"><h3>Negation</h3><p>In simple and compound tenses, the pronoun remains before the verb/auxiliary. In infinitive chains, it stays before the infinitive.</p><pre>Je ne le vois pas.
+Je ne lui parle pas.
+Je n’y vais pas.
+Je n’en veux pas.
+Je ne l’ai pas vu.
+Je ne vais pas le voir.
+Je ne veux pas lui parler.</pre></div>
+      </div>
+    </section>
+
+    <section id="tenses" data-search="tense transformer donner le document à Marie le lui donne ai donné donnerai donnerais subjonctif impératif">
+      <h2>6. Interactive tense transformer</h2>
+      <p class="lead">Model sentence: <b>Je donne le document à Marie</b>. Replaced version: <b>Je le lui donne</b>. Choose a tense/form to see the transformation.</p>
+      <div class="controls">
+        <div><label for="tenseSelect">Tense / form</label><select id="tenseSelect"></select></div>
+        <button onclick="renderTense()">Transform</button>
+      </div>
+      <div id="tenseOutput" class="output"></div>
+    </section>
+
+    <section id="agreement" data-search="past participle agreement avoir cod before verb le la les l ai vue lu lues appris apprise en invariable pronominal">
+      <h2>7. Agreement lab: passé composé and participles</h2>
+      <p class="lead">With <b>avoir</b>, the past participle agrees when the direct object is placed before the verb. This mainly concerns <b>le, la, l’, les</b>, not <b>lui, leur, y, en</b>.</p>
+      <div class="grid two">
+        <div class="card">
+          <h3>Interactive agreement</h3>
+          <div class="controls">
+            <div><label for="ppVerb">Past participle</label><select id="ppVerb"><option value="vu">vu</option><option value="pris">pris</option><option value="lu">lu</option><option value="appris">appris</option><option value="écrit">écrit</option></select></div>
+            <div><label for="ppObject">COD before verb</label><select id="ppObject"><option value="m">le / l’ masculine singular</option><option value="f">la / l’ feminine singular</option><option value="mp">les masculine plural</option><option value="fp">les feminine plural</option><option value="none">no COD before verb</option><option value="en">en</option><option value="lui">lui / leur / y</option></select></div>
+            <button onclick="runAgreement()">Apply rule</button>
+          </div>
+          <div id="agreementOutput" class="output"></div>
+        </div>
+        <div class="card">
+          <h3>Core agreement table</h3>
+          <pre>J’ai vu Marie. → Je l’ai vue.
+J’ai vu Paul. → Je l’ai vu.
+J’ai lu les lettres. → Je les ai lues.
+J’ai pris la décision. → Je l’ai prise.
+J’ai parlé à Marie. → Je lui ai parlé.  No agreement.
+J’ai parlé du dossier. → J’en ai parlé.  Normally no agreement.</pre>
+          <div class="note warn"><b>Advanced caution:</b> do not blindly add agreement after every pronoun. Ask: is the pronoun a COD? Is it placed before the participle? If yes, agree. If no, do not.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="imperative" data-search="imperative ordre pronoms trait union donne le moi donne le lui vas y parles en ne le fais pas">
+      <h2>8. Imperative: affirmative vs negative commands</h2>
+      <p class="lead">The imperative is special because affirmative commands place pronouns after the verb with hyphens. Negative commands return to the normal pre-verbal order.</p>
+      <div class="grid two">
+        <div class="card">
+          <h3>Affirmative imperative</h3>
+          <pre>Regarde-le !
+Appelle-la !
+Lis-les !
+Parle-lui !
+Réponds-leur !
+Vas-y !
+Parles-en !
+Donne-le-moi.
+Donne-le-lui.
+Parle-lui-en.
+Donne-m’en.</pre>
+        </div>
+        <div class="card">
+          <h3>Negative imperative</h3>
+          <pre>Ne le regarde pas.
+Ne la contacte pas.
+Ne les lis pas.
+Ne lui parle pas.
+Ne leur réponds pas.
+N’y va pas.
+N’en parle pas.
+Ne me le donne pas.
+Ne le lui donne pas.</pre>
+        </div>
+      </div>
+      <div class="note">With <b>-er</b> verbs, the second-person singular imperative normally drops final <b>s</b>: <span class="fr">parle !</span>. But before <b>y</b> and <b>en</b>, the <b>s</b> comes back for pronunciation: <span class="fr">vas-y</span>, <span class="fr">parles-en</span>.</div>
+    </section>
+
+    <section id="double" data-search="double pronouns order me te se nous vous le la les lui leur y en le lui la leur les y lui en">
+      <h2>9. Double pronouns</h2>
+      <p class="lead">French has a strict order for multiple pronouns before a verb. The order is not flexible.</p>
+      <div class="card">
+        <h3>Standard pre-verbal order</h3>
+        <pre>me / te / se / nous / vous
+        + le / la / les
+        + lui / leur
+        + y
+        + en
+        + verb</pre>
+        <div class="miniCards">
+          <div class="mini"><strong>Je donne le document à Marie.</strong><span class="fr">Je le lui donne.</span><br><span class="en">I give it to her.</span></div>
+          <div class="mini"><strong>Elle explique la règle aux étudiants.</strong><span class="fr">Elle la leur explique.</span><br><span class="en">She explains it to them.</span></div>
+          <div class="mini"><strong>Je mets les dossiers sur la table.</strong><span class="fr">Je les y mets.</span><br><span class="en">I put them there.</span></div>
+          <div class="mini"><strong>Je parle de ce sujet à Paul.</strong><span class="fr">Je lui en parle.</span><br><span class="en">I talk to him about it.</span></div>
+        </div>
+      </div>
+      <div class="note warn">Some combinations are grammatically possible but stylistically heavy, especially <b>y en</b>. Native speakers often rephrase: <span class="fr">J’en achète là-bas</span> instead of <span class="fr">J’y en achète</span>.</div>
+    </section>
+
+    <section id="reflexive" data-search="reflexive pronominal verbs se laver se parler agreement passé composé être cod coi se sont parlé se sont vus">
+      <h2>10. Reflexive and pronominal verbs</h2>
+      <p class="lead"><b>Me, te, se, nous, vous</b> can be reflexive or reciprocal. In compound tenses, pronominal verbs use <b>être</b>, but participle agreement depends on whether the reflexive pronoun is COD or COI.</p>
+      <div class="grid three">
+        <div class="card"><span class="tag green">COD reflexive</span><h3>Elle s’est lavée.</h3><p><b>s’</b> = herself = direct object. Agreement with feminine singular.</p></div>
+        <div class="card"><span class="tag orange">COI reflexive</span><h3>Elle s’est lavé les mains.</h3><p><b>les mains</b> is COD; <b>s’</b> means “to herself.” No agreement with <b>s’</b>.</p></div>
+        <div class="card"><span class="tag purple">Reciprocal</span><h3>Ils se sont parlé.</h3><p><b>parler à quelqu’un</b> → COI. No agreement.</p></div>
+      </div>
+      <pre>Ils se sont vus. = They saw each other.  COD → agreement.
+Ils se sont téléphoné. = They phoned each other.  COI → no agreement.
+Elles se sont écrit. = They wrote to each other.  COI → no agreement.
+Elles se sont rencontrées. = They met each other. COD → agreement.</pre>
+    </section>
+
+    <section id="canada" data-search="I learned it in Canada Je l'ai appris au Canada appris apprise Canada au Canada en France aux Etats Unis">
+      <h2>11. “I learned it in Canada” and related forms</h2>
+      <p class="lead">The natural sentence is:</p>
+      <div class="card">
+        <div class="bigAnswer">Je l’ai appris au Canada.</div>
+        <p class="muted">I learned it in Canada.</p>
+        <div class="tableWrap">
+          <table>
+            <thead><tr><th>Piece</th><th>Function</th><th>Reason</th></tr></thead>
+            <tbody>
+              <tr><td><b>Je</b></td><td>subject</td><td>I</td></tr>
+              <tr><td><b>l’</b></td><td>COD pronoun</td><td>replaces the thing learned</td></tr>
+              <tr><td><b>ai appris</b></td><td>passé composé</td><td>learned</td></tr>
+              <tr><td><b>au Canada</b></td><td>place expression</td><td>Canada is masculine: <b>à + le = au</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">Use <b>au Canada</b>, not <s>en Canada</s>. Compare: <b>en France</b>, <b>au Canada</b>, <b>aux États-Unis</b>, <b>à Toronto</b>, <b>à Montréal</b>.</div>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3>If “it” is masculine or general</h3>
+          <pre>J’ai appris le français au Canada.
+→ Je l’ai appris au Canada.
+
+J’ai appris ce mot au Canada.
+→ Je l’ai appris au Canada.</pre>
+        </div>
+        <div class="card">
+          <h3>If “it” is feminine</h3>
+          <pre>J’ai appris cette règle au Canada.
+→ Je l’ai apprise au Canada.
+
+J’ai appris cette expression au Canada.
+→ Je l’ai apprise au Canada.</pre>
+        </div>
+      </div>
+      <h3>Same idea in different tenses</h3>
+      <div class="tableWrap">
+        <table>
+          <thead><tr><th>Tense/form</th><th>Sentence</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr><td>Présent</td><td>Je l’apprends au Canada.</td><td>I am learning it in Canada.</td></tr>
+            <tr><td>Passé composé</td><td>Je l’ai appris au Canada.</td><td>I learned it in Canada.</td></tr>
+            <tr><td>Imparfait</td><td>Je l’apprenais au Canada.</td><td>I was learning it / used to learn it.</td></tr>
+            <tr><td>Plus-que-parfait</td><td>Je l’avais appris au Canada.</td><td>I had learned it.</td></tr>
+            <tr><td>Futur simple</td><td>Je l’apprendrai au Canada.</td><td>I will learn it.</td></tr>
+            <tr><td>Futur proche</td><td>Je vais l’apprendre au Canada.</td><td>I am going to learn it.</td></tr>
+            <tr><td>Conditionnel</td><td>Je l’apprendrais au Canada.</td><td>I would learn it.</td></tr>
+            <tr><td>Subjonctif</td><td>Il faut que je l’apprenne au Canada.</td><td>It is necessary that I learn it.</td></tr>
+            <tr><td>Négation</td><td>Je ne l’ai pas appris au Canada.</td><td>I did not learn it in Canada.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="quiz" data-search="quiz practice choose correct pronoun cod coi en y le la lui leur">
+      <h2>12. Quiz engine</h2>
+      <p class="lead">Choose the best replacement. The explanation tells you the verb construction.</p>
+      <div class="card">
+        <div class="quizQuestion" id="quizQuestion"></div>
+        <div class="choices" id="quizChoices"></div>
+        <div id="quizFeedback" class="output" style="display:none"></div>
+        <div class="controls">
+          <button onclick="nextQuiz()">Next question</button>
+          <button class="secondary" onclick="resetQuiz()">Reset score</button>
+        </div>
+        <p class="muted" id="quizScore">Score: 0 / 0</p>
+      </div>
+    </section>
+
+    <section id="flashcards" data-search="flashcards pronouns en y le la les lui leur rules">
+      <h2>13. Flashcards</h2>
+      <p class="lead">Click the card to flip it. Use these for fast review.</p>
+      <div class="flashcard" id="flashcard" onclick="flipCard()">
+        <div class="front" id="cardFront"></div>
+        <div class="back" id="cardBack"></div>
+      </div>
+      <div class="controls">
+        <button onclick="prevCard()">Previous</button>
+        <button onclick="nextCard()">Next</button>
+      </div>
+    </section>
+
+    <section id="mistakes" data-search="mistakes traps écouter attendre aider regarder parler répondre penser à lui y en English to for about">
+      <h2>14. Native-level traps and corrections</h2>
+      <div class="grid two">
+        <div class="card danger"><h3>Trap: English “to”</h3><pre>English: I listen to him.
+French: J’écoute Paul.
+Correct: Je l’écoute.
+Wrong: Je lui écoute.</pre></div>
+        <div class="card danger"><h3>Trap: English “for”</h3><pre>English: I wait for her.
+French: J’attends Marie.
+Correct: Je l’attends.
+Wrong: Je lui attends.</pre></div>
+        <div class="card danger"><h3>Trap: penser à a person</h3><pre>Je pense à Marie.
+Preferred: Je pense à elle.
+Not normally: Je lui pense.</pre></div>
+        <div class="card danger"><h3>Trap: leur vs leurs</h3><pre>Je leur parle.  = pronoun, no s
+leurs enfants   = possessive, s possible</pre></div>
+        <div class="card danger"><h3>Trap: en + number</h3><pre>J’ai trois stylos.
+Correct: J’en ai trois.
+Wrong: J’ai trois en.</pre></div>
+        <div class="card danger"><h3>Trap: pronoun with infinitive</h3><pre>Je vais regarder le film.
+Correct: Je vais le regarder.
+Wrong: Je le vais regarder.</pre></div>
+      </div>
+    </section>
+
+    <section id="sources" data-search="sources bibliography oqlf bescherelle tex french grammar references">
+      <h2>15. Research notes and bibliography</h2>
+      <p class="lead">This site synthesizes standard French grammar rules from recognized grammar-learning and language-reference resources.</p>
+      <ul class="sourceList">
+        <li><b>OQLF / Vitrine linguistique</b>: complement indirect can be pronominalized with appropriate pronouns such as <b>lui, leur, y, en</b>; imperative pronoun order and hyphenation; pronominal verb participle agreement.</li>
+        <li><b>Bescherelle</b>: correct pronoun choice depends on the complement type required by the verb; <b>leur</b> as a personal pronoun is invariable.</li>
+        <li><b>UT Austin — Tex’s French Grammar</b>: placement of <b>y</b> and <b>en</b>, object pronoun order, and placement in simple/compound tenses.</li>
+      </ul>
+      <div class="note">This is an educational synthesis. Some very advanced points can vary by register, stylistic choice, or whether the person/object is emphasized. When in doubt, check the verb’s construction in a serious French dictionary.</div>
+    </section>
+  </main>
+</div>
+
+<div class="stickyTools noPrint">
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <button onclick="window.print()">PDF</button>
+</div>
+
+<script>
+const constructions = [
+  {id:'direct', name:'verb + direct object: regarder quelque chose / quelqu’un', pronoun:'le / la / l’ / les', example:'Je regarde le film → Je le regarde.', reason:'No preposition after the verb. This is COD.'},
+  {id:'a-person', name:'verb + à + person: parler à quelqu’un', pronoun:'lui / leur', example:'Je parle à Marie → Je lui parle.', reason:'The complement is à + person and the verb allows a conjoint COI pronoun.'},
+  {id:'a-thing', name:'verb + à + thing/idea: penser à quelque chose', pronoun:'y', example:'Je pense à mon examen → J’y pense.', reason:'The complement is à + thing/idea, so use y.'},
+  {id:'place', name:'place: à/dans/chez/sur + lieu', pronoun:'y', example:'Je vais au bureau → J’y vais.', reason:'Y replaces a place or location.'},
+  {id:'de-thing', name:'verb + de + thing/idea: parler de quelque chose', pronoun:'en', example:'Je parle du dossier → J’en parle.', reason:'The complement is de + thing/idea, so use en.'},
+  {id:'partitive', name:'du/de la/de l’/des + noun', pronoun:'en', example:'Je veux du café → J’en veux.', reason:'En replaces partitive articles meaning some/any.'},
+  {id:'quantity', name:'quantity + noun: trois dossiers, beaucoup de café', pronoun:'en + quantity', example:'J’ai trois dossiers → J’en ai trois.', reason:'En replaces the noun; the quantity remains.'},
+  {id:'stressed-person', name:'à/de + person after verbs like penser à, parler de', pronoun:'à lui / à elle / d’eux / d’elles', example:'Je pense à Marie → Je pense à elle.', reason:'Some verbs do not use lui/leur for people; use stressed pronouns.'}
+];
+
+const constructionSelect = document.getElementById('constructionSelect');
+constructions.forEach(c=>{ const o=document.createElement('option'); o.value=c.id; o.textContent=c.name; constructionSelect.appendChild(o); });
+
+function runDecisionLab(){
+  const c = constructions.find(x=>x.id===constructionSelect.value);
+  const g = document.getElementById('genderSelect').value;
+  let pron = c.pronoun;
+  if(c.id==='direct'){
+    pron = g==='m' ? 'le' : g==='f' ? 'la' : g==='vowel' ? "l’" : 'les';
+  }
+  document.getElementById('decisionOutput').innerHTML = `<div class="bigAnswer">${pron}</div><p><b>Example:</b> ${c.example}</p><p><b>Reason:</b> ${c.reason}</p>`;
+}
+function randomDecision(){
+  constructionSelect.value = constructions[Math.floor(Math.random()*constructions.length)].id;
+  const gs=['m','f','vowel','pl']; document.getElementById('genderSelect').value=gs[Math.floor(Math.random()*gs.length)];
+  runDecisionLab();
+}
+
+const verbs = [
+  {verb:'regarder quelqu’un / quelque chose', cat:'direct tricky', pron:'le/la/les', ex:'Je regarde Marie → Je la regarde.', note:'English says look at, but French is direct.'},
+  {verb:'écouter quelqu’un / quelque chose', cat:'direct tricky', pron:'le/la/les', ex:'J’écoute le professeur → Je l’écoute.', note:'English says listen to; French is direct.'},
+  {verb:'attendre quelqu’un / quelque chose', cat:'direct tricky', pron:'le/la/les', ex:'J’attends mes amis → Je les attends.', note:'English says wait for; French is direct.'},
+  {verb:'aider quelqu’un', cat:'direct tricky', pron:'le/la/les', ex:'J’aide ma sœur → Je l’aide.', note:'No à in French.'},
+  {verb:'appeler quelqu’un', cat:'direct', pron:'le/la/les', ex:'J’appelle Paul → Je l’appelle.', note:'Direct object.'},
+  {verb:'chercher quelqu’un / quelque chose', cat:'direct tricky', pron:'le/la/les', ex:'Je cherche le dossier → Je le cherche.', note:'English says look for; French is direct.'},
+  {verb:'voir quelqu’un / quelque chose', cat:'direct', pron:'le/la/les', ex:'Je vois les lettres → Je les vois.', note:'Direct object.'},
+  {verb:'connaître quelqu’un / quelque chose', cat:'direct', pron:'le/la/les', ex:'Je connais cette règle → Je la connais.', note:'Direct object.'},
+  {verb:'apprendre quelque chose', cat:'direct', pron:'le/la/les', ex:'J’apprends le français → Je l’apprends.', note:'Direct object. Past: je l’ai appris.'},
+  {verb:'parler à quelqu’un', cat:'a-person', pron:'lui/leur', ex:'Je parle à Marie → Je lui parle.', note:'COI person.'},
+  {verb:'écrire à quelqu’un', cat:'a-person', pron:'lui/leur', ex:'J’écris aux clients → Je leur écris.', note:'COI person.'},
+  {verb:'téléphoner à quelqu’un', cat:'a-person', pron:'lui/leur', ex:'Je téléphone à mon père → Je lui téléphone.', note:'COI person.'},
+  {verb:'répondre à quelqu’un', cat:'a-person', pron:'lui/leur', ex:'Je réponds au professeur → Je lui réponds.', note:'COI person.'},
+  {verb:'obéir à quelqu’un', cat:'a-person', pron:'lui/leur', ex:'L’enfant obéit à ses parents → Il leur obéit.', note:'COI person.'},
+  {verb:'ressembler à quelqu’un', cat:'a-person', pron:'lui/leur', ex:'Elle ressemble à sa mère → Elle lui ressemble.', note:'COI person.'},
+  {verb:'penser à quelque chose', cat:'a-thing', pron:'y', ex:'Je pense à l’examen → J’y pense.', note:'à + thing/idea.'},
+  {verb:'réfléchir à quelque chose', cat:'a-thing', pron:'y', ex:'Je réfléchis au problème → J’y réfléchis.', note:'à + thing/idea.'},
+  {verb:'participer à quelque chose', cat:'a-thing', pron:'y', ex:'Je participe à la réunion → J’y participe.', note:'à + event/activity.'},
+  {verb:'s’intéresser à quelque chose', cat:'a-thing', pron:'y', ex:'Je m’intéresse au droit → Je m’y intéresse.', note:'Pronominal + y.'},
+  {verb:'aller à/dans/chez + lieu', cat:'a-thing', pron:'y', ex:'Je vais au tribunal → J’y vais.', note:'Place.'},
+  {verb:'parler de quelque chose', cat:'de-thing', pron:'en', ex:'Je parle de ce sujet → J’en parle.', note:'de + thing/idea.'},
+  {verb:'avoir besoin de quelque chose', cat:'de-thing', pron:'en', ex:'J’ai besoin du document → J’en ai besoin.', note:'Expression with de.'},
+  {verb:'se souvenir de quelque chose', cat:'de-thing', pron:'en', ex:'Je me souviens de cette affaire → Je m’en souviens.', note:'Pronominal + en.'},
+  {verb:'être fier de quelque chose', cat:'de-thing', pron:'en', ex:'Je suis fier de mon résultat → J’en suis fier.', note:'Adjective + de.'},
+  {verb:'venir de + lieu', cat:'de-thing', pron:'en', ex:'Je viens du Canada → J’en viens.', note:'Origin/from there.'},
+  {verb:'penser à quelqu’un', cat:'stressed tricky', pron:'à lui / à elle', ex:'Je pense à Marie → Je pense à elle.', note:'Do not say je lui pense.'},
+  {verb:'faire attention à quelqu’un', cat:'stressed tricky', pron:'à lui / à elle', ex:'Je fais attention à Paul → Je fais attention à lui.', note:'Not normally je lui fais attention.'},
+  {verb:'tenir à quelqu’un', cat:'stressed tricky', pron:'à lui / à elle', ex:'Je tiens à ma sœur → Je tiens à elle.', note:'Emotional attachment; stressed pronoun.'},
+  {verb:'parler de quelqu’un', cat:'stressed', pron:'de lui / d’elle', ex:'Je parle de Marie → Je parle d’elle.', note:'For people, stressed form is often clearer.'}
+];
+
+function renderVerbs(){
+  const filter = document.getElementById('verbFilter').value.toLowerCase();
+  const cat = document.getElementById('verbCategory').value;
+  const list = document.getElementById('verbList');
+  const rows = verbs.filter(v=>{
+    const text = `${v.verb} ${v.cat} ${v.pron} ${v.ex} ${v.note}`.toLowerCase();
+    return (!filter || text.includes(filter)) && (cat==='all' || v.cat.includes(cat));
+  });
+  list.innerHTML = rows.map(v=>`<div class="verbItem"><b>${v.verb}</b> <span class="chip">${v.pron}</span><small>${v.ex}</small><small>${v.note}</small></div>`).join('') || '<div class="verbItem">No result.</div>';
+}
+
+const tenses = [
+  ['present','Présent','Je le lui donne.','simple tense: pronouns before conjugated verb'],
+  ['imparfait','Imparfait','Je le lui donnais.','simple tense: pronouns before conjugated verb'],
+  ['pc','Passé composé','Je le lui ai donné.','pronouns before auxiliary avoir'],
+  ['pqp','Plus-que-parfait','Je le lui avais donné.','pronouns before auxiliary avoir'],
+  ['fs','Futur simple','Je le lui donnerai.','simple tense'],
+  ['fa','Futur antérieur','Je le lui aurai donné.','pronouns before auxiliary avoir'],
+  ['cond','Conditionnel présent','Je le lui donnerais.','simple tense'],
+  ['condp','Conditionnel passé','Je le lui aurais donné.','pronouns before auxiliary avoir'],
+  ['subj','Subjonctif présent','Il faut que je le lui donne.','pronouns before subjunctive verb'],
+  ['subjp','Subjonctif passé','Il faut que je le lui aie donné.','pronouns before auxiliary avoir in subjunctive'],
+  ['fp','Futur proche','Je vais le lui donner.','pronouns before infinitive donner'],
+  ['modal','Pouvoir/devoir/vouloir + infinitive','Je peux le lui donner.','pronouns before infinitive donner'],
+  ['neg','Negative present','Je ne le lui donne pas.','ne + pronouns + verb + pas'],
+  ['negpc','Negative passé composé','Je ne le lui ai pas donné.','ne + pronouns + auxiliary + pas + participle'],
+  ['imp','Affirmative imperative','Donne-le-lui.','pronouns after imperative with hyphens'],
+  ['negimp','Negative imperative','Ne le lui donne pas.','normal pre-verbal order']
+];
+const tenseSelect = document.getElementById('tenseSelect');
+tenses.forEach(t=>{ const o=document.createElement('option'); o.value=t[0]; o.textContent=t[1]; tenseSelect.appendChild(o); });
+function renderTense(){
+  const t=tenses.find(x=>x[0]===tenseSelect.value);
+  document.getElementById('tenseOutput').innerHTML = `<div class="bigAnswer">${t[2]}</div><p><b>${t[1]}</b>: ${t[3]}</p>`;
+}
+
+function agree(pp, obj){
+  if(obj==='none') return pp;
+  if(obj==='en' || obj==='lui') return pp;
+  const irregular = {
+    vu:{f:'vue',mp:'vus',fp:'vues',m:'vu'},
+    pris:{f:'prise',mp:'pris',fp:'prises',m:'pris'},
+    lu:{f:'lue',mp:'lus',fp:'lues',m:'lu'},
+    appris:{f:'apprise',mp:'appris',fp:'apprises',m:'appris'},
+    écrit:{f:'écrite',mp:'écrits',fp:'écrites',m:'écrit'}
+  };
+  return irregular[pp][obj] || pp;
+}
+function runAgreement(){
+  const pp=document.getElementById('ppVerb').value;
+  const obj=document.getElementById('ppObject').value;
+  const form=agree(pp,obj);
+  let rule='';
+  if(obj==='none') rule='No COD is placed before the participle, so no agreement.';
+  else if(obj==='en') rule='With en, the participle normally remains invariable in standard usage.';
+  else if(obj==='lui') rule='lui/leur/y are not COD pronouns, so no direct-object agreement.';
+  else rule='The COD is placed before the participle, so agreement is required.';
+  document.getElementById('agreementOutput').innerHTML = `<div class="bigAnswer">${form}</div><p>${rule}</p>`;
+}
+
+const quiz = [
+  {q:'Je regarde le film. → Je ___ regarde.', a:'le', choices:['le','lui','y','en'], exp:'regarder quelque chose is direct: COD → le.'},
+  {q:'Je parle à Marie. → Je ___ parle.', a:'lui', choices:['la','lui','y','en'], exp:'parler à quelqu’un → COI person → lui.'},
+  {q:'Je vais au bureau. → J’___ vais.', a:'y', choices:['le','lui','y','en'], exp:'Place → y.'},
+  {q:'Je parle de mon travail. → J’___ parle.', a:'en', choices:['le','lui','y','en'], exp:'de + thing/idea → en.'},
+  {q:'J’écoute mes parents. → Je ___ écoute.', a:'les', choices:['leur','les','y','en'], exp:'écouter quelqu’un is direct in French → les.'},
+  {q:'Je téléphone à mes parents. → Je ___ téléphone.', a:'leur', choices:['les','leur','y','en'], exp:'téléphoner à quelqu’un → leur.'},
+  {q:'J’ai trois stylos. → J’___ ai trois.', a:'en', choices:['les','leur','y','en'], exp:'quantity + noun → en + quantity.'},
+  {q:'Je pense à cet examen. → J’___ pense.', a:'y', choices:['le','lui','y','en'], exp:'penser à + thing → y.'},
+  {q:'Je pense à Marie. → Je pense ___.', a:'à elle', choices:['lui','la','à elle','y'], exp:'penser à + person uses stressed pronoun: à elle.'},
+  {q:'J’ai appris cette règle. → Je l’ai ___.', a:'apprise', choices:['appris','apprise','apprises','apprit'], exp:'l’ = cette règle, COD before avoir → feminine agreement.'},
+  {q:'Je vais lire le document. → Je vais ___ lire.', a:'le', choices:['le','lui','y','en'], exp:'With aller + infinitive, pronoun before infinitive.'},
+  {q:'Ne regarde pas le film. → Ne ___ regarde pas.', a:'le', choices:['le','lui','y','en'], exp:'Negative imperative uses normal pre-verbal order.'}
+];
+let quizIndex=0, score=0, answered=0;
+function renderQuiz(){
+  const item=quiz[quizIndex];
+  document.getElementById('quizQuestion').textContent = item.q;
+  document.getElementById('quizChoices').innerHTML = item.choices.map(c=>`<button class="choice" onclick="answerQuiz(this,'${c.replace(/'/g,"\\'")}')">${c}</button>`).join('');
+  document.getElementById('quizFeedback').style.display='none';
+}
+function answerQuiz(btn, choice){
+  const item=quiz[quizIndex];
+  const buttons=[...document.querySelectorAll('#quizChoices .choice')];
+  buttons.forEach(b=>{ b.disabled=true; if(b.textContent===item.a) b.classList.add('correct'); });
+  if(choice===item.a){score++; btn.classList.add('correct');}
+  else btn.classList.add('wrong');
+  answered++;
+  document.getElementById('quizFeedback').style.display='block';
+  document.getElementById('quizFeedback').innerHTML = `<b>${choice===item.a?'Correct':'Not quite'}.</b> ${item.exp}`;
+  document.getElementById('quizScore').textContent = `Score: ${score} / ${answered}`;
+}
+function nextQuiz(){ quizIndex=(quizIndex+1)%quiz.length; renderQuiz(); }
+function resetQuiz(){ score=0; answered=0; quizIndex=0; document.getElementById('quizScore').textContent='Score: 0 / 0'; renderQuiz(); }
+
+const cards = [
+  ['What replaces a direct object?', 'le, la, l’, les. Example: Je vois Marie → Je la vois.'],
+  ['What replaces à + person?', 'lui / leur, when the verb allows it. Example: Je parle à Paul → Je lui parle.'],
+  ['What replaces à + thing/idea?', 'y. Example: Je pense à mon examen → J’y pense.'],
+  ['What replaces de + thing/idea?', 'en. Example: Je parle du dossier → J’en parle.'],
+  ['Where does a pronoun go in passé composé?', 'Before the auxiliary: Je l’ai vu, Je lui ai parlé, J’y suis allé, J’en ai pris.'],
+  ['Where does a pronoun go with aller + infinitive?', 'Before the infinitive: Je vais le voir, Je vais lui parler, Je vais y aller.'],
+  ['How do you say “I learned it in Canada”?', 'Je l’ai appris au Canada. If “it” is feminine: Je l’ai apprise au Canada.'],
+  ['What is the double-pronoun order?', 'me/te/se/nous/vous + le/la/les + lui/leur + y + en + verb.'],
+  ['What happens in affirmative imperative?', 'Pronouns go after the verb with hyphens: Donne-le-moi, Parle-lui-en, Vas-y.'],
+  ['When does avoir participle agreement happen?', 'When the COD is placed before the participle: Je les ai vues.']
+];
+let cardIndex=0;
+function renderCard(){
+  document.getElementById('flashcard').classList.remove('flipped');
+  document.getElementById('cardFront').textContent=cards[cardIndex][0];
+  document.getElementById('cardBack').innerHTML=cards[cardIndex][1];
+}
+function flipCard(){ document.getElementById('flashcard').classList.toggle('flipped'); }
+function nextCard(){ cardIndex=(cardIndex+1)%cards.length; renderCard(); }
+function prevCard(){ cardIndex=(cardIndex-1+cards.length)%cards.length; renderCard(); }
+
+function initTabs(){
+  document.querySelectorAll('[data-tabs]').forEach(group=>{
+    group.querySelectorAll('.tab').forEach(tab=>{
+      tab.addEventListener('click',()=>{
+        group.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+        const panel=tab.dataset.panel;
+        document.querySelectorAll('.tabPanel').forEach(p=>p.classList.remove('active'));
+        document.getElementById(panel).classList.add('active');
+      });
+    });
+  });
+}
+
+function initSearch(){
+  const input=document.getElementById('siteSearch');
+  input.addEventListener('input',()=>{
+    const q=input.value.toLowerCase().trim();
+    document.querySelectorAll('main section').forEach(sec=>{
+      if(!q){sec.style.outline='none'; sec.style.display='block'; return;}
+      const text=(sec.textContent+' '+(sec.dataset.search||'')).toLowerCase();
+      sec.style.display=text.includes(q)?'block':'none';
+      sec.style.outline=text.includes(q)?'2px solid rgba(56,189,248,.45)':'none';
+    });
+  });
+}
+
+function initScroll(){
+  const links=[...document.querySelectorAll('.nav a')];
+  const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  window.addEventListener('scroll',()=>{
+    const top=window.scrollY;
+    const h=document.documentElement.scrollHeight-window.innerHeight;
+    const pct=Math.max(0,Math.min(100,Math.round((top/h)*100)));
+    document.getElementById('progressBar').style.width=pct+'%';
+    document.getElementById('progressText').textContent='Scroll progress: '+pct+'%';
+    let current=null;
+    sections.forEach(s=>{ if(s.offsetTop-120<=top) current=s.id; });
+    links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
+  });
+}
+
+initTabs(); initSearch(); initScroll(); renderVerbs(); runDecisionLab(); renderTense(); runAgreement(); renderQuiz(); renderCard();
+</script>
+</body>
+</html>
